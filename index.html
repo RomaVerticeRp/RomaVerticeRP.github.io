@@ -164,7 +164,7 @@
             text-transform: uppercase;
         }
 
-        /* Form Controls */
+        /* Form Controls & User Info */
         .user-info {
             display: flex;
             align-items: center;
@@ -373,7 +373,7 @@
 </head>
 <body>
 
-    <!-- NAVIGAZIONE CON NUOVE SEZIONI -->
+    <!-- NAVIGAZIONE -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="logo.png" alt="Logo Carabinieri" class="nav-logo">
@@ -420,23 +420,23 @@
 
                 <div id="statusMessage" class="status-message"></div>
 
-                <!-- Step 1: Login Discord -->
-                <div id="discordAuthSection">
+                <!-- Login Discord per Bando -->
+                <div class="discordAuthSection">
                     <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
                         Per garantire la validità della candidatura, è necessario autenticarsi tramite Discord.
                     </p>
-                    <button id="loginBtn" class="btn btn-discord" onclick="loginWithDiscord()">
+                    <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
                         Accedi con Discord per Continuare
                     </button>
                 </div>
 
-                <!-- Step 2: Form effettivo -->
-                <form id="applicationForm" style="display: none;" onsubmit="sendApplication(event)">
+                <!-- Form Candidatura -->
+                <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
                     <div class="user-info">
-                        <img id="userAvatar" src="" alt="Avatar" class="user-avatar">
+                        <img src="" alt="Avatar" class="userAvatar user-avatar">
                         <div>
-                            <div id="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div id="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
                         </div>
                     </div>
 
@@ -496,7 +496,7 @@
             </div>
         </div>
 
-        <!-- TAB 4: PRENOTA APPUNTAMENTO -->
+        <!-- TAB 4: PRENOTA APPUNTAMENTO (CON DISCORD) -->
         <div id="appuntamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -507,15 +507,34 @@
 
                 <div id="appStatusMessage" class="status-message"></div>
 
-                <form id="appointmentForm" onsubmit="sendAppointment(event)">
+                <!-- Login Discord per Appuntamento -->
+                <div class="discordAuthSection">
+                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
+                        Per identificarti e consentire ai nostri ufficiali di ricontattarti, effettua il login con Discord.
+                    </p>
+                    <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
+                        Accedi con Discord per Prenotare
+                    </button>
+                </div>
+
+                <!-- Form Appuntamento -->
+                <form id="appointmentForm" class="auth-form" style="display: none;" onsubmit="sendAppointment(event)">
+                    <div class="user-info">
+                        <img src="" alt="Avatar" class="userAvatar user-avatar">
+                        <div>
+                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label for="appNome">Nome e Cognome del Cittadino:</label>
+                        <label for="appNome">Nome e Cognome del Cittadino (In Game / RP):</label>
                         <input type="text" id="appNome" required placeholder="Es. Giuseppe Verdi">
                     </div>
 
                     <div class="form-group">
-                        <label for="appContatto">Recapito Telefonico / Discord:</label>
-                        <input type="text" id="appContatto" required placeholder="Es. 555-0192 / @utente">
+                        <label for="appContatto">Recapito Telefonico in Città:</label>
+                        <input type="text" id="appContatto" required placeholder="Es. 555-0192">
                     </div>
 
                     <div class="form-group">
@@ -541,7 +560,7 @@
 
                     <div class="form-group">
                         <label for="appNote">Dettagli Aggiuntivi / Note:</label>
-                        <textarea id="appNote" placeholder="Specificare eventuali ulteriori dettagli riguardanti la richiesta..."></textarea>
+                        <textarea id="appNote" placeholder="Specificare eventuali dettagli riguardanti la richiesta..."></textarea>
                     </div>
 
                     <button type="submit" id="appSubmitBtn" class="btn" style="background: #003366;">Invia Richiesta Appuntamento</button>
@@ -591,7 +610,7 @@
 
         let userData = null;
 
-        // Gestione Tab Navigazione
+        // Gestione Tab
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
@@ -600,21 +619,23 @@
             document.getElementById('nav-' + tabId).classList.add('active');
         }
 
-        // Login Discord OAuth2
-        function loginWithDiscord() {
+        // Login Discord OAuth2 con stato della scheda
+        function loginWithDiscord(targetTab) {
             const scope = 'identify';
-            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}`;
+            const state = targetTab || 'bando';
+            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
             window.location.href = authUrl;
         }
 
-        // Estrazione dati dall'URL dopo il redirect
+        // Estrazione dati dall'URL dopo il login
         window.onload = function() {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
+            const targetTab = fragment.get('state') || 'bando';
 
             if (accessToken) {
                 window.history.replaceState({}, document.title, window.location.pathname);
-                showTab('bando');
+                showTab(targetTab);
 
                 fetch('https://discord.com/api/users/@me', {
                     headers: { authorization: `Bearer ${accessToken}` }
@@ -623,20 +644,23 @@
                 .then(user => {
                     if (user.id) {
                         userData = user;
-                        document.getElementById('discordAuthSection').style.display = 'none';
-                        document.getElementById('applicationForm').style.display = 'block';
                         
-                        document.getElementById('userName').innerText = `${user.username}`;
-                        document.getElementById('userId').innerText = `ID Discord: ${user.id}`;
+                        // Scomparire tutti i pulsanti login e mostrare tutti i form
+                        document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
+                        document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
                         
+                        // Popola i dati dell'utente su tutte le sezioni
                         const avatarUrl = user.avatar 
                             ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
                             : 'https://cdn.discordapp.com/embed/avatars/0.png';
-                        document.getElementById('userAvatar').src = avatarUrl;
+
+                        document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
+                        document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
+                        document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
                     }
                 })
                 .catch(err => {
-                    showStatus('statusMessage', 'Errore durante il recupero dei dati da Discord.', 'error');
+                    showStatus('statusMessage', 'Errore nel recupero dati da Discord.', 'error');
                 });
             }
         };
@@ -698,9 +722,14 @@
             });
         }
 
-        // Invio Prenotazione Appuntamento
+        // Invio Prenotazione Appuntamento (con Discord Integration)
         function sendAppointment(event) {
             event.preventDefault();
+
+            if (!userData) {
+                showStatus('appStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
+                return;
+            }
 
             const submitBtn = document.getElementById('appSubmitBtn');
             submitBtn.disabled = true;
@@ -711,11 +740,14 @@
                 avatar_url: "https://bandoarmata.github.io/logo.png",
                 embeds: [{
                     title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
-                    color: 13108, // Blu Scuro
+                    color: 13108,
+                    thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
                     fields: [
-                        { name: "👤 Nome Cittadino", value: document.getElementById('appNome').value, inline: true },
-                        { name: "📞 Recapito / Contatto", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo", value: document.getElementById('appMotivo').value, inline: false },
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🪪 ID Discord", value: userData.id, inline: true },
+                        { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
+                        { name: "📞 Recapito Telefonia IC", value: document.getElementById('appContatto').value, inline: true },
+                        { name: "📌 Motivo Appuntamento", value: document.getElementById('appMotivo').value, inline: true },
                         { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
                         { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
                         { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
@@ -732,14 +764,14 @@
             })
             .then(response => {
                 if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata! Un ufficiale ti contatterà a breve.', 'success');
+                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
                     document.getElementById('appointmentForm').reset();
                 } else {
                     showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
                 }
             })
             .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione.', 'error');
+                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
