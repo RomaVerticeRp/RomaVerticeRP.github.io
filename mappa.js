@@ -13,35 +13,41 @@ function renderMap() {
 
             const bounds = [[0, 0], [1000, 1000]];
             
-            // Assicurati che il file dell'immagine mappa si chiami 'mappa.webp' (o cambia il nome qui sotto)
+            // Assicurati che l'immagine sia nella stessa cartella e si chiami 'mappa.webp'
             L.imageOverlay('mappa.webp', bounds).addTo(mapInstance);
             mapInstance.fitBounds(bounds);
 
-            // Icona personalizzata con il logo
+            // Icona personalizzata con il logo dei Carabinieri
             const customIcon = L.icon({
                 iconUrl: 'logo.png',
-                iconSize: [32, 32],
-                iconAnchor: [16, 16],
-                popupAnchor: [0, -16]
+                iconSize: [36, 36],
+                iconAnchor: [18, 18],
+                popupAnchor: [0, -18]
             });
 
-            // --- ESEMPIO SEGNAPOSTO: CASERMA CENTRALE ---
-            L.marker([500, 500], { icon: customIcon })
-                .addTo(mapInstance)
-                .bindPopup("<b>Comando Stazione Centrale</b><br>Caserma Principale");
+            // =========================================================
+            // 📍 CASERMA PRINCIPALE (Modifica i primi due numeri Y e X)
+            // =========================================================
+            // Sostituisci 500, 500 con le coordinate esatte della tua caserma
+            const Y = 500; 
+            const X = 500; 
 
-            // --- CLICCA SULLA MAPPA PER TROVARE LE COORDINATE DI NUOVI LUOGHI ---
+            L.marker([Y, X], { icon: customIcon })
+                .addTo(mapInstance)
+                .bindPopup("<b>Comando Stazione Centrale</b><br>Caserma Principale CIV. 217");
+
+            // --- STRUMENTO PER TROVARE LE COORDINATE SULLA MAPPA ---
+            // Cliccando su un punto qualsiasi della mappa comparirà un fumetto con le coordinate Y e X
             mapInstance.on('click', function(e) {
-                const y = Math.round(e.latlng.lat);
-                const x = Math.round(e.latlng.lng);
+                const coordY = Math.round(e.latlng.lat);
+                const coordX = Math.round(e.latlng.lng);
                 
                 L.popup()
                     .setLatLng(e.latlng)
-                    .setContent(`Coordinate punto: <b>[${y}, ${x}]</b>`)
+                    .setContent(`Coordinate cliccate: <b>[${coordY}, ${coordX}]</b>`)
                     .openOn(mapInstance);
             });
         } else {
-            // Adatta le dimensioni del contenitore se era nascosto
             mapInstance.invalidateSize();
         }
     }, 150);
