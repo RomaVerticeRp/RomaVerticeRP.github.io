@@ -606,7 +606,7 @@
         // CONFIGURAZIONE DISCORD
         const CLIENT_ID = '1536336646507601920'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1347641618337529948/k-dK-aGjV3I5r3_gR-mUuE9YvB-iL0lB-sE4G2v-5l0k9X9A8B7C6D5E4F3G2H1I';
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536332594369789963/0wMCcPiw8z_ogXsDg04O3W4sYxVygG30tWbpNFM_WNJ_iNzWJTTc6z9qX4DcXw-L0Laz';
 
         let userData = null;
 
@@ -676,13 +676,16 @@
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
             const payload = {
                 username: "Reclutamento Arma Carabinieri",
-                avatar_url: `${window.location.origin}/logo.png`,
                 embeds: [{
                     title: "📄 NUOVA CANDIDATURA CARABINIERI",
                     color: 14687799,
-                    thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
+                    thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
                         { name: "🪪 ID Discord", value: userData.id, inline: true },
@@ -692,8 +695,7 @@
                         { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
                         { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
                     ],
-                    image: { url: `${window.location.origin}/sfondo.jpg` },
-                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele", icon_url: `${window.location.origin}/logo.png` },
+                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -733,24 +735,27 @@
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
             const payload = {
                 username: "Sportello Cittadini - Carabinieri",
-                avatar_url: `${window.location.origin}/logo.png`,
                 embeds: [{
                     title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
                     color: 13108,
-                    thumbnail: { url: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` },
+                    thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
                         { name: "🪪 ID Discord", value: userData.id, inline: true },
                         { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonia IC", value: document.getElementById('appContatto').value, inline: true },
+                        { name: "📞 Recapito Telefonico IC", value: document.getElementById('appContatto').value, inline: true },
                         { name: "📌 Motivo Appuntamento", value: document.getElementById('appMotivo').value, inline: true },
                         { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
                         { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
                         { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
                     ],
-                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri", icon_url: `${window.location.origin}/logo.png` },
+                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri" },
                     timestamp: new Date().toISOString()
                 }]
             };
