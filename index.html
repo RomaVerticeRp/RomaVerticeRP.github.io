@@ -10,6 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Libreria Leaflet per la Mappa Interattiva -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Script esterno per la mappa -->
+    <script src="mappa.js" defer></script>
+
     <style>
         :root {
             --bg-dark: #050c18;
@@ -384,6 +391,7 @@
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
             <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bando</a></li>
             <li><a href="#" onclick="showTab('foto')" id="nav-foto">Foto</a></li>
+            <li><a href="#" onclick="showTab('mappa')" id="nav-mappa">Mappa</a></li>
             <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Appuntamento</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
         </ul>
@@ -471,7 +479,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: FOTO (GALLERIA) - RIMOZIONE EFFETTUATA -->
+        <!-- TAB 3: FOTO (GALLERIA) -->
         <div id="foto" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -481,12 +489,26 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <!-- Elementi rimossi -->
+                    <!-- Elementi galleria -->
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: PRENOTA APPUNTAMENTO (CON DISCORD) -->
+        <!-- TAB 4: MAPPA INTERATTIVA RP -->
+        <div id="mappa" class="tab-content">
+            <div class="card">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <h1>Mappa Operativa RP</h1>
+                    <p>Giurisdizione, Stazioni e Punti di Interesse</p>
+                </div>
+                
+                <!-- Box Mappa Interattiva Leaflet -->
+                <div id="mapFiveM" style="height: 550px; width: 100%; border-radius: 12px; border: 1px solid var(--bg-card-border); background-color: #0b1d33; margin-top: 1rem;"></div>
+            </div>
+        </div>
+
+        <!-- TAB 5: PRENOTA APPUNTAMENTO (CON DISCORD) -->
         <div id="appuntamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -558,7 +580,7 @@
             </div>
         </div>
 
-        <!-- TAB 5: REGOLAMENTO -->
+        <!-- TAB 6: REGOLAMENTO -->
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -606,7 +628,13 @@
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
-            document.getElementById('nav-' + tabId).classList.add('active');
+            const navLink = document.getElementById('nav-' + tabId);
+            if (navLink) navLink.classList.add('active');
+
+            // Se clicchiamo sul tab Mappa, eseguiamo il resize/init della mappa Leaflet
+            if (tabId === 'mappa' && typeof renderMap === 'function') {
+                renderMap();
+            }
         }
 
         // Login Discord OAuth2
