@@ -726,6 +726,15 @@
             }
         };
 
+        // Funzione Utilità per Mostrare Messaggi di Stato
+        function showStatus(elementId, message, type) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.innerText = message;
+            el.className = `status-message status-${type}`;
+            el.style.display = 'block';
+        }
+
         // Invio Candidatura Bando
         function sendApplication(event) {
             event.preventDefault();
@@ -751,14 +760,14 @@
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
+                        { name: "🆔 ID Discord", value: userData.id, inline: true },
+                        { name: "🏷️ Nome IC", value: document.getElementById('nomeIC').value, inline: true },
                         { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
-                        { name: "📝 Nome & Cognome IC", value: document.getElementById('nomeIC').value, inline: false },
-                        { name: "⏳ Esperienza / Ore di Gioco", value: document.getElementById('tempoGioco').value, inline: false },
-                        { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
-                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
+                        { name: "⏳ Esperienza RP / Ore", value: document.getElementById('tempoGioco').value, inline: true },
+                        { name: "📝 Motivazione", value: document.getElementById('motivazione').value },
+                        { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value }
                     ],
-                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele" },
+                    footer: { text: "Arma dei Carabinieri RP • Sistema Automatico Candidature" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -768,16 +777,16 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('statusMessage', 'Candidatura inviata con successo! Verrai contattato su Discord.', 'success');
+            .then(res => {
+                if (res.ok) {
+                    showStatus('statusMessage', 'Candidatura inviata con successo! Un ufficiale ti ricontatterà.', 'success');
                     document.getElementById('applicationForm').reset();
                 } else {
-                    showStatus('statusMessage', 'Errore durante l\'invio della candidatura.', 'error');
+                    throw new Error('Errore durante l\'invio');
                 }
             })
-            .catch(error => {
-                showStatus('statusMessage', 'Errore di connessione con Discord.', 'error');
+            .catch(err => {
+                showStatus('statusMessage', 'Si è verificato un errore durante l\'invio. Riprova più tardi.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -794,9 +803,9 @@
                 return;
             }
 
-            const submitBtn = document.getElementById('appSubmitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Invio in corso...';
+            const appSubmitBtn = document.getElementById('appSubmitBtn');
+            appSubmitBtn.disabled = true;
+            appSubmitBtn.innerText = 'Invio in corso...';
 
             const userAvatarUrl = userData.avatar 
                 ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
@@ -805,20 +814,19 @@
             const payload = {
                 username: "Sportello Cittadini - Carabinieri",
                 embeds: [{
-                    title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
-                    color: 13108,
+                    title: "📅 NUOVA RICHIESTA APPUNTAMENTO",
+                    color: 13158,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonico IC", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo Appuntamento", value: document.getElementById('appMotivo').value, inline: true },
+                        { name: "👤 Nome IC Cittadino", value: document.getElementById('appNome').value, inline: true },
+                        { name: "📞 Recapito Telefonico", value: document.getElementById('appContatto').value, inline: true },
+                        { name: "📋 Motivo Richiesta", value: document.getElementById('appMotivo').value, inline: true },
                         { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
                         { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
-                        { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
+                        { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota fornita." }
                     ],
-                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri" },
+                    footer: { text: "Arma dei Carabinieri RP • Gestione Appuntamenti" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -828,33 +836,21 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
+            .then(res => {
+                if (res.ok) {
+                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata! Ti risponderemo su Discord.', 'success');
                     document.getElementById('appointmentForm').reset();
                 } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta di appuntamento.', 'error');
+                    throw new Error('Errore durante l\'invio');
                 }
             })
-            .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
+            .catch(err => {
+                showStatus('appStatusMessage', 'Si è verificato un errore durante l\'invio. Riprova più tardi.', 'error');
             })
             .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Richiesta Appuntamento';
+                appSubmitBtn.disabled = false;
+                appSubmitBtn.innerText = 'Invia Richiesta Appuntamento';
             });
-        }
-
-        // Funzione Utilità per Messaggi di Stato
-        function showStatus(elementId, text, type) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.innerText = text;
-            el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
-            el.style.display = 'block';
-            setTimeout(() => {
-                el.style.display = 'none';
-            }, 6000);
         }
     </script>
 </body>
