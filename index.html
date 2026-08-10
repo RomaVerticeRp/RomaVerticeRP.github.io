@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arma dei Carabinieri - Portale Ufficiale</title>
+    <title>Arma dei Carabinieri - Portale Ufficiale Roleplay</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
-    <!-- Google Fonts: Inter e Montserrat -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Libreria Leaflet per la Mappa Interattiva -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet CSS per Mappa Interattiva -->
+    <link 
+        rel="stylesheet" 
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    />
+    
+    <!-- Leaflet JS -->
+    <script 
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
 
-    <!-- Script esterno per la mappa -->
-    <script src="mappa.js" defer></script>
+    <!-- Script Esterno Mappa -->
+    <script 
+        src="mappa.js" 
+        defer>
+    </script>
 
     <style>
+        /* ==========================================================================
+           1. VARIABILI GLOBALI E RESET
+           ========================================================================== */
         :root {
             --bg-dark: #050c18;
             --bg-card: rgba(13, 27, 42, 0.85);
@@ -41,8 +57,12 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(5, 12, 24, 0.75) 0%, rgba(5, 12, 24, 0.88) 100%), 
-                        url('sfondo.jpg') no-repeat center center fixed;
+            background: linear-gradient(
+                180deg, 
+                rgba(5, 12, 24, 0.75) 0%, 
+                rgba(5, 12, 24, 0.88) 100%
+            ), 
+            url('sfondo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
             line-height: 1.6;
@@ -51,7 +71,9 @@
             flex-direction: column;
         }
 
-        /* Navbar */
+        /* ==========================================================================
+           2. NAVBAR E NAVIGAZIONE
+           ========================================================================== */
         .navbar {
             background: rgba(5, 12, 24, 0.95);
             border-bottom: 2px solid var(--primary-red);
@@ -73,7 +95,7 @@
             font-size: 1.2rem;
             font-weight: 800;
             letter-spacing: 1px;
-            color: #fff;
+            color: #ffffff;
             text-transform: uppercase;
         }
 
@@ -88,6 +110,7 @@
             gap: 1rem;
             list-style: none;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-links a {
@@ -99,13 +122,29 @@
             border-radius: 6px;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: #fff;
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: #ffffff;
             background: var(--primary-red);
             box-shadow: 0 0 15px rgba(224, 30, 55, 0.4);
         }
 
-        /* Container Principale */
+        /* Bottone Discord Personalizzato */
+        .nav-links a.btn-discord-nav {
+            background: #5865F2;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(88, 101, 242, 0.4);
+        }
+
+        .nav-links a.btn-discord-nav:hover {
+            background: #4752C4;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.7);
+        }
+
+        /* ==========================================================================
+           3. CONTAINER E LAYOUT GENERALE
+           ========================================================================== */
         .container {
             max-width: 950px;
             margin: 2.5rem auto;
@@ -123,8 +162,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Card Glassmorphism */
@@ -151,14 +196,14 @@
             filter: drop-shadow(0 0 12px rgba(224, 30, 55, 0.4));
         }
 
-        h1, h2 {
+        h1, h2, h3 {
             font-family: var(--font-title);
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
         .header-container h1 {
-            color: #fff;
+            color: #ffffff;
             font-size: 2.2rem;
             margin-bottom: 0.3rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
@@ -172,25 +217,9 @@
             text-transform: uppercase;
         }
 
-        /* Form Controls & User Info */
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .user-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-red);
-        }
-
+        /* ==========================================================================
+           4. FORM ED ELEMENTI DI INPUT
+           ========================================================================== */
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -214,12 +243,14 @@
             background: rgba(5, 12, 24, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
-            color: #fff;
+            color: #ffffff;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, 
+        select:focus, 
+        textarea:focus {
             outline: none;
             border-color: var(--primary-red);
             box-shadow: 0 0 10px rgba(224, 30, 55, 0.3);
@@ -231,12 +262,14 @@
             min-height: 110px;
         }
 
-        /* Pulsanti */
+        /* ==========================================================================
+           5. PULSANTI E AZIONI
+           ========================================================================== */
         .btn {
             width: 100%;
             padding: 1rem;
             background: var(--primary-red);
-            color: white;
+            color: #ffffff;
             border: none;
             border-radius: 8px;
             font-size: 1.1rem;
@@ -259,17 +292,30 @@
             box-shadow: 0 6px 20px rgba(224, 30, 55, 0.6);
         }
 
-        .btn-discord {
-            background: #5865F2;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        .btn-secondary {
+            background: #003366;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.4);
         }
 
-        .btn-discord:hover {
-            background: #4752C4;
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
+        .btn-secondary:hover {
+            background: #002244;
+            box-shadow: 0 6px 20px rgba(0, 51, 102, 0.6);
         }
 
-        /* Galleria Foto */
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-red);
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           6. GALLERIA E GRIGLIE
+           ========================================================================== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -299,20 +345,9 @@
             object-fit: cover;
         }
 
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(5, 12, 24, 0.85);
-            padding: 8px 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-gold);
-            text-align: center;
-        }
-
-        /* Testo Regolamento */
+        /* ==========================================================================
+           7. REGOLAMENTO E LISTE
+           ========================================================================== */
         .rules-list {
             list-style: none;
         }
@@ -332,7 +367,9 @@
             font-weight: bold;
         }
 
-        /* Banner Stato */
+        /* ==========================================================================
+           8. NOTIFICHE E STATI
+           ========================================================================== */
         .status-message {
             padding: 1rem;
             border-radius: 8px;
@@ -354,6 +391,9 @@
             color: #e74c3c;
         }
 
+        /* ==========================================================================
+           9. FOOTER
+           ========================================================================== */
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -364,189 +404,363 @@
             margin-top: auto;
         }
 
+        /* ==========================================================================
+           10. RESPONSIVE DESIGN
+           ========================================================================== */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .nav-links {
                 width: 100%;
                 justify-content: center;
             }
+
             .card {
                 padding: 1.5rem;
+            }
+
+            .header-container h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGAZIONE -->
+    <!-- ========================================================================
+         BARRA DI NAVIGAZIONE PRINCIPALE
+         ======================================================================== -->
     <nav class="navbar">
         <div class="nav-brand">
-            <img src="logo.png" alt="Logo Carabinieri" class="nav-logo">
+            <img 
+                src="logo.png" 
+                alt="Logo Carabinieri" 
+                class="nav-logo"
+            >
             <span>Arma dei Carabinieri</span>
         </div>
+
         <ul class="nav-links">
-            <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
-            <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bando</a></li>
-            <li><a href="#" onclick="showTab('foto')" id="nav-foto">Foto</a></li>
-            <li><a href="#" onclick="showTab('mappa')" id="nav-mappa">Mappa</a></li>
-            <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Appuntamento</a></li>
-            <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('home')" 
+                    id="nav-home" 
+                    class="active"
+                >
+                    Home
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('bando')" 
+                    id="nav-bando"
+                >
+                    Bando
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('foto')" 
+                    id="nav-foto"
+                >
+                    Foto
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('mappa')" 
+                    id="nav-mappa"
+                >
+                    Mappa
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('appuntamento')" 
+                    id="nav-appuntamento"
+                >
+                    Appuntamento
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="#" 
+                    onclick="showTab('regolamento')" 
+                    id="nav-regolamento"
+                >
+                    Regolamento
+                </a>
+            </li>
+            <li>
+                <a 
+                    href="https://discord.gg/jBSXfDBtxq" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="btn-discord-nav"
+                >
+                    Discord
+                </a>
+            </li>
         </ul>
     </nav>
 
+    <!-- ========================================================================
+         CONTENITORE PRINCIPALE DELLE SCHEDE
+         ======================================================================== -->
     <div class="container">
 
-        <!-- TAB 1: HOME -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 1: HOME
+             -------------------------------------------------------------------- -->
         <div id="home" class="tab-content active">
             <div class="card" style="text-align: center;">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Arma dei Carabinieri</h1>
                     <p>Nei Secoli Fedele</p>
                 </div>
+
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
                     Benvenuto sul portale ufficiale dell'Arma dei Carabinieri. La nostra missione è garantire la sicurezza, l'ordine pubblico e la protezione dei cittadini con dedizione, onore e integrità.
                 </p>
+
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('bando')">Invia Candidatura</button>
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: #003366;" onclick="showTab('appuntamento')">Prenota Appuntamento</button>
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: transparent; border: 2px solid var(--primary-red);" onclick="showTab('regolamento')">Consulta Regolamento</button>
+                    <button 
+                        class="btn" 
+                        style="width: auto; padding: 0.8rem 2rem;" 
+                        onclick="showTab('bando')"
+                    >
+                        Invia Candidatura
+                    </button>
+
+                    <button 
+                        class="btn btn-secondary" 
+                        style="width: auto; padding: 0.8rem 2rem;" 
+                        onclick="showTab('appuntamento')"
+                    >
+                        Prenota Appuntamento
+                    </button>
+
+                    <button 
+                        class="btn btn-outline" 
+                        style="width: auto; padding: 0.8rem 2rem;" 
+                        onclick="showTab('regolamento')"
+                    >
+                        Consulta Regolamento
+                    </button>
                 </div>
+
             </div>
         </div>
 
-        <!-- TAB 2: BANDO (CANDIDATURA) -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 2: BANDO CANDIDATURA
+             -------------------------------------------------------------------- -->
         <div id="bando" class="tab-content">
             <div class="card">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Modulo di Candidatura</h1>
                     <p>Reclutamento Ufficiale</p>
                 </div>
 
                 <div id="statusMessage" class="status-message"></div>
 
-                <!-- Login Discord per Bando -->
-                <div class="discordAuthSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Per garantire la validità della candidatura, è necessario autenticarsi tramite Discord.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
-                        Accedi con Discord per Continuare
-                    </button>
-                </div>
-
-                <!-- Form Candidatura -->
-                <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
+                <form id="applicationForm" onsubmit="sendApplication(event)">
+                    
+                    <div class="form-group">
+                        <label for="discordUser">Nome Utente Discord (es. mario_rossi):</label>
+                        <input 
+                            type="text" 
+                            id="discordUser" 
+                            required 
+                            placeholder="Inserisci il tuo username di Discord"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
-                        <input type="text" id="nomeIC" required placeholder="Es. Mario Rossi">
+                        <input 
+                            type="text" 
+                            id="nomeIC" 
+                            required 
+                            placeholder="Es. Mario Rossi"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="etaOOC">Età Reale (OOC):</label>
-                        <input type="number" id="etaOOC" min="14" max="99" required placeholder="Es. 18">
+                        <input 
+                            type="number" 
+                            id="etaOOC" 
+                            min="14" 
+                            max="99" 
+                            required 
+                            placeholder="Es. 18"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="tempoGioco">Ore di Gioco / Esperienza RP:</label>
-                        <input type="text" id="tempoGioco" required placeholder="Es. 500 ore, esperienza passata in altre forze dell'ordine">
+                        <input 
+                            type="text" 
+                            id="tempoGioco" 
+                            required 
+                            placeholder="Es. 500 ore, esperienza passata in altre forze dell'ordine"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="motivazione">Motivazione per l'ingresso nell'Arma:</label>
-                        <textarea id="motivazione" required placeholder="Spiega perché desideri entrare nell'Arma dei Carabinieri..."></textarea>
+                        <textarea 
+                            id="motivazione" 
+                            required 
+                            placeholder="Spiega perché desideri entrare nell'Arma dei Carabinieri..."
+                        ></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="esperienzaAvanzata">Esperienze Precedenti nelle Forze dell'Ordine / Militari (IC):</label>
-                        <textarea id="esperienzaAvanzata" required placeholder="Elenca eventuali gradi o ruoli ricoperti precedentemente..."></textarea>
+                        <textarea 
+                            id="esperienzaAvanzata" 
+                            required 
+                            placeholder="Elenca eventuali gradi o ruoli ricoperti precedentemente..."
+                        ></textarea>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Ufficiale</button>
+                    <button 
+                        type="submit" 
+                        id="submitBtn" 
+                        class="btn"
+                    >
+                        Invia Candidatura Ufficiale
+                    </button>
+
                 </form>
+
             </div>
         </div>
 
-        <!-- TAB 3: FOTO (GALLERIA) -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 3: GALLERIA FOTO
+             -------------------------------------------------------------------- -->
         <div id="foto" class="tab-content">
             <div class="card">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Galleria Fotografica</h1>
                     <p>I Mezzi e le Operazioni dell'Arma</p>
                 </div>
                 
                 <div class="gallery-grid">
-                    <!-- Elementi galleria -->
+                    <!-- Spazio riservato all'inserimento delle immagini -->
                 </div>
+
             </div>
         </div>
 
-        <!-- TAB 4: MAPPA INTERATTIVA RP -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 4: MAPPA INTERATTIVA
+             -------------------------------------------------------------------- -->
         <div id="mappa" class="tab-content">
             <div class="card">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Mappa Operativa RP</h1>
                     <p>Giurisdizione, Stazioni e Punti di Interesse</p>
                 </div>
                 
-                <!-- Box Mappa Interattiva Leaflet -->
-                <div id="mapFiveM" style="height: 550px; width: 100%; border-radius: 12px; border: 1px solid var(--bg-card-border); background-color: #0b1d33; margin-top: 1rem;"></div>
+                <div 
+                    id="mapFiveM" 
+                    style="
+                        height: 550px; 
+                        width: 100%; 
+                        border-radius: 12px; 
+                        border: 1px solid var(--bg-card-border); 
+                        background-color: #0b1d33; 
+                        margin-top: 1rem;
+                    "
+                ></div>
+
             </div>
         </div>
 
-        <!-- TAB 5: PRENOTA APPUNTAMENTO (CON DISCORD) -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 5: APPUNTAMENTO
+             -------------------------------------------------------------------- -->
         <div id="appuntamento" class="tab-content">
             <div class="card">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Prenotazione Appuntamento</h1>
                     <p>Sportello per i Cittadini</p>
                 </div>
 
                 <div id="appStatusMessage" class="status-message"></div>
 
-                <!-- Login Discord per Appuntamento -->
-                <div class="discordAuthSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Per identificarti e consentire ai nostri ufficiali di ricontattarti, effettua il login con Discord.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
-                        Accedi con Discord per Prenotare
-                    </button>
-                </div>
-
-                <!-- Form Appuntamento -->
-                <form id="appointmentForm" class="auth-form" style="display: none;" onsubmit="sendAppointment(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
+                <form id="appointmentForm" onsubmit="sendAppointment(event)">
+                    
+                    <div class="form-group">
+                        <label for="appDiscordUser">Nome Utente Discord (per contatti):</label>
+                        <input 
+                            type="text" 
+                            id="appDiscordUser" 
+                            required 
+                            placeholder="Es. mario_rossi"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="appNome">Nome e Cognome del Cittadino (In Game / RP):</label>
-                        <input type="text" id="appNome" required placeholder="Es. Giuseppe Verdi">
+                        <input 
+                            type="text" 
+                            id="appNome" 
+                            required 
+                            placeholder="Es. Giuseppe Verdi"
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="appContatto">Recapito Telefonico in Città:</label>
-                        <input type="text" id="appContatto" required placeholder="Es. 555-0192">
+                        <input 
+                            type="text" 
+                            id="appContatto" 
+                            required 
+                            placeholder="Es. 555-0192"
+                        >
                     </div>
 
                     <div class="form-group">
@@ -562,34 +776,62 @@
 
                     <div class="form-group">
                         <label for="appData">Data Preferita:</label>
-                        <input type="date" id="appData" required>
+                        <input 
+                            type="date" 
+                            id="appData" 
+                            required
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="appOra">Orario Indicativo:</label>
-                        <input type="time" id="appOra" required>
+                        <input 
+                            type="time" 
+                            id="appOra" 
+                            required
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="appNote">Dettagli Aggiuntivi / Note:</label>
-                        <textarea id="appNote" placeholder="Specificare eventuali dettagli riguardanti la richiesta..."></textarea>
+                        <textarea 
+                            id="appNote" 
+                            placeholder="Specificare eventuali dettagli riguardanti la richiesta..."
+                        ></textarea>
                     </div>
 
-                    <button type="submit" id="appSubmitBtn" class="btn" style="background: #003366;">Invia Richiesta Appuntamento</button>
+                    <button 
+                        type="submit" 
+                        id="appSubmitBtn" 
+                        class="btn btn-secondary"
+                    >
+                        Invia Richiesta Appuntamento
+                    </button>
+
                 </form>
+
             </div>
         </div>
 
-        <!-- TAB 6: REGOLAMENTO -->
+        <!-- --------------------------------------------------------------------
+             SCHEDA 6: REGOLAMENTO
+             -------------------------------------------------------------------- -->
         <div id="regolamento" class="tab-content">
             <div class="card">
+                
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
+                    <img 
+                        src="logo.png" 
+                        alt="Logo Carabinieri" 
+                        class="header-logo"
+                    >
                     <h1>Regolamento e Requisiti</h1>
                     <p>Arma dei Carabinieri</p>
                 </div>
                 
-                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">Requisiti Obbligatori:</h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">
+                    Requisiti Obbligatori:
+                </h3>
                 <ul class="rules-list" style="margin-bottom: 2rem;">
                     <li>Conoscenza approfondita del regolamento generale del server e delle dinamiche Roleplay.</li>
                     <li>Disponibilità ad utilizzare la radio e le frequenze operative ufficiali.</li>
@@ -598,141 +840,143 @@
                     <li>Presenza minima garantita settimanale per le attività di pattuglia e formazione.</li>
                 </ul>
 
-                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">Codice di Condotta:</h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">
+                    Codice di Condotta:
+                </h3>
                 <ul class="rules-list">
                     <li>I Carabinieri devono rappresentare l'esempio di condotta per tutta la cittadinanza.</li>
                     <li>L'abuso di potere o la violazione delle procedure operative comporterà l'immediato congedo con disonore e segnalazione.</li>
                     <li>È obbligatorio seguire le direttive dei superiori e rispettare la catena di comando in ogni circostanza.</li>
                 </ul>
+
             </div>
         </div>
 
     </div>
 
+    <!-- ========================================================================
+         FOOTER
+         ======================================================================== -->
     <footer>
         <p>&copy; Arma dei Carabinieri RP - Portale Ufficiale. Tutti i diritti riservati.</p>
         <p style="margin-top: 5px; color: #64748b;">Nei Secoli Fedele</p>
     </footer>
 
+    <!-- ========================================================================
+         LOGICA JAVASCRIPT
+         ======================================================================== -->
     <script>
-        // CONFIGURAZIONE DISCORD
-        const CLIENT_ID = '1536336646507601920'; 
-        const REDIRECT_URI = window.location.origin + window.location.pathname;
+        // Indirizzo Webhook Discord per l'invio dei dati
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2';
 
-        let userData = null;
-
-        // Gestione Tab
+        /**
+         * Gestisce il cambio di scheda principale
+         * @param {string} tabId - ID della scheda da attivare
+         */
         function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            const navLink = document.getElementById('nav-' + tabId);
-            if (navLink) navLink.classList.add('active');
+            // Disattiva tutti i tab
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
 
-            // Se clicchiamo sul tab Mappa, eseguiamo il resize/init della mappa Leaflet
+            // Disattiva tutti i link di navigazione tranne il pulsante Discord
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (!link.classList.contains('btn-discord-nav')) {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Attiva la scheda e il pulsante corrispondente
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            const activeNavLink = document.getElementById('nav-' + tabId);
+            if (activeNavLink) {
+                activeNavLink.classList.add('active');
+            }
+
+            // Inizializza la mappa se si apre il tab Mappa
             if (tabId === 'mappa' && typeof renderMap === 'function') {
                 renderMap();
             }
         }
 
-        // Login Discord OAuth2
-        function loginWithDiscord(targetTab) {
-            const scope = 'identify';
-            const state = targetTab || 'bando';
-            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
-            window.location.href = authUrl;
-        }
-
-        // Estrazione dati dall'URL dopo il login
-        window.onload = function() {
-            const fragment = new URLSearchParams(window.location.hash.slice(1));
-            const accessToken = fragment.get('access_token');
-            const targetTab = fragment.get('state') || 'bando';
-
-            if (accessToken) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showTab(targetTab);
-
-                fetch('https://discord.com/api/users/@me', {
-                    headers: { authorization: `Bearer ${accessToken}` }
-                })
-                .then(res => res.json())
-                .then(user => {
-                    if (user.id) {
-                        userData = user;
-                        
-                        document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
-                        
-                        const avatarUrl = user.avatar 
-                            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-                            : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-                        document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
-                        document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
-                        document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
-                    }
-                })
-                .catch(err => {
-                    showStatus('statusMessage', 'Errore nel recupero dati da Discord.', 'error');
-                });
-            }
-        };
-
-        // Invio Candidatura Bando
+        /**
+         * Invia la candidatura del bando a Discord via Webhook
+         * @param {Event} event - Evento del form submit
+         */
         function sendApplication(event) {
             event.preventDefault();
-
-            if (!userData) {
-                showStatus('statusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
             const payload = {
                 username: "Reclutamento Arma Carabinieri",
-                embeds: [{
-                    title: "📄 NUOVA CANDIDATURA CARABINIERI",
-                    color: 14687799,
-                    thumbnail: { url: userAvatarUrl },
-                    fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
-                        { name: "📝 Nome & Cognome IC", value: document.getElementById('nomeIC').value, inline: false },
-                        { name: "⏳ Esperienza / Ore di Gioco", value: document.getElementById('tempoGioco').value, inline: false },
-                        { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
-                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
-                    ],
-                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele" },
-                    timestamp: new Date().toISOString()
-                }]
+                embeds: [
+                    {
+                        title: "📄 NUOVA CANDIDATURA CARABINIERI",
+                        color: 14687799,
+                        fields: [
+                            { 
+                                name: "👤 Utente Discord", 
+                                value: document.getElementById('discordUser').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "🎂 Età OOC", 
+                                value: document.getElementById('etaOOC').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📝 Nome & Cognome IC", 
+                                value: document.getElementById('nomeIC').value, 
+                                inline: false 
+                            },
+                            { 
+                                name: "⏳ Esperienza / Ore di Gioco", 
+                                value: document.getElementById('tempoGioco').value, 
+                                inline: false 
+                            },
+                            { 
+                                name: "🎖️ Esperienze Precedenti", 
+                                value: document.getElementById('esperienzaAvanzata').value, 
+                                inline: false 
+                            },
+                            { 
+                                name: "📌 Motivazione", 
+                                value: document.getElementById('motivazione').value, 
+                                inline: false 
+                            }
+                        ],
+                        footer: { 
+                            text: "Arma dei Carabinieri • Portale Web" 
+                        },
+                        timestamp: new Date().toISOString()
+                    }
+                ]
             };
 
             fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
                 body: JSON.stringify(payload)
             })
             .then(response => {
                 if (response.ok) {
-                    showStatus('statusMessage', 'Candidatura inviata con successo! Verrai contattato su Discord.', 'success');
+                    showStatus('statusMessage', 'Candidatura inviata con successo!', 'success');
                     document.getElementById('applicationForm').reset();
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio della candidatura.', 'error');
                 }
             })
             .catch(error => {
-                showStatus('statusMessage', 'Errore di connessione con Discord.', 'error');
+                showStatus('statusMessage', 'Errore di connessione al server.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -740,59 +984,85 @@
             });
         }
 
-        // Invio Prenotazione Appuntamento
+        /**
+         * Invia la richiesta di appuntamento a Discord via Webhook
+         * @param {Event} event - Evento del form submit
+         */
         function sendAppointment(event) {
             event.preventDefault();
-
-            if (!userData) {
-                showStatus('appStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
 
             const submitBtn = document.getElementById('appSubmitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
             const payload = {
                 username: "Sportello Cittadini - Carabinieri",
-                embeds: [{
-                    title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
-                    color: 13108,
-                    thumbnail: { url: userAvatarUrl },
-                    fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonico IC", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo Appuntamento", value: document.getElementById('appMotivo').value, inline: true },
-                        { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
-                        { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
-                        { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
-                    ],
-                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri" },
-                    timestamp: new Date().toISOString()
-                }]
+                embeds: [
+                    {
+                        title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
+                        color: 13108,
+                        fields: [
+                            { 
+                                name: "👤 Utente Discord", 
+                                value: document.getElementById('appDiscordUser').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📝 Nome Cittadino (IC)", 
+                                value: document.getElementById('appNome').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📞 Recapito Telefonico IC", 
+                                value: document.getElementById('appContatto').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📌 Motivo Appuntamento", 
+                                value: document.getElementById('appMotivo').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📅 Data Richiesta", 
+                                value: document.getElementById('appData').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "⏰ Orario Indicativo", 
+                                value: document.getElementById('appOra').value, 
+                                inline: true 
+                            },
+                            { 
+                                name: "📝 Dettagli / Note", 
+                                value: document.getElementById('appNote').value || "Nessuna nota", 
+                                inline: false 
+                            }
+                        ],
+                        footer: { 
+                            text: "Servizio Prenotazioni Caserma Carabinieri" 
+                        },
+                        timestamp: new Date().toISOString()
+                    }
+                ]
             };
 
             fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
                 body: JSON.stringify(payload)
             })
             .then(response => {
                 if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
+                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo!', 'success');
                     document.getElementById('appointmentForm').reset();
                 } else {
                     showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
                 }
             })
             .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
+                showStatus('appStatusMessage', 'Errore di connessione al server.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -800,11 +1070,19 @@
             });
         }
 
+        /**
+         * Mostra un messaggio di esito (positivo o errore) a schermo
+         * @param {string} elementId - ID del div per il messaggio
+         * @param {string} message - Testo da mostrare
+         * @param {string} type - 'success' o 'error'
+         */
         function showStatus(elementId, message, type) {
             const statusDiv = document.getElementById(elementId);
-            statusDiv.innerText = message;
-            statusDiv.className = `status-message status-${type}`;
-            statusDiv.style.display = 'block';
+            if (statusDiv) {
+                statusDiv.innerText = message;
+                statusDiv.className = `status-message status-${type}`;
+                statusDiv.style.display = 'block';
+            }
         }
     </script>
 </body>
