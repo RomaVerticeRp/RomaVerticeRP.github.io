@@ -604,7 +604,7 @@
 
     <script>
         // CONFIGURAZIONE DISCORD
-        const CLIENT_ID = '1347641324316688464'; 
+        const CLIENT_ID = '1536336646507601920'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1347641618337529948/k-dK-aGjV3I5r3_gR-mUuE9YvB-iL0lB-sE4G2v-5l0k9X9A8B7C6D5E4F3G2H1I';
 
@@ -619,7 +619,7 @@
             document.getElementById('nav-' + tabId).classList.add('active');
         }
 
-        // Login Discord OAuth2 con stato della scheda
+        // Login Discord OAuth2
         function loginWithDiscord(targetTab) {
             const scope = 'identify';
             const state = targetTab || 'bando';
@@ -645,11 +645,9 @@
                     if (user.id) {
                         userData = user;
                         
-                        // Scomparire tutti i pulsanti login e mostrare tutti i form
                         document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
                         document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
                         
-                        // Popola i dati dell'utente su tutte le sezioni
                         const avatarUrl = user.avatar 
                             ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
                             : 'https://cdn.discordapp.com/embed/avatars/0.png';
@@ -680,7 +678,7 @@
 
             const payload = {
                 username: "Reclutamento Arma Carabinieri",
-                avatar_url: "https://bandoarmata.github.io/logo.png",
+                avatar_url: `${window.location.origin}/logo.png`,
                 embeds: [{
                     title: "📄 NUOVA CANDIDATURA CARABINIERI",
                     color: 14687799,
@@ -694,8 +692,8 @@
                         { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
                         { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
                     ],
-                    image: { url: "https://bandoarmata.github.io/sfondo.jpg" },
-                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele", icon_url: "https://bandoarmata.github.io/logo.png" },
+                    image: { url: `${window.location.origin}/sfondo.jpg` },
+                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele", icon_url: `${window.location.origin}/logo.png` },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -722,7 +720,7 @@
             });
         }
 
-        // Invio Prenotazione Appuntamento (con Discord Integration)
+        // Invio Prenotazione Appuntamento
         function sendAppointment(event) {
             event.preventDefault();
 
@@ -737,7 +735,7 @@
 
             const payload = {
                 username: "Sportello Cittadini - Carabinieri",
-                avatar_url: "https://bandoarmata.github.io/logo.png",
+                avatar_url: `${window.location.origin}/logo.png`,
                 embeds: [{
                     title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
                     color: 13108,
@@ -752,7 +750,7 @@
                         { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
                         { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
                     ],
-                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri", icon_url: "https://bandoarmata.github.io/logo.png" },
+                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri", icon_url: `${window.location.origin}/logo.png` },
                     timestamp: new Date().toISOString()
                 }]
             };
