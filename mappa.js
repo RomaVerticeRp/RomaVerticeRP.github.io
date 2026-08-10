@@ -26,18 +26,17 @@ function renderMap() {
             });
 
             // =========================================================
-            // 📍 CASERMA PRINCIPALE (Modifica i primi due numeri Y e X)
+            // 📍 COMANDO STAZIONE CENTRALE - CIV. 217
             // =========================================================
-            // Sostituisci 500, 500 con le coordinate esatte della tua caserma
-            const Y = 500; 
-            const X = 500; 
+            const Y = 568; 
+            const X = 606; 
 
             L.marker([Y, X], { icon: customIcon })
                 .addTo(mapInstance)
-                .bindPopup("<b>Comando Stazione Centrale</b><br>Caserma Principale CIV. 217");
+                .bindPopup("<b>Comando Stazione Centrale</b><br>Caserma Principale CIV. 217")
+                .openPopup(); // Apre automaticamente il fumetto all'avvio
 
-            // --- STRUMENTO PER TROVARE LE COORDINATE SULLA MAPPA ---
-            // Cliccando su un punto qualsiasi della mappa comparirà un fumetto con le coordinate Y e X
+            // --- STRUMENTO PER TROVARE ULTERIORI COORDINATE ---
             mapInstance.on('click', function(e) {
                 const coordY = Math.round(e.latlng.lat);
                 const coordX = Math.round(e.latlng.lng);
