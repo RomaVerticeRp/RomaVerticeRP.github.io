@@ -13,7 +13,7 @@ function renderMap() {
 
             const bounds = [[0, 0], [1000, 1000]];
             
-            // Assicurati che l'immagine sia nella stessa cartella e si chiami 'mappa.webp'
+            // Assicurati che l'immagine della mappa si chiami 'mappa.webp'
             L.imageOverlay('mappa.webp', bounds).addTo(mapInstance);
             mapInstance.fitBounds(bounds);
 
@@ -26,17 +26,31 @@ function renderMap() {
             });
 
             // =========================================================
-            // 📍 COMANDO STAZIONE CENTRALE - CIV. 217
+            // 📍 PUNTI DI INTERESSE SULLA MAPPA
             // =========================================================
-            const Y = 568; 
-            const X = 606; 
 
-            L.marker([Y, X], { icon: customIcon })
+            // 1. Arma dei Carabinieri
+            L.marker([568, 606], { icon: customIcon })
                 .addTo(mapInstance)
                 .bindPopup("<b>Comando Stazione Centrale</b><br>Caserma Principale CIV. 217")
-                .openPopup(); // Apre automaticamente il fumetto all'avvio
+                .openPopup();
 
-            // --- STRUMENTO PER TROVARE ULTERIORI COORDINATE ---
+            // 2. Comune
+            L.marker([646, 281])
+                .addTo(mapInstance)
+                .bindPopup("<b>Comune</b><br>Municipio CIV. 637");
+
+            // 3. Guardia di Finanza
+            L.marker([534, 371])
+                .addTo(mapInstance)
+                .bindPopup("<b>Guardia di Finanza</b><br>Comando Provinciale CIV. 355");
+
+            // 4. Polizia di Stato
+            L.marker([679, 540])
+                .addTo(mapInstance)
+                .bindPopup("<b>Polizia di Stato</b><br>Questura CIV. 572");
+
+            // --- STRUMENTO PER RILEVARE NUOVE COORDINATE AL CLICK ---
             mapInstance.on('click', function(e) {
                 const coordY = Math.round(e.latlng.lat);
                 const coordX = Math.round(e.latlng.lng);
