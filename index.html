@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arma dei Carabinieri - Portale Ufficiale</title>
+    
+    <!-- FAVICON / LOGO SCHEDA BROWSER -->
     <link rel="icon" type="image/png" href="logo.png">
+
     <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,103 +19,130 @@
             --bg-card: rgba(13, 27, 42, 0.85);
             --bg-card-border: rgba(224, 30, 55, 0.3);
             --primary-red: #e01e37;
-            --primary-red-hover: #b71226;
-            --text-gold: #f39c12;
-            --accent-blue: #003366;
-            --text-light: #f0f4f8;
-            --text-muted: #a0aec0;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            --font-title: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --primary-red-hover: #b7094c;
+            --primary-blue-btn: #0f4c81;
+            --text-main: #f8f9fa;
+            --text-muted: #a0aab8;
+            --gold-accent: #ffb703;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: var(--font-body);
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background: linear-gradient(180deg, rgba(5, 12, 24, 0.75) 0%, rgba(5, 12, 24, 0.88) 100%), 
-                        url('sfondo.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(5, 12, 24, 0.85), rgba(5, 12, 24, 0.85)), url('https://i.imgur.com/v8N9Zf2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(5, 12, 24, 0.95);
-            border-bottom: 2px solid var(--primary-red);
-            padding: 1rem 2rem;
+        /* HEADER & NAVBAR */
+        header {
+            width: 100%;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(5, 12, 24, 0.9);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .nav-brand {
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-family: var(--font-title);
-            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .logo-container img {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-title {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 800;
+            font-size: 1.1rem;
             letter-spacing: 1px;
-            color: #fff;
             text-transform: uppercase;
         }
 
-        .nav-logo {
-            height: 45px;
-            width: auto;
-            filter: drop-shadow(0 0 5px rgba(224, 30, 55, 0.5));
-        }
-
-        .nav-links {
+        nav ul {
             display: flex;
-            gap: 1rem;
             list-style: none;
-            flex-wrap: wrap;
+            gap: 25px;
+            align-items: center;
         }
 
-        .nav-links a {
-            color: var(--text-light);
+        nav a {
+            color: var(--text-muted);
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
+            padding: 8px 16px;
             border-radius: 6px;
+            cursor: pointer;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        nav a:hover, nav a.active {
             color: #fff;
             background: var(--primary-red);
-            box-shadow: 0 0 15px rgba(224, 30, 55, 0.4);
         }
 
-        /* Container Principale */
-        .container {
-            max-width: 950px;
-            margin: 2.5rem auto;
-            padding: 0 1.5rem;
+        /* MAIN CONTENT - CENTRAMENTO PERFETTO */
+        main {
             flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 60px 20px;
+            min-height: 100vh;
+            width: 100%;
         }
 
-        .tab-content {
+        .page-section {
             display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            justify-content: center;
+            align-items: center;
         }
 
-        .tab-content.active {
-            display: block;
+        .page-section.active {
+            display: flex;
+        }
+
+        /* CARD CENTRATA */
+        .card-container {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 16px;
+            padding: 45px 40px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(224, 30, 55, 0.15);
+            margin: auto;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -120,675 +150,369 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Card Glassmorphism */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(12px);
-            margin-bottom: 2rem;
-        }
-
-        /* Header Sezioni */
-        .header-container {
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .header-logo {
-            max-height: 110px;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(224, 30, 55, 0.4));
+        .hero-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(224, 30, 55, 0.4));
         }
 
         h1, h2 {
-            font-family: var(--font-title);
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
             letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: #ffffff;
         }
 
-        .header-container h1 {
-            color: #fff;
-            font-size: 2.2rem;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-        }
+        .hero-card h1 { font-size: 2rem; }
+        .card-container h2 { font-size: 1.6rem; margin-bottom: 20px; }
 
-        .header-container p {
-            color: var(--text-gold);
+        .motto {
+            color: var(--gold-accent);
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* FORM STYLES */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
             text-transform: uppercase;
         }
 
-        /* Form Controls & User Info */
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .user-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-red);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        input[type="time"],
-        select,
-        textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 0.85rem 1rem;
-            background: rgba(5, 12, 24, 0.8);
+            padding: 12px 15px;
+            background: rgba(5, 12, 24, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
             transition: all 0.3s ease;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-color: var(--primary-red);
             box-shadow: 0 0 10px rgba(224, 30, 55, 0.3);
-            background: rgba(5, 12, 24, 0.95);
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 110px;
-        }
-
-        /* Pulsanti */
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary-red);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(224, 30, 55, 0.4);
+        /* PULSANTI */
+        .btn-group {
             display: flex;
+            gap: 15px;
             justify-content: center;
-            align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
-        .btn:hover {
-            background: var(--primary-red-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(224, 30, 55, 0.6);
-        }
-
-        .btn-discord {
-            background: #5865F2;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-        }
-
-        .btn-discord:hover {
-            background: #4752C4;
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
-        }
-
-        /* Galleria Foto */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--bg-card-border);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            background: #081a2e;
-            height: 200px;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-red);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(5, 12, 24, 0.85);
-            padding: 8px 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-gold);
-            text-align: center;
-        }
-
-        /* Testo Regolamento */
-        .rules-list {
-            list-style: none;
-        }
-
-        .rules-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 1.2rem;
-            color: #e2e8f0;
-        }
-
-        .rules-list li::before {
-            content: "➔";
-            position: absolute;
-            left: 0;
-            color: var(--primary-red);
-            font-weight: bold;
-        }
-
-        /* Banner Stato */
-        .status-message {
-            padding: 1rem;
+        .btn {
+            padding: 14px 28px;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
-            display: none;
-            font-weight: 500;
-            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
         }
 
-        .status-success {
-            background: rgba(46, 204, 113, 0.2);
-            border: 1px solid #2ecc71;
-            color: #2ecc71;
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            box-shadow: 0 4px 15px rgba(224, 30, 55, 0.4);
+            width: 100%;
         }
 
-        .status-error {
-            background: rgba(231, 76, 60, 0.2);
-            border: 1px solid #e74c3c;
-            color: #e74c3c;
+        .btn-primary:hover {
+            background-color: var(--primary-red-hover);
+            transform: translateY(-2px);
         }
 
+        .btn-secondary {
+            background-color: var(--primary-blue-btn);
+            color: white;
+            box-shadow: 0 4px 15px rgba(15, 76, 129, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background-color: #135d9e;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-red);
+            background: rgba(224, 30, 55, 0.1);
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            padding: 20px;
             background: rgba(5, 12, 24, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            width: 100%;
+        }
+
+        footer span {
+            display: block;
+            margin-top: 4px;
+            color: var(--gold-accent);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-            }
-            .card {
-                padding: 1.5rem;
-            }
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            nav ul { gap: 10px; }
+            .card-container { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGAZIONE -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo Carabinieri" class="nav-logo">
-            <span>Arma dei Carabinieri</span>
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo-container" onclick="showSection('home')">
+            <img src="logo.png" alt="Logo Arma">
+            <span class="logo-title">ARMA DEI CARABINIERI</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
-            <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bando</a></li>
-            <li><a href="#" onclick="showTab('foto')" id="nav-foto">Foto</a></li>
-            <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Appuntamento</a></li>
-            <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')" id="nav-home" class="active">Home</a></li>
+                <li><a onclick="showSection('bando')" id="nav-bando">Bando</a></li>
+                <li><a onclick="showSection('foto')" id="nav-foto">Foto</a></li>
+                <li><a onclick="showSection('appuntamento')" id="nav-appuntamento">Appuntamento</a></li>
+                <li><a onclick="showSection('regolamento')" id="nav-regolamento">Regolamento</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="container">
+    <!-- CONTENUTO PRINCIPALE -->
+    <main>
 
-        <!-- TAB 1: HOME -->
-        <div id="home" class="tab-content active">
-            <div class="card" style="text-align: center;">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
-                    <h1>Arma dei Carabinieri</h1>
-                    <p>Nei Secoli Fedele</p>
-                </div>
-                <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
+        <!-- SEZIONE HOME -->
+        <section id="home" class="page-section active">
+            <div class="card-container hero-card">
+                <img src="logo.png" alt="Arma dei Carabinieri Logo" class="hero-logo">
+                <h1>ARMA DEI CARABINIERI</h1>
+                <div class="motto">NEI SECOLI FEDELE</div>
+                <p>
                     Benvenuto sul portale ufficiale dell'Arma dei Carabinieri. La nostra missione è garantire la sicurezza, l'ordine pubblico e la protezione dei cittadini con dedizione, onore e integrità.
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('bando')">Invia Candidatura</button>
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: #003366;" onclick="showTab('appuntamento')">Prenota Appuntamento</button>
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: transparent; border: 2px solid var(--primary-red);" onclick="showTab('regolamento')">Consulta Regolamento</button>
+                <div class="btn-group">
+                    <button onclick="showSection('bando')" class="btn btn-primary" style="width: auto;">INVIA CANDIDATURA</button>
+                    <button onclick="showSection('appuntamento')" class="btn btn-secondary">PRENOTA APPUNTAMENTO</button>
                 </div>
+                <button onclick="showSection('regolamento')" class="btn btn-outline" style="margin-top: 10px;">CONSULTA REGOLAMENTO</button>
             </div>
-        </div>
+        </section>
 
-        <!-- TAB 2: BANDO (CANDIDATURA) -->
-        <div id="bando" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
-                    <h1>Modulo di Candidatura</h1>
-                    <p>Reclutamento Ufficiale</p>
-                </div>
-
-                <div id="statusMessage" class="status-message"></div>
-
-                <!-- Login Discord per Bando -->
-                <div class="discordAuthSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Per garantire la validità della candidatura, è necessario autenticarsi tramite Discord.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
-                        Accedi con Discord per Continuare
-                    </button>
-                </div>
-
-                <!-- Form Candidatura -->
-                <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
-                    </div>
-
+        <!-- SEZIONE BANDO -->
+        <section id="bando" class="page-section">
+            <div class="card-container">
+                <h2>BANDO DI RECLUTAMENTO</h2>
+                <p>Compila il modulo sottostante per inviare la tua candidatura ufficiale all'Arma dei Carabinieri.</p>
+                <form id="bandoForm">
                     <div class="form-group">
-                        <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
-                        <input type="text" id="nomeIC" required placeholder="Es. Mario Rossi">
+                        <label>Nome e Cognome (IC)</label>
+                        <input type="text" id="bando-nome" required placeholder="Es. Mario Rossi">
                     </div>
-
                     <div class="form-group">
-                        <label for="etaOOC">Età Reale (OOC):</label>
-                        <input type="number" id="etaOOC" min="14" max="99" required placeholder="Es. 18">
+                        <label>Età (OOC)</label>
+                        <input type="number" id="bando-eta" required placeholder="Es. 18">
                     </div>
-
                     <div class="form-group">
-                        <label for="tempoGioco">Ore di Gioco / Esperienza RP:</label>
-                        <input type="text" id="tempoGioco" required placeholder="Es. 500 ore, esperienza passata in altre forze dell'ordine">
+                        <label>Tag Discord (User ID o Nome)</label>
+                        <input type="text" id="bando-discord" required placeholder="Es. utente#0000">
                     </div>
-
                     <div class="form-group">
-                        <label for="motivazione">Motivazione per l'ingresso nell'Arma:</label>
-                        <textarea id="motivazione" required placeholder="Spiega perché desideri entrare nell'Arma dei Carabinieri..."></textarea>
+                        <label>Motivazione Candidatura</label>
+                        <textarea id="bando-motivazione" rows="4" required placeholder="Perché vuoi entrare nell'Arma?"></textarea>
                     </div>
-
-                    <div class="form-group">
-                        <label for="esperienzaAvanzata">Esperienze Precedenti nelle Forze dell'Ordine / Militari (IC):</label>
-                        <textarea id="esperienzaAvanzata" required placeholder="Elenca eventuali gradi o ruoli ricoperti precedentemente..."></textarea>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Ufficiale</button>
+                    <button type="submit" class="btn btn-primary">INVIA CANDIDATURA</button>
                 </form>
             </div>
-        </div>
+        </section>
 
-        <!-- TAB 3: FOTO (GALLERIA) -->
-        <div id="foto" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
-                    <h1>Galleria Fotografica</h1>
-                    <p>I Mezzi e le Operazioni dell'Arma</p>
-                </div>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="sfondo.jpg" alt="Maserati MC20 Carabinieri">
-                        <div class="gallery-caption">Maserati MC20 - Reparto Operativo</div>
-                    </div>
-                    <div class="gallery-item" style="display: flex; align-items: center; justify-content: center; background: rgba(5,12,24,0.9);">
-                        <img src="logo.png" alt="Stemma Arma" style="width: 50%; height: auto; object-fit: contain;">
-                        <div class="gallery-caption">Stemma Ufficiale dell'Arma</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="sfondo.jpg" alt="Pattuglia sul Territorio">
-                        <div class="gallery-caption">Pattugliamento Territoriale</div>
-                    </div>
+        <!-- SEZIONE FOTO -->
+        <section id="foto" class="page-section">
+            <div class="card-container">
+                <h2>GALLERIA FOTOGRAFICA</h2>
+                <p>Sezione dedicata agli scatti ufficiali del parco veicoli e delle operazioni dell'Arma.</p>
+                <div style="padding: 20px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px;">
+                    📷 Nessuna immagine presente al momento.
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- TAB 4: PRENOTA APPUNTAMENTO (CON DISCORD) -->
-        <div id="appuntamento" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
-                    <h1>Prenotazione Appuntamento</h1>
-                    <p>Sportello per i Cittadini</p>
-                </div>
-
-                <div id="appStatusMessage" class="status-message"></div>
-
-                <!-- Login Discord per Appuntamento -->
-                <div class="discordAuthSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Per identificarti e consentire ai nostri ufficiali di ricontattarti, effettua il login con Discord.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
-                        Accedi con Discord per Prenotare
-                    </button>
-                </div>
-
-                <!-- Form Appuntamento -->
-                <form id="appointmentForm" class="auth-form" style="display: none;" onsubmit="sendAppointment(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
-                    </div>
-
+        <!-- SEZIONE APPUNTAMENTO -->
+        <section id="appuntamento" class="page-section">
+            <div class="card-container">
+                <h2>PRENOTA UN APPUNTAMENTO</h2>
+                <p>Richiedi un colloquio o un incontro presso la Caserma Principale.</p>
+                <form id="appuntamentoForm">
                     <div class="form-group">
-                        <label for="appNome">Nome e Cognome del Cittadino (In Game / RP):</label>
-                        <input type="text" id="appNome" required placeholder="Es. Giuseppe Verdi">
+                        <label>Nome e Cognome (IC)</label>
+                        <input type="text" id="app-nome" required placeholder="Es. Luigi Bianchi">
                     </div>
-
                     <div class="form-group">
-                        <label for="appContatto">Recapito Telefonico in Città:</label>
-                        <input type="text" id="appContatto" required placeholder="Es. 555-0192">
+                        <label>Contatto Discord / Telefono IC</label>
+                        <input type="text" id="app-contatto" required placeholder="Es. 555-0192">
                     </div>
-
                     <div class="form-group">
-                        <label for="appMotivo">Motivo dell'Appuntamento:</label>
-                        <select id="appMotivo" required>
-                            <option value="">Seleziona il motivo...</option>
-                            <option value="Richiesta Porto d'Armi">Richiesta / Rinnovo Porto d'Armi</option>
-                            <option value="Denuncia / Segnalazione">Presentazione Denuncia o Segnalazione</option>
-                            <option value="Colloquio Informativo">Colloquio / Informazioni</option>
-                            <option value="Altro">Altro motivo</option>
+                        <label>Motivo dell'Appuntamento</label>
+                        <select id="app-motivo">
+                            <option value="Colloquio Informativo">Colloquio Informativo</option>
+                            <option value="Denuncia / Segnalazione">Denuncia / Segnalazione</option>
+                            <option value="Incontro Ufficiali">Incontro con gli Ufficiali</option>
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="appData">Data Preferita:</label>
-                        <input type="date" id="appData" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appOra">Orario Indicativo:</label>
-                        <input type="time" id="appOra" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appNote">Dettagli Aggiuntivi / Note:</label>
-                        <textarea id="appNote" placeholder="Specificare eventuali dettagli riguardanti la richiesta..."></textarea>
-                    </div>
-
-                    <button type="submit" id="appSubmitBtn" class="btn" style="background: #003366;">Invia Richiesta Appuntamento</button>
+                    <button type="submit" class="btn btn-secondary" style="width: 100%;">CONFERMA PRENOTAZIONE</button>
                 </form>
             </div>
-        </div>
+        </section>
 
-        <!-- TAB 5: REGOLAMENTO -->
-        <div id="regolamento" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Carabinieri" class="header-logo">
-                    <h1>Regolamento e Requisiti</h1>
-                    <p>Arma dei Carabinieri</p>
-                </div>
-                
-                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">Requisiti Obbligatori:</h3>
-                <ul class="rules-list" style="margin-bottom: 2rem;">
-                    <li>Conoscenza approfondita del regolamento generale del server e delle dinamiche Roleplay.</li>
-                    <li>Disponibilità ad utilizzare la radio e le frequenze operative ufficiali.</li>
-                    <li>Nessun precedente penale grave in città (salvo riabilitazione).</li>
-                    <li>Comportamento impeccabile, rispetto della gerarchia e massima serietà dentro e fuori dal servizio.</li>
-                    <li>Presenza minima garantita settimanale per le attività di pattuglia e formazione.</li>
-                </ul>
-
-                <h3 style="color: var(--primary-red); margin-bottom: 1rem; text-transform: uppercase;">Codice di Condotta:</h3>
-                <ul class="rules-list">
-                    <li>I Carabinieri devono rappresentare l'esempio di condotta per tutta la cittadinanza.</li>
-                    <li>L'abuso di potere o la violazione delle procedure operative comporterà l'immediato congedo con disonore e segnalazione.</li>
-                    <li>È obbligatorio seguire le direttive dei superiori e rispettare la catena di comando in ogni circostanza.</li>
+        <!-- SEZIONE REGOLAMENTO -->
+        <section id="regolamento" class="page-section">
+            <div class="card-container" style="text-align: left;">
+                <h2 style="text-align: center;">REGOLAMENTO GENERALE</h2>
+                <p style="text-align: center;">Linee guida da rispettare per i membri dell'Arma e i candidati.</p>
+                <ul style="color: var(--text-muted); line-height: 1.8; padding-left: 20px; font-size: 0.9rem;">
+                    <li>Rispettare scrupolosamente la gerarchia ed i comandi superiori.</li>
+                    <li>Mantenere un comportamento consono e professionale sia in servizio che fuori servizio.</li>
+                    <li>Utilizzare i canali radio ufficiali secondo i codici stabiliti.</li>
+                    <li>Rispettare le regole generali del server RP.</li>
                 </ul>
             </div>
-        </div>
+        </section>
 
-    </div>
+    </main>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; Arma dei Carabinieri RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: #64748b;">Nei Secoli Fedele</p>
+        <span>Nei Secoli Fedele</span>
     </footer>
 
+    <!-- JAVASCRIPT GESTIONE PAGINE E DISCORD WEBHOOK -->
     <script>
-        // CONFIGURAZIONE DISCORD
-        const CLIENT_ID = '1536336646507601920'; 
-        const REDIRECT_URI = window.location.origin + window.location.pathname;
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2';
+        // DISCORD WEBHOOK URL
+        const DISCORD_WEBHOOK_URL = "INSERISCI_QUI_IL_TUO_WEBHOOK_DISCORD";
 
-        let userData = null;
+        // Cambio Sezioni
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(nav => nav.classList.remove('active'));
 
-        // Gestione Tab
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            const targetNav = document.getElementById('nav-' + sectionId);
+
+            if (targetSection) targetSection.classList.add('active');
+            if (targetNav) targetNav.classList.add('active');
+        }
+
+        // Invio Form Bando
+        document.getElementById('bandoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            document.getElementById(tabId).classList.add('active');
-            document.getElementById('nav-' + tabId).classList.add('active');
-        }
-
-        // Login Discord OAuth2
-        function loginWithDiscord(targetTab) {
-            const scope = 'identify';
-            const state = targetTab || 'bando';
-            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
-            window.location.href = authUrl;
-        }
-
-        // Estrazione dati dall'URL dopo il login
-        window.onload = function() {
-            const fragment = new URLSearchParams(window.location.hash.slice(1));
-            const accessToken = fragment.get('access_token');
-            const targetTab = fragment.get('state') || 'bando';
-
-            if (accessToken) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showTab(targetTab);
-
-                fetch('https://discord.com/api/users/@me', {
-                    headers: { authorization: `Bearer ${accessToken}` }
-                })
-                .then(res => res.json())
-                .then(user => {
-                    if (user.id) {
-                        userData = user;
-                        
-                        document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
-                        
-                        const avatarUrl = user.avatar 
-                            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-                            : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-                        document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
-                        document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
-                        document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
-                    }
-                })
-                .catch(err => {
-                    showStatus('statusMessage', 'Errore nel recupero dati da Discord.', 'error');
-                });
-            }
-        };
-
-        // Invio Candidatura Bando
-        function sendApplication(event) {
-            event.preventDefault();
-
-            if (!userData) {
-                showStatus('statusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
-
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Invio in corso...';
-
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
             const payload = {
-                username: "Reclutamento Arma Carabinieri",
                 embeds: [{
-                    title: "📄 NUOVA CANDIDATURA CARABINIERI",
+                    title: "📑 Nuova Candidatura Bando",
                     color: 14687799,
-                    thumbnail: { url: userAvatarUrl },
                     fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
-                        { name: "📝 Nome & Cognome IC", value: document.getElementById('nomeIC').value, inline: false },
-                        { name: "⏳ Esperienza / Ore di Gioco", value: document.getElementById('tempoGioco').value, inline: false },
-                        { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
-                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
+                        { name: "Nome IC", value: document.getElementById('bando-nome').value, inline: true },
+                        { name: "Età OOC", value: document.getElementById('bando-eta').value, inline: true },
+                        { name: "Discord", value: document.getElementById('bando-discord').value, inline: false },
+                        { name: "Motivazione", value: document.getElementById('bando-motivazione').value, inline: false }
                     ],
-                    footer: { text: "Arma dei Carabinieri • Nei Secoli Fedele" },
-                    timestamp: new Date().toISOString()
+                    footer: { text: "Arma dei Carabinieri - Portale Ufficiale" },
+                    timestamp: new Date()
                 }]
             };
 
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('statusMessage', 'Candidatura inviata con successo! Verrai contattato su Discord.', 'success');
-                    document.getElementById('applicationForm').reset();
-                } else {
-                    showStatus('statusMessage', 'Errore durante l\'invio della candidatura.', 'error');
-                }
-            })
-            .catch(error => {
-                showStatus('statusMessage', 'Errore di connessione con Discord.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Candidatura Ufficiale';
-            });
-        }
+            sendWebhook(payload, "Candidatura inviata con successo!");
+        });
 
-        // Invio Prenotazione Appuntamento
-        function sendAppointment(event) {
-            event.preventDefault();
+        // Invio Form Appuntamento
+        document.getElementById('appuntamentoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-            if (!userData) {
-                showStatus('appStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
+            const payload = {
+                embeds: [{
+                    title: "📅 Nuova Richiesta Appuntamento",
+                    color: 1002625,
+                    fields: [
+                        { name: "Nome IC", value: document.getElementById('app-nome').value, inline: true },
+                        { name: "Contatto", value: document.getElementById('app-contatto').value, inline: true },
+                        { name: "Motivo", value: document.getElementById('app-motivo').value, inline: false }
+                    ],
+                    footer: { text: "Arma dei Carabinieri - Portale Ufficiale" },
+                    timestamp: new Date()
+                }]
+            };
+
+            sendWebhook(payload, "Richiesta appuntamento inviata con successo!");
+        });
+
+        // Funzione Invio Webhook
+        function sendWebhook(payload, successMsg) {
+            if (DISCORD_WEBHOOK_URL === "INSERISCI_QUI_IL_TUO_WEBHOOK_DISCORD" || !DISCORD_WEBHOOK_URL) {
+                alert("ATTENZIONE: Ricordati di configurare il link del Webhook nel codice JavaScript!");
                 return;
             }
 
-            const submitBtn = document.getElementById('appSubmitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Invio in corso...';
-
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-            const payload = {
-                username: "Sportello Cittadini - Carabinieri",
-                embeds: [{
-                    title: "📅 NUOVA RICHIESTA DI APPUNTAMENTO",
-                    color: 13108,
-                    thumbnail: { url: userAvatarUrl },
-                    fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonico IC", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo Appuntamento", value: document.getElementById('appMotivo').value, inline: true },
-                        { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
-                        { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
-                        { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
-                    ],
-                    footer: { text: "Servizio Prenotazioni Caserma Carabinieri" },
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            fetch(WEBHOOK_URL, {
+            fetch(DISCORD_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
-                    document.getElementById('appointmentForm').reset();
+            .then(res => {
+                if (res.ok) {
+                    alert(successMsg);
+                    document.getElementById('bandoForm').reset();
+                    document.getElementById('appuntamentoForm').reset();
+                    showSection('home');
                 } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
+                    alert("Errore durante l'invio su Discord.");
                 }
             })
-            .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Richiesta Appuntamento';
+            .catch(err => {
+                console.error(err);
+                alert("Errore di connessione.");
             });
-        }
-
-        function showStatus(elementId, message, type) {
-            const statusDiv = document.getElementById(elementId);
-            statusDiv.innerText = message;
-            statusDiv.className = `status-message status-${type}`;
-            statusDiv.style.display = 'block';
-            statusDiv.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
