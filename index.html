@@ -823,22 +823,38 @@
                 }]
             };
 
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
-                    document.getElementById('appointmentForm').reset();
-                } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta di appuntamento.', 'error');
-                }
-            })
-            .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
-            })
+            // Prepariamo i dati da mandare al server del bot
+const datiInvio = {
+    discordId: userData.id,
+    username: userData.username,
+    avatar: userData.avatar,
+    nomeIC: document.getElementById('appNome').value,
+    telefonoIC: document.getElementById('appContatto').value,
+    motivo: document.getElementById('appMotivo').value,
+    data: document.getElementById('appData').value,
+    ora: document.getElementById('appOra').value,
+    note: document.getElementById('appNote').value || "Nessuna nota"
+};
+
+// Chiamata al server locale del bot
+fetch('http://localhost:3000/api/invia-appuntamento', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datiInvio)
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
+        document.getElementById('appointmentForm').reset();
+    } else {
+        showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
+    }
+})
+.catch(error => {
+    console.error(error);
+    showStatus('appStatusMessage', 'Impossibile connettersi al server del bot.', 'error');
+});
             .finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Invia Richiesta Appuntamento';
