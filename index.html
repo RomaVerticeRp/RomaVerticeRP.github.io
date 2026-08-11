@@ -637,6 +637,17 @@
             }
         }
 
+        // Funzione per mostrare messaggi di stato
+        function showStatus(elementId, message, type) {
+            const statusEl = document.getElementById(elementId);
+            statusEl.innerText = message;
+            statusEl.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
+            statusEl.style.display = 'block';
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 6000);
+        }
+
         // Login Discord OAuth2
         function loginWithDiscord(targetTab) {
             const scope = 'identify';
@@ -663,6 +674,7 @@
                     if (user.id) {
                         userData = user;
                         
+                        // Applica i dati a tutte le sezioni di autenticazione presenti nella pagina
                         document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
                         document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
                         
@@ -799,15 +811,6 @@
                 submitBtn.innerText = 'Invia Richiesta Appuntamento';
             });
         }
-
-        function showStatus(elementId, message, type) {
-            const statusDiv = document.getElementById(elementId);
-            statusDiv.innerText = message;
-            statusDiv.className = `status-message status-${type}`;
-            statusDiv.style.display = 'block';
-        }
     </script>
 </body>
 </html>
-
-
