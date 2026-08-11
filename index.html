@@ -26,8 +26,6 @@
             --primary-red-hover: #b71226;
             --text-gold: #f39c12;
             --accent-blue: #003366;
-            --discord-blue: #5865F2;
-            --discord-blue-hover: #4752C4;
             --text-light: #f0f4f8;
             --text-muted: #a0aec0;
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
@@ -87,10 +85,9 @@
 
         .nav-links {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
             list-style: none;
             flex-wrap: wrap;
-            align-items: center;
         }
 
         .nav-links a {
@@ -98,7 +95,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 0.5rem 0.9rem;
+            padding: 0.5rem 1rem;
             border-radius: 6px;
         }
 
@@ -106,38 +103,6 @@
             color: #fff;
             background: var(--primary-red);
             box-shadow: 0 0 15px rgba(224, 30, 55, 0.4);
-        }
-
-        /* Logo Discord Trasparente Grande in Navbar */
-        .nav-discord-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.2rem 0.5rem !important;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        .nav-discord-logo svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--discord-blue);
-            transition: transform 0.3s ease, fill 0.3s ease, filter 0.3s ease;
-        }
-
-        .nav-discord-logo:hover svg {
-            fill: #ffffff;
-            transform: scale(1.15);
-            filter: drop-shadow(0 0 8px var(--discord-blue));
-        }
-
-        .discord-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            display: inline-block;
-            vertical-align: middle;
         }
 
         /* Container Principale */
@@ -281,12 +246,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(224, 30, 55, 0.4);
-            display: inline-flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             text-transform: uppercase;
-            text-decoration: none;
         }
 
         .btn:hover {
@@ -296,12 +260,12 @@
         }
 
         .btn-discord {
-            background: var(--discord-blue);
+            background: #5865F2;
             box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
         }
 
         .btn-discord:hover {
-            background: var(--discord-blue-hover);
+            background: #4752C4;
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
         }
 
@@ -322,9 +286,6 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             background: #081a2e;
             height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .gallery-item:hover {
@@ -433,14 +394,6 @@
             <li><a href="#" onclick="showTab('mappa')" id="nav-mappa">Mappa</a></li>
             <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Appuntamento</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
-            <!-- LOGO DISCORD GRANDE TRASPARENTE SENZA SFONDO -->
-            <li>
-                <a href="https://discord.gg/U3FudznPpd" target="_blank" class="nav-discord-logo" title="Unisciti al Server Discord">
-                    <svg viewBox="0 0 127.14 96.36">
-                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                    </svg>
-                </a>
-            </li>
         </ul>
     </nav>
 
@@ -460,8 +413,7 @@
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('bando')">Invia Candidatura</button>
                     <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: #003366;" onclick="showTab('appuntamento')">Prenota Appuntamento</button>
-                    <!-- TASTO CONSULTA REGOLAMENTO RIPRISTINATO -->
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);" onclick="showTab('regolamento')">Consulta Regolamento</button>
+                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: transparent; border: 2px solid var(--primary-red);" onclick="showTab('regolamento')">Consulta Regolamento</button>
                 </div>
             </div>
         </div>
@@ -483,9 +435,6 @@
                         Per garantire la validità della candidatura, è necessario autenticarsi tramite Discord.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
                         Accedi con Discord per Continuare
                     </button>
                 </div>
@@ -530,7 +479,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: FOTO (GALLERIA CON FOTO 1, 2, 3, 4, 5, 6) -->
+        <!-- TAB 3: FOTO (GALLERIA) -->
         <div id="foto" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -540,41 +489,7 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <!-- FOTO 1 -->
-                    <div class="gallery-item">
-                        <img src="foto1.jpg" alt="Foto 1" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+1'">
-                        <div class="gallery-caption">Foto 1</div>
-                    </div>
-
-                    <!-- FOTO 2 -->
-                    <div class="gallery-item">
-                        <img src="foto2.jpg" alt="Foto 2" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+2'">
-                        <div class="gallery-caption">Foto 2</div>
-                    </div>
-
-                    <!-- FOTO 3 -->
-                    <div class="gallery-item">
-                        <img src="foto3.jpg" alt="Foto 3" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+3'">
-                        <div class="gallery-caption">Foto 3</div>
-                    </div>
-
-                    <!-- FOTO 4 -->
-                    <div class="gallery-item">
-                        <img src="foto4.jpg" alt="Foto 4" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+4'">
-                        <div class="gallery-caption">Foto 4</div>
-                    </div>
-
-                    <!-- FOTO 5 -->
-                    <div class="gallery-item">
-                        <img src="foto5.jpg" alt="Foto 5" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+5'">
-                        <div class="gallery-caption">Foto 5</div>
-                    </div>
-
-                    <!-- FOTO 6 -->
-                    <div class="gallery-item">
-                        <img src="foto6.jpg" alt="Foto 6" onerror="this.src='https://via.placeholder.com/400x250/0d1b2a/ffffff?text=Foto+6'">
-                        <div class="gallery-caption">Foto 6</div>
-                    </div>
+                    <!-- Elementi galleria -->
                 </div>
             </div>
         </div>
@@ -610,9 +525,6 @@
                         Per identificarti e consentire ai nostri ufficiali di ricontattarti, effettua il login con Discord.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
                         Accedi con Discord per Prenotare
                     </button>
                 </div>
@@ -876,7 +788,7 @@
                     showStatus('appStatusMessage', 'Richiesta di appuntamento inviata con successo! Un ufficiale ti contatterà.', 'success');
                     document.getElementById('appointmentForm').reset();
                 } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta di appuntamento.', 'error');
+                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
                 }
             })
             .catch(error => {
@@ -888,17 +800,14 @@
             });
         }
 
-        // Funzione Utilità per Messaggi di Stato
-        function showStatus(elementId, text, type) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.innerText = text;
-            el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
-            el.style.display = 'block';
-            setTimeout(() => {
-                el.style.display = 'none';
-            }, 6000);
+        function showStatus(elementId, message, type) {
+            const statusDiv = document.getElementById(elementId);
+            statusDiv.innerText = message;
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.style.display = 'block';
         }
     </script>
 </body>
 </html>
+
+
