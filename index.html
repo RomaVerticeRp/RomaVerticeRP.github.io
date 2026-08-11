@@ -836,6 +836,13 @@ const datiInvio = {
     note: document.getElementById('appNote').value || "Nessuna nota"
 };
 
+// Recuperiamo il bottone di invio (assicurati che il tuo bottone nel form abbia id="submitBtn" o simile, altrimenti gestiscilo)
+const submitBtn = document.getElementById('submitBtn') || event.target.querySelector('button[type="submit"]');
+if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Invio in corso...';
+}
+
 // Chiamata al server locale del bot
 fetch('http://localhost:3000/api/invia-appuntamento', {
     method: 'POST',
@@ -854,24 +861,25 @@ fetch('http://localhost:3000/api/invia-appuntamento', {
 .catch(error => {
     console.error(error);
     showStatus('appStatusMessage', 'Impossibile connettersi al server del bot.', 'error');
+})
+.finally(() => {
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Invia Richiesta Appuntamento';
+    }
 });
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Richiesta Appuntamento';
-            });
-        }
 
-        // Funzione Utilità per Messaggi di Stato
-        function showStatus(elementId, text, type) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.innerText = text;
-            el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
-            el.style.display = 'block';
-            setTimeout(() => {
-                el.style.display = 'none';
-            }, 6000);
-        }
+// Funzione Utilità per Messaggi di Stato
+function showStatus(elementId, text, type) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    el.innerText = text;
+    el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
+    el.style.display = 'block';
+    setTimeout(() => {
+        el.style.display = 'none';
+    }, 6000);
+}
     </script>
 </body>
 </html>
