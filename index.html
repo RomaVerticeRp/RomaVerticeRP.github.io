@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMA VERTICE - Portale Ufficiale</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -37,7 +36,7 @@
 
         body {
             background: linear-gradient(180deg, rgba(7, 13, 10, 0.88) 0%, rgba(7, 13, 10, 0.98) 100%), 
-                        url('roma.jpg') no-repeat center center fixed;
+                        url('sfondo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
             line-height: 1.6;
@@ -51,7 +50,7 @@
             background: rgba(7, 13, 10, 0.98);
             border-bottom: 3px solid var(--italia-red);
             border-top: 3px solid var(--italia-green);
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -79,9 +78,10 @@
             filter: drop-shadow(0 0 8px rgba(0, 146, 70, 0.7));
         }
 
+        /* Tab più distanziati tra loro */
         .nav-links {
             display: flex;
-            gap: 0.6rem;
+            gap: 1.5rem;
             list-style: none;
             flex-wrap: wrap;
             align-items: center;
@@ -92,9 +92,9 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            padding: 0.5rem 0.9rem;
+            padding: 0.6rem 1.1rem;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -109,6 +109,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-left: 0.5rem;
         }
 
         .nav-discord-btn:hover {
@@ -253,8 +254,6 @@
 
         input[type="text"],
         input[type="number"],
-        input[type="date"],
-        input[type="time"],
         select,
         textarea {
             width: 100%;
@@ -279,7 +278,7 @@
             min-height: 105px;
         }
 
-        /* Pulsanti principali RIGOROSAMENTE VERDI */
+        /* Pulsanti principali verdi */
         .btn {
             width: 100%;
             padding: 1rem;
@@ -456,14 +455,16 @@
             margin-top: auto;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .navbar {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 1rem;
             }
             .nav-links {
                 width: 100%;
                 justify-content: center;
+                gap: 0.8rem;
             }
             .card {
                 padding: 1.5rem;
@@ -476,7 +477,6 @@
 </head>
 <body>
 
-    <!-- NAVIGAZIONE -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="logo.png" alt="Logo Roma Vertice" class="nav-logo">
@@ -486,7 +486,6 @@
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
             <li><a href="#" onclick="showTab('whitelist')" id="nav-whitelist">Whitelist</a></li>
             <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bandi Fazioni</a></li>
-            <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Comune</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
             <li>
                 <a href="https://discord.gg/WmUJy5Qj89" target="_blank" class="nav-discord-btn" id="discordLinkNav">
@@ -501,7 +500,6 @@
 
     <div class="container">
 
-        <!-- TAB 1: HOME -->
         <div id="home" class="tab-content active">
             <div class="card" style="text-align: center;">
                 <div class="header-container">
@@ -525,7 +523,6 @@
             </div>
         </div>
 
-        <!-- TAB 2: WHITELIST -->
         <div id="whitelist" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -587,7 +584,6 @@
             </div>
         </div>
 
-        <!-- TAB 3: BANDI -->
         <div id="bando" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -650,80 +646,6 @@
             </div>
         </div>
 
-        <!-- TAB 4: COMUNE -->
-        <div id="appuntamento" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Sportello del Comune</h1>
-                    <p>Roma Vertice - Prenotazione Servizi e Pratiche</p>
-                </div>
-
-                <div id="appStatusMessage" class="status-message"></div>
-
-                <div class="discordAuthSection" id="appDiscordSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Effettua il login con Discord per prenotare un appuntamento presso gli uffici del Comune.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
-                        Accedi con Discord per Prenotare
-                    </button>
-                </div>
-
-                <form id="appointmentForm" class="auth-form" style="display: none;" onsubmit="sendAppointment(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appNome">Nome e Cognome del Cittadino (IC):</label>
-                        <input type="text" id="appNome" required placeholder="Es. Luca Bianchi">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appContatto">Recapito Telefonico in Città:</label>
-                        <input type="text" id="appContatto" required placeholder="Es. 555-4821">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appMotivo">Motivo della Pratica Comunale:</label>
-                        <select id="appMotivo" required>
-                            <option value="">Seleziona tipologia...</option>
-                            <option value="Apertura Attività / Licenza Commerciale">Apertura Attività / Licenza Commerciale</option>
-                            <option value="Acquisto / Registrazione Proprietà">Acquisto / Registrazione Proprietà o Abitazione</option>
-                            <option value="Cambio Residenza / Documenti">Cambio Residenza / Rinnovo Documenti</option>
-                            <option value="Udienza con il Sindaco / Pratiche Sindacali">Udienza con il Sindaco / Pratiche Sindacali</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appData">Data Desiderata:</label>
-                        <input type="date" id="appData" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appOra">Orario Indicativo:</label>
-                        <input type="time" id="appOra" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="appNote">Dettagli / Note:</label>
-                        <textarea id="appNote" placeholder="Specificare dettagli aggiuntivi..."></textarea>
-                    </div>
-
-                    <button type="submit" id="appSubmitBtn" class="btn">Invia Richiesta Appuntamento</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- TAB 5: REGOLAMENTO -->
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -1085,64 +1007,6 @@
             .finally(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Invia Candidatura Fazione';
-            });
-        }
-
-        function sendAppointment(event) {
-            event.preventDefault();
-            if (!userData) {
-                showStatus('appStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
-
-            const submitBtn = document.getElementById('appSubmitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Invio in corso...';
-
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-            const payload = {
-                username: "Sportello del Comune - Roma Vertice",
-                embeds: [{
-                    title: "📅 NUOVA RICHIESTA APPUNTAMENTO COMUNALE",
-                    color: 36768,
-                    thumbnail: { url: userAvatarUrl },
-                    fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonico", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo Pratica", value: document.getElementById('appMotivo').value, inline: true },
-                        { name: "📅 Data", value: document.getElementById('appData').value, inline: true },
-                        { name: "⏰ Orario", value: document.getElementById('appOra').value, inline: true },
-                        { name: "📝 Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
-                    ],
-                    footer: { text: "Uffici Comunali • Roma Vertice" },
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta appuntamento comunale inviata con successo!', 'success');
-                    document.getElementById('appointmentForm').reset();
-                } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio.', 'error');
-                }
-            })
-            .catch(() => {
-                showStatus('appStatusMessage', 'Errore di connessione.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Richiesta Appuntamento';
             });
         }
 
