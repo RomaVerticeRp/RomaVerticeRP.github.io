@@ -45,7 +45,6 @@
             flex-direction: column;
         }
 
-        /* Navbar Tricolore Netta */
         .navbar {
             background: rgba(7, 13, 10, 0.98);
             border-bottom: 3px solid var(--italia-red);
@@ -124,31 +123,38 @@
             vertical-align: middle;
         }
 
-        /* Container Principale */
         .container {
             max-width: 1100px;
             margin: 2.5rem auto;
             padding: 0 1.5rem;
             flex: 1;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
+        /* CORRETTO: Nasconde di base tutte le tab e mostra solo quella con .active */
         .tab-content {
-            display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: none !important;
+            width: 100%;
         }
 
         .tab-content.active {
-            display: block;
+            display: block !important;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Centratura perfetta del box Home */
         .home-container-center {
-            display: flex;
+            display: none; /* Sovrascritto da .active */
             justify-content: center;
             align-items: center;
             flex: 1;
             width: 100%;
+        }
+
+        .home-container-center.active {
+            display: flex !important;
         }
 
         @keyframes fadeIn {
@@ -200,7 +206,6 @@
             text-transform: uppercase;
         }
 
-        /* Griglia Fazioni Bandi */
         .factions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -230,7 +235,6 @@
             transform: translateY(-2px);
         }
 
-        /* Profilo Utente Connesso */
         .user-info {
             display: flex;
             align-items: center;
@@ -287,7 +291,6 @@
             min-height: 105px;
         }
 
-        /* Pulsanti principali */
         .btn {
             width: 100%;
             padding: 1rem;
@@ -328,7 +331,6 @@
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.8);
         }
 
-        /* Layout a Tendina (Regolamento e Donazioni) */
         .rules-layout {
             display: grid;
             grid-template-columns: 290px 1fr;
@@ -431,7 +433,6 @@
             top: -1px;
         }
 
-        /* Box Avviso Donazioni in arrivo */
         .donation-coming-soon {
             text-align: center;
             padding: 3rem 1.5rem;
@@ -456,7 +457,6 @@
             margin: 0 auto;
         }
 
-        /* Banner Stato */
         .status-message {
             padding: 1rem;
             border-radius: 8px;
@@ -533,9 +533,9 @@
         </ul>
     </nav>
 
-    <div class="container" style="display: flex; flex-direction: column; justify-content: center;">
+    <div class="container">
 
-        <div id="home" class="tab-content active home-container-center">
+        <div id="home" class="tab-content home-container-center active">
             <div class="card" style="text-align: center; margin-bottom: 0;">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
@@ -696,8 +696,7 @@
                         </ul>
                     </div>
 
-                    <div class="rules-content-pane" id="donationContentPane">
-                        </div>
+                    <div class="rules-content-pane" id="donationContentPane"></div>
                 </div>
             </div>
         </div>
@@ -822,9 +821,15 @@
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
             
-            document.getElementById(tabId).classList.add('active');
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
             const navLink = document.getElementById('nav-' + tabId);
-            if (navLink) navLink.classList.add('active');
+            if (navLink) {
+                navLink.classList.add('active');
+            }
         }
 
         function selectFaction(factionKey, btnElement) {
