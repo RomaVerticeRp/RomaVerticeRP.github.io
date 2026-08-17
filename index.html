@@ -803,8 +803,16 @@
     <script>
         const CLIENT_ID = '1536336646507601920'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
-        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2';
         const DISCORD_SERVER_INVITE = 'https://discord.gg/WmUJy5Qj89';
+
+        // WEBHOOK SEPARATI PER OGNI CANALE
+        const WEBHOOK_URLS = {
+            'whitelist': 'https://discord.com/api/webhooks/1538187596004593736/TgLbwTwNDrbbp10iBPgm4Hle-w6_i4R8WAI6vQDYitQdQPohhj3ta48M920-_4o5Dg8X',
+            'Polizia di Stato': 'INCOLLA_QUI_IL_WEBHOOK_PER_LA_POLIZIA',
+            'Carabinieri': 'INCOLLA_QUI_IL_WEBHOOK_PER_I_CARABINIERI',
+            'Guardia di Finanza': 'INCOLLA_QUI_IL_WEBHOOK_PER_LA_FINANZA',
+            'Croce Rossa': 'INCOLLA_QUI_IL_WEBHOOK_PER_LA_CROCE_ROSSA'
+        };
 
         let userData = null;
         let currentSelectedFaction = 'Polizia di Stato';
