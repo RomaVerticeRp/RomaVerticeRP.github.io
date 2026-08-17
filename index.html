@@ -5,25 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMA VERTICE - Portale Ufficiale</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #050c18;
-            --bg-card: rgba(13, 27, 42, 0.88);
-            --bg-card-border: rgba(224, 30, 55, 0.3);
-            --primary-red: #e01e37;
-            --primary-red-hover: #b71226;
-            --text-gold: #f39c12;
-            --accent-blue: #003366;
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(18, 24, 38, 0.92);
+            --bg-card-border: rgba(224, 30, 55, 0.4);
+            --primary-red: #d90429;
+            --primary-red-hover: #ef233c;
+            --pure-white: #ffffff;
+            --text-light: #f8f9fa;
+            --text-muted: #adb5bd;
             --discord-blue: #5865F2;
             --discord-blue-hover: #4752C4;
-            --text-light: #f0f4f8;
-            --text-muted: #a0aec0;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -36,7 +34,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(5, 12, 24, 0.75) 0%, rgba(5, 12, 24, 0.88) 100%), 
+            background: linear-gradient(180deg, rgba(10, 14, 23, 0.82) 0%, rgba(10, 14, 23, 0.94) 100%), 
                         url('sfondo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
@@ -46,10 +44,10 @@
             flex-direction: column;
         }
 
-        /* Navbar */
+        /* Navbar Bianco & Rosso */
         .navbar {
-            background: rgba(5, 12, 24, 0.95);
-            border-bottom: 2px solid var(--primary-red);
+            background: rgba(10, 14, 23, 0.97);
+            border-bottom: 3px solid var(--primary-red);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -57,7 +55,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
 
         .nav-brand {
@@ -65,22 +63,22 @@
             align-items: center;
             gap: 12px;
             font-family: var(--font-title);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             letter-spacing: 1px;
-            color: #fff;
+            color: var(--pure-white);
             text-transform: uppercase;
         }
 
         .nav-logo {
             height: 45px;
             width: auto;
-            filter: drop-shadow(0 0 5px rgba(224, 30, 55, 0.5));
+            filter: drop-shadow(0 0 8px rgba(217, 4, 41, 0.6));
         }
 
         .nav-links {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             list-style: none;
             flex-wrap: wrap;
             align-items: center;
@@ -89,22 +87,22 @@
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
             padding: 0.5rem 0.9rem;
             border-radius: 6px;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: #fff;
+            color: var(--pure-white);
             background: var(--primary-red);
-            box-shadow: 0 0 15px rgba(224, 30, 55, 0.4);
+            box-shadow: 0 0 15px rgba(217, 4, 41, 0.5);
         }
 
         .nav-discord-btn {
             background: var(--discord-blue) !important;
             color: white !important;
-            font-weight: 600 !important;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -112,12 +110,12 @@
 
         .nav-discord-btn:hover {
             background: var(--discord-blue-hover) !important;
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5) !important;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.6) !important;
         }
 
         .discord-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
             display: inline-block;
             vertical-align: middle;
@@ -125,7 +123,7 @@
 
         /* Container Principale */
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 2.5rem auto;
             padding: 0 1.5rem;
             flex: 1;
@@ -148,7 +146,7 @@
 
         .card {
             background: var(--bg-card);
-            border: 1px solid var(--bg-card-border);
+            border: 2px solid var(--bg-card-border);
             border-radius: 16px;
             padding: 2.5rem;
             box-shadow: var(--glass-shadow);
@@ -163,9 +161,9 @@
         }
 
         .header-logo {
-            max-height: 110px;
+            max-height: 105px;
             margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(224, 30, 55, 0.4));
+            filter: drop-shadow(0 0 12px rgba(217, 4, 41, 0.5));
         }
 
         h1, h2, h3 {
@@ -175,59 +173,51 @@
         }
 
         .header-container h1 {
-            color: #fff;
+            color: var(--pure-white);
             font-size: 2.2rem;
             margin-bottom: 0.3rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
         }
 
         .header-container p {
-            color: var(--text-gold);
+            color: var(--primary-red);
             font-weight: 700;
             letter-spacing: 2px;
             font-size: 0.95rem;
             text-transform: uppercase;
         }
 
-        /* Selezione Bandi (Factions Grid) */
+        /* Griglia Fazioni Bandi */
         .factions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
         }
 
         .faction-btn {
-            background: rgba(5, 12, 24, 0.8);
+            background: rgba(10, 14, 23, 0.85);
             border: 1px solid var(--bg-card-border);
             border-radius: 10px;
             padding: 1.2rem;
-            color: #fff;
+            color: var(--pure-white);
             font-weight: 700;
             cursor: pointer;
             text-align: center;
             transition: all 0.3s ease;
             font-family: var(--font-title);
             text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .faction-btn:hover, .faction-btn.active-faction {
             background: var(--primary-red);
-            border-color: var(--primary-red);
-            box-shadow: 0 0 15px rgba(224, 30, 55, 0.4);
+            border-color: var(--pure-white);
+            box-shadow: 0 0 15px rgba(217, 4, 41, 0.6);
             transform: translateY(-2px);
         }
 
-        .bando-form-container {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .bando-form-container.active {
-            display: block;
-        }
-
-        /* Form Controls & User Info */
+        /* Profilo Utente Connesso */
         .user-info {
             display: flex;
             align-items: center;
@@ -236,7 +226,7 @@
             padding: 12px 18px;
             border-radius: 10px;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .user-avatar {
@@ -266,10 +256,10 @@
         textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            background: rgba(5, 12, 24, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(10, 14, 23, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            color: #fff;
+            color: var(--pure-white);
             font-size: 1rem;
             transition: all 0.3s ease;
         }
@@ -277,13 +267,13 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-red);
-            box-shadow: 0 0 10px rgba(224, 30, 55, 0.3);
-            background: rgba(5, 12, 24, 0.95);
+            box-shadow: 0 0 10px rgba(217, 4, 41, 0.4);
+            background: rgba(10, 14, 23, 1);
         }
 
         textarea {
             resize: vertical;
-            min-height: 110px;
+            min-height: 105px;
         }
 
         /* Pulsanti */
@@ -291,16 +281,16 @@
             width: 100%;
             padding: 1rem;
             background: var(--primary-red);
-            color: white;
-            border: none;
+            color: var(--pure-white);
+            border: 2px solid var(--pure-white);
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             font-family: var(--font-title);
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(224, 30, 55, 0.4);
+            box-shadow: 0 4px 15px rgba(217, 4, 41, 0.5);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -312,30 +302,32 @@
         .btn:hover {
             background: var(--primary-red-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(224, 30, 55, 0.6);
+            box-shadow: 0 6px 20px rgba(217, 4, 41, 0.8);
         }
 
         .btn-discord {
             background: var(--discord-blue);
+            border-color: var(--discord-blue);
             box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
         }
 
         .btn-discord:hover {
             background: var(--discord-blue-hover);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
+            border-color: var(--pure-white);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.7);
         }
 
-        /* Stile Regolamento a Tendina (Sidebar a sinistra + Contenuto) */
+        /* Stile Regolamento a Tendina (Sidebar a sinistra Bianco & Rosso) */
         .rules-layout {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 290px 1fr;
             gap: 2rem;
             align-items: start;
         }
 
         .rules-sidebar {
-            background: rgba(5, 12, 24, 0.75);
-            border: 1px solid var(--bg-card-border);
+            background: rgba(10, 14, 23, 0.85);
+            border: 2px solid var(--bg-card-border);
             border-radius: 12px;
             padding: 1.2rem;
         }
@@ -343,10 +335,13 @@
         .rules-category-title {
             font-family: var(--font-title);
             font-size: 0.85rem;
-            color: var(--text-gold);
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
+            color: var(--primary-red);
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 800;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 6px;
         }
 
         .rules-nav-list {
@@ -362,9 +357,9 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 0.7rem 1rem;
+            padding: 0.75rem 1rem;
             border-radius: 6px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 0.9rem;
@@ -372,18 +367,18 @@
 
         .rules-nav-item button:hover, 
         .rules-nav-item button.active {
-            background: rgba(224, 30, 55, 0.15);
-            color: #fff;
-            border-left: 3px solid var(--primary-red);
-            padding-left: calc(1rem - 3px);
+            background: rgba(217, 4, 41, 0.2);
+            color: var(--pure-white);
+            border-left: 4px solid var(--primary-red);
+            padding-left: calc(1rem - 4px);
         }
 
         .rules-content-pane {
-            background: rgba(5, 12, 24, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 14, 23, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 2rem;
-            min-height: 400px;
+            min-height: 480px;
         }
 
         .rule-section {
@@ -398,8 +393,8 @@
         .rule-section h3 {
             color: var(--primary-red);
             margin-bottom: 1.2rem;
-            font-size: 1.3rem;
-            border-bottom: 1px solid rgba(224, 30, 55, 0.3);
+            font-size: 1.35rem;
+            border-bottom: 2px solid rgba(217, 4, 41, 0.4);
             padding-bottom: 0.5rem;
         }
 
@@ -410,19 +405,19 @@
         .rules-list li {
             position: relative;
             padding-left: 25px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.1rem;
             color: #e2e8f0;
             font-size: 0.95rem;
         }
 
         .rules-list li::before {
-            content: "•";
+            content: "▪";
             position: absolute;
             left: 0;
             color: var(--primary-red);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             line-height: 1;
-            top: -2px;
+            top: -1px;
         }
 
         /* Banner Stato */
@@ -431,7 +426,7 @@
             border-radius: 8px;
             margin-bottom: 1.5rem;
             display: none;
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
         }
 
@@ -452,8 +447,8 @@
             padding: 1.5rem;
             color: var(--text-muted);
             font-size: 0.85rem;
-            background: rgba(5, 12, 24, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 14, 23, 0.97);
+            border-top: 2px solid var(--primary-red);
             margin-top: auto;
         }
 
@@ -477,7 +472,6 @@
 </head>
 <body>
 
-    <!-- NAVIGAZIONE -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="logo.png" alt="Logo Roma Vertice" class="nav-logo">
@@ -485,12 +479,12 @@
         </div>
         <ul class="nav-links">
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
+            <li><a href="#" onclick="showTab('whitelist')" id="nav-whitelist">Whitelist</a></li>
             <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bandi Fazioni</a></li>
             <li><a href="#" onclick="showTab('appuntamento')" id="nav-appuntamento">Comune</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
-            <!-- LINK DISCORD IN NAVBAR -->
             <li>
-                <a href="https://discord.gg/jBSXfDBtxq" target="_blank" class="nav-discord-btn" id="discordLinkNav">
+                <a href="https://discord.gg/WmUJy5Qj89" target="_blank" class="nav-discord-btn" id="discordLinkNav">
                     <svg class="discord-icon" viewBox="0 0 127.14 96.36">
                         <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
                     </svg>
@@ -502,42 +496,100 @@
 
     <div class="container">
 
-        <!-- TAB 1: HOME -->
         <div id="home" class="tab-content active">
             <div class="card" style="text-align: center;">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
                     <h1>Roma Vertice Roleplay</h1>
-                    <p>Onore, Giustizia e Servizio</p>
+                    <p>Il Server FiveM d'Elite - Onore, Giustizia e Servizio</p>
                 </div>
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
-                    Benvenuto sul portale istituzionale di <strong>Roma Vertice</strong>. Qui potrai consultare i bandi di reclutamento per le forze dell'ordine e la sanità, prenotare servizi presso il Comune e consultare i regolamenti ufficiali.
+                    Benvenuto nel portale ufficiale di <strong>Roma Vertice</strong>. Per accedere alla città, compila la richiesta di <strong>Whitelist</strong> o candidati alle fazioni istituzionali autorizzate.
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem;" onclick="showTab('bando')">Invia Candidatura / Bando</button>
-                    <button class="btn" style="width: auto; padding: 0.8rem 2rem; background: #003366;" onclick="showTab('appuntamento')">Servizi Comune</button>
-                    <a href="https://discord.gg/jBSXfDBtxq" target="_blank" class="btn btn-discord discordLinkBtn" style="width: auto; padding: 0.8rem 2rem;">
+                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
+                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem; background: #0f172a; border-color: var(--primary-red);" onclick="showTab('bando')">Bandi Fazioni</button>
+                    <a href="https://discord.gg/WmUJy5Qj89" target="_blank" class="btn btn-discord discordLinkBtn" style="width: auto; padding: 0.9rem 2.2rem;">
                         <svg class="discord-icon" viewBox="0 0 127.14 96.36">
                             <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
                         </svg>
-                        Entra nel Server Discord
+                        Unisciti al Discord Ufficiale
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: BANDI SEPARATI (Polizia, Carabinieri, Finanza, Croce Rossa) -->
+        <div id="whitelist" class="tab-content">
+            <div class="card">
+                <div class="header-container">
+                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
+                    <h1>Test Whitelist Cittadino</h1>
+                    <p>Roma Vertice - Accesso Server FiveM</p>
+                </div>
+
+                <div id="wlStatusMessage" class="status-message"></div>
+
+                <div class="discordAuthSection" id="wlDiscordSection">
+                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
+                        Per sottoporre il test di ammissione alla whitelist, autenticati con il tuo account Discord.
+                    </p>
+                    <button class="btn btn-discord" onclick="loginWithDiscord('whitelist')">
+                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
+                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
+                        </svg>
+                        Accedi con Discord per Whitelist
+                    </button>
+                </div>
+
+                <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
+                    <div class="user-info">
+                        <img src="" alt="Avatar" class="userAvatar user-avatar">
+                        <div>
+                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
+                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlNomeIC">Nome e Cognome del Personaggio (IC):</label>
+                        <input type="text" id="wlNomeIC" required placeholder="Es. Alessandro Rossi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlAnniIC">Età del Personaggio:</label>
+                        <input type="number" id="wlAnniIC" min="18" max="99" required placeholder="Es. 25">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlQ1">1. Che cos'è il Fear RP e quando va applicato?</label>
+                        <textarea id="wlQ1" required placeholder="Descrivi il concetto di valore della vita..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlQ2">2. Spiega la differenza tra Metagaming e Powergaming:</label>
+                        <textarea id="wlQ2" required placeholder="Definisci i due concetti fondamentali del roleplay..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wlQ3">3. Come ti comporti se vieni coinvolto in una sparatoria o in un incidente grave (Pain RP)?</label>
+                        <textarea id="wlQ3" required placeholder="Spiega la gestione delle ferite e delle reazioni fisiche..."></textarea>
+                    </div>
+
+                    <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
+                </form>
+            </div>
+        </div>
+
         <div id="bando" class="tab-content">
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Bandi di Reclutamento</h1>
-                    <p>Roma Vertice - Selezioni Aperte</p>
+                    <h1>Bandi di Reclutamento Fazioni</h1>
+                    <p>Roma Vertice - Selezioni Istituzionali</p>
                 </div>
 
                 <div id="statusMessage" class="status-message"></div>
 
-                <!-- Selezione della Fazione -->
                 <div class="factions-grid">
                     <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia di Stato</button>
                     <button class="faction-btn" onclick="selectFaction('carabinieri', this)">Carabinieri</button>
@@ -545,10 +597,9 @@
                     <button class="faction-btn" onclick="selectFaction('croce_rossa', this)">Croce Rossa</button>
                 </div>
 
-                <!-- Login Discord Comune per i Bandi -->
-                <div class="discordAuthSection">
+                <div class="discordAuthSection" id="bandoDiscordSection">
                     <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Per inoltrare la candidatura, è necessario autenticarsi tramite Discord.
+                        Effettua il login con Discord per accedere al modulo di candidatura specifico della fazione selezionata.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
                         <svg class="discord-icon" viewBox="0 0 127.14 96.36">
@@ -558,7 +609,6 @@
                     </button>
                 </div>
 
-                <!-- Form Candidatura Unico Dinamico -->
                 <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
                     <div class="user-info">
                         <img src="" alt="Avatar" class="userAvatar user-avatar">
@@ -572,35 +622,27 @@
 
                     <div class="form-group">
                         <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
-                        <input type="text" id="nomeIC" required placeholder="Es. Mario Rossi">
+                        <input type="text" id="nomeIC" required placeholder="Es. Marco Neri">
                     </div>
 
                     <div class="form-group">
                         <label for="etaOOC">Età Reale (OOC):</label>
-                        <input type="number" id="etaOOC" min="14" max="99" required placeholder="Es. 18">
+                        <input type="number" id="etaOOC" min="14" max="99" required placeholder="Es. 20">
                     </div>
 
                     <div class="form-group">
-                        <label for="tempoGioco">Ore di Gioco / Esperienza RP:</label>
-                        <input type="text" id="tempoGioco" required placeholder="Es. 500 ore, ottima conoscenza delle dinamiche cittadine">
+                        <label for="oreCitta">Ore di Gioco / Esperienza in Città:</label>
+                        <input type="text" id="oreCitta" required placeholder="Es. 300 ore">
                     </div>
 
-                    <div class="form-group">
-                        <label for="motivazione">Motivazione:</label>
-                        <textarea id="motivazione" required placeholder="Spiega perché desideri unirti a questa fazione..."></textarea>
-                    </div>
+                    <div id="dynamicJobQuestions">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="esperienzaAvanzata">Esperienze Precedenti (IC):</label>
-                        <textarea id="esperienzaAvanzata" required placeholder="Elenca eventuali ruoli o incarichi precedenti..."></textarea>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Ufficiale</button>
+                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
                 </form>
             </div>
         </div>
 
-        <!-- TAB 3: APPUNTAMENTO COMUNE DI ROMA VERTICE -->
         <div id="appuntamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -611,10 +653,9 @@
 
                 <div id="appStatusMessage" class="status-message"></div>
 
-                <!-- Login Discord per Appuntamento Comune -->
-                <div class="discordAuthSection">
+                <div class="discordAuthSection" id="appDiscordSection">
                     <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
-                        Effettua il login con Discord per prenotare un appuntamento con gli uffici comunali.
+                        Effettua il login con Discord per prenotare un appuntamento presso gli uffici del Comune.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('appuntamento')">
                         <svg class="discord-icon" viewBox="0 0 127.14 96.36">
@@ -624,7 +665,6 @@
                     </button>
                 </div>
 
-                <!-- Form Appuntamento Comune -->
                 <form id="appointmentForm" class="auth-form" style="display: none;" onsubmit="sendAppointment(event)">
                     <div class="user-info">
                         <img src="" alt="Avatar" class="userAvatar user-avatar">
@@ -635,29 +675,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="appNome">Nome e Cognome del Cittadino (In Game / RP):</label>
-                        <input type="text" id="appNome" required placeholder="Es. Giuseppe Verdi">
+                        <label for="appNome">Nome e Cognome del Cittadino (IC):</label>
+                        <input type="text" id="appNome" required placeholder="Es. Luca Bianchi">
                     </div>
 
                     <div class="form-group">
                         <label for="appContatto">Recapito Telefonico in Città:</label>
-                        <input type="text" id="appContatto" required placeholder="Es. 555-0192">
+                        <input type="text" id="appContatto" required placeholder="Es. 555-4821">
                     </div>
 
                     <div class="form-group">
-                        <label for="appMotivo">Motivo dell'Appuntamento (Comune):</label>
+                        <label for="appMotivo">Motivo della Pratica Comunale:</label>
                         <select id="appMotivo" required>
-                            <option value="">Seleziona pratica comunale...</option>
+                            <option value="">Seleziona tipologia...</option>
                             <option value="Apertura Attività / Licenza Commerciale">Apertura Attività / Licenza Commerciale</option>
                             <option value="Acquisto / Registrazione Proprietà">Acquisto / Registrazione Proprietà o Abitazione</option>
                             <option value="Cambio Residenza / Documenti">Cambio Residenza / Rinnovo Documenti</option>
-                            <option value="Pratiche Sindacali o Legali">Pratiche Sindacali o Udienza con il Sindaco</option>
-                            <option value="Altro Servizio Comunale">Altro Servizio</option>
+                            <option value="Udienza con il Sindaco / Pratiche Sindacali">Udienza con il Sindaco / Pratiche Sindacali</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="appData">Data Preferita:</label>
+                        <label for="appData">Data Desiderata:</label>
                         <input type="date" id="appData" required>
                     </div>
 
@@ -667,75 +706,79 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="appNote">Dettagli Aggiuntivi / Note:</label>
-                        <textarea id="appNote" placeholder="Specificare eventuali dettagli relativi alla pratica comunale..."></textarea>
+                        <label for="appNote">Dettagli / Note:</label>
+                        <textarea id="appNote" placeholder="Specificare dettagli aggiuntivi..."></textarea>
                     </div>
 
-                    <button type="submit" id="appSubmitBtn" class="btn" style="background: #003366;">Invia Richiesta Appuntamento</button>
+                    <button type="submit" id="appSubmitBtn" class="btn">Invia Richiesta Appuntamento</button>
                 </form>
             </div>
         </div>
 
-        <!-- TAB 4: REGOLAMENTO CON MENU A TENDINA A SINISTRA (Stile Richiesto) -->
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Regolamento e Linee Guida</h1>
-                    <p>Roma Vertice - Codice di Comportamento</p>
+                    <h1>Regolamento Ufficiale FiveM RP</h1>
+                    <p>Roma Vertice - Codice di Comportamento Generale</p>
                 </div>
 
                 <div class="rules-layout">
-                    <!-- Menu a tendina / navigazione a sinistra -->
                     <div class="rules-sidebar">
-                        <div class="rules-category-title">Categorie Regolamento</div>
+                        <div class="rules-category-title">Indice Regolamento</div>
                         <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regolamento Generale</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('roleplay', this)">2. Linee Guida Roleplay</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('fazioni', this)">3. Codice Fazioni & Stato</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('sanzioni', this)">4. Sanzioni e Provvedimenti</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Comportamento</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('fearpain', this)">2. Fear RP & Pain RP</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('metapower', this)">3. Metagaming & Powergaming</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('dmrdm', this)">4. Deathmatch, RDM & VDM</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('nlr', this)">5. New Life Rule (NLR)</button></li>
                         </ul>
                     </div>
 
-                    <!-- Contenuto dei mini-paragrafi a destra -->
                     <div class="rules-content-pane">
-                        <!-- Sezione 1 -->
                         <div id="rule-generale" class="rule-section active">
-                            <h3>Regolamento Generale</h3>
+                            <h3>1. Regole Base & Comportamento</h3>
                             <ul class="rules-list">
-                                <li>Rispetto reciproco obbligatorio tra tutti i membri della community di Roma Vertice, sia in game che sui canali vocali e testuali di Discord.</li>
-                                <li>Divieto assoluto di insulti discriminatori, razzismo, omofobia o qualsiasi forma di tossicità OOC.</li>
-                                <li>È severamente vietato l'uso di cheat, mod non autorizzate o exploit che alterino l'equilibrio del server.</li>
-                                <li>L'obbligo di mantenere la separazione netta tra ciò che accade fuori gioco (OOC) e dentro il gioco (IC).</li>
+                                <li><strong>Rispetto Interpersonale:</strong> È fatto assoluto divieto di insultare, offendere o discriminare altri utenti per motivi di sesso, razza, religione o orientamento, sia in game (IC) che su Discord (OOC).</li>
+                                <li><strong>Separazione IC / OOC:</strong> Le problematiche nate fuori dal gioco non devono mai influenzare le azioni e le decisioni prese all'interno del roleplay cittadino.</li>
+                                <li><strong>Uso di Chat Vocale:</strong> In game è obbligatorio l'utilizzo della chat vocaleproximity di FiveM. L'uso di Discord o software esterni per comunicare in situazioni di gioco è punito severamente.</li>
+                                <li><strong>Sfruttamento di Bug:</strong> Qualsiasi exploit, glitch o utilizzo di modifiche non autorizzate del gioco comporterà il ban permanente immediato.</li>
                             </ul>
                         </div>
 
-                        <!-- Sezione 2 -->
-                        <div id="rule-roleplay" class="rule-section">
-                            <h3>Linee Guida Roleplay</h3>
+                        <div id="rule-fearpain" class="rule-section">
+                            <h3>2. Fear RP & Pain RP</h3>
                             <ul class="rules-list">
-                                <li><strong>Valore della Vita (Fear RP):</strong> Il giocatore deve sempre simulare paura per la propria incolumità fisica se minacciato da armi o situazioni di pericolo evidente.</li>
-                                <li><strong>Pain RP:</strong> Obbligo di simulare le ferite e i traumi fisici subiti durante scontri, incidenti o aggressioni.</li>
-                                <li>È vietato interrompere un'azione di gioco in corso per recriminare questioni OOC (regola del "prima finisci l'azione, poi apri il ticket").</li>
+                                <li><strong>Fear RP (Valore della Vita):</strong> Il giocatore ha l'obbligo assoluto di simulare paura per la propria vita se si trova in inferiorità numerica evidente o sotto la minaccia diretta di armi da fuoco puntate da altri soggetti.</li>
+                                <li><strong>Pain RP (Simulazione Dolore):</strong> In seguito a ferite d'arma da fuoco, investimenti, cadute rovinose o colluttazioni, è obbligatorio interpretare il dolore fisico e lo stato di shock attraverso azioni testuali (/me) e vocali adeguate.</li>
+                                <li>È severamente vietato compiere azioni sovrumane o non realistiche quando si è gravemente feriti o sotto minaccia armata.</li>
                             </ul>
                         </div>
 
-                        <!-- Sezione 3 -->
-                        <div id="rule-fazioni" class="rule-section">
-                            <h3>Codice Fazioni & Stato</h3>
+                        <div id="rule-metapower" class="rule-section">
+                            <h3>3. Metagaming & Powergaming</h3>
                             <ul class="rules-list">
-                                <li>Gli operatori delle forze dell'ordine, della sanità e del comune devono mantenere un comportamento esemplare e decoroso.</li>
-                                <li>L'abuso di potere, la corruzione non autorizzata o la violazione dei protocolli operativi comportano sanzioni disciplinari gravi o il licenziamento in tronco.</li>
-                                <li>Massimo rispetto della catena di comando e degli ordini impartiti dai superiori in servizio.</li>
+                                <li><strong>Metagaming:</strong> Utilizzare informazioni ottenute tramite stream, chat vocali esterne (Discord) o canali OOC per trarre vantaggi o compiere azioni all'interno del roleplay (IC) è punito con il ban.</li>
+                                <li><strong>Powergaming:</strong> Compiere azioni fisicamente impossibili nella realtà, forzare azioni su altri giocatori senza dare loro la possibilità di replicare, o abusare delle meccaniche di gioco per scopi sleali.</li>
+                                <li>Ogni azione che altera l'equità e la verosimiglianza della simulazione urbana è severamente vietata.</li>
                             </ul>
                         </div>
 
-                        <!-- Sezione 4 -->
-                        <div id="rule-sanzioni" class="rule-section">
-                            <h3>Sanzioni e Provvedimenti</h3>
+                        <div id="rule-dmrdm" class="rule-section">
+                            <h3>4. Deathmatch, RDM & VDM</h3>
                             <ul class="rules-list">
-                                <li>La violazione dei regolamenti comporta sanzioni progressive che vanno dal richiamo verbale, al warn, fino al ban temporaneo o permanente dal server.</li>
-                                <li>I provvedimenti disciplinari interni alle fazioni vengono gestiti direttamente dai responsabili di settore tramite appositi rapporti di servizio.</li>
+                                <li><strong>Deathmatch (DM) / RDM:</strong> È vietato uccidere o aggredire altri giocatori senza un valido motivo scaturente da un'azione di roleplay precedente, sensata e progressiva.</li>
+                                <li><strong>VDM (Vehicle Deathmatch):</strong> Utilizzare veicoli come armi per investire deliberatamente persone o veicoli altrui senza alcuna motivazione di roleplay valida è severamente vietato.</li>
+                                <li>Ogni azione ostile deve sempre essere preceduta da un'interazione verbale o da un movente chiaro in game.</li>
+                            </ul>
+                        </div>
+
+                        <div id="rule-nlr" class="rule-section">
+                            <h3>5. New Life Rule (NLR)</h3>
+                            <ul class="rules-list">
+                                <li><strong>Regola della Nuova Vita:</strong> Quando il tuo personaggio viene rianimato dai medici dopo essere stato ucciso (o respawna), dimentica completamente gli eventi critici che hanno portato alla sua morte e i nomi dei soggetti coinvolti in quell'azione specifica.</li>
+                                <li>È vietato tornare sul luogo della propria morte prima che siano trascorsi almeno 15 minuti o prima della conclusione totale dell'azione in corso.</li>
+                                <li>La violazione della NLR altera drasticamente la coerenza della narrazione di gioco.</li>
                             </ul>
                         </div>
                     </div>
@@ -747,15 +790,15 @@
 
     <footer>
         <p>&copy; Roma Vertice RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: #64748b;">Onore, Giustizia e Servizio</p>
+        <p style="margin-top: 5px; color: var(--primary-red); font-weight: 600;">Onore, Giustizia e Servizio</p>
     </footer>
 
     <script>
-        // CONFIGURAZIONE DISCORD
+        // CONFIGURAZIONE DISCORD & WEBHOOK
         const CLIENT_ID = '1536336646507601920'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2';
-        const DISCORD_SERVER_INVITE = 'https://discord.gg/jBSXfDBtxq';
+        const DISCORD_SERVER_INVITE = 'https://discord.gg/WmUJy5Qj89';
 
         let userData = null;
         let currentSelectedFaction = 'Polizia di Stato';
@@ -767,6 +810,8 @@
             document.querySelectorAll('.discordLinkBtn').forEach(btn => {
                 btn.href = DISCORD_SERVER_INVITE;
             });
+
+            renderJobQuestions('Polizia di Stato');
         });
 
         // Gestione Tab Principali
@@ -779,7 +824,7 @@
             if (navLink) navLink.classList.add('active');
         }
 
-        // Gestione Selezione Fazione per i Bandi
+        // Gestione Selezione Fazione e Domande Differenziate
         function selectFaction(factionKey, btnElement) {
             document.querySelectorAll('.faction-btn').forEach(btn => btn.classList.remove('active-faction'));
             btnElement.classList.add('active-faction');
@@ -794,9 +839,65 @@
             currentSelectedFaction = factionNames[factionKey] || 'Polizia di Stato';
             const inputField = document.getElementById('selectedFactionInput');
             if (inputField) inputField.value = currentSelectedFaction;
+
+            renderJobQuestions(currentSelectedFaction);
         }
 
-        // Gestione Sotto-sezioni Regolamento (Menu a tendina a sinistra)
+        // Renderizza domande specifiche in base alla fazione scelta
+        function renderJobQuestions(faction) {
+            const container = document.getElementById('dynamicJobQuestions');
+            if (!container) return;
+
+            let html = '';
+            if (faction === 'Polizia di Stato') {
+                html = `
+                    <div class="form-group">
+                        <label>1. Come gestisci una situazione di ostaggi in banca con i criminali armati?</label>
+                        <textarea id="qJob1" required placeholder="Spiega i protocolli di negoziazione e intervento..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>2. Qual è il tuo comportamento di fronte a un ordine diretto di un superiore durante un'operazione?</label>
+                        <textarea id="qJob2" required placeholder="Descrivi il rispetto della catena di comando..."></textarea>
+                    </div>
+                `;
+            } else if (faction === 'Carabinieri') {
+                html = `
+                    <div class="form-group">
+                        <label>1. Come imposti un posto di blocco coordinato su una strada principale della città?</label>
+                        <textarea id="qJob1" required placeholder="Posizionamento mezzi, sicurezza operatori e controllo veicoli..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>2. Gestione di una giurisdizione militare/territoriale mista: come ti comporti?</label>
+                        <textarea id="qJob2" required placeholder="Spiega le tue competenze operative..."></textarea>
+                    </div>
+                `;
+            } else if (faction === 'Guardia di Finanza') {
+                html = `
+                    <div class="form-group">
+                        <label>1. Quali controlli fiscali ed economici effettui su un'attività commerciale sospetta?</label>
+                        <textarea id="qJob1" required placeholder="Verifica registri, licenze e flussi di denaro..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>2. Come agisci in caso di contrabbando o merci ilusorie scoperte al porto/dogana?</label>
+                        <textarea id="qJob2" required placeholder="Procedure di sequestro e verbalizzazione..."></textarea>
+                    </div>
+                `;
+            } else if (faction === 'Croce Rossa') {
+                html = `
+                    <div class="form-group">
+                        <label>1. Protocollo di triage in caso di maxi-emergenza con più feriti gravi:</label>
+                        <textarea id="qJob1" required placeholder="Priorità di soccorso e stabilizzazione..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>2. Come gestisci emotivamente un paziente in forte stato di panico o shock?</label>
+                        <textarea id="qJob2" required placeholder="Approccio psicologico e medico di primo intervento..."></textarea>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        // Gestione Sotto-sezioni Regolamento
         function showRuleSection(sectionId, btnElement) {
             document.querySelectorAll('.rule-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.rules-nav-item button').forEach(btn => btn.classList.remove('active'));
@@ -808,16 +909,16 @@
         // Login Discord OAuth2
         function loginWithDiscord(targetTab) {
             const scope = 'identify';
-            const state = targetTab || 'bando';
+            const state = targetTab || 'home';
             const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
             window.location.href = authUrl;
         }
 
-        // Estrazione dati dall'URL dopo il login Discord
+        // Gestione Autenticazione e Callback OAuth2 all'avvio
         window.onload = function() {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
-            const targetTab = fragment.get('state') || 'bando';
+            const targetTab = fragment.get('state') || 'home';
 
             if (accessToken) {
                 window.history.replaceState({}, document.title, window.location.pathname);
@@ -843,16 +944,73 @@
                         document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
                     }
                 })
-                .catch(err => {
-                    showStatus('statusMessage', 'Errore nel recupero dati da Discord.', 'error');
+                .catch(() => {
+                    showStatus('wlStatusMessage', 'Errore nel recupero dati da Discord.', 'error');
                 });
             }
         };
 
-        // Invio Candidatura Bando
+        // Invio Whitelist
+        function sendWhitelist(event) {
+            event.preventDefault();
+            if (!userData) {
+                showStatus('wlStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('wlSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Invio in corso...';
+
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            const payload = {
+                username: "Whitelist - Roma Vertice",
+                embeds: [{
+                    title: "🟢 NUOVA RICHIESTA WHITELIST CITTA'",
+                    color: 14285785,
+                    thumbnail: { url: userAvatarUrl },
+                    fields: [
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🪪 ID Discord", value: userData.id, inline: true },
+                        { name: "📝 Nome Personaggio (IC)", value: document.getElementById('wlNomeIC').value, inline: false },
+                        { name: "🎂 Età Personaggio", value: document.getElementById('wlAnniIC').value, inline: true },
+                        { name: "📌 Test Q1 (Fear RP)", value: document.getElementById('wlQ1').value, inline: false },
+                        { name: "📌 Test Q2 (Meta/Power)", value: document.getElementById('wlQ2').value, inline: false },
+                        { name: "📌 Test Q3 (Pain RP)", value: document.getElementById('wlQ3').value, inline: false }
+                    ],
+                    footer: { text: "Roma Vertice RP • Whitelist System" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showStatus('wlStatusMessage', 'Test Whitelist inviato con successo! Attendi la valutazione dello Staff.', 'success');
+                    document.getElementById('whitelistForm').reset();
+                } else {
+                    showStatus('wlStatusMessage', 'Errore durante l\'invio della whitelist.', 'error');
+                }
+            })
+            .catch(() => {
+                showStatus('wlStatusMessage', 'Errore di connessione al webhook.', 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Invia Test Whitelist';
+            });
+        }
+
+        // Invio Candidatura Fazione
         function sendApplication(event) {
             event.preventDefault();
-
             if (!userData) {
                 showStatus('statusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
                 return;
@@ -869,20 +1027,20 @@
             const payload = {
                 username: `Reclutamento ${currentSelectedFaction} - Roma Vertice`,
                 embeds: [{
-                    title: `📄 NUOVA CANDIDATURA: ${currentSelectedFaction.toUpperCase()}`,
-                    color: 14687799,
+                    title: `📄 CANDIDATURA FAZIONE: ${currentSelectedFaction.toUpperCase()}`,
+                    color: 14285785,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
                         { name: "🪪 ID Discord", value: userData.id, inline: true },
                         { name: "🏛️ Fazione", value: currentSelectedFaction, inline: true },
-                        { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
                         { name: "📝 Nome & Cognome IC", value: document.getElementById('nomeIC').value, inline: false },
-                        { name: "⏳ Esperienza / Ore di Gioco", value: document.getElementById('tempoGioco').value, inline: false },
-                        { name: "🎖️ Esperienze Precedenti", value: document.getElementById('esperienzaAvanzata').value, inline: false },
-                        { name: "📌 Motivazione", value: document.getElementById('motivazione').value, inline: false }
+                        { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
+                        { name: "⏳ Esperienza / Ore", value: document.getElementById('oreCitta').value, inline: true },
+                        { name: "📋 Risposta Specifica 1", value: document.getElementById('qJob1').value, inline: false },
+                        { name: "📋 Risposta Specifica 2", value: document.getElementById('qJob2').value, inline: false }
                     ],
-                    footer: { text: "Roma Vertice RP • Portale Ufficiale" },
+                    footer: { text: "Roma Vertice RP • Fazioni Istituzionali" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -894,25 +1052,24 @@
             })
             .then(response => {
                 if (response.ok) {
-                    showStatus('statusMessage', 'Candidatura inviata con successo! Verrai ricontattato su Discord.', 'success');
+                    showStatus('statusMessage', 'Candidatura fazione inoltrata con successo!', 'success');
                     document.getElementById('applicationForm').reset();
                 } else {
-                    showStatus('statusMessage', 'Errore durante l\'invio della candidatura.', 'error');
+                    showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
                 }
             })
-            .catch(error => {
-                showStatus('statusMessage', 'Errore di connessione con Discord.', 'error');
+            .catch(() => {
+                showStatus('statusMessage', 'Errore di connessione.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Candidatura Ufficiale';
+                submitBtn.innerText = 'Invia Candidatura Fazione';
             });
         }
 
-        // Invio Prenotazione Appuntamento Comune
+        // Invio Prenotazione Comune
         function sendAppointment(event) {
             event.preventDefault();
-
             if (!userData) {
                 showStatus('appStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
                 return;
@@ -930,17 +1087,17 @@
                 username: "Sportello del Comune - Roma Vertice",
                 embeds: [{
                     title: "📅 NUOVA RICHIESTA APPUNTAMENTO COMUNALE",
-                    color: 13108,
+                    color: 14285785,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
                         { name: "🪪 ID Discord", value: userData.id, inline: true },
                         { name: "📝 Nome Cittadino (IC)", value: document.getElementById('appNome').value, inline: false },
-                        { name: "📞 Recapito Telefonico IC", value: document.getElementById('appContatto').value, inline: true },
-                        { name: "📌 Motivo / Pratica", value: document.getElementById('appMotivo').value, inline: true },
-                        { name: "📅 Data Richiesta", value: document.getElementById('appData').value, inline: true },
-                        { name: "⏰ Orario Indicativo", value: document.getElementById('appOra').value, inline: true },
-                        { name: "📝 Dettagli / Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
+                        { name: "📞 Recapito Telefonico", value: document.getElementById('appContatto').value, inline: true },
+                        { name: "📌 Motivo Pratica", value: document.getElementById('appMotivo').value, inline: true },
+                        { name: "📅 Data", value: document.getElementById('appData').value, inline: true },
+                        { name: "⏰ Orario", value: document.getElementById('appOra').value, inline: true },
+                        { name: "📝 Note", value: document.getElementById('appNote').value || "Nessuna nota", inline: false }
                     ],
                     footer: { text: "Uffici Comunali • Roma Vertice" },
                     timestamp: new Date().toISOString()
@@ -954,14 +1111,14 @@
             })
             .then(response => {
                 if (response.ok) {
-                    showStatus('appStatusMessage', 'Richiesta di appuntamento comunale inviata con successo!', 'success');
+                    showStatus('appStatusMessage', 'Richiesta appuntamento comunale inviata con successo!', 'success');
                     document.getElementById('appointmentForm').reset();
                 } else {
-                    showStatus('appStatusMessage', 'Errore durante l\'invio della richiesta.', 'error');
+                    showStatus('appStatusMessage', 'Errore durante l\'invio.', 'error');
                 }
             })
-            .catch(error => {
-                showStatus('appStatusMessage', 'Errore di connessione con Discord.', 'error');
+            .catch(() => {
+                showStatus('appStatusMessage', 'Errore di connessione.', 'error');
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -969,16 +1126,14 @@
             });
         }
 
-        // Funzione Utilità per Messaggi di Stato
+        // Funzione Utilità Messaggi di Stato
         function showStatus(elementId, text, type) {
             const el = document.getElementById(elementId);
             if (!el) return;
             el.innerText = text;
             el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
             el.style.display = 'block';
-            setTimeout(() => {
-                el.style.display = 'none';
-            }, 6000);
+            setTimeout(() => { el.style.display = 'none'; }, 6000);
         }
     </script>
 </body>
