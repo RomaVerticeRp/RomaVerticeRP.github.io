@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMA VERTICE - Portale Ufficiale</title>
     <link rel="icon" type="image/png" href="logo.png">
+    <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #0a0e17;
-            --bg-card: rgba(18, 24, 38, 0.92);
-            --bg-card-border: rgba(224, 30, 55, 0.4);
-            --primary-red: #d90429;
-            --primary-red-hover: #ef233c;
+            --bg-dark: #070d0a;
+            --bg-card: rgba(12, 22, 16, 0.95);
+            --bg-card-border: rgba(0, 146, 70, 0.5);
+            --italia-green: #009246;
+            --italia-green-hover: #00b359;
+            --italia-red: #ce2b37;
             --pure-white: #ffffff;
             --text-light: #f8f9fa;
             --text-muted: #adb5bd;
             --discord-blue: #5865F2;
             --discord-blue-hover: #4752C4;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.75);
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -34,7 +36,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(10, 14, 23, 0.82) 0%, rgba(10, 14, 23, 0.94) 100%), 
+            background: linear-gradient(180deg, rgba(7, 13, 10, 0.88) 0%, rgba(7, 13, 10, 0.98) 100%), 
                         url('sfondo.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
@@ -44,10 +46,11 @@
             flex-direction: column;
         }
 
-        /* Navbar Bianco & Rosso */
+        /* Navbar Tricolore Netta (Verde, Bianco, Rosso) */
         .navbar {
-            background: rgba(10, 14, 23, 0.97);
-            border-bottom: 3px solid var(--primary-red);
+            background: rgba(7, 13, 10, 0.98);
+            border-bottom: 3px solid var(--italia-red);
+            border-top: 3px solid var(--italia-green);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -73,7 +76,7 @@
         .nav-logo {
             height: 45px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(217, 4, 41, 0.6));
+            filter: drop-shadow(0 0 8px rgba(0, 146, 70, 0.7));
         }
 
         .nav-links {
@@ -96,8 +99,8 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--pure-white);
-            background: var(--primary-red);
-            box-shadow: 0 0 15px rgba(217, 4, 41, 0.5);
+            background: var(--italia-green);
+            box-shadow: 0 0 15px rgba(0, 146, 70, 0.6);
         }
 
         .nav-discord-btn {
@@ -110,7 +113,7 @@
 
         .nav-discord-btn:hover {
             background: var(--discord-blue-hover) !important;
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.6) !important;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.7) !important;
         }
 
         .discord-icon {
@@ -163,7 +166,7 @@
         .header-logo {
             max-height: 105px;
             margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(217, 4, 41, 0.5));
+            filter: drop-shadow(0 0 12px rgba(0, 146, 70, 0.6));
         }
 
         h1, h2, h3 {
@@ -176,11 +179,11 @@
             color: var(--pure-white);
             font-size: 2.2rem;
             margin-bottom: 0.3rem;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
         }
 
         .header-container p {
-            color: var(--primary-red);
+            color: var(--italia-green);
             font-weight: 700;
             letter-spacing: 2px;
             font-size: 0.95rem;
@@ -196,7 +199,7 @@
         }
 
         .faction-btn {
-            background: rgba(10, 14, 23, 0.85);
+            background: rgba(7, 13, 10, 0.85);
             border: 1px solid var(--bg-card-border);
             border-radius: 10px;
             padding: 1.2rem;
@@ -211,9 +214,9 @@
         }
 
         .faction-btn:hover, .faction-btn.active-faction {
-            background: var(--primary-red);
+            background: var(--italia-green);
             border-color: var(--pure-white);
-            box-shadow: 0 0 15px rgba(217, 4, 41, 0.6);
+            box-shadow: 0 0 15px rgba(0, 146, 70, 0.7);
             transform: translateY(-2px);
         }
 
@@ -233,7 +236,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid var(--primary-red);
+            border: 2px solid var(--italia-green);
         }
 
         .form-group {
@@ -256,7 +259,7 @@
         textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            background: rgba(10, 14, 23, 0.9);
+            background: rgba(7, 13, 10, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             color: var(--pure-white);
@@ -266,9 +269,9 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 10px rgba(217, 4, 41, 0.4);
-            background: rgba(10, 14, 23, 1);
+            border-color: var(--italia-green);
+            box-shadow: 0 0 10px rgba(0, 146, 70, 0.5);
+            background: rgba(7, 13, 10, 1);
         }
 
         textarea {
@@ -276,11 +279,11 @@
             min-height: 105px;
         }
 
-        /* Pulsanti */
+        /* Pulsanti principali RIGOROSAMENTE VERDI */
         .btn {
             width: 100%;
             padding: 1rem;
-            background: var(--primary-red);
+            background: var(--italia-green);
             color: var(--pure-white);
             border: 2px solid var(--pure-white);
             border-radius: 8px;
@@ -290,7 +293,7 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 4, 41, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 146, 70, 0.6);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -300,9 +303,9 @@
         }
 
         .btn:hover {
-            background: var(--primary-red-hover);
+            background: var(--italia-green-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(217, 4, 41, 0.8);
+            box-shadow: 0 6px 20px rgba(0, 146, 70, 0.9);
         }
 
         .btn-discord {
@@ -314,10 +317,10 @@
         .btn-discord:hover {
             background: var(--discord-blue-hover);
             border-color: var(--pure-white);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.7);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.8);
         }
 
-        /* Stile Regolamento a Tendina (Sidebar a sinistra Bianco & Rosso) */
+        /* Regolamento a Tendina */
         .rules-layout {
             display: grid;
             grid-template-columns: 290px 1fr;
@@ -326,7 +329,7 @@
         }
 
         .rules-sidebar {
-            background: rgba(10, 14, 23, 0.85);
+            background: rgba(7, 13, 10, 0.85);
             border: 2px solid var(--bg-card-border);
             border-radius: 12px;
             padding: 1.2rem;
@@ -335,7 +338,7 @@
         .rules-category-title {
             font-family: var(--font-title);
             font-size: 0.85rem;
-            color: var(--primary-red);
+            color: var(--italia-green);
             letter-spacing: 1.5px;
             margin-bottom: 1rem;
             text-transform: uppercase;
@@ -348,7 +351,7 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .rules-nav-item button {
@@ -357,28 +360,28 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 0.9rem;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .rules-nav-item button:hover, 
         .rules-nav-item button.active {
-            background: rgba(217, 4, 41, 0.2);
+            background: rgba(0, 146, 70, 0.25);
             color: var(--pure-white);
-            border-left: 4px solid var(--primary-red);
-            padding-left: calc(1rem - 4px);
+            border-left: 4px solid var(--italia-green);
+            padding-left: calc(0.9rem - 4px);
         }
 
         .rules-content-pane {
-            background: rgba(10, 14, 23, 0.6);
+            background: rgba(7, 13, 10, 0.65);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 2rem;
-            min-height: 480px;
+            min-height: 520px;
         }
 
         .rule-section {
@@ -391,10 +394,10 @@
         }
 
         .rule-section h3 {
-            color: var(--primary-red);
+            color: var(--italia-green);
             margin-bottom: 1.2rem;
             font-size: 1.35rem;
-            border-bottom: 2px solid rgba(217, 4, 41, 0.4);
+            border-bottom: 2px solid rgba(0, 146, 70, 0.5);
             padding-bottom: 0.5rem;
         }
 
@@ -414,7 +417,7 @@
             content: "▪";
             position: absolute;
             left: 0;
-            color: var(--primary-red);
+            color: var(--italia-green);
             font-size: 1.4rem;
             line-height: 1;
             top: -1px;
@@ -431,15 +434,15 @@
         }
 
         .status-success {
-            background: rgba(46, 204, 113, 0.2);
-            border: 1px solid #2ecc71;
+            background: rgba(0, 146, 70, 0.2);
+            border: 1px solid var(--italia-green);
             color: #2ecc71;
         }
 
         .status-error {
-            background: rgba(231, 76, 60, 0.2);
-            border: 1px solid #e74c3c;
-            color: #e74c3c;
+            background: rgba(206, 43, 55, 0.2);
+            border: 1px solid var(--italia-red);
+            color: #ff6b6b;
         }
 
         footer {
@@ -447,8 +450,9 @@
             padding: 1.5rem;
             color: var(--text-muted);
             font-size: 0.85rem;
-            background: rgba(10, 14, 23, 0.97);
-            border-top: 2px solid var(--primary-red);
+            background: rgba(7, 13, 10, 0.98);
+            border-top: 3px solid var(--italia-green);
+            border-bottom: 3px solid var(--italia-red);
             margin-top: auto;
         }
 
@@ -472,6 +476,7 @@
 </head>
 <body>
 
+    <!-- NAVIGAZIONE -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="logo.png" alt="Logo Roma Vertice" class="nav-logo">
@@ -496,6 +501,7 @@
 
     <div class="container">
 
+        <!-- TAB 1: HOME -->
         <div id="home" class="tab-content active">
             <div class="card" style="text-align: center;">
                 <div class="header-container">
@@ -508,7 +514,7 @@
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
-                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem; background: #0f172a; border-color: var(--primary-red);" onclick="showTab('bando')">Bandi Fazioni</button>
+                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem; background: #0c1610; border-color: var(--italia-green);" onclick="showTab('bando')">Bandi Fazioni</button>
                     <a href="https://discord.gg/WmUJy5Qj89" target="_blank" class="btn btn-discord discordLinkBtn" style="width: auto; padding: 0.9rem 2.2rem;">
                         <svg class="discord-icon" viewBox="0 0 127.14 96.36">
                             <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
@@ -519,6 +525,7 @@
             </div>
         </div>
 
+        <!-- TAB 2: WHITELIST -->
         <div id="whitelist" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -580,6 +587,7 @@
             </div>
         </div>
 
+        <!-- TAB 3: BANDI -->
         <div id="bando" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -635,14 +643,14 @@
                         <input type="text" id="oreCitta" required placeholder="Es. 300 ore">
                     </div>
 
-                    <div id="dynamicJobQuestions">
-                        </div>
+                    <div id="dynamicJobQuestions"></div>
 
                     <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
                 </form>
             </div>
         </div>
 
+        <!-- TAB 4: COMUNE -->
         <div id="appuntamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
@@ -715,70 +723,92 @@
             </div>
         </div>
 
+        <!-- TAB 5: REGOLAMENTO -->
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
                     <h1>Regolamento Ufficiale FiveM RP</h1>
-                    <p>Roma Vertice - Codice di Comportamento Generale</p>
+                    <p>Roma Vertice - Codice di Comportamento Generale & Normative</p>
                 </div>
 
                 <div class="rules-layout">
                     <div class="rules-sidebar">
-                        <div class="rules-category-title">Indice Regolamento</div>
+                        <div class="rules-category-title">Indice Generale</div>
                         <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Comportamento</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('fearpain', this)">2. Fear RP & Pain RP</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('fearpain', this)">2. Fear RP & Pain RP Avanzato</button></li>
                             <li class="rules-nav-item"><button onclick="showRuleSection('metapower', this)">3. Metagaming & Powergaming</button></li>
                             <li class="rules-nav-item"><button onclick="showRuleSection('dmrdm', this)">4. Deathmatch, RDM & VDM</button></li>
                             <li class="rules-nav-item"><button onclick="showRuleSection('nlr', this)">5. New Life Rule (NLR)</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">6. Zone Sicure & Ostaggi</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('fazioni', this)">7. Fazioni Legali & Illegali</button></li>
                         </ul>
                     </div>
 
                     <div class="rules-content-pane">
                         <div id="rule-generale" class="rule-section active">
-                            <h3>1. Regole Base & Comportamento</h3>
+                            <h3>1. Regole Base & Condotta</h3>
                             <ul class="rules-list">
-                                <li><strong>Rispetto Interpersonale:</strong> È fatto assoluto divieto di insultare, offendere o discriminare altri utenti per motivi di sesso, razza, religione o orientamento, sia in game (IC) che su Discord (OOC).</li>
-                                <li><strong>Separazione IC / OOC:</strong> Le problematiche nate fuori dal gioco non devono mai influenzare le azioni e le decisioni prese all'interno del roleplay cittadino.</li>
-                                <li><strong>Uso di Chat Vocale:</strong> In game è obbligatorio l'utilizzo della chat vocaleproximity di FiveM. L'uso di Discord o software esterni per comunicare in situazioni di gioco è punito severamente.</li>
-                                <li><strong>Sfruttamento di Bug:</strong> Qualsiasi exploit, glitch o utilizzo di modifiche non autorizzate del gioco comporterà il ban permanente immediato.</li>
+                                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Roma Vertice è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
+                                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
+                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
+                                <li><strong>Divieto Assoluto di Bug Abuse e Exploiting:</strong> Sfruttare bug del gioco, glitch di caricamento, animazioni per compiere azioni sleali o duping di oggetti comporterà il ban permanente immediato senza possibilità di appello.</li>
+                                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
                             </ul>
                         </div>
 
                         <div id="rule-fearpain" class="rule-section">
-                            <h3>2. Fear RP & Pain RP</h3>
+                            <h3>2. Fear RP & Pain RP Avanzato</h3>
                             <ul class="rules-list">
-                                <li><strong>Fear RP (Valore della Vita):</strong> Il giocatore ha l'obbligo assoluto di simulare paura per la propria vita se si trova in inferiorità numerica evidente o sotto la minaccia diretta di armi da fuoco puntate da altri soggetti.</li>
-                                <li><strong>Pain RP (Simulazione Dolore):</strong> In seguito a ferite d'arma da fuoco, investimenti, cadute rovinose o colluttazioni, è obbligatorio interpretare il dolore fisico e lo stato di shock attraverso azioni testuali (/me) e vocali adeguate.</li>
-                                <li>È severamente vietato compiere azioni sovrumane o non realistiche quando si è gravemente feriti o sotto minaccia armata.</li>
+                                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve avere paura della morte. Se ti trovi in inferiorità numerica (es. puntato da due o più persone armate) o sotto la minaccia diretta di armi da fuoco, devi immediatamente sottostare agli ordini ricevuti, evitando comportamenti eroici o spregiudicati.</li>
+                                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno subito (investimenti, cadute da altezze considerevoli, colpi d'arma da fuoco, botte) deve essere interpretato in modo realistico. Bisogna utilizzare le chat testuali (/me) e la voce per simulare dolore, barcollamenti o shock fisico.</li>
+                                <li><strong>Resistenza Ingiustificata:</strong> Ignorare ferite gravi o rifiutarsi di interpretare lo stato di inabilità fisica dopo un'aggressione costituisce violazione del regolamento di gioco.</li>
                             </ul>
                         </div>
 
                         <div id="rule-metapower" class="rule-section">
                             <h3>3. Metagaming & Powergaming</h3>
                             <ul class="rules-list">
-                                <li><strong>Metagaming:</strong> Utilizzare informazioni ottenute tramite stream, chat vocali esterne (Discord) o canali OOC per trarre vantaggi o compiere azioni all'interno del roleplay (IC) è punito con il ban.</li>
-                                <li><strong>Powergaming:</strong> Compiere azioni fisicamente impossibili nella realtà, forzare azioni su altri giocatori senza dare loro la possibilità di replicare, o abusare delle meccaniche di gioco per scopi sleali.</li>
-                                <li>Ogni azione che altera l'equità e la verosimiglianza della simulazione urbana è severamente vietata.</li>
+                                <li><strong>Metagaming (MG):</strong> Utilizzare informazioni acquisite al di fuori del gioco (tramite stream di Twitch, chat vocali esterne, sussurri OOC o Discord) per avvantaggiare il proprio personaggio in città è severamente proibito.</li>
+                                <li><strong>Powergaming (PG):</strong> Compiere azioni fisicamente impossibili nella realtà (es. saltare da un palazzo con una supercar e ripartire illesi), forzare azioni su altri giocatori senza dare loro il tempo di reagire tramite sistemi di gioco o chat, o abusare delle meccaniche per scopi egoistici.</li>
+                                <li>Ogni interazione deve mantenere un alto standard di verosimiglianza e rispetto della fisica realistica.</li>
                             </ul>
                         </div>
 
                         <div id="rule-dmrdm" class="rule-section">
                             <h3>4. Deathmatch, RDM & VDM</h3>
                             <ul class="rules-list">
-                                <li><strong>Deathmatch (DM) / RDM:</strong> È vietato uccidere o aggredire altri giocatori senza un valido motivo scaturente da un'azione di roleplay precedente, sensata e progressiva.</li>
-                                <li><strong>VDM (Vehicle Deathmatch):</strong> Utilizzare veicoli come armi per investire deliberatamente persone o veicoli altrui senza alcuna motivazione di roleplay valida è severamente vietato.</li>
-                                <li>Ogni azione ostile deve sempre essere preceduta da un'interazione verbale o da un movente chiaro in game.</li>
+                                <li><strong>Random Deathmatch (RDM):</strong> È severamente vietato ferire o uccidere altri giocatori senza un valido motivo di roleplay precedente, sensato e strutturato attraverso un'interazione verbale o un conflitto narrativo chiaro.</li>
+                                <li><strong>Deathmatch non motivato:</strong> Sparare o aggredire senza una ragione valida legata alla storia del personaggio è punito severamente dallo Staff.</li>
+                                <li><strong>Vehicle Deathmatch (VDM):</strong> Utilizzare veicoli come armi contundenti per investire deliberatamente pedoni o distruggere auto altrui senza motivazioni di gioco valide è vietato.</li>
                             </ul>
                         </div>
 
                         <div id="rule-nlr" class="rule-section">
                             <h3>5. New Life Rule (NLR)</h3>
                             <ul class="rules-list">
-                                <li><strong>Regola della Nuova Vita:</strong> Quando il tuo personaggio viene rianimato dai medici dopo essere stato ucciso (o respawna), dimentica completamente gli eventi critici che hanno portato alla sua morte e i nomi dei soggetti coinvolti in quell'azione specifica.</li>
-                                <li>È vietato tornare sul luogo della propria morte prima che siano trascorsi almeno 15 minuti o prima della conclusione totale dell'azione in corso.</li>
-                                <li>La violazione della NLR altera drasticamente la coerenza della narrazione di gioco.</li>
+                                <li><strong>Regola della Nuova Vita:</strong> Quando il tuo personaggio viene ucciso e successivamente rianimato dai medici (o respawna in ospedale), perde totalmente la memoria degli eventi critici che hanno causato il suo decesso e l'identità dei soggetti coinvolti in quella specifica azione.</li>
+                                <li>È fatto divieto assoluto di ritornare sul luogo della propria morte prima che siano trascorsi almeno 15 minuti o prima che l'azione in corso sia completamente conclusa.</li>
+                                <li>La violazione della NLR compromette la continuità narrativa della simulazione cittadina.</li>
+                            </ul>
+                        </div>
+
+                        <div id="rule-zone" class="rule-section">
+                            <h3>6. Zone Sicure & Ostaggi</h3>
+                            <ul class="rules-list">
+                                <li><strong>Safezone (Zone Sicure):</strong> Luoghi ad alta affluenza (es. Ospedale, Commissariato, Comune) dove vige il divieto assoluto di compiere azioni ostili, crimini, rapine o risse.</li>
+                                <li>È vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata fuori (Safezone Camping / Fleeing).</li>
+                                <li><strong>Gestione Ostaggi:</strong> Le rapine con ostaggi richiedono un numero minimo di forze dell'ordine collegate e un negoziato leale e ragionato tra criminali e polizia.</li>
+                            </ul>
+                        </div>
+
+                        <div id="rule-fazioni" class="rule-section">
+                            <h3>7. Fazioni Legali & Illegali</h3>
+                            <ul class="rules-list">
+                                <li><strong>Fazioni Istituzionali (Polizia, Carabinieri, Finanza, Croce Rossa):</strong> Gli operatori dello Stato devono mantenere un comportamento professionale, attenersi rigorosamente ai codici operativi interni e rispettare la gerarchia stabilita.</li>
+                                <li><strong>Fazioni Criminali:</strong> I gruppi malavitosi autorizzati devono agire con coerenza criminale, evitando comportamenti caotici o privi di logica narrativa (es. guerre continue senza motivazioni valide).</li>
+                                <li>Ogni fazione deve garantire un roleplay di altissima qualità per tutti i membri della community di Roma Vertice.</li>
                             </ul>
                         </div>
                     </div>
@@ -790,11 +820,10 @@
 
     <footer>
         <p>&copy; Roma Vertice RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: var(--primary-red); font-weight: 600;">Onore, Giustizia e Servizio</p>
+        <p style="margin-top: 5px; color: var(--italia-green); font-weight: 600;">Onore, Giustizia e Servizio</p>
     </footer>
 
     <script>
-        // CONFIGURAZIONE DISCORD & WEBHOOK
         const CLIENT_ID = '1536336646507601920'; 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2';
@@ -814,7 +843,6 @@
             renderJobQuestions('Polizia di Stato');
         });
 
-        // Gestione Tab Principali
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
@@ -824,7 +852,6 @@
             if (navLink) navLink.classList.add('active');
         }
 
-        // Gestione Selezione Fazione e Domande Differenziate
         function selectFaction(factionKey, btnElement) {
             document.querySelectorAll('.faction-btn').forEach(btn => btn.classList.remove('active-faction'));
             btnElement.classList.add('active-faction');
@@ -843,7 +870,6 @@
             renderJobQuestions(currentSelectedFaction);
         }
 
-        // Renderizza domande specifiche in base alla fazione scelta
         function renderJobQuestions(faction) {
             const container = document.getElementById('dynamicJobQuestions');
             if (!container) return;
@@ -878,7 +904,7 @@
                         <textarea id="qJob1" required placeholder="Verifica registri, licenze e flussi di denaro..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>2. Come agisci in caso di contrabbando o merci ilusorie scoperte al porto/dogana?</label>
+                        <label>2. Come agisci in caso di contrabbando o merci illecite scoperte al porto/dogana?</label>
                         <textarea id="qJob2" required placeholder="Procedure di sequestro e verbalizzazione..."></textarea>
                     </div>
                 `;
@@ -897,7 +923,6 @@
             container.innerHTML = html;
         }
 
-        // Gestione Sotto-sezioni Regolamento
         function showRuleSection(sectionId, btnElement) {
             document.querySelectorAll('.rule-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.rules-nav-item button').forEach(btn => btn.classList.remove('active'));
@@ -906,7 +931,6 @@
             btnElement.classList.add('active');
         }
 
-        // Login Discord OAuth2
         function loginWithDiscord(targetTab) {
             const scope = 'identify';
             const state = targetTab || 'home';
@@ -914,7 +938,6 @@
             window.location.href = authUrl;
         }
 
-        // Gestione Autenticazione e Callback OAuth2 all'avvio
         window.onload = function() {
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
@@ -950,7 +973,6 @@
             }
         };
 
-        // Invio Whitelist
         function sendWhitelist(event) {
             event.preventDefault();
             if (!userData) {
@@ -970,7 +992,7 @@
                 username: "Whitelist - Roma Vertice",
                 embeds: [{
                     title: "🟢 NUOVA RICHIESTA WHITELIST CITTA'",
-                    color: 14285785,
+                    color: 36768,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1008,7 +1030,6 @@
             });
         }
 
-        // Invio Candidatura Fazione
         function sendApplication(event) {
             event.preventDefault();
             if (!userData) {
@@ -1028,7 +1049,7 @@
                 username: `Reclutamento ${currentSelectedFaction} - Roma Vertice`,
                 embeds: [{
                     title: `📄 CANDIDATURA FAZIONE: ${currentSelectedFaction.toUpperCase()}`,
-                    color: 14285785,
+                    color: 36768,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1067,7 +1088,6 @@
             });
         }
 
-        // Invio Prenotazione Comune
         function sendAppointment(event) {
             event.preventDefault();
             if (!userData) {
@@ -1087,7 +1107,7 @@
                 username: "Sportello del Comune - Roma Vertice",
                 embeds: [{
                     title: "📅 NUOVA RICHIESTA APPUNTAMENTO COMUNALE",
-                    color: 14285785,
+                    color: 36768,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1126,7 +1146,6 @@
             });
         }
 
-        // Funzione Utilità Messaggi di Stato
         function showStatus(elementId, text, type) {
             const el = document.getElementById(elementId);
             if (!el) return;
