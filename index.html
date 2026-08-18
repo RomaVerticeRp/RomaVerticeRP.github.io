@@ -675,12 +675,10 @@
                     <div class="rules-sidebar">
                         <div class="rules-category-title">Pacchetti Disponibili</div>
                         <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showDonationSection('ped', this)" class="active">👥 pack-ped</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('supporter', this)">🌟 pack-supporter</button></li>
+                            <li class="rules-nav-item"><button onclick="showDonationSection('supporter', this)" class="active">🌟 pack-supporter</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('boost', this)">💜 pack-boost</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('vip', this)">💎 pack-vip</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('unban', this)">🔓 pack-unban</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('socio', this)">🔑 pack-socio</button></li>
                         </ul>
                     </div>
 
@@ -809,7 +807,7 @@
             if (navLink) navLink.href = DISCORD_SERVER_INVITE;
 
             renderJobQuestions('Polizia di Stato');
-            showDonationSection('ped', document.querySelector('.rules-sidebar button'));
+            showDonationSection('supporter', document.querySelector('.rules-sidebar button'));
         });
 
         function showTab(tabId) {
@@ -947,17 +945,7 @@
 
             let contentHTML = '';
 
-            if (packType === 'ped') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>👥 Pack Ped</h3>
-                        <ul class="rules-list">
-                            <li><strong>Informazione:</strong> Contatta lo staff su Discord per richiedere e configurare il tuo Ped personalizzato in città.</li>
-                            <li><strong>Requisiti:</strong> Rispetto delle linee guida e del regolamento del server.</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'supporter') {
+            if (packType === 'supporter') {
                 contentHTML = `
                     <div class="rule-section active">
                         <h3>🌟 Pack Supporter</h3>
@@ -996,15 +984,6 @@
                         <ul class="rules-list">
                             <li><strong>Ban normale:</strong> <strong>20€</strong>.</li>
                             <li><strong>Ban per troll + Last Chance:</strong> <strong>35€</strong> (Nota: L'attenzionamento è incluso; questo pack può essere acquistato una sola volta).</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'socio') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>🔑 Pack Socio</h3>
-                        <ul class="rules-list">
-                            <li><strong>Vantaggi Esclusivi:</strong> Diventa socio sostenitore di Roma Vertice per ottenere privilegi unici all'interno della community e in game.</li>
                         </ul>
                     </div>
                 `;
