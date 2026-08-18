@@ -439,30 +439,6 @@
             top: -1px;
         }
 
-        .donation-coming-soon {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            background: rgba(0, 146, 70, 0.08);
-            border: 2px dashed var(--italia-green);
-            border-radius: 12px;
-            margin-top: 1rem;
-        }
-
-        .donation-coming-soon h4 {
-            font-family: var(--font-title);
-            font-size: 1.5rem;
-            color: var(--pure-white);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .donation-coming-soon p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
         .status-message {
             padding: 1rem;
             border-radius: 8px;
@@ -691,7 +667,7 @@
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Donazioni & Pacchetti Shop</h1>
+                    <h1>🎁 Tab Donazioni</h1>
                     <p>Roma Vertice - Supporta il Server</p>
                 </div>
 
@@ -879,7 +855,6 @@
 
             renderJobQuestions(currentSelectedFaction);
             
-            // Controlla se l'utente ha già inviato il bando per questa fazione
             if (userData) {
                 checkIfAlreadySent();
             }
@@ -970,26 +945,72 @@
             document.querySelectorAll('#donazioni .rules-nav-item button').forEach(btn => btn.classList.remove('active'));
             if (btnElement) btnElement.classList.add('active');
 
-            const packTitles = {
-                'ped': '👥 pack-ped',
-                'supporter': '🌟 pack-supporter',
-                'boost': '💜 pack-boost',
-                'vip': '💎 pack-vip',
-                'unban': '🔓 pack-unban',
-                'socio': '🔑 pack-socio'
-            };
+            let contentHTML = '';
 
-            const title = packTitles[packType] || 'Pacchetto Donazione';
-
-            pane.innerHTML = `
-                <div class="rule-section active">
-                    <h3>${title}</h3>
-                    <div class="donation-coming-soon">
-                        <h4>Non c'è ancora</h4>
-                        <p>Questa sezione e il pacchetto <strong>${title}</strong> non sono ancora attivi, ma arriveranno presto!</p>
+            if (packType === 'ped') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>👥 Pack Ped</h3>
+                        <ul class="rules-list">
+                            <li><strong>Informazione:</strong> Contatta lo staff su Discord per richiedere e configurare il tuo Ped personalizzato in città.</li>
+                            <li><strong>Requisiti:</strong> Rispetto delle linee guida e del regolamento del server.</li>
+                        </ul>
                     </div>
-                </div>
-            `;
+                `;
+            } else if (packType === 'supporter') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>🌟 Pack Supporter</h3>
+                        <ul class="rules-list">
+                            <li><strong>Supporter Base:</strong> Donazione di <strong>75€</strong> al server.</li>
+                            <li><strong>Supporter Plus:</strong> Donazione superiore a <strong>150€</strong>.</li>
+                            <li><strong>Mega Supporter:</strong> Donazione maggiore a <strong>500€</strong>.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (packType === 'boost') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>💜 Pack Boost</h3>
+                        <ul class="rules-list">
+                            <li><strong>1 Boost:</strong> Ricevi <strong>20k in game</strong>.</li>
+                            <li><strong>2 Boost:</strong> Ricevi <strong>50k in game</strong>.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (packType === 'vip') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>💎 Pack VIP — Prezzo: 15€</h3>
+                        <ul class="rules-list">
+                            <li><strong>Assistenza prioritaria:</strong> Supporto rapido dedicato.</li>
+                            <li><strong>Veicolo VIP:</strong> Un veicolo VIP a tua scelta.</li>
+                            <li><strong>Ruolo e Canali:</strong> Ruolo VIP "Roma Vertice" e canali vocali VIP annessi su Discord.</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (packType === 'unban') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>🔓 Pack Unban</h3>
+                        <ul class="rules-list">
+                            <li><strong>Ban normale:</strong> <strong>20€</strong>.</li>
+                            <li><strong>Ban per troll + Last Chance:</strong> <strong>35€</strong> (Nota: L'attenzionamento è incluso; questo pack può essere acquistato una sola volta).</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (packType === 'socio') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>🔑 Pack Socio</h3>
+                        <ul class="rules-list">
+                            <li><strong>Vantaggi Esclusivi:</strong> Diventa socio sostenitore di Roma Vertice per ottenere privilegi unici all'interno della community e in game.</li>
+                        </ul>
+                    </div>
+                `;
+            }
+
+            pane.innerHTML = contentHTML;
         }
 
         function loginWithDiscord(targetTab) {
@@ -1027,7 +1048,6 @@
                         document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
                         document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
 
-                        // Controlla se l'utente ha già inviato il bando attivo
                         checkIfAlreadySent();
                     }
                 })
@@ -1108,7 +1128,6 @@
                 return;
             }
 
-            // Controllo preventivo lato client per bloccare invii multipli
             const storageKey = `bando_inviato_${userData.id}_${currentSelectedFaction}`;
             if (localStorage.getItem(storageKey) === 'true') {
                 showStatus('statusMessage', 'Hai già inviato una candidatura per questa fazione!', 'error');
@@ -1154,13 +1173,9 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Imposta lo stato nel localStorage per indicare che il bando è stato inviato
                     localStorage.setItem(storageKey, 'true');
-                    
                     showStatus('statusMessage', 'Candidatura fazione inoltrata con successo!', 'success');
                     document.getElementById('applicationForm').reset();
-                    
-                    // Nascondi il form e mostra il messaggio di avvenuto invio
                     checkIfAlreadySent();
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
