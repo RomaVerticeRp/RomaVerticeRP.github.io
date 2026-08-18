@@ -134,7 +134,6 @@
             justify-content: center;
         }
 
-        /* Gestione tab visibili/nascoste */
         .tab-content {
             display: none !important;
             width: 100%;
@@ -289,6 +288,13 @@
         textarea {
             resize: vertical;
             min-height: 105px;
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 4px;
         }
 
         .btn {
@@ -594,18 +600,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="wlQ1">1. Che cos'è il Fear RP e quando va applicato?</label>
-                        <textarea id="wlQ1" required placeholder="Descrivi il concetto di valore della vita..."></textarea>
+                        <label for="wlBackground">Background del Personaggio (Minimo 150 caratteri):</label>
+                        <textarea id="wlBackground" required minlength="150" placeholder="Racconta la storia, il passato, le ambizioni e il carattere del tuo personaggio..." oninput="updateCharCount(this)"></textarea>
+                        <div class="char-counter" id="charCounter">Caratteri inseriti: 0 / 150 min</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="wlQ2">2. Spiega la differenza tra Metagaming e Powergaming:</label>
-                        <textarea id="wlQ2" required placeholder="Definisci i due concetti fondamentali del roleplay..."></textarea>
+                        <label for="wlFiveMTime">Da quanto tempo giochi a FiveM?</label>
+                        <input type="text" id="wlFiveMTime" required placeholder="Es. 2 anni / Da 6 mesi">
                     </div>
 
                     <div class="form-group">
-                        <label for="wlQ3">3. Come ti comporti se vieni coinvolto in una sparatoria o in un incidente grave (Pain RP)?</label>
-                        <textarea id="wlQ3" required placeholder="Spiega la gestione delle ferite e delle reazioni fisiche..."></textarea>
+                        <label for="wlServers">In quali server sei stato in precedenza?</label>
+                        <input type="text" id="wlServers" required placeholder="Es. Nome Server 1, Nome Server 2...">
                     </div>
 
                     <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
@@ -805,7 +812,6 @@
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const DISCORD_SERVER_INVITE = 'https://discord.gg/WmUJy5Qj89';
 
-        // WEBHOOK SEPARATI PER OGNI CANALE (Sostituisci i link con quelli veri di Discord)
         const WEBHOOK_URLS = {
             'whitelist': 'https://discord.com/api/webhooks/1538187596004593736/TgLbwTwNDrbbp10iBPgm4Hle-w6_i4R8WAI6vQDYitQdQPohhj3ta48M920-_4o5Dg8X',
             'Polizia di Stato': 'https://discord.com/api/webhooks/1536358688455921685/Yix6ZWN9VwOvjAnWggav0hV7ER1ycXmX__4i7Aff8lYvcC4RHwDBbJztA65sMRE0I3t2',
@@ -837,6 +843,17 @@
             const navLink = document.getElementById('nav-' + tabId);
             if (navLink) {
                 navLink.classList.add('active');
+            }
+        }
+
+        function updateCharCount(textarea) {
+            const counter = document.getElementById('charCounter');
+            const len = textarea.value.length;
+            counter.innerText = `Caratteri inseriti: ${len} / 150 min`;
+            if (len >= 150) {
+                counter.style.color = '#2ecc71';
+            } else {
+                counter.style.color = 'var(--text-muted)';
             }
         }
 
@@ -997,6 +1014,12 @@
                 return;
             }
 
+            const backgroundText = document.getElementById('wlBackground').value;
+            if (backgroundText.length < 150) {
+                showStatus('wlStatusMessage', 'Errore: Il background deve contenere almeno 150 caratteri.', 'error');
+                return;
+            }
+
             const submitBtn = document.getElementById('wlSubmitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
@@ -1016,9 +1039,9 @@
                         { name: "🪪 ID Discord", value: userData.id, inline: true },
                         { name: "📝 Nome Personaggio (IC)", value: document.getElementById('wlNomeIC').value, inline: false },
                         { name: "🎂 Età Personaggio", value: document.getElementById('wlAnniIC').value, inline: true },
-                        { name: "📌 Test Q1 (Fear RP)", value: document.getElementById('wlQ1').value, inline: false },
-                        { name: "📌 Test Q2 (Meta/Power)", value: document.getElementById('wlQ2').value, inline: false },
-                        { name: "📌 Test Q3 (Pain RP)", value: document.getElementById('wlQ3').value, inline: false }
+                        { name: "📖 Background Personaggio", value: backgroundText, inline: false },
+                        { name: "⏳ Tempo su FiveM", value: document.getElementById('wlFiveMTime').value, inline: true },
+                        { name: "🌐 Server Precedenti", value: document.getElementById('wlServers').value, inline: true }
                     ],
                     footer: { text: "Roma Vertice RP • Whitelist System" },
                     timestamp: new Date().toISOString()
@@ -1034,6 +1057,7 @@
                 if (response.ok) {
                     showStatus('wlStatusMessage', 'Test Whitelist inviato con successo! Attendi la valutazione dello Staff.', 'success');
                     document.getElementById('whitelistForm').reset();
+                    document.getElementById('charCounter').innerText = 'Caratteri inseriti: 0 / 150 min';
                 } else {
                     showStatus('wlStatusMessage', 'Errore durante l\'invio della whitelist.', 'error');
                 }
