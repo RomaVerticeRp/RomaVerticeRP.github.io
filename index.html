@@ -658,7 +658,8 @@
 
                 <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
                     <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
-                    <p style="color: var(--text-muted);">Hai già inoltrato una candidatura per questa fazione. È consentito l'invio di un solo bando per fazione.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare un solo bando a settimana per fazione. Potrai ricandidarti tra:</p>
+                    <div id="cooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
                 </div>
             </div>
         </div>
@@ -801,6 +802,8 @@
 
         let userData = null;
         let currentSelectedFaction = 'Polizia di Stato';
+        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana
+        let cooldownIntervalId = null;
 
         document.addEventListener("DOMContentLoaded", function() {
             const navLink = document.getElementById('discordLinkNav');
@@ -858,17 +861,69 @@
             }
         }
 
+        function getBandoStorageKey(faction) {
+            return `bando_inviato_${userData.id}_${faction}`;
+        }
+
+        function getBandoRemainingMs(faction) {
+            const storageKey = getBandoStorageKey(faction);
+            const lastSentRaw = localStorage.getItem(storageKey);
+            if (!lastSentRaw) return 0;
+
+            const lastSent = parseInt(lastSentRaw, 10);
+            if (isNaN(lastSent)) return 0;
+
+            const remaining = BANDO_COOLDOWN_MS - (Date.now() - lastSent);
+            return remaining > 0 ? remaining : 0;
+        }
+
+        function formatCooldown(ms) {
+            const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${days}g ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        }
+
         function checkIfAlreadySent() {
             if (!userData) return;
-            const storageKey = `bando_inviato_${userData.id}_${currentSelectedFaction}`;
-            const alreadySent = localStorage.getItem(storageKey);
-            
+
             const form = document.getElementById('applicationForm');
             const alreadySentMsg = document.getElementById('alreadySentMessage');
-            
-            if (alreadySent === 'true') {
+            const timerEl = document.getElementById('cooldownTimer');
+            const faction = currentSelectedFaction;
+
+            if (cooldownIntervalId) {
+                clearInterval(cooldownIntervalId);
+                cooldownIntervalId = null;
+            }
+
+            const remaining = getBandoRemainingMs(faction);
+
+            if (remaining > 0) {
                 form.style.display = 'none';
                 alreadySentMsg.style.display = 'block';
+                timerEl.innerText = formatCooldown(remaining);
+
+                cooldownIntervalId = setInterval(() => {
+                    // Se nel frattempo la fazione selezionata è cambiata, fermiamo questo timer
+                    if (faction !== currentSelectedFaction) {
+                        clearInterval(cooldownIntervalId);
+                        cooldownIntervalId = null;
+                        return;
+                    }
+
+                    const stillRemaining = getBandoRemainingMs(faction);
+                    if (stillRemaining <= 0) {
+                        clearInterval(cooldownIntervalId);
+                        cooldownIntervalId = null;
+                        checkIfAlreadySent();
+                        return;
+                    }
+                    timerEl.innerText = formatCooldown(stillRemaining);
+                }, 1000);
             } else {
                 form.style.display = 'block';
                 alreadySentMsg.style.display = 'none';
@@ -1107,9 +1162,9 @@
                 return;
             }
 
-            const storageKey = `bando_inviato_${userData.id}_${currentSelectedFaction}`;
-            if (localStorage.getItem(storageKey) === 'true') {
-                showStatus('statusMessage', 'Hai già inviato una candidatura per questa fazione!', 'error');
+            const storageKey = getBandoStorageKey(currentSelectedFaction);
+            if (getBandoRemainingMs(currentSelectedFaction) > 0) {
+                showStatus('statusMessage', 'Hai già inviato un bando per questa fazione questa settimana. Attendi il termine del cooldown.', 'error');
                 checkIfAlreadySent();
                 return;
             }
@@ -1152,8 +1207,8 @@
             })
             .then(response => {
                 if (response.ok) {
-                    localStorage.setItem(storageKey, 'true');
-                    showStatus('statusMessage', 'Candidatura fazione inoltrata con successo!', 'success');
+                    localStorage.setItem(storageKey, Date.now().toString());
+                    showStatus('statusMessage', 'Candidatura fazione inoltrata con successo! Potrai reinviarla tra 7 giorni.', 'success');
                     document.getElementById('applicationForm').reset();
                     checkIfAlreadySent();
                 } else {
