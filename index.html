@@ -679,6 +679,11 @@
 
                     <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
                 </form>
+
+                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
+                    <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
+                    <p style="color: var(--text-muted);">Hai già inoltrato una candidatura per questa fazione. È consentito l'invio di un solo bando per fazione.</p>
+                </div>
             </div>
         </div>
 
@@ -873,6 +878,28 @@
             if (inputField) inputField.value = currentSelectedFaction;
 
             renderJobQuestions(currentSelectedFaction);
+            
+            // Controlla se l'utente ha già inviato il bando per questa fazione
+            if (userData) {
+                checkIfAlreadySent();
+            }
+        }
+
+        function checkIfAlreadySent() {
+            if (!userData) return;
+            const storageKey = `bando_inviato_${userData.id}_${currentSelectedFaction}`;
+            const alreadySent = localStorage.getItem(storageKey);
+            
+            const form = document.getElementById('applicationForm');
+            const alreadySentMsg = document.getElementById('alreadySentMessage');
+            
+            if (alreadySent === 'true') {
+                form.style.display = 'none';
+                alreadySentMsg.style.display = 'block';
+            } else {
+                form.style.display = 'block';
+                alreadySentMsg.style.display = 'none';
+            }
         }
 
         function renderJobQuestions(faction) {
@@ -999,6 +1026,9 @@
                         document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
                         document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
                         document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
+
+                        // Controlla se l'utente ha già inviato il bando attivo
+                        checkIfAlreadySent();
                     }
                 })
                 .catch(() => {
@@ -1078,6 +1108,14 @@
                 return;
             }
 
+            // Controllo preventivo lato client per bloccare invii multipli
+            const storageKey = `bando_inviato_${userData.id}_${currentSelectedFaction}`;
+            if (localStorage.getItem(storageKey) === 'true') {
+                showStatus('statusMessage', 'Hai già inviato una candidatura per questa fazione!', 'error');
+                checkIfAlreadySent();
+                return;
+            }
+
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
@@ -1116,8 +1154,14 @@
             })
             .then(response => {
                 if (response.ok) {
+                    // Imposta lo stato nel localStorage per indicare che il bando è stato inviato
+                    localStorage.setItem(storageKey, 'true');
+                    
                     showStatus('statusMessage', 'Candidatura fazione inoltrata con successo!', 'success');
                     document.getElementById('applicationForm').reset();
+                    
+                    // Nascondi il form e mostra il messaggio di avvenuto invio
+                    checkIfAlreadySent();
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
                 }
