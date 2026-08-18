@@ -593,6 +593,12 @@
 
                     <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
                 </form>
+
+                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
+                    <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare il modulo di whitelist una sola volta ogni 48 ore. Potrai reinviarlo tra:</p>
+                    <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
+                </div>
             </div>
         </div>
 
@@ -803,8 +809,11 @@
 
         let userData = null;
         let currentSelectedFaction = 'Polizia di Stato';
-        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana
-        let cooldownIntervalId = null;
+        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana per le fazioni
+        const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; // 48 ore per la whitelist
+        
+        let bandoCooldownIntervalId = null;
+        let wlCooldownIntervalId = null;
 
         document.addEventListener("DOMContentLoaded", function() {
             const navLink = document.getElementById('discordLinkNav');
@@ -858,7 +867,7 @@
             renderJobQuestions(currentSelectedFaction);
             
             if (userData) {
-                checkIfAlreadySent();
+                checkIfBandoAlreadySent();
             }
         }
 
@@ -878,6 +887,22 @@
             return remaining > 0 ? remaining : 0;
         }
 
+        function getWlStorageKey() {
+            return `wl_inviata_${userData.id}`;
+        }
+
+        function getWlRemainingMs() {
+            const storageKey = getWlStorageKey();
+            const lastSentRaw = localStorage.getItem(storageKey);
+            if (!lastSentRaw) return 0;
+
+            const lastSent = parseInt(lastSentRaw, 10);
+            if (isNaN(lastSent)) return 0;
+
+            const remaining = WL_COOLDOWN_MS - (Date.now() - lastSent);
+            return remaining > 0 ? remaining : 0;
+        }
+
         function formatCooldown(ms) {
             const totalSeconds = Math.max(0, Math.floor(ms / 1000));
             const days = Math.floor(totalSeconds / 86400);
@@ -888,7 +913,42 @@
             return `${days}g ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
         }
 
-        function checkIfAlreadySent() {
+        function checkIfWlAlreadySent() {
+            if (!userData) return;
+
+            const form = document.getElementById('whitelistForm');
+            const alreadySentMsg = document.getElementById('wlAlreadySentMessage');
+            const timerEl = document.getElementById('wlCooldownTimer');
+
+            if (wlCooldownIntervalId) {
+                clearInterval(wlCooldownIntervalId);
+                wlCooldownIntervalId = null;
+            }
+
+            const remaining = getWlRemainingMs();
+
+            if (remaining > 0) {
+                form.style.display = 'none';
+                alreadySentMsg.style.display = 'block';
+                timerEl.innerText = formatCooldown(remaining);
+
+                wlCooldownIntervalId = setInterval(() => {
+                    const stillRemaining = getWlRemainingMs();
+                    if (stillRemaining <= 0) {
+                        clearInterval(wlCooldownIntervalId);
+                        wlCooldownIntervalId = null;
+                        checkIfWlAlreadySent();
+                        return;
+                    }
+                    timerEl.innerText = formatCooldown(stillRemaining);
+                }, 1000);
+            } else {
+                form.style.display = 'block';
+                alreadySentMsg.style.display = 'none';
+            }
+        }
+
+        function checkIfBandoAlreadySent() {
             if (!userData) return;
 
             const form = document.getElementById('applicationForm');
@@ -896,9 +956,9 @@
             const timerEl = document.getElementById('cooldownTimer');
             const faction = currentSelectedFaction;
 
-            if (cooldownIntervalId) {
-                clearInterval(cooldownIntervalId);
-                cooldownIntervalId = null;
+            if (bandoCooldownIntervalId) {
+                clearInterval(bandoCooldownIntervalId);
+                bandoCooldownIntervalId = null;
             }
 
             const remaining = getBandoRemainingMs(faction);
@@ -908,18 +968,18 @@
                 alreadySentMsg.style.display = 'block';
                 timerEl.innerText = formatCooldown(remaining);
 
-                cooldownIntervalId = setInterval(() => {
+                bandoCooldownIntervalId = setInterval(() => {
                     if (faction !== currentSelectedFaction) {
-                        clearInterval(cooldownIntervalId);
-                        cooldownIntervalId = null;
+                        clearInterval(bandoCooldownIntervalId);
+                        bandoCooldownIntervalId = null;
                         return;
                     }
 
                     const stillRemaining = getBandoRemainingMs(faction);
                     if (stillRemaining <= 0) {
-                        clearInterval(cooldownIntervalId);
-                        cooldownIntervalId = null;
-                        checkIfAlreadySent();
+                        clearInterval(bandoCooldownIntervalId);
+                        bandoCooldownIntervalId = null;
+                        checkIfBandoAlreadySent();
                         return;
                     }
                     timerEl.innerText = formatCooldown(stillRemaining);
@@ -1119,7 +1179,8 @@
                         document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
                         document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
 
-                        checkIfAlreadySent();
+                        checkIfWlAlreadySent();
+                        checkIfBandoAlreadySent();
                     }
                 })
                 .catch(() => {
@@ -1132,6 +1193,12 @@
             event.preventDefault();
             if (!userData) {
                 showStatus('wlStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
+                return;
+            }
+
+            if (getWlRemainingMs() > 0) {
+                showStatus('wlStatusMessage', 'Hai già inviato una richiesta di whitelist nelle ultime 48 ore.', 'error');
+                checkIfWlAlreadySent();
                 return;
             }
 
@@ -1176,9 +1243,11 @@
             })
             .then(response => {
                 if (response.ok) {
+                    localStorage.setItem(getWlStorageKey(), Date.now().toString());
                     showStatus('wlStatusMessage', 'Test Whitelist inviato con successo! Attendi la valutazione dello Staff.', 'success');
                     document.getElementById('whitelistForm').reset();
                     document.getElementById('charCounter').innerText = 'Caratteri inseriti: 0 / 150 min';
+                    checkIfWlAlreadySent();
                 } else {
                     showStatus('wlStatusMessage', 'Errore durante l\'invio della whitelist.', 'error');
                 }
@@ -1202,7 +1271,7 @@
             const storageKey = getBandoStorageKey(currentSelectedFaction);
             if (getBandoRemainingMs(currentSelectedFaction) > 0) {
                 showStatus('statusMessage', 'Hai già inviato un bando per questa fazione questa settimana. Attendi il termine del cooldown.', 'error');
-                checkIfAlreadySent();
+                checkIfBandoAlreadySent();
                 return;
             }
 
@@ -1247,7 +1316,7 @@
                     localStorage.setItem(storageKey, Date.now().toString());
                     showStatus('statusMessage', 'Candidatura fazione inoltrata con successo! Potrai reinviarla tra 7 giorni.', 'success');
                     document.getElementById('applicationForm').reset();
-                    checkIfAlreadySent();
+                    checkIfBandoAlreadySent();
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
                 }
