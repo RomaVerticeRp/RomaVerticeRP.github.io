@@ -680,6 +680,7 @@
                             <li class="rules-nav-item"><button onclick="showDonationSection('boost', this)">💜 pack-boost</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('vip', this)">💎 pack-vip</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('unban', this)">🔓 pack-unban</button></li>
+                            <li class="rules-nav-item"><button onclick="showDonationSection('regolamento', this)">📜 Regolamento Donazioni</button></li>
                         </ul>
                     </div>
 
@@ -908,7 +909,6 @@
                 timerEl.innerText = formatCooldown(remaining);
 
                 cooldownIntervalId = setInterval(() => {
-                    // Se nel frattempo la fazione selezionata è cambiata, fermiamo questo timer
                     if (faction !== currentSelectedFaction) {
                         clearInterval(cooldownIntervalId);
                         cooldownIntervalId = null;
@@ -1039,6 +1039,43 @@
                         <ul class="rules-list">
                             <li><strong>Ban normale:</strong> <strong>20€</strong>.</li>
                             <li><strong>Ban per troll + Last Chance:</strong> <strong>35€</strong> (Nota: L'attenzionamento è incluso; questo pack può essere acquistato una sola volta).</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (packType === 'regolamento') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>Regolamento Donazioni – Roma Vertice</h3>
+                        
+                        <h4 style="color: var(--italia-green); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
+                        <ul class="rules-list">
+                            <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Roma Vertice sono effettuate a titolo di donazione libera e spontanea.</li>
+                            <li><strong>Finalità:</strong> I fondi raccolti vengono impiegati esclusivamente per il sostentamento del progetto, inclusi i costi per l'hosting dei server, manutenzione tecnica, licenze, plugin e lo sviluppo di nuove funzionalità.</li>
+                            <li><strong>Nessun Beneficio Economico:</strong> La donazione non costituisce un investimento finanziario né un acquisto di beni/servizi commerciali.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
+                        <ul class="rules-list">
+                            <li><strong>Trattamento Simbolico:</strong> Eventuali ruoli, badge, veicoli o vantaggi in-game/nel server riconosciuti ai donatori sono semplici ringraziamenti simbolici per il supporto fornito.</li>
+                            <li><strong>Fair Play:</strong> I vantaggi concessi non garantiscono né giustificano in alcun modo l'immunità dal regolamento generale del server/community. Tutti i donatori sono tenuti a rispettare le regole alla pari di ogni altro utente.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
+                        <ul class="rules-list">
+                            <li><strong>Irrevocabilità:</strong> Una volta effettuata, la donazione non è in alcun modo rimborsabile.</li>
+                            <li><strong>Provvedimenti Disciplinari:</strong> In caso di ban, kick o sanzioni disciplinari per violazione del regolamento generale, l'utente non avrà diritto al rimborso delle donazioni effettuate né al recupero dei benefici attribuiti.</li>
+                            <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Roma Vertice.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
+                        <ul class="rules-list">
+                            <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Roma Vertice (es. PayPal, Tebex, Ko-fi).</li>
+                            <li>Nessun membro dello staff è autorizzato a richiedere pagamenti o donazioni dirette su account personali al di fuori dei canali stabiliti.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
+                        <ul class="rules-list">
+                            <li>L'invio di una donazione implica l'accettazione automatica e integrale di tutti i punti del presente regolamento.</li>
                         </ul>
                     </div>
                 `;
