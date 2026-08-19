@@ -593,6 +593,12 @@
 
                     <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
                 </form>
+
+                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
+                    <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare il modulo di whitelist una sola volta ogni 48 ore. Potrai reinviarlo tra:</p>
+                    <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
+                </div>
             </div>
         </div>
 
@@ -668,7 +674,7 @@
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>🎁 Tab Donazioni</h1>
+                    <h1>🎁 Donazioni</h1>
                     <p>Roma Vertice - Supporta il Server</p>
                 </div>
 
@@ -680,6 +686,7 @@
                             <li class="rules-nav-item"><button onclick="showDonationSection('boost', this)">💜 pack-boost</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('vip', this)">💎 pack-vip</button></li>
                             <li class="rules-nav-item"><button onclick="showDonationSection('unban', this)">🔓 pack-unban</button></li>
+                            <li class="rules-nav-item"><button onclick="showDonationSection('regolamento', this)">📜 Regolamento Donazioni</button></li>
                         </ul>
                     </div>
 
@@ -692,100 +699,153 @@
             <div class="card">
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Regolamento Ufficiale FiveM RP</h1>
-                    <p>Roma Vertice - Codice di Comportamento Generale & Normative</p>
-                </div>
+                    <h1>Regolamento Ufficiale Roma Vertice RP</h1>
+    <p>Roma Vertice - Codice di Comportamento Generale & Normative</p>
+</div>
 
-                <div class="rules-layout">
-                    <div class="rules-sidebar">
-                        <div class="rules-category-title">Indice Generale</div>
-                        <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('fearpain', this)">2. Fear RP & Pain RP Avanzato</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('metapower', this)">3. Metagaming & Powergaming</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('dmrdm', this)">4. Deathmatch, RDM & VDM</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('nlr', this)">5. New Life Rule (NLR)</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">6. Zone Sicure & Ostaggi</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('fazioni', this)">7. Fazioni Legali & Illegali</button></li>
-                        </ul>
-                    </div>
-
-                    <div class="rules-content-pane">
-                        <div id="rule-generale" class="rule-section active">
-                            <h3>1. Regole Base & Condotta</h3>
-                            <ul class="rules-list">
-                                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Roma Vertice è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
-                                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
-                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
-                                <li><strong>Divieto Assoluto di Bug Abuse e Exploiting:</strong> Sfruttare bug del gioco, glitch di caricamento, animazioni per compiere azioni sleali o duping di oggetti comporterà il ban permanente immediato senza possibilità di appello.</li>
-                                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-fearpain" class="rule-section">
-                            <h3>2. Fear RP & Pain RP Avanzato</h3>
-                            <ul class="rules-list">
-                                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve avere paura della morte. Se ti trovi in inferiorità numerica (es. puntato da due o più persone armate) o sotto la minaccia diretta di armi da fuoco, devi immediatamente sottostare agli ordini ricevuti, evitando comportamenti eroici o spregiudicati.</li>
-                                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno subito (investimenti, cadute da altezze considerevoli, colpi d'arma da fuoco, botte) deve essere interpretato in modo realistico. Bisogna utilizzare le chat testuali (/me) e la voce per simulare dolore, barcollamenti o shock fisico.</li>
-                                <li><strong>Resistenza Ingiustificata:</strong> Ignorare ferite gravi o rifiutarsi di interpretare lo stato di inabilità fisica dopo un'aggressione costituisce violazione del regolamento di gioco.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-metapower" class="rule-section">
-                            <h3>3. Metagaming & Powergaming</h3>
-                            <ul class="rules-list">
-                                <li><strong>Metagaming (MG):</strong> Utilizzare informazioni acquisite al di fuori del gioco (tramite stream di Twitch, chat vocali esterne, sussurri OOC o Discord) per avvantaggiare il proprio personaggio in città è severamente proibito.</li>
-                                <li><strong>Powergaming (PG):</strong> Compiere azioni fisicamente impossibili nella realtà (es. saltare da un palazzo con una supercar e ripartire illesi), forzare azioni su altri giocatori senza dare loro il tempo di reagire tramite sistemi di gioco o chat, o abusare delle meccaniche per scopi egoistici.</li>
-                                <li>Ogni interazione deve mantenere un alto standard di verosimiglianza e rispetto della fisica realistica.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-dmrdm" class="rule-section">
-                            <h3>4. Deathmatch, RDM & VDM</h3>
-                            <ul class="rules-list">
-                                <li><strong>Random Deathmatch (RDM):</strong> È severamente vietato ferire o uccidere altri giocatori senza un valido motivo di roleplay precedente, sensato e strutturato attraverso un'interazione verbale o un conflitto narrativo chiaro.</li>
-                                <li><strong>Deathmatch non motivato:</strong> Sparare o aggredire senza una ragione valida legata alla storia del personaggio è punito severamente dallo Staff.</li>
-                                <li><strong>Vehicle Deathmatch (VDM):</strong> Utilizzare veicoli come armi contundenti per investire deliberatamente pedoni o distruggere auto altrui senza motivazioni di gioco valide è vietato.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-nlr" class="rule-section">
-                            <h3>5. New Life Rule (NLR)</h3>
-                            <ul class="rules-list">
-                                <li><strong>Regola della Nuova Vita:</strong> Quando il tuo personaggio viene ucciso e successivamente rianimato dai medici (o respawna in ospedale), perde totalmente la memoria degli eventi critici che hanno causato il suo decesso e l'identità dei soggetti coinvolti in quella specifica azione.</li>
-                                <li>È fatto divieto assoluto di ritornare sul luogo della propria morte prima che siano trascorsi almeno 15 minuti o prima che l'azione in corso sia completamente conclusa.</li>
-                                <li>La violazione della NLR compromette la continuità narrativa della simulazione cittadina.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-zone" class="rule-section">
-                            <h3>6. Zone Sicure & Ostaggi</h3>
-                            <ul class="rules-list">
-                                <li><strong>Safezone (Zone Sicure):</strong> Luoghi ad alta affluenza (es. Ospedale, Commissariato, Comune) dove vige il divieto assoluto di compiere azioni ostili, crimini, rapine o risse.</li>
-                                <li>È vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata fuori (Safezone Camping / Fleeing).</li>
-                                <li><strong>Gestione Ostaggi:</strong> Le rapine con ostaggi richiedono un numero minimo di forze dell'ordine collegate e un negoziato leale e ragionato tra criminali e polizia.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-fazioni" class="rule-section">
-                            <h3>7. Fazioni Legali & Illegali</h3>
-                            <ul class="rules-list">
-                                <li><strong>Fazioni Istituzionali (Polizia, Carabinieri, Finanza, Croce Rossa):</strong> Gli operatori dello Stato devono mantenere un comportamento professionale, attenersi rigorosamente ai codici operativi interni e rispettare la gerarchia stabilita.</li>
-                                <li><strong>Fazioni Criminali:</strong> I gruppi malavitosi autorizzati devono agire con coerenza criminale, evitando comportamenti caotici o privi di logica narrativa (es. guerre continue senza motivazioni valide).</li>
-                                <li>Ogni fazione deve garantire un roleplay di altissima qualità per tutti i membri della community di Roma Vertice.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+<div class="rules-layout">
+    <div class="rules-sidebar">
+        <div class="rules-category-title">Indice Generale</div>
+        <ul class="rules-nav-list">
+            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('regolamentogenerale', this)">2. Regolamento Generale</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('assistenze', this)">3. Assistenze</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('sanzioni', this)">4. Sanzioni</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('azioni', this)">5. Azioni</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('freeroam', this)">6. Azioni Freeroam</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('illegali', this)">7. Fazioni Illegali</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('assalti', this)">8. Assalti alla Centrale</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('legali', this)">9. Fazioni Legali</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">10. Safe Zone & Non Safe</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('lootfdo', this)">11. Loot alle FDO</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('rapine', this)">12. Rapine & Attività</button></li>
+            <li class="rules-nav-item"><button onclick="showRuleSection('discord', this)">13. Regolamento Discord</button></li>
+        </ul>
     </div>
 
-    <footer>
-        <p>&copy; Roma Vertice RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: var(--italia-green); font-weight: 600;">Onore, Giustizia e Servizio</p>
-    </footer>
+    <div class="rules-content-pane">
+        <div id="rule-generale" class="rule-section active">
+            <h3>1. Regole Base & Condotta</h3>
+            <ul class="rules-list">
+                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Roma Vertice è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
+                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
+                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
+                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
+            </ul>
+        </div>
+
+        <div id="rule-regolamentogenerale" class="rule-section">
+            <h3>2. Regolamento Generale</h3>
+            <ul class="rules-list">
+                <li><strong>Divieto di Bug Abuse e Exploiting:</strong> Sfruttare bug, glitch di caricamento, animazioni scorrette o duping di oggetti comporta il ban permanente immediato.</li>
+                <li><strong>New Life Rule (NLR):</strong> Se il tuo personaggio viene ucciso e rianimato o respawna, perde totalmente la memoria degli eventi critici che hanno causato il decesso e dell'identità dei soggetti coinvolti. È vietato tornare sul luogo della morte prima di 15 minuti.</li>
+                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve temere la morte. Se ti trovi in inferiorità numerica o sotto la minaccia diretta di armi da fuoco, devi sottostare agli ordini dei rapitori/aggressori senza fare eroismi.</li>
+                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno fisico subito (incidenti, cadute, colpi) deve essere interpretato realisticamente tramite chat testuali (/me) e voce.</li>
+            </ul>
+        </div>
+
+        <div id="rule-assistenze" class="rule-section">
+            <h3>3. Assistenze</h3>
+            <ul class="rules-list">
+                <li><strong>Richiesta di Aiuto (Ticket):</strong> Per qualsiasi problema tecnico, bug riscontrato in città o segnalazione verso altri giocatori, è obbligatorio aprire un ticket sul server Discord ufficiale.</li>
+                <li><strong>Comportamento nei Ticket:</strong> È vietato spamnare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
+                <li><strong>Gestione dei Report in Game:</strong> Durante un'azione di gioco in corso, è vietato fermarsi per chiamare lo staff o aprire report. L'azione va portata a termine; eventuali irregolarità si discutono a fine azione aprendo un ticket con clip.</li>
+            </ul>
+        </div>
+
+        <div id="rule-sanzioni" class="rule-section">
+            <h3>4. Sanzioni</h3>
+            <ul class="rules-list">
+                <li><strong>Scala Disciplinare:</strong> Le sanzioni dello staff prevedono avvertimenti verbali (Warn), kick, periodi di ban temporaneo (da 1 a 30 giorni) o ban permanente nei casi più gravi.</li>
+                <li><strong>Last Chance:</strong> Nei casi di recidiva o comportamenti tossici gravi, lo staff può applicare lo status di "Ultima Chance", azzerando i progressi del personaggio o escludendo definitivamente l'utente dalla community.</li>
+                <li><strong>Divieto di Evadere le Sanzioni:</strong> Creare account secondari (multiaccount) per aggirare un ban attivo comporta l'estensione del ban a tutti gli account collegati.</li>
+            </ul>
+        </div>
+
+        <div id="rule-azioni" class="rule-section">
+            <h3>5. Azioni</h3>
+            <ul class="rules-list">
+                <li><strong>Deathmatch (RDM/VDM):</strong> È severamente vietato uccidere o ferire altri giocatori (o investirli deliberatamente con veicoli) senza un valido motivo di roleplay precedente e un'interazione verbale o narrativa chiara.</li>
+                <li><strong>Iniziative Ostili:</strong> Qualsiasi azione criminale (rapine, sequestri, agguati) deve avere una motivazione IC sensata e rispettare i limiti numerici stabiliti per i partecipanti.</li>
+                <li><strong>Prosecuzione delle Azioni (Combat Log):</strong> È vietato disconnettersi durante un'azione di gioco attiva o in corso di rapina/arresto.</li>
+            </ul>
+        </div>
+
+        <div id="rule-freeroam" class="rule-section">
+            <h3>6. Azioni Freeroam</h3>
+            <ul class="rules-list">
+                <li><strong>Definizione e Limiti:</strong> Le azioni freeroam o gli scontri estemporanei fuori dalle dinamiche di rapina/controllo devono comunque sottostare alle regole base dell'RP, evitando sparatorie casuali senza costrutto narrativo.</li>
+                <li><strong>Rispetto del Contesto Urbano:</strong> Anche nelle zone aperte o periferiche, è vietato trasformare la città in un deathmatch continuo privo di interazione civile o criminale sensata.</li>
+            </ul>
+        </div>
+
+        <div id="rule-illegali" class="rule-section">
+            <h3>7. Fazioni Illegali</h3>
+            <ul class="rules-list">
+                <li><strong>Coerenza Criminale:</strong> I gruppi malavitosi devono agire con logica criminale coerente, evitando faide continue o immotivate che rovinano l'esperienza di gioco degli altri utenti.</li>
+                <li><strong>Gestione del Territorio:</strong> Le attività illecite, lo spaccio e il controllo delle zone devono essere concordati e gestiti secondo le direttive specifiche per le organizzazioni criminali.</li>
+                <li><strong>Rispetto delle Regole di Ingaggio:</strong> Nelle guerre tra fazioni illegali vanno rispettati i limiti di orario, le tregue e le modalità di scontro stabilite dallo staff.</li>
+            </ul>
+        </div>
+
+        <div id="rule-assalti" class="rule-section">
+            <h3>8. Assalti alla Centrale</h3>
+            <ul class="rules-list">
+                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff e la verifica della disponibilità delle FDO.</li>
+                <li><strong>Orari e Requisiti:</strong> L'assalto deve rispettare i numeri minimi di partecipanti sia per i criminali che per le forze dell'ordine collegate in servizio.</li>
+                <li><strong>Sanzioni:</strong> Effettuare un assalto alla centrale senza previa autorizzazione tramite ticket dello staff comporterà sanzioni severissime per tutti i partecipanti.</li>
+            </ul>
+        </div>
+
+        <div id="rule-legali" class="rule-section">
+            <h3>9. Fazioni Legali</h3>
+            <ul class="rules-list">
+                <li><strong>Professionalità e Deontologia:</strong> Gli operatori delle istituzioni (Polizia, Carabinieri, Guardia di Finanza, Croce Rossa) devono mantenere un contegno impeccabile, rispettare la gerarchia e attenersi ai manuali operativi interni.</li>
+                <li><strong>Uso della Forza:</strong> L'uso delle armi o della coercizione da parte delle FDO deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere (Powergaming istituzionale).</li>
+                <li><strong>Corruzione:</strong> Eventuali dinamiche di corruzione interna alle forze dell'ordine devono essere preventivamente autorizzate dallo staff tramite richiesta dedicata.</li>
+            </ul>
+        </div>
+
+        <div id="rule-zone" class="rule-section">
+            <h3>10. Safe Zone & Non Safe</h3>
+            <ul class="rules-list">
+                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Comune, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina, aggressione o estrazione di armi.</li>
+                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno (Safezone Camping / Fleeing).</li>
+                <li><strong>Zone Non Safe:</strong> Il resto della mappa cittadina dove le azioni criminali sono permesse nel rispetto delle normative generali.</li>
+            </ul>
+        </div>
+
+        <div id="rule-lootfdo" class="rule-section">
+            <h3>11. Loot alle FDO</h3>
+            <ul class="rules-list">
+                <li><strong>Limitazioni sul Bottino:</strong> È possibile effettuare il loot (depredare gli oggetti) ai membri delle Forze dell'Ordine solo ed esclusivamente durante azioni mirate e autorizzate dal regolamento.</li>
+                <li><strong>Limite Colpi:</strong> È consentito lootare un **massimo di 50 colpi ad agente**.</li>
+                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza istituzionali uniche o materiali non consentiti dal regolamento specifico delle fazioni.</li>
+            </ul>
+        </div>
+
+        <div id="rule-rapine" class="rule-section">
+            <h3>12. Rapine & Attività</h3>
+            <ul class="rules-list">
+                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città (negozi, locali, ristoranti).</li>
+                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina alle attività è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/dalla transazione sia **inferiore a 20.000 euro**.</li>
+                <li><strong>Nessun Ostaggio:</strong> Le rapine alle attività **non devono avere alcun ostaggio**.</li>
+            </ul>
+        </div>
+
+        <div id="rule-discord" class="rule-section">
+            <h3>13. Regolamento Discord</h3>
+            <ul class="rules-list">
+                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW in qualsiasi canale del Discord di Roma Vertice.</li>
+                <li><strong>Nickname e Profilo:</strong> Il nome utente e l'immagine del profilo su Discord devono essere consoni e privi di riferimenti offensivi o volgari.</li>
+                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare (pingare) i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale e motivata emergenza.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+
 
     <script>
         const CLIENT_ID = '1536336646507601920'; 
@@ -802,8 +862,11 @@
 
         let userData = null;
         let currentSelectedFaction = 'Polizia di Stato';
-        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana
-        let cooldownIntervalId = null;
+        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana per le fazioni
+        const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; // 48 ore per la whitelist
+        
+        let bandoCooldownIntervalId = null;
+        let wlCooldownIntervalId = null;
 
         document.addEventListener("DOMContentLoaded", function() {
             const navLink = document.getElementById('discordLinkNav');
@@ -857,7 +920,7 @@
             renderJobQuestions(currentSelectedFaction);
             
             if (userData) {
-                checkIfAlreadySent();
+                checkIfBandoAlreadySent();
             }
         }
 
@@ -877,6 +940,22 @@
             return remaining > 0 ? remaining : 0;
         }
 
+        function getWlStorageKey() {
+            return `wl_inviata_${userData.id}`;
+        }
+
+        function getWlRemainingMs() {
+            const storageKey = getWlStorageKey();
+            const lastSentRaw = localStorage.getItem(storageKey);
+            if (!lastSentRaw) return 0;
+
+            const lastSent = parseInt(lastSentRaw, 10);
+            if (isNaN(lastSent)) return 0;
+
+            const remaining = WL_COOLDOWN_MS - (Date.now() - lastSent);
+            return remaining > 0 ? remaining : 0;
+        }
+
         function formatCooldown(ms) {
             const totalSeconds = Math.max(0, Math.floor(ms / 1000));
             const days = Math.floor(totalSeconds / 86400);
@@ -887,7 +966,42 @@
             return `${days}g ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
         }
 
-        function checkIfAlreadySent() {
+        function checkIfWlAlreadySent() {
+            if (!userData) return;
+
+            const form = document.getElementById('whitelistForm');
+            const alreadySentMsg = document.getElementById('wlAlreadySentMessage');
+            const timerEl = document.getElementById('wlCooldownTimer');
+
+            if (wlCooldownIntervalId) {
+                clearInterval(wlCooldownIntervalId);
+                wlCooldownIntervalId = null;
+            }
+
+            const remaining = getWlRemainingMs();
+
+            if (remaining > 0) {
+                form.style.display = 'none';
+                alreadySentMsg.style.display = 'block';
+                timerEl.innerText = formatCooldown(remaining);
+
+                wlCooldownIntervalId = setInterval(() => {
+                    const stillRemaining = getWlRemainingMs();
+                    if (stillRemaining <= 0) {
+                        clearInterval(wlCooldownIntervalId);
+                        wlCooldownIntervalId = null;
+                        checkIfWlAlreadySent();
+                        return;
+                    }
+                    timerEl.innerText = formatCooldown(stillRemaining);
+                }, 1000);
+            } else {
+                form.style.display = 'block';
+                alreadySentMsg.style.display = 'none';
+            }
+        }
+
+        function checkIfBandoAlreadySent() {
             if (!userData) return;
 
             const form = document.getElementById('applicationForm');
@@ -895,9 +1009,9 @@
             const timerEl = document.getElementById('cooldownTimer');
             const faction = currentSelectedFaction;
 
-            if (cooldownIntervalId) {
-                clearInterval(cooldownIntervalId);
-                cooldownIntervalId = null;
+            if (bandoCooldownIntervalId) {
+                clearInterval(bandoCooldownIntervalId);
+                bandoCooldownIntervalId = null;
             }
 
             const remaining = getBandoRemainingMs(faction);
@@ -907,19 +1021,18 @@
                 alreadySentMsg.style.display = 'block';
                 timerEl.innerText = formatCooldown(remaining);
 
-                cooldownIntervalId = setInterval(() => {
-                    // Se nel frattempo la fazione selezionata è cambiata, fermiamo questo timer
+                bandoCooldownIntervalId = setInterval(() => {
                     if (faction !== currentSelectedFaction) {
-                        clearInterval(cooldownIntervalId);
-                        cooldownIntervalId = null;
+                        clearInterval(bandoCooldownIntervalId);
+                        bandoCooldownIntervalId = null;
                         return;
                     }
 
                     const stillRemaining = getBandoRemainingMs(faction);
                     if (stillRemaining <= 0) {
-                        clearInterval(cooldownIntervalId);
-                        cooldownIntervalId = null;
-                        checkIfAlreadySent();
+                        clearInterval(bandoCooldownIntervalId);
+                        bandoCooldownIntervalId = null;
+                        checkIfBandoAlreadySent();
                         return;
                     }
                     timerEl.innerText = formatCooldown(stillRemaining);
@@ -1042,6 +1155,43 @@
                         </ul>
                     </div>
                 `;
+            } else if (packType === 'regolamento') {
+                contentHTML = `
+                    <div class="rule-section active">
+                        <h3>Regolamento Donazioni – Roma Vertice</h3>
+                        
+                        <h4 style="color: var(--italia-green); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
+                        <ul class="rules-list">
+                            <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Roma Vertice sono effettuate a titolo di donazione libera e spontanea.</li>
+                            <li><strong>Finalità:</strong> I fondi raccolti vengono impiegati esclusivamente per il sostentamento del progetto, inclusi i costi per l'hosting dei server, manutenzione tecnica, licenze, plugin e lo sviluppo di nuove funzionalità.</li>
+                            <li><strong>Nessun Beneficio Economico:</strong> La donazione non costituisce un investimento finanziario né un acquisto di beni/servizi commerciali.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
+                        <ul class="rules-list">
+                            <li><strong>Trattamento Simbolico:</strong> Eventuali ruoli, badge, veicoli o vantaggi in-game/nel server riconosciuti ai donatori sono semplici ringraziamenti simbolici per il supporto fornito.</li>
+                            <li><strong>Fair Play:</strong> I vantaggi concessi non garantiscono né giustificano in alcun modo l'immunità dal regolamento generale del server/community. Tutti i donatori sono tenuti a rispettare le regole alla pari di ogni altro utente.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
+                        <ul class="rules-list">
+                            <li><strong>Irrevocabilità:</strong> Una volta effettuata, la donazione non è in alcun modo rimborsabile.</li>
+                            <li><strong>Provvedimenti Disciplinari:</strong> In caso di ban, kick o sanzioni disciplinari per violazione del regolamento generale, l'utente non avrà diritto al rimborso delle donazioni effettuate né al recupero dei benefici attribuiti.</li>
+                            <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Roma Vertice.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
+                        <ul class="rules-list">
+                            <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Roma Vertice (es. PayPal, Tebex, Ko-fi).</li>
+                            <li>Nessun membro dello staff è autorizzato a richiedere pagamenti o donazioni dirette su account personali al di fuori dei canali stabiliti.</li>
+                        </ul>
+
+                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
+                        <ul class="rules-list">
+                            <li>L'invio di una donazione implica l'accettazione automatica e integrale di tutti i punti del presente regolamento.</li>
+                        </ul>
+                    </div>
+                `;
             }
 
             pane.innerHTML = contentHTML;
@@ -1082,7 +1232,8 @@
                         document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
                         document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
 
-                        checkIfAlreadySent();
+                        checkIfWlAlreadySent();
+                        checkIfBandoAlreadySent();
                     }
                 })
                 .catch(() => {
@@ -1095,6 +1246,12 @@
             event.preventDefault();
             if (!userData) {
                 showStatus('wlStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
+                return;
+            }
+
+            if (getWlRemainingMs() > 0) {
+                showStatus('wlStatusMessage', 'Hai già inviato una richiesta di whitelist nelle ultime 48 ore.', 'error');
+                checkIfWlAlreadySent();
                 return;
             }
 
@@ -1139,9 +1296,11 @@
             })
             .then(response => {
                 if (response.ok) {
+                    localStorage.setItem(getWlStorageKey(), Date.now().toString());
                     showStatus('wlStatusMessage', 'Test Whitelist inviato con successo! Attendi la valutazione dello Staff.', 'success');
                     document.getElementById('whitelistForm').reset();
                     document.getElementById('charCounter').innerText = 'Caratteri inseriti: 0 / 150 min';
+                    checkIfWlAlreadySent();
                 } else {
                     showStatus('wlStatusMessage', 'Errore durante l\'invio della whitelist.', 'error');
                 }
@@ -1165,7 +1324,7 @@
             const storageKey = getBandoStorageKey(currentSelectedFaction);
             if (getBandoRemainingMs(currentSelectedFaction) > 0) {
                 showStatus('statusMessage', 'Hai già inviato un bando per questa fazione questa settimana. Attendi il termine del cooldown.', 'error');
-                checkIfAlreadySent();
+                checkIfBandoAlreadySent();
                 return;
             }
 
@@ -1210,7 +1369,7 @@
                     localStorage.setItem(storageKey, Date.now().toString());
                     showStatus('statusMessage', 'Candidatura fazione inoltrata con successo! Potrai reinviarla tra 7 giorni.', 'success');
                     document.getElementById('applicationForm').reset();
-                    checkIfAlreadySent();
+                    checkIfBandoAlreadySent();
                 } else {
                     showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
                 }
