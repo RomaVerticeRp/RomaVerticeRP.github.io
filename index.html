@@ -33,7 +33,7 @@
             padding: 0;
             font-family: var(--font-body);
         }
-
+        
         body {
             background: linear-gradient(180deg, rgba(7, 13, 10, 0.88) 0%, rgba(7, 13, 10, 0.98) 100%), 
                         url('roma.jpg') no-repeat center center fixed;
@@ -113,6 +113,20 @@
         .nav-discord-btn:hover {
             background: var(--discord-blue-hover) !important;
             box-shadow: 0 0 15px rgba(88, 101, 242, 0.7) !important;
+        }
+        /* --- CLASSE PER LA FIRMA --- */
+        .footer-credit {
+            position: fixed !important;
+            bottom: 15px !important;
+            right: 20px !important;
+            color: #555555 !important;
+            font-size: 11px !important;
+            font-family: Arial, sans-serif !important;
+            z-index: 999999 !important;
+            pointer-events: none !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
         }
 
         .discord-icon {
@@ -1393,20 +1407,9 @@
         }
     </script>
 
-                <!-- Firma fissa in basso a destra -->
+   <!-- Contenuto delle tue pagine... -->
+    </div> <!-- Chiusura dell'ultimo container -->
+
     <div class="footer-credit">Made by Ercirus</div>
-    <style>
-        .footer-credit {
-          position: fixed !important;
-          bottom: 10px !important;
-          right: 20px !important;
-          color: #888888 !important;
-          font-size: 12px !important;
-          font-family: sans-serif !important;
-          z-index: 2147483647 !important;
-          pointer-events: none !important;
-        }
-    </style>
-                
 </body>
 </html>
