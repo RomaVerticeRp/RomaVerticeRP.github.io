@@ -11,15 +11,18 @@
     
     <style>
         :root {
-            --bg-dark: #120907;
-            --bg-card: rgba(26, 14, 11, 0.95);
-            --bg-card-border: rgba(226, 135, 67, 0.5);
-            --sunset-orange: #e28743;
-            --sunset-orange-hover: #f09a55;
-            --sunset-red: #d9534f;
+            /* Palette estratta dal Logo 90' */
+            --teal-dark: #0f2629;
+            --teal-card: rgba(22, 50, 54, 0.95);
+            --teal-border: rgba(230, 103, 51, 0.5);
+            --sunset-orange: #e66733;
+            --sunset-orange-hover: #ff7b45;
+            --warm-yellow: #f1ae59;
+            --cream-white: #f3e3c3;
+            --rust-red: #be4a27;
             --pure-white: #ffffff;
             --text-light: #f8f9fa;
-            --text-muted: #adb5bd;
+            --text-muted: #bdc5cd;
             --discord-blue: #5865F2;
             --discord-blue-hover: #4752C4;
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.75);
@@ -35,7 +38,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(18, 9, 7, 0.88) 0%, rgba(18, 9, 7, 0.98) 100%), 
+            background: linear-gradient(180deg, rgba(15, 38, 41, 0.90) 0%, rgba(10, 22, 24, 0.98) 100%), 
                         url('roma.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
@@ -46,9 +49,9 @@
         }
 
         .navbar {
-            background: rgba(18, 9, 7, 0.98);
-            border-bottom: 3px solid var(--sunset-red);
-            border-top: 3px solid var(--sunset-orange);
+            background: rgba(15, 38, 41, 0.98);
+            border-bottom: 3px solid var(--sunset-orange);
+            border-top: 3px solid var(--warm-yellow);
             padding: 1rem 2.5rem;
             display: flex;
             justify-content: space-between;
@@ -67,14 +70,14 @@
             font-size: 1.25rem;
             font-weight: 800;
             letter-spacing: 1px;
-            color: var(--pure-white);
+            color: var(--cream-white);
             text-transform: uppercase;
         }
 
         .nav-logo {
             height: 45px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(226, 135, 67, 0.7));
+            filter: drop-shadow(0 0 8px rgba(241, 174, 89, 0.6));
         }
 
         .nav-links {
@@ -98,7 +101,7 @@
         .nav-links a:hover, .nav-links a.active {
             color: var(--pure-white);
             background: var(--sunset-orange);
-            box-shadow: 0 0 15px rgba(226, 135, 67, 0.6);
+            box-shadow: 0 0 15px rgba(230, 103, 51, 0.6);
         }
 
         .nav-discord-btn {
@@ -162,8 +165,8 @@
         }
 
         .card {
-            background: var(--bg-card);
-            border: 2px solid var(--bg-card-border);
+            background: var(--teal-card);
+            border: 2px solid var(--sunset-orange);
             border-radius: 16px;
             padding: 2.5rem;
             box-shadow: var(--glass-shadow);
@@ -179,9 +182,9 @@
         }
 
         .header-logo {
-            max-height: 105px;
+            max-height: 115px;
             margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(226, 135, 67, 0.6));
+            filter: drop-shadow(0 0 12px rgba(241, 174, 89, 0.5));
         }
 
         h1, h2, h3 {
@@ -191,14 +194,14 @@
         }
 
         .header-container h1 {
-            color: var(--pure-white);
+            color: var(--cream-white);
             font-size: 2.2rem;
             margin-bottom: 0.3rem;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
         }
 
         .header-container p {
-            color: var(--sunset-orange);
+            color: var(--warm-yellow);
             font-weight: 700;
             letter-spacing: 2px;
             font-size: 0.95rem;
@@ -213,11 +216,11 @@
         }
 
         .faction-btn {
-            background: rgba(18, 9, 7, 0.85);
-            border: 1px solid var(--bg-card-border);
+            background: rgba(15, 38, 41, 0.85);
+            border: 1px solid var(--warm-yellow);
             border-radius: 10px;
             padding: 1.2rem;
-            color: var(--pure-white);
+            color: var(--cream-white);
             font-weight: 700;
             cursor: pointer;
             text-align: center;
@@ -229,8 +232,9 @@
 
         .faction-btn:hover, .faction-btn.active-faction {
             background: var(--sunset-orange);
-            border-color: var(--pure-white);
-            box-shadow: 0 0 15px rgba(226, 135, 67, 0.7);
+            border-color: var(--cream-white);
+            color: var(--pure-white);
+            box-shadow: 0 0 15px rgba(230, 103, 51, 0.7);
             transform: translateY(-2px);
         }
 
@@ -242,14 +246,14 @@
             padding: 12px 18px;
             border-radius: 10px;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(241, 174, 89, 0.3);
         }
 
         .user-avatar {
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid var(--sunset-orange);
+            border: 2px solid var(--warm-yellow);
         }
 
         .form-group {
@@ -260,7 +264,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--text-light);
+            color: var(--cream-white);
             font-size: 0.95rem;
         }
 
@@ -270,8 +274,8 @@
         textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            background: rgba(18, 9, 7, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 38, 41, 0.9);
+            border: 1px solid rgba(241, 174, 89, 0.4);
             border-radius: 8px;
             color: var(--pure-white);
             font-size: 1rem;
@@ -281,8 +285,8 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--sunset-orange);
-            box-shadow: 0 0 10px rgba(226, 135, 67, 0.5);
-            background: rgba(18, 9, 7, 1);
+            box-shadow: 0 0 10px rgba(230, 103, 51, 0.6);
+            background: rgba(15, 38, 41, 1);
         }
 
         textarea {
@@ -302,7 +306,7 @@
             padding: 1rem;
             background: var(--sunset-orange);
             color: var(--pure-white);
-            border: 2px solid var(--pure-white);
+            border: 2px solid var(--cream-white);
             border-radius: 8px;
             font-size: 1.05rem;
             font-weight: 700;
@@ -310,7 +314,7 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(226, 135, 67, 0.6);
+            box-shadow: 0 4px 15px rgba(230, 103, 51, 0.5);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -322,7 +326,7 @@
         .btn:hover {
             background: var(--sunset-orange-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(226, 135, 67, 0.9);
+            box-shadow: 0 6px 20px rgba(230, 103, 51, 0.8);
         }
 
         .btn-discord {
@@ -345,8 +349,8 @@
         }
 
         .rules-sidebar {
-            background: rgba(18, 9, 7, 0.85);
-            border: 2px solid var(--bg-card-border);
+            background: rgba(15, 38, 41, 0.85);
+            border: 2px solid var(--warm-yellow);
             border-radius: 12px;
             padding: 1.2rem;
         }
@@ -354,12 +358,12 @@
         .rules-category-title {
             font-family: var(--font-title);
             font-size: 0.85rem;
-            color: var(--sunset-orange);
+            color: var(--warm-yellow);
             letter-spacing: 1.5px;
             margin-bottom: 1rem;
             text-transform: uppercase;
             font-weight: 800;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(241, 174, 89, 0.3);
             padding-bottom: 6px;
         }
 
@@ -386,15 +390,15 @@
 
         .rules-nav-item button:hover, 
         .rules-nav-item button.active {
-            background: rgba(226, 135, 67, 0.25);
-            color: var(--pure-white);
+            background: rgba(230, 103, 51, 0.25);
+            color: var(--cream-white);
             border-left: 4px solid var(--sunset-orange);
             padding-left: calc(0.9rem - 4px);
         }
 
         .rules-content-pane {
-            background: rgba(18, 9, 7, 0.65);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 38, 41, 0.65);
+            border: 2px solid rgba(241, 174, 89, 0.2);
             border-radius: 12px;
             padding: 2rem;
             min-height: 520px;
@@ -410,10 +414,10 @@
         }
 
         .rule-section h3 {
-            color: var(--sunset-orange);
+            color: var(--warm-yellow);
             margin-bottom: 1.2rem;
             font-size: 1.35rem;
-            border-bottom: 2px solid rgba(226, 135, 67, 0.5);
+            border-bottom: 2px solid rgba(230, 103, 51, 0.5);
             padding-bottom: 0.5rem;
         }
 
@@ -449,14 +453,14 @@
         }
 
         .status-success {
-            background: rgba(226, 135, 67, 0.2);
-            border: 1px solid var(--sunset-orange);
+            background: rgba(241, 174, 89, 0.2);
+            border: 1px solid var(--warm-yellow);
             color: #2ecc71;
         }
 
         .status-error {
-            background: rgba(217, 83, 79, 0.2);
-            border: 1px solid var(--sunset-red);
+            background: rgba(190, 74, 39, 0.2);
+            border: 1px solid var(--rust-red);
             color: #ff6b6b;
         }
 
@@ -465,9 +469,9 @@
             padding: 1.5rem;
             color: var(--text-muted);
             font-size: 0.85rem;
-            background: rgba(18, 9, 7, 0.98);
+            background: rgba(15, 38, 41, 0.98);
             border-top: 3px solid var(--sunset-orange);
-            border-bottom: 3px solid var(--sunset-red);
+            border-bottom: 3px solid var(--warm-yellow);
             margin-top: auto;
         }
 
@@ -522,10 +526,10 @@
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
                     <h1>Country Road 90' Roleplay</h1>
-                    <p>Il Server FiveM d'Elite - Amore, Crimine e Atmosfera Anni '90</p>
+                    <p>Atmosfera Anni '90 • West Coast Style • FiveM RP</p>
                 </div>
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
-                    Benvenuto nel portale ufficiale di <strong>Country Road 90'</strong>. Per accedere alla città, compila la richiesta di <strong>Whitelist</strong> o candidati alle fazioni istituzionali autorizzate.
+                    Benvenuto nel portale ufficiale di <strong>Country Road 90'</strong>. Entra in città richiedendo la <strong>Whitelist</strong> oppure invia la tua candidatura per una delle <strong>Fazioni</strong> ufficiali.
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
@@ -545,7 +549,7 @@
                 <div id="wlStatusMessage" class="status-message"></div>
 
                 <div class="discordAuthSection" id="wlDiscordSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
+                    <p style="text-align: center; margin-bottom: 1.5rem; color: #bdc5cd;">
                         Per sottoporre il test di ammissione alla whitelist, autenticati con il tuo account Discord.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('whitelist')">
@@ -567,7 +571,7 @@
 
                     <div class="form-group">
                         <label for="wlNomeIC">Nome e Cognome del Personaggio (IC):</label>
-                        <input type="text" id="wlNomeIC" required placeholder="Es. Tony Vercetti">
+                        <input type="text" id="wlNomeIC" required placeholder="Es. Tommy Vercetti">
                     </div>
 
                     <div class="form-group">
@@ -594,10 +598,10 @@
                     <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
                 </form>
 
-                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(226, 135, 67, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
-                    <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
+                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(230, 103, 51, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
+                    <h3 style="color: var(--cream-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
                     <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare il modulo di whitelist una sola volta ogni 48 ore. Potrai reinviarlo tra:</p>
-                    <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
+                    <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--cream-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
                 </div>
             </div>
         </div>
@@ -607,20 +611,21 @@
                 <div class="header-container">
                     <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
                     <h1>Bandi di Reclutamento Fazioni</h1>
-                    <p>Country Road 90' - Selezioni Istituzionali</p>
+                    <p>Country Road 90' - Selezioni Istituzionali & Lavori</p>
                 </div>
 
                 <div id="statusMessage" class="status-message"></div>
 
+                <!-- GRIGLIA FAZIONI EDITABILE -->
                 <div class="factions-grid">
-                    <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia</button>
-                    <button class="faction-btn" onclick="selectFaction('carabinieri', this)">Sceriffi / Forze dell'Ordine</button>
-                    <button class="faction-btn" onclick="selectFaction('finanza', this)">Investigatori / Federali</button>
-                    <button class="faction-btn" onclick="selectFaction('croce_rossa', this)">Pronto Soccorso / Medici</button>
+                    <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia (LSPD)</button>
+                    <button class="faction-btn" onclick="selectFaction('sceriffi', this)">Sceriffi (LCSO)</button>
+                    <button class="faction-btn" onclick="selectFaction('medici', this)">Pronto Soccorso (EMS)</button>
+                    <button class="faction-btn" onclick="selectFaction('meccanici', this)">Officina / Meccanici</button>
                 </div>
 
                 <div class="discordAuthSection" id="bandoDiscordSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #a0aec0;">
+                    <p style="text-align: center; margin-bottom: 1.5rem; color: #bdc5cd;">
                         Effettua il login con Discord per accedere al modulo di candidatura specifico della fazione selezionata.
                     </p>
                     <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
@@ -640,7 +645,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" id="selectedFactionInput" value="Polizia">
+                    <input type="hidden" id="selectedFactionInput" value="Polizia (LSPD)">
 
                     <div class="form-group">
                         <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
@@ -662,10 +667,10 @@
                     <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
                 </form>
 
-                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(226, 135, 67, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
-                    <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
+                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(230, 103, 51, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
+                    <h3 style="color: var(--cream-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
                     <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare un solo bando a settimana per fazione. Potrai ricandidarti tra:</p>
-                    <div id="cooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
+                    <div id="cooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--cream-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
                 </div>
             </div>
         </div>
@@ -729,7 +734,7 @@
                             <ul class="rules-list">
                                 <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Country Road 90' è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
                                 <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
-                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
+                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni durante le azioni di gioco è considerato grave cheating e comporta sanzioni immediate.</li>
                                 <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
                             </ul>
                         </div>
@@ -748,7 +753,7 @@
                             <h3>3. Assistenze</h3>
                             <ul class="rules-list">
                                 <li><strong>Richiesta di Aiuto (Ticket):</strong> Per qualsiasi problema tecnico, bug riscontrato in città o segnalazione verso altri giocatori, è obbligatorio aprire un ticket sul server Discord ufficiale.</li>
-                                <li><strong>Comportamento nei Ticket:</strong> È vietato spamnare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
+                                <li><strong>Comportamento nei Ticket:</strong> È vietato spammare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
                                 <li><strong>Gestione dei Report in Game:</strong> Durante un'azione di gioco in corso, è vietato fermarsi per chiamare lo staff o aprire report. L'azione va portata a termine; eventuali irregolarità si discutono a fine azione aprendo un ticket con clip.</li>
                             </ul>
                         </div>
@@ -791,7 +796,7 @@
                         <div id="rule-assalti" class="rule-section">
                             <h3>8. Assalti alla Centrale</h3>
                             <ul class="rules-list">
-                                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff e la verifica della disponibilità delle FDO.</li>
+                                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff.</li>
                                 <li><strong>Orari e Requisiti:</strong> L'assalto deve rispettare i numeri minimi di partecipanti sia per i criminali che per le forze dell'ordine collegate in servizio.</li>
                                 <li><strong>Sanzioni:</strong> Effettuare un assalto alla centrale senza previa autorizzazione tramite ticket dello staff comporterà sanzioni severissime per tutti i partecipanti.</li>
                             </ul>
@@ -801,7 +806,7 @@
                             <h3>9. Fazioni Legali</h3>
                             <ul class="rules-list">
                                 <li><strong>Professionalità e Deontologia:</strong> Gli operatori delle istituzioni devono mantenere un contegno impeccabile, rispettare la gerarchia e attenersi ai manuali operativi interni.</li>
-                                <li><strong>Uso della Forza:</strong> L'uso delle armi o della coercizione da parte delle autorità deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere.</li>
+                                <li><strong>Uso della Forza:</strong> L'uso della forza o delle armi deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere.</li>
                                 <li><strong>Corruzione:</strong> Eventuali dinamiche di corruzione interna alle forze dell'ordine devono essere preventivamente autorizzate dallo staff tramite richiesta dedicata.</li>
                             </ul>
                         </div>
@@ -809,8 +814,8 @@
                         <div id="rule-zone" class="rule-section">
                             <h3>10. Safe Zone & Non Safe</h3>
                             <ul class="rules-list">
-                                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Comune, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina, aggressione o estrazione di armi.</li>
-                                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno (Safezone Camping / Fleeing).</li>
+                                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Municipio, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina o aggressione.</li>
+                                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno.</li>
                                 <li><strong>Zone Non Safe:</strong> Il resto della mappa cittadina dove le azioni criminali sono permesse nel rispetto delle normative generali.</li>
                             </ul>
                         </div>
@@ -820,25 +825,25 @@
                             <ul class="rules-list">
                                 <li><strong>Limitazioni sul Bottino:</strong> È possibile effettuare il loot (depredare gli oggetti) ai membri delle Forze dell'Ordine solo ed esclusivamente durante azioni mirate e autorizzate dal regolamento.</li>
                                 <li><strong>Limite Colpi:</strong> È consentito lootare un **massimo di 50 colpi ad agente**.</li>
-                                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza istituzionali uniche o materiali non consentiti dal regolamento specifico delle fazioni.</li>
+                                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza uniche o materiali non consentiti dal regolamento specifico.</li>
                             </ul>
                         </div>
 
                         <div id="rule-rapine" class="rule-section">
                             <h3>12. Rapine & Attività</h3>
                             <ul class="rules-list">
-                                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città (negozi, locali, ristoranti).</li>
-                                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina alle attività è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/dalla transazione sia **inferiore a 20.000 euro**.</li>
-                                <li><strong>Nessun Ostaggio:</strong> Le rapine alle attività **non devono avere alcun ostaggio**.</li>
+                                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città.</li>
+                                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/transazione sia **inferiore a 20.000$**.</li>
+                                <li><strong>Nessun Ostaggio:</strong> Le rapine alle piccole attività **non devono avere alcun ostaggio**.</li>
                             </ul>
                         </div>
 
                         <div id="rule-discord" class="rule-section">
                             <h3>13. Regolamento Discord</h3>
                             <ul class="rules-list">
-                                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW in qualsiasi canale del Discord di Country Road 90'.</li>
+                                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW nel Discord di Country Road 90'.</li>
                                 <li><strong>Nickname e Profilo:</strong> Il nome utente e l'immagine del profilo su Discord devono essere consoni e privi di riferimenti offensivi o volgari.</li>
-                                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare (pingare) i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale e motivata emergenza.</li>
+                                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale emergenza.</li>
                             </ul>
                         </div>
                     </div>
@@ -850,7 +855,7 @@
 
     <footer>
         <p>&copy; Country Road 90' RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: var(--pure-white); font-weight: 600;">Developed by Ercirus | Co-Dev: Guzman</p>
+        <p style="margin-top: 5px; color: var(--cream-white); font-weight: 600;">Developed by Ercirus | Co-Dev: Guzman</p>
     </footer>
 
     <script>
@@ -858,16 +863,17 @@
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const DISCORD_SERVER_INVITE = 'https://discord.gg/WmUJy5Qj89';
 
+        /* MAPPATURA WEBHOOK DELLE FAZIONI - Inserisci qui i link Webhook Discord */
         const WEBHOOK_URLS = {
             'whitelist': 'https://discord.com/api/webhooks/1539259197693239469/OjhYlk02whjrmhwoevcihIHPM3BKGQM0ve2UsFvY401s_YltMVCOUkIOCk2f4stskQei',
-            'Polizia': 'https://discord.com/api/webhooks/1539258291098484867/glno8i5cIpNK55BdKzSvJdDZOQZAXcrBNWCpa79_LYQ92lPOnAbJn_Gbo4n47KdnavwZ',
-            'Sceriffi / Forze dell\'Ordine': 'https://discord.com/api/webhooks/1539258498070745099/K9m4U49TmsqXSpcvAKjcQp4uL0ub8LYXn2n6efEKo9kXyV6qMI6m1dq1kbbiG2fYczVZ',
-            'Investigatori / Federali': 'https://discord.com/api/webhooks/1539258736298692729/iHal61baObF0HaMgNhGAQ3XsJTAGshdxQhPYaZrPSZLHuWVIJ08iQV8yXpLRyauu25Dm',
-            'Pronto Soccorso / Medici': 'https://discord.com/api/webhooks/1539258992834908160/kckbmqMI332ermyx7sQ_K8Ou8E8P48yhvUPink5jOJrDhYYwfkZoT1ZjWYdT_v9la89T'
+            'Polizia (LSPD)': 'https://discord.com/api/webhooks/1539258291098484867/glno8i5cIpNK55BdKzSvJdDZOQZAXcrBNWCpa79_LYQ92lPOnAbJn_Gbo4n47KdnavwZ',
+            'Sceriffi (LCSO)': 'https://discord.com/api/webhooks/1539258498070745099/K9m4U49TmsqXSpcvAKjcQp4uL0ub8LYXn2n6efEKo9kXyV6qMI6m1dq1kbbiG2fYczVZ',
+            'Pronto Soccorso (EMS)': 'https://discord.com/api/webhooks/1539258992834908160/kckbmqMI332ermyx7sQ_K8Ou8E8P48yhvUPink5jOJrDhYYwfkZoT1ZjWYdT_v9la89T',
+            'Officina / Meccanici': 'https://discord.com/api/webhooks/1539258736298692729/iHal61baObF0HaMgNhGAQ3XsJTAGshdxQhPYaZrPSZLHuWVIJ08iQV8yXpLRyauu25Dm'
         };
 
         let userData = null;
-        let currentSelectedFaction = 'Polizia';
+        let currentSelectedFaction = 'Polizia (LSPD)';
         const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; 
         const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; 
         
@@ -878,7 +884,7 @@
             const navLink = document.getElementById('discordLinkNav');
             if (navLink) navLink.href = DISCORD_SERVER_INVITE;
 
-            renderJobQuestions('Polizia');
+            renderJobQuestions('Polizia (LSPD)');
             showDonationSection('supporter', document.querySelector('.rules-sidebar button'));
         });
 
@@ -913,13 +919,13 @@
             btnElement.classList.add('active-faction');
 
             const factionNames = {
-                'polizia': 'Polizia',
-                'carabinieri': 'Sceriffi / Forze dell\'Ordine',
-                'finanza': 'Investigatori / Federali',
-                'croce_rossa': 'Pronto Soccorso / Medici'
+                'polizia': 'Polizia (LSPD)',
+                'sceriffi': 'Sceriffi (LCSO)',
+                'medici': 'Pronto Soccorso (EMS)',
+                'meccanici': 'Officina / Meccanici'
             };
 
-            currentSelectedFaction = factionNames[factionKey] || 'Polizia';
+            currentSelectedFaction = factionNames[factionKey] || 'Polizia (LSPD)';
             const inputField = document.getElementById('selectedFactionInput');
             if (inputField) inputField.value = currentSelectedFaction;
 
@@ -1054,48 +1060,37 @@
             if (!container) return;
 
             let html = '';
-            if (faction === 'Polizia') {
+            if (faction === 'Polizia (LSPD)' || faction === 'Sceriffi (LCSO)') {
                 html = `
                     <div class="form-group">
                         <label>1. Come gestisci una situazione di ostaggi in banca con i criminali armati?</label>
-                        <textarea id="qJob1" required placeholder="Spiega i protocolli di negoziazione e intervento..."></textarea>
+                        <textarea id="qJob1" required placeholder="Spiega i protocolli di negoziazione, posizionamento e intervento..."></textarea>
                     </div>
                     <div class="form-group">
                         <label>2. Qual è il tuo comportamento di fronte a un ordine diretto di un superiore durante un'operazione?</label>
-                        <textarea id="qJob2" required placeholder="Descrivi il rispetto della catena di comando..."></textarea>
+                        <textarea id="qJob2" required placeholder="Descrivi il rispetto della catena di comando e della gerarchia..."></textarea>
                     </div>
                 `;
-            } else if (faction === 'Sceriffi / Forze dell\'Ordine') {
-                html = `
-                    <div class="form-group">
-                        <label>1. Come imposti un posto di blocco coordinato su una strada principale della città?</label>
-                        <textarea id="qJob1" required placeholder="Posizionamento mezzi, sicurezza operatori e controllo veicoli..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Gestione di una giurisdizione territoriale mista: come ti comporti?</label>
-                        <textarea id="qJob2" required placeholder="Spiega le tue competenze operative..."></textarea>
-                    </div>
-                `;
-            } else if (faction === 'Investigatori / Federali') {
-                html = `
-                    <div class="form-group">
-                        <label>1. Quali controlli fiscali ed economici effettui su un'attività commerciale sospetta?</label>
-                        <textarea id="qJob1" required placeholder="Verifica registri, licenze e flussi di denaro..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Come agisci in caso di contrabbando o merci illecite scoperte?</label>
-                        <textarea id="qJob2" required placeholder="Procedure di sequestro e verbalizzazione..."></textarea>
-                    </div>
-                `;
-            } else if (faction === 'Pronto Soccorso / Medici') {
+            } else if (faction === 'Pronto Soccorso (EMS)') {
                 html = `
                     <div class="form-group">
                         <label>1. Protocollo di triage in caso di maxi-emergenza con più feriti gravi:</label>
-                        <textarea id="qJob1" required placeholder="Priorità di soccorso e stabilizzazione..."></textarea>
+                        <textarea id="qJob1" required placeholder="Spiega le priorità di soccorso, stabilizzazione e trasporto..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>2. Come gestisci emotivamente un paziente in forte stato di panico o shock?</label>
-                        <textarea id="qJob2" required placeholder="Approccio psicologico e medico di primo intervento..."></textarea>
+                        <label>2. Come gestisci un paziente che rifiuta le cure o in stato di forte shock?</label>
+                        <textarea id="qJob2" required placeholder="Approccio psicologico e procedure di sicurezza medica..."></textarea>
+                    </div>
+                `;
+            } else if (faction === 'Officina / Meccanici') {
+                html = `
+                    <div class="form-group">
+                        <label>1. Come gestisci il servizio di carroattrezzi e il soccorso stradale in zona pericolosa?</label>
+                        <textarea id="qJob1" required placeholder="Spiega le tempistiche di intervento e la sicurezza del veicolo..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>2. Qual è il tuo approccio al cliente e alla gestione del listino riparazioni/tuning?</label>
+                        <textarea id="qJob2" required placeholder="Trasparenza nei prezzi e condotta roleplay con il cliente..."></textarea>
                     </div>
                 `;
             }
@@ -1166,33 +1161,33 @@
                     <div class="rule-section active">
                         <h3>Regolamento Donazioni – Country Road 90'</h3>
                         
-                        <h4 style="color: var(--sunset-orange); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
+                        <h4 style="color: var(--warm-yellow); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
                         <ul class="rules-list">
                             <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Country Road 90' sono effettuate a titolo di donazione libera e spontanea.</li>
                             <li><strong>Finalità:</strong> I fondi raccolti vengono impiegati esclusivamente per il sostentamento del progetto, inclusi i costi per l'hosting dei server, manutenzione tecnica, licenze, plugin e lo sviluppo di nuove funzionalità.</li>
                             <li><strong>Nessun Beneficio Economico:</strong> La donazione non costituisce un investimento finanziario né un acquisto di beni/servizi commerciali.</li>
                         </ul>
 
-                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
+                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
                         <ul class="rules-list">
                             <li><strong>Trattamento Simbolico:</strong> Eventuali ruoli, badge, veicoli o vantaggi in-game/nel server riconosciuti ai donatori sono semplici ringraziamenti simbolici per il supporto fornito.</li>
                             <li><strong>Fair Play:</strong> I vantaggi concessi non garantiscono né giustificano in alcun modo l'immunità dal regolamento generale del server/community. Tutti i donatori sono tenuti a rispettare le regole alla pari di ogni altro utente.</li>
                         </ul>
 
-                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
+                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
                         <ul class="rules-list">
                             <li><strong>Irrevocabilità:</strong> Una volta effettuata, la donazione non è in alcun modo rimborsabile.</li>
                             <li><strong>Provvedimenti Disciplinari:</strong> In caso di ban, kick o sanzioni disciplinari per violazione del regolamento generale, l'utente non avrà diritto al rimborso delle donazioni effettuate né al recupero dei benefici attribuiti.</li>
                             <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Country Road 90'.</li>
                         </ul>
 
-                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
+                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
                         <ul class="rules-list">
                             <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Country Road 90' (es. PayPal, Tebex, Ko-fi).</li>
                             <li>Nessun membro dello staff è autorizzato a richiedere pagamenti o donazioni dirette su account personali al di fuori dei canali stabiliti.</li>
                         </ul>
 
-                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
+                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
                         <ul class="rules-list">
                             <li>L'invio di una donazione implica l'accettazione automatica e integrale di tutti i punti del presente regolamento.</li>
                         </ul>
@@ -1279,7 +1274,7 @@
                 username: "Whitelist - Country Road 90'",
                 embeds: [{
                     title: "🟢 NUOVA RICHIESTA WHITELIST CITTA'",
-                    color: 14845507,
+                    color: 15099705,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1346,7 +1341,7 @@
                 username: `Reclutamento ${currentSelectedFaction} - Country Road 90'`,
                 embeds: [{
                     title: `📄 CANDIDATURA FAZIONE: ${currentSelectedFaction.toUpperCase()}`,
-                    color: 14845507,
+                    color: 15099705,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1363,7 +1358,7 @@
                 }]
             };
 
-            const targetWebhook = WEBHOOK_URLS[currentSelectedFaction] || WEBHOOK_URLS['Polizia'];
+            const targetWebhook = WEBHOOK_URLS[currentSelectedFaction] || WEBHOOK_URLS['Polizia (LSPD)'];
 
             fetch(targetWebhook, {
                 method: 'POST',
