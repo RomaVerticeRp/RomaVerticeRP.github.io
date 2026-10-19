@@ -25,6 +25,8 @@
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --shadow-card: 0 12px 32px rgba(92, 53, 27, 0.08);
             --shadow-hover: 0 18px 40px rgba(224, 96, 49, 0.18);
+            --discord-blue: #5865F2;
+            --discord-blue-hover: #4752C4;
         }
 
         * {
@@ -44,7 +46,6 @@
             position: relative;
         }
 
-        /* SFONDO DINAMICO ORIGINALE CON LINEA HORIZON & GLOW */
         body::before {
             content: "";
             position: fixed;
@@ -251,7 +252,7 @@
             font-weight: 800;
             cursor: pointer;
             box-shadow: 0 10px 25px rgba(224, 96, 49, 0.35);
-            transition: all 0.25 ease;
+            transition: all 0.25s ease;
             text-decoration: none;
             display: inline-block;
             letter-spacing: 0.5px;
@@ -510,7 +511,53 @@
             margin-bottom: 2rem;
         }
 
-        /* GRIGLIA ARCHETIPI CON CARDS MODERNE */
+        /* SEZIONE LOGIN DISCORD OBBLIGATORIO */
+        .discord-auth-box {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 2rem;
+        }
+
+        .discord-auth-box h3 {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .discord-auth-box p {
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-discord-login {
+            background: var(--discord-blue);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-discord-login:hover {
+            background: var(--discord-blue-hover);
+            transform: translateY(-2px);
+        }
+
+        /* GRIGLIA ARCHETIPI */
         .archetypes-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -656,7 +703,15 @@
 
         textarea.form-control {
             resize: vertical;
-            min-height: 130px;
+            min-height: 155px;
+        }
+
+        .char-counter {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 5px;
+            font-weight: 700;
         }
 
         .btn-submit-wl {
@@ -690,6 +745,37 @@
         .status-box.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-box.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
+        /* BOX COOLDOWN 24H */
+        .cooldown-box {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid var(--accent-orange);
+            box-shadow: var(--shadow-card);
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .cooldown-box h3 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .cooldown-box p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .cooldown-timer {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            font-family: var(--font-title);
+        }
+
         @media (max-width: 900px) {
             .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -709,7 +795,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR SENZA ICONE SOCIAL IN ALTO A SINISTRA -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="aura.png" alt="Logo Country Road 90'">
@@ -721,10 +806,10 @@
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
             <li><a href="#" onclick="showTab('whitelist')" id="nav-whitelist">Whitelist</a></li>
         </ul>
-        <div class="nav-user">
+        <div class="nav-user" id="navUserArea">
             <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="User" class="user-avatar-small" id="userAvatarNav">
             <span class="user-name-small" id="userNameNav">Ospite</span>
-            <button class="btn-logout" onclick="loginDiscord()">Login</button>
+            <button class="btn-logout" id="btnLoginNav" onclick="loginDiscord()">Login</button>
         </div>
     </nav>
 
@@ -771,7 +856,7 @@
             </div>
         </div>
 
-        <!-- TAB REGOLAMENTO INCLUSO LINEE GUIDA BG -->
+        <!-- TAB REGOLAMENTO -->
         <div id="regolamento" class="tab-content">
             <div class="page-header">
                 <h2 class="page-title">Regolamento</h2>
@@ -794,15 +879,13 @@
                 </div>
 
                 <div class="rules-content-card">
-
-                    <!-- SEZIONE AGGIUNTA: LINEE GUIDA BACKGROUND -->
                     <div id="rbg" class="rule-pane active">
                         <h3>📜 Linee Guida per il Background (BG)</h3>
                         <ul>
                             <li><strong>Coerenza Narrativa:</strong> Il passato del tuo personaggio deve spiegare logicamente come è arrivato a Country Road 90' e perché ha scelto il suo archetipo iniziale.</li>
                             <li><strong>Nessun "Supereroe":</strong> Evita storie con trascorsi da agente segreto invincibile, miliardario o boss spietato senza motivazioni credibili. Cerchiamo personaggi con pregi, difetti e reali ambizioni.</li>
                             <li><strong>Punti di Forza e Debolezze:</strong> Definisci il carattere del personaggio, compresi i suoi limiti caratteriali o paure, per rendere le interazioni più ricche e coinvolgenti.</li>
-                            <li><strong>Connessione con l'Anni '90 Style:</strong> Rispetta il contesto dell'epoca sia nelle origini che nello stile di vita scelto.</li>
+                            <li><strong>Minimo 500 Caratteri:</strong> La storia deve essere dettagliata e curata nei minimi particolari per ottenere l'idoneità.</li>
                         </ul>
                     </div>
 
@@ -861,7 +944,6 @@
                             <li><strong>Canali e Contenuti:</strong> Vietato inviare spam, materiale NSFW o pubblicità di altri server nei canali ufficiali.</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -872,121 +954,284 @@
                 <h2 class="page-title">Whitelist</h2>
             </div>
 
-            <div class="wl-banner">
-                <div class="wl-banner-text">
-                    <h4>Leggi le linee guida del background</h4>
-                    <p>Prenditi un momento per definire la storia del tuo personaggio prima di scegliere il suo cammino in città.</p>
-                </div>
-                <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi le Linee Guida BG</button>
+            <!-- SEZIONE RICHIESTA LOGIN DISCORD -->
+            <div id="discordAuthRequired" class="discord-auth-box">
+                <h3>Autenticazione Richiesta</h3>
+                <p>Per compilare il modulo di whitelist e inviare il tuo background, devi prima effettuare l'accesso con il tuo account Discord.</p>
+                <button class="btn-discord-login" onclick="loginDiscord()">
+                    <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/></svg>
+                    Accedi con Discord
+                </button>
             </div>
 
-            <h3 class="archetype-title">Scegli il tuo archetipo</h3>
-            <p class="archetype-subtitle">Definisce la strada iniziale e la professione/ruolo del tuo personaggio a Country Road 90'.</p>
-
-            <div class="archetypes-grid">
-                <div class="archetype-card" onclick="selectArchetype('Informatico', this)">
-                    <div class="archetype-badge">💻 Tech & Data</div>
-                    <h5>Informatico</h5>
-                    <p>Esperto di tecnologia, reti, codici e sistemi di sicurezza della città.</p>
-                </div>
-                <div class="archetype-card" onclick="selectArchetype('Cittadino', this)">
-                    <div class="archetype-badge">💼 Vita Civile</div>
-                    <h5>Cittadino</h5>
-                    <p>Una vita tra lavoro onesto, ambizioni personali, commercio e relazioni quotidiane.</p>
-                </div>
-                <div class="archetype-card" onclick="selectArchetype('Sceriffo', this)">
-                    <div class="archetype-badge">🛡️ Ordine Pubblico</div>
-                    <h5>Sceriffo</h5>
-                    <p>Dedicato al rispetto della legge, alla tutela della comunità e al pattugliamento.</p>
-                </div>
-                <div class="archetype-card" onclick="selectArchetype('Medico', this)">
-                    <div class="archetype-badge">🚑 Primo Soccorso</div>
-                    <h5>Medico</h5>
-                    <p>In prima linea nel soccorso stradale, pronto intervento ospedaliero e salvataggio vite.</p>
-                </div>
-                <div class="archetype-card" onclick="selectArchetype('Criminale', this)">
-                    <div class="archetype-badge">💀 Malavita</div>
-                    <h5>Criminale</h5>
-                    <p>Vita al limite, bande, traffici illegali e controllo del territorio nelle zone d'ombra.</p>
-                </div>
-                <div class="archetype-card" onclick="selectArchetype('Meccanico', this)">
-                    <div class="archetype-badge">🔧 Motori</div>
-                    <h5>Meccanico</h5>
-                    <p>Passione per i motori, modifiche d'epoca, soccorso stradale e gestione officina.</p>
+            <!-- CONTENUTO PRINCIPALE WHITELIST (BLOCCATO FINCHE NON LOGGATO) -->
+            <div id="whitelistMainContent" style="display: none;">
+                
+                <!-- BOX COOLDOWN 24H -->
+                <div id="cooldownBox" class="cooldown-box">
+                    <h3>Candidatura già inviata</h3>
+                    <p>Puoi inviare una nuova richiesta di whitelist solo una volta ogni 24 ore. Potrai riprovare tra:</p>
+                    <div id="cooldownTimer" class="cooldown-timer">--:--:--</div>
                 </div>
 
-                <!-- CARD ALTRO CENTRATA -->
-                <div class="archetype-card archetype-card-altro" onclick="openTicketOption()">
-                    <div class="archetype-badge">🎟️ Supporto Ticket</div>
-                    <h5>Altro</h5>
-                    <p>Vuoi proporre un ruolo speciale? Apri un Ticket su Discord!</p>
-                </div>
-            </div>
+                <!-- SEZIONE FORM ATTIVA -->
+                <div id="whitelistFormSection">
+                    <div class="wl-banner">
+                        <div class="wl-banner-text">
+                            <h4>Leggi le linee guida del background</h4>
+                            <p>È richiesto un background dettagliato di almeno 500 caratteri per accedere alla città.</p>
+                        </div>
+                        <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi le Linee Guida BG</button>
+                    </div>
 
-            <!-- FORM COMPILAZIONE WHITELIST -->
-            <div id="wlFormContainer" class="wl-form-container">
-                <div id="statusBox" class="status-box"></div>
-                <h3 class="archetype-title" style="margin-bottom: 1.5rem;" id="selectedArchetypeTitle">Modulo Candidatura: Cittadino</h3>
+                    <h3 class="archetype-title">Scegli il tuo archetipo</h3>
+                    <p class="archetype-subtitle">Definisce la strada iniziale e la professione/ruolo del tuo personaggio a Country Road 90'.</p>
 
-                <form id="wlForm" onsubmit="submitWhitelist(event)">
-                    <input type="hidden" id="inputArchetipo" value="Cittadino">
+                    <div class="archetypes-grid">
+                        <div class="archetype-card" onclick="selectArchetype('Informatico', this)">
+                            <div class="archetype-badge">💻 Tech & Data</div>
+                            <h5>Informatico</h5>
+                            <p>Esperto di tecnologia, reti, codici e sistemi di sicurezza della città.</p>
+                        </div>
+                        <div class="archetype-card" onclick="selectArchetype('Cittadino', this)">
+                            <div class="archetype-badge">💼 Vita Civile</div>
+                            <h5>Cittadino</h5>
+                            <p>Una vita tra lavoro onesto, ambizioni personali, commercio e relazioni quotidiane.</p>
+                        </div>
+                        <div class="archetype-card" onclick="selectArchetype('Sceriffo', this)">
+                            <div class="archetype-badge">🛡️ Ordine Pubblico</div>
+                            <h5>Sceriffo</h5>
+                            <p>Dedicato al rispetto della legge, alla tutela della comunità e al pattugliamento.</p>
+                        </div>
+                        <div class="archetype-card" onclick="selectArchetype('Medico', this)">
+                            <div class="archetype-badge">🚑 Primo Soccorso</div>
+                            <h5>Medico</h5>
+                            <p>In prima linea nel soccorso stradale, pronto intervento ospedaliero e salvataggio vite.</p>
+                        </div>
+                        <div class="archetype-card" onclick="selectArchetype('Criminale', this)">
+                            <div class="archetype-badge">💀 Malavita</div>
+                            <h5>Criminale</h5>
+                            <p>Vita al limite, bande, traffici illegali e controllo del territorio nelle zone d'ombra.</p>
+                        </div>
+                        <div class="archetype-card" onclick="selectArchetype('Meccanico', this)">
+                            <div class="archetype-badge">🔧 Motori</div>
+                            <h5>Meccanico</h5>
+                            <p>Passione per i motori, modifiche d'epoca, soccorso stradale e gestione officina.</p>
+                        </div>
 
-                    <div class="form-grid">
-                        <div>
-                            <label class="form-label">NOME PERSONAGGIO (IC) *</label>
-                            <input type="text" id="wlNome" class="form-control" required placeholder="Es. Jack">
-                        </div>
-                        <div>
-                            <label class="form-label">COGNOME PERSONAGGIO (IC) *</label>
-                            <input type="text" id="wlCognome" class="form-control" required placeholder="Es. Miller">
-                        </div>
-                        <div>
-                            <label class="form-label">CITTADINANZA *</label>
-                            <input type="text" id="wlCittadinanza" class="form-control" required placeholder="Es. Statunitense">
-                        </div>
-                        <div>
-                            <label class="form-label">ORIGINE / PROVENIENZA *</label>
-                            <select id="wlOrigine" class="form-control" required>
-                                <option value="">— Selezione —</option>
-                                <option value="Locale">Locale (Nato in città)</option>
-                                <option value="Stati Uniti">Stati Uniti</option>
-                                <option value="Europa">Europa</option>
-                                <option value="Altro">Altro</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="form-label">ETÀ PERSONAGGIO *</label>
-                            <input type="number" id="wlEta" class="form-control" min="18" max="90" required placeholder="Es. 25">
-                        </div>
-                        <div>
-                            <label class="form-label">SESSO DEL PERSONAGGIO *</label>
-                            <select id="wlSesso" class="form-control" required>
-                                <option value="">— Selezione —</option>
-                                <option value="Maschio">Maschio</option>
-                                <option value="Femmina">Femmina</option>
-                            </select>
-                        </div>
-                        <div class="form-group-full">
-                            <label class="form-label">FEDINA PENALE PREVISTA *</label>
-                            <input type="text" id="wlFedina" class="form-control" required placeholder="Es. Pulita / Piccoli precedenti per rissa">
-                        </div>
-                        <div class="form-group-full">
-                            <label class="form-label">STORIA E BACKGROUND DEL PERSONAGGIO *</label>
-                            <textarea id="wlStoria" class="form-control" required placeholder="Racconta il passato del tuo personaggio, il motivo del suo arrivo a Country Road 90' e i suoi obiettivi..."></textarea>
+                        <!-- CARD ALTRO CENTRATA -->
+                        <div class="archetype-card archetype-card-altro" onclick="openTicketOption()">
+                            <div class="archetype-badge">🎟️ Supporto Ticket</div>
+                            <h5>Altro</h5>
+                            <p>Vuoi proporre un ruolo speciale? Apri un Ticket su Discord!</p>
                         </div>
                     </div>
 
-                    <button type="submit" id="btnSubmitWl" class="btn-submit-wl">Invia Candidatura Whitelist</button>
-                </form>
+                    <!-- FORM COMPILAZIONE WHITELIST -->
+                    <div id="wlFormContainer" class="wl-form-container">
+                        <div id="statusBox" class="status-box"></div>
+                        <h3 class="archetype-title" style="margin-bottom: 1.5rem;" id="selectedArchetypeTitle">Modulo Candidatura: Cittadino</h3>
+
+                        <form id="wlForm" onsubmit="submitWhitelist(event)">
+                            <input type="hidden" id="inputArchetipo" value="Cittadino">
+
+                            <div class="form-grid">
+                                <div>
+                                    <label class="form-label">NOME PERSONAGGIO (IC) *</label>
+                                    <input type="text" id="wlNome" class="form-control" required placeholder="Es. Jack">
+                                </div>
+                                <div>
+                                    <label class="form-label">COGNOME PERSONAGGIO (IC) *</label>
+                                    <input type="text" id="wlCognome" class="form-control" required placeholder="Es. Miller">
+                                </div>
+                                <div>
+                                    <label class="form-label">CITTADINANZA *</label>
+                                    <input type="text" id="wlCittadinanza" class="form-control" required placeholder="Es. Statunitense">
+                                </div>
+                                <div>
+                                    <label class="form-label">ORIGINE / PROVENIENZA *</label>
+                                    <select id="wlOrigine" class="form-control" required>
+                                        <option value="">— Selezione —</option>
+                                        <option value="Locale">Locale (Nato in città)</option>
+                                        <option value="Stati Uniti">Stati Uniti</option>
+                                        <option value="Europa">Europa</option>
+                                        <option value="Altro">Altro</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label">ETÀ PERSONAGGIO *</label>
+                                    <input type="number" id="wlEta" class="form-control" min="18" max="90" required placeholder="Es. 25">
+                                </div>
+                                <div>
+                                    <label class="form-label">SESSO DEL PERSONAGGIO *</label>
+                                    <select id="wlSesso" class="form-control" required>
+                                        <option value="">— Selezione —</option>
+                                        <option value="Maschio">Maschio</option>
+                                        <option value="Femmina">Femmina</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-full">
+                                    <label class="form-label">FEDINA PENALE PREVISTA *</label>
+                                    <input type="text" id="wlFedina" class="form-control" required placeholder="Es. Pulita / Piccoli precedenti per rissa">
+                                </div>
+                                <div class="form-group-full">
+                                    <label class="form-label">STORIA E BACKGROUND DEL PERSONAGGIO (MINIMO 500 CARATTERI) *</label>
+                                    <textarea id="wlStoria" class="form-control" required minlength="500" placeholder="Racconta dettagliatamente il passato del tuo personaggio, il motivo del suo arrivo a Country Road 90' e i suoi obiettivi..." oninput="updateCharCount(this)"></textarea>
+                                    <div class="char-counter" id="charCounter">Caratteri inseriti: 0 / 500 minimi</div>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btnSubmitWl" class="btn-submit-wl">Invia Candidatura Whitelist</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </div>
 
     <script>
+        const CLIENT_ID = '1536336646507601920'; // ID client Discord configurabile
+        const REDIRECT_URI = window.location.origin + window.location.pathname;
         const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1537962063899394130/J3ruV7rhz6N914Q79lYs9Jr8R13nqf5kwvs3tET_Pt0bRbMHyjEwwlaS2Rqn-1FTQZI4';
         const DISCORD_INVITE_LINK = 'https://discord.gg/YPjRPzDbB7';
+        
+        let userData = null;
         let selectedArchetype = '';
+        let cooldownInterval = null;
+        const COOLDOWN_DURATION = 24 * 60 * 60 * 1000; // 24 Ore in millisecondi
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Controllo token OAuth2 Discord nell'URL
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+
+            if (accessToken) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+                fetchDiscordUser(accessToken);
+            } else {
+                const savedUser = localStorage.getItem('cr90_discord_user');
+                if (savedUser) {
+                    userData = JSON.parse(savedUser);
+                    applyUserSession();
+                }
+            }
+        });
+
+        function loginDiscord() {
+            const scope = 'identify';
+            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}`;
+            window.location.href = authUrl;
+        }
+
+        function fetchDiscordUser(token) {
+            fetch('https://discord.com/api/users/@me', {
+                headers: { authorization: `Bearer ${token}` }
+            })
+            .then(res => res.json())
+            .then(user => {
+                if (user.id) {
+                    userData = user;
+                    localStorage.setItem('cr90_discord_user', JSON.stringify(user));
+                    applyUserSession();
+                }
+            })
+            .catch(() => {
+                alert("Errore durante l'autenticazione con Discord.");
+            });
+        }
+
+        function applyUserSession() {
+            if (!userData) return;
+
+            const avatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+            document.getElementById('userAvatarNav').src = avatarUrl;
+            document.getElementById('userNameNav').innerText = userData.username;
+            document.getElementById('btnLoginNav').innerText = 'Esci';
+            document.getElementById('btnLoginNav').onclick = logoutDiscord;
+
+            // Mostra sezione whitelist e nascondi blocco login
+            document.getElementById('discordAuthRequired').style.display = 'none';
+            document.getElementById('whitelistMainContent').style.display = 'block';
+
+            checkCooldownStatus();
+        }
+
+        function logoutDiscord() {
+            localStorage.removeItem('cr90_discord_user');
+            userData = null;
+            window.location.reload();
+        }
+
+        function getCooldownStorageKey() {
+            return userData ? `cr90_wl_last_sent_${userData.id}` : 'cr90_wl_last_sent';
+        }
+
+        function checkCooldownStatus() {
+            const lastSentRaw = localStorage.getItem(getCooldownStorageKey());
+            const cooldownBox = document.getElementById('cooldownBox');
+            const formSection = document.getElementById('whitelistFormSection');
+
+            if (!lastSentRaw) {
+                cooldownBox.style.display = 'none';
+                formSection.style.display = 'block';
+                return;
+            }
+
+            const lastSent = parseInt(lastSentRaw, 10);
+            const remainingTime = COOLDOWN_DURATION - (Date.now() - lastSent);
+
+            if (remainingTime > 0) {
+                formSection.style.display = 'none';
+                cooldownBox.style.display = 'block';
+                startCooldownTimer(remainingTime);
+            } else {
+                localStorage.removeItem(getCooldownStorageKey());
+                cooldownBox.style.display = 'none';
+                formSection.style.display = 'block';
+            }
+        }
+
+        function startCooldownTimer(durationMs) {
+            if (cooldownInterval) clearInterval(cooldownInterval);
+
+            const timerEl = document.getElementById('cooldownTimer');
+
+            function updateTimer() {
+                const lastSent = parseInt(localStorage.getItem(getCooldownStorageKey()), 10);
+                const remaining = COOLDOWN_DURATION - (Date.now() - lastSent);
+
+                if (remaining <= 0) {
+                    clearInterval(cooldownInterval);
+                    checkCooldownStatus();
+                    return;
+                }
+
+                const hours = Math.floor(remaining / (1000 * 60 * 60));
+                const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+                timerEl.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+
+            updateTimer();
+            cooldownInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateCharCount(textarea) {
+            const counter = document.getElementById('charCounter');
+            const len = textarea.value.length;
+            counter.innerText = `Caratteri inseriti: ${len} / 500 minimi`;
+            if (len >= 500) {
+                counter.style.color = '#2ecc71';
+            } else {
+                counter.style.color = 'var(--text-muted)';
+            }
+        }
 
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -1032,12 +1277,19 @@
             window.open(DISCORD_INVITE_LINK, '_blank');
         }
 
-        function loginDiscord() {
-            alert("Integrazione Discord OAuth2 attiva. Accedi con il tuo account Discord per sincronizzare il profilo.");
-        }
-
         function submitWhitelist(event) {
             event.preventDefault();
+
+            if (!userData) {
+                alert("Devi effettuare l'accesso con Discord per inviare la candidatura.");
+                return;
+            }
+
+            const storiaText = document.getElementById('wlStoria').value;
+            if (storiaText.length < 500) {
+                alert("Il background del personaggio deve contenere almeno 500 caratteri.");
+                return;
+            }
 
             const submitBtn = document.getElementById('btnSubmitWl');
             const statusBox = document.getElementById('statusBox');
@@ -1045,18 +1297,25 @@
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
+            const userAvatarUrl = userData.avatar 
+                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+                : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
             const payload = {
                 username: "Sistema Whitelist - Country Road 90'",
                 embeds: [{
                     title: "📄 NUOVA CANDIDATURA WHITELIST",
                     color: 14704689,
+                    thumbnail: { url: userAvatarUrl },
                     fields: [
+                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
+                        { name: "🪪 ID Discord", value: userData.id, inline: true },
                         { name: "🎭 Archetipo Scelto", value: document.getElementById('inputArchetipo').value, inline: true },
-                        { name: "👤 Nome & Cognome IC", value: document.getElementById('wlNome').value + " " + document.getElementById('wlCognome').value, inline: true },
+                        { name: "📝 Nome & Cognome IC", value: document.getElementById('wlNome').value + " " + document.getElementById('wlCognome').value, inline: false },
                         { name: "🎂 Età & Sesso", value: document.getElementById('wlEta').value + " anni | " + document.getElementById('wlSesso').value, inline: true },
-                        { name: "🌐 Cittadinanza / Origine", value: document.getElementById('wlCittadinanza').value + " (" + document.getElementById('wlOrigine').value + ")", inline: false },
+                        { name: "🌐 Cittadinanza / Origine", value: document.getElementById('wlCittadinanza').value + " (" + document.getElementById('wlOrigine').value + ")", inline: true },
                         { name: "📜 Fedina Penale", value: document.getElementById('wlFedina').value, inline: false },
-                        { name: "📖 Storia Personaggio", value: document.getElementById('wlStoria').value, inline: false }
+                        { name: "📖 Storia Personaggio (BG)", value: storiaText, inline: false }
                     ],
                     footer: { text: "Country Road 90' RP • Whitelist Application" },
                     timestamp: new Date().toISOString()
@@ -1070,10 +1329,13 @@
             })
             .then(res => {
                 if (res.ok) {
+                    localStorage.setItem(getCooldownStorageKey(), Date.now().toString());
                     statusBox.className = 'status-box success';
-                    statusBox.innerText = 'Candidatura Whitelist inviata con successo! Attendi la valutazione dello staff su Discord.';
+                    statusBox.innerText = 'Candidatura Whitelist inviata con successo! Potrai inviare una nuova richiesta tra 24 ore.';
                     statusBox.style.display = 'block';
                     document.getElementById('wlForm').reset();
+                    document.getElementById('charCounter').innerText = 'Caratteri inseriti: 0 / 500 minimi';
+                    checkCooldownStatus();
                 } else {
                     throw new Error('Errore nella risposta del server.');
                 }
