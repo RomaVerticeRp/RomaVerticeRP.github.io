@@ -48,29 +48,31 @@
             position: relative;
         }
 
-        /* PALME AI LATI E PAESAGGIO IN BASSO (SVG DECORATIVO) */
+        /* PALME AI LATI CORRETTE E PULITE */
         .bg-palms-left, .bg-palms-right {
             position: fixed;
+            top: 0;
             bottom: 0;
-            width: 380px;
-            height: 600px;
+            width: 300px;
+            height: 100vh;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.18;
+            opacity: 0.12;
             background-repeat: no-repeat;
-            background-position: bottom;
-            background-size: contain;
+            background-size: cover;
         }
 
         .bg-palms-left {
-            left: -30px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 800'%3E%3Cpath fill='%233a2219' d='M80 800 L80 600 C75 500 60 400 30 300 C20 270 10 240 0 210 L0 800 Z'/%3E%3Cpath fill='%233a2219' d='M30 300 C-10 240 -30 200 -50 180 C-20 190 20 220 50 260 C80 220 120 180 160 170 C120 200 80 240 60 280 C110 260 170 260 210 280 C150 290 90 300 50 320 Z'/%3E%3Cpath fill='%233a2219' d='M180 800 L180 520 C185 420 200 330 240 230 C200 210 140 210 90 230 C130 245 170 270 190 300 C150 270 90 260 40 270 C90 290 150 320 180 360 C140 370 80 390 40 420 C90 410 140 400 180 410 Z'/%3E%3C/svg%3E");
+            left: 0;
+            background-position: left center;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 800'%3E%3Cg fill='%233a2219'%3E%3Cpath d='M-40,850 C10,550 50,350 120,180 C130,155 145,130 160,100 L135,105 C115,135 100,165 85,195 C25,360 -20,550 -70,850 Z'/%3E%3Cpath d='M160,100 C210,70 270,60 320,70 C270,90 220,110 170,120 Z'/%3E%3Cpath d='M160,100 C190,40 240,10 300,-10 C260,20 220,50 180,90 Z'/%3E%3Cpath d='M160,100 C130,50 90,10 30,-20 C60,20 100,60 140,90 Z'/%3E%3Cpath d='M160,100 C110,80 50,70 0,80 C50,100 100,110 150,115 Z'/%3E%3Cpath d='M160,100 C180,130 220,170 270,200 C220,170 190,140 165,115 Z'/%3E%3Cpath d='M-20,850 C20,600 80,420 180,260 C190,240 205,220 220,190 L195,195 C175,225 160,245 145,270 C55,420 0,600 -40,850 Z'/%3E%3Cpath d='M220,190 C270,160 330,150 380,160 C330,180 280,200 230,210 Z'/%3E%3Cpath d='M220,190 C250,130 300,100 360,80 C320,110 280,140 240,180 Z'/%3E%3Cpath d='M220,190 C190,140 150,100 90,70 C120,110 160,150 200,180 Z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         .bg-palms-right {
-            right: -30px;
+            right: 0;
             transform: scaleX(-1);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 800'%3E%3Cpath fill='%233a2219' d='M80 800 L80 600 C75 500 60 400 30 300 C20 270 10 240 0 210 L0 800 Z'/%3E%3Cpath fill='%233a2219' d='M30 300 C-10 240 -30 200 -50 180 C-20 190 20 220 50 260 C80 220 120 180 160 170 C120 200 80 240 60 280 C110 260 170 260 210 280 C150 290 90 300 50 320 Z'/%3E%3Cpath fill='%233a2219' d='M180 800 L180 520 C185 420 200 330 240 230 C200 210 140 210 90 230 C130 245 170 270 190 300 C150 270 90 260 40 270 C90 290 150 320 180 360 C140 370 80 390 40 420 C90 410 140 400 180 410 Z'/%3E%3C/svg%3E");
+            background-position: left center;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 800'%3E%3Cg fill='%233a2219'%3E%3Cpath d='M-40,850 C10,550 50,350 120,180 C130,155 145,130 160,100 L135,105 C115,135 100,165 85,195 C25,360 -20,550 -70,850 Z'/%3E%3Cpath d='M160,100 C210,70 270,60 320,70 C270,90 220,110 170,120 Z'/%3E%3Cpath d='M160,100 C190,40 240,10 300,-10 C260,20 220,50 180,90 Z'/%3E%3Cpath d='M160,100 C130,50 90,10 30,-20 C60,20 100,60 140,90 Z'/%3E%3Cpath d='M160,100 C110,80 50,70 0,80 C50,100 100,110 150,115 Z'/%3E%3Cpath d='M160,100 C180,130 220,170 270,200 C220,170 190,140 165,115 Z'/%3E%3Cpath d='M-20,850 C20,600 80,420 180,260 C190,240 205,220 220,190 L195,195 C175,225 160,245 145,270 C55,420 0,600 -40,850 Z'/%3E%3Cpath d='M220,190 C270,160 330,150 380,160 C330,180 280,200 230,210 Z'/%3E%3Cpath d='M220,190 C250,130 300,100 360,80 C320,110 280,140 240,180 Z'/%3E%3Cpath d='M220,190 C190,140 150,100 90,70 C120,110 160,150 200,180 Z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* VIGNETTATURA AI BORDI PER EFFETTO FOTO ANNI '90 */
@@ -856,7 +858,7 @@
         }
 
         @media (max-width: 1200px) {
-            .bg-palms-left, .bg-palms-right { width: 260px; opacity: 0.12; }
+            .bg-palms-left, .bg-palms-right { width: 200px; opacity: 0.08; }
         }
 
         @media (max-width: 900px) {
