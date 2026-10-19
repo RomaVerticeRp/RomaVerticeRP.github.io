@@ -7,27 +7,22 @@
     <link rel="icon" type="image/png" href="aura.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Palette estratta dal Logo 90' */
-            --teal-dark: #0f2629;
-            --teal-card: rgba(22, 50, 54, 0.95);
-            --teal-border: rgba(230, 103, 51, 0.5);
-            --sunset-orange: #e66733;
-            --sunset-orange-hover: #ff7b45;
-            --warm-yellow: #f1ae59;
-            --cream-white: #f3e3c3;
-            --rust-red: #be4a27;
-            --pure-white: #ffffff;
-            --text-light: #f8f9fa;
-            --text-muted: #bdc5cd;
-            --discord-blue: #5865F2;
-            --discord-blue-hover: #4752C4;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.75);
-            --font-title: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --bg-cream: #f6eedf;
+            --bg-card: #f9f3e5;
+            --bg-card-alt: #f1e4ce;
+            --accent-orange: #d96838;
+            --accent-orange-hover: #c45729;
+            --text-dark: #4a2818;
+            --text-muted: #826652;
+            --text-light: #614635;
+            --border-soft: #e3d2b7;
+            --font-title: 'Fredoka', cursive, sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --shadow-soft: 0 10px 30px rgba(116, 70, 36, 0.08);
         }
 
         * {
@@ -38,1359 +33,955 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(15, 38, 41, 0.90) 0%, rgba(10, 22, 24, 0.98) 100%), 
-                        url('roma.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
         }
 
+        /* SFONDO DECORATIVO CON BINARI/LINEE */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            background-image: repeating-linear-gradient(0deg, var(--accent-orange), var(--accent-orange) 8px, transparent 8px, transparent 20px),
+                              linear-gradient(90deg, var(--accent-orange) 3px, transparent 3px, transparent 15px, var(--accent-orange) 15px);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+        body::before { left: 15px; transform: rotate(-1deg); }
+        body::after { right: 15px; transform: rotate(1deg); }
+
+        /* NAVBAR */
         .navbar {
-            background: rgba(15, 38, 41, 0.98);
-            border-bottom: 3px solid var(--sunset-orange);
-            border-top: 3px solid var(--warm-yellow);
-            padding: 1rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
+            padding: 1.5rem 4rem;
+            position: relative;
+            z-index: 10;
         }
 
-        .nav-brand {
+        .nav-socials {
+            display: flex;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-soft);
+        }
+
+        .nav-socials a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: var(--font-title);
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--cream-white);
-            text-transform: uppercase;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
         }
 
-        .nav-logo {
-            height: 45px;
-            width: auto;
-            filter: drop-shadow(0 0 8px rgba(241, 174, 89, 0.6));
+        .nav-socials a:hover {
+            background: var(--accent-orange);
+            color: white;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 2rem;
             list-style: none;
-            flex-wrap: wrap;
-            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--pure-white);
-            background: var(--sunset-orange);
-            box-shadow: 0 0 15px rgba(230, 103, 51, 0.6);
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--accent-orange);
         }
 
-        .nav-discord-btn {
-            background: var(--discord-blue) !important;
-            color: white !important;
+        .nav-user {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-left: 0.3rem;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 0.3rem 0.8rem 0.3rem 0.4rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-soft);
         }
 
-        .nav-discord-btn:hover {
-            background: var(--discord-blue-hover) !important;
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.7) !important;
+        .user-avatar-small {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
-        .discord-icon {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            display: inline-block;
-            vertical-align: middle;
+        .user-name-small {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
         }
 
+        .btn-logout {
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        /* CONTAINER PRINCIPALE */
         .container {
             max-width: 1100px;
-            margin: 2.5rem auto;
-            padding: 0 1.5rem;
-            flex: 1;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
         }
 
         .tab-content {
-            display: none !important;
-            width: 100%;
+            display: none;
         }
 
         .tab-content.active {
-            display: block !important;
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .home-container-center {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            width: 100%;
-        }
-
-        .home-container-center.active {
-            display: flex !important;
+            display: block;
+            animation: fadeIn 0.4s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .card {
-            background: var(--teal-card);
-            border: 2px solid var(--sunset-orange);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(12px);
-            margin-bottom: 2rem;
-            width: 100%;
+        /* HOME TAB */
+        .home-hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .header-container {
-            text-align: center;
+        .home-logo {
+            max-width: 280px;
+            height: auto;
             margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));
+        }
+
+        .home-subtitle {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .home-title {
+            font-family: var(--font-title);
+            font-size: 3.8rem;
+            color: var(--accent-orange);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px var(--text-dark);
+        }
+
+        .btn-main {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(217, 104, 56, 0.3);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            background: var(--accent-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(217, 104, 56, 0.4);
+        }
+
+        /* TITOLI PAGINA */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
         }
 
-        .header-logo {
-            max-height: 115px;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(241, 174, 89, 0.5));
-        }
-
-        h1, h2, h3 {
+        .page-title {
             font-family: var(--font-title);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-size: 4rem;
+            color: #ffffff;
+            text-shadow: -2px -2px 0 var(--accent-orange), 2px -2px 0 var(--accent-orange), -2px 2px 0 var(--accent-orange), 2px 2px 0 var(--accent-orange), 4px 4px 0px var(--text-dark);
+            display: inline-block;
+            position: relative;
         }
 
-        .header-container h1 {
-            color: var(--cream-white);
-            font-size: 2.2rem;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
-        }
-
-        .header-container p {
-            color: var(--warm-yellow);
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-        }
-
-        .factions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .faction-btn {
-            background: rgba(15, 38, 41, 0.85);
-            border: 1px solid var(--warm-yellow);
-            border-radius: 10px;
-            padding: 1.2rem;
-            color: var(--cream-white);
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-family: var(--font-title);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .faction-btn:hover, .faction-btn.active-faction {
-            background: var(--sunset-orange);
-            border-color: var(--cream-white);
-            color: var(--pure-white);
-            box-shadow: 0 0 15px rgba(230, 103, 51, 0.7);
-            transform: translateY(-2px);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(241, 174, 89, 0.3);
-        }
-
-        .user-avatar {
-            width: 48px;
-            height: 48px;
+        .page-title::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140%;
+            height: 60px;
+            background: radial-gradient(ellipse at center, rgba(241, 228, 206, 0.8) 0%, transparent 70%);
+            z-index: -1;
             border-radius: 50%;
-            border: 2px solid var(--warm-yellow);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        /* AMBIENTAZIONE TAB */
+        .ambientazione-text {
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
         }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--cream-white);
-            font-size: 0.95rem;
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        input[type="text"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background: rgba(15, 38, 41, 0.9);
-            border: 1px solid rgba(241, 174, 89, 0.4);
+        .polaroid-card {
+            background: #ffffff;
+            padding: 1.2rem 1.2rem 2rem;
             border-radius: 8px;
-            color: var(--pure-white);
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--sunset-orange);
-            box-shadow: 0 0 10px rgba(230, 103, 51, 0.6);
-            background: rgba(15, 38, 41, 1);
+        .polaroid-card:nth-child(even) {
+            transform: rotate(1.5deg);
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 105px;
+        .polaroid-card:hover {
+            transform: scale(1.02) rotate(0deg);
+            z-index: 2;
         }
 
-        .char-counter {
+        .polaroid-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background: #e1d3bd;
+        }
+
+        .polaroid-number {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--sunset-orange);
-            color: var(--pure-white);
-            border: 2px solid var(--cream-white);
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(230, 103, 51, 0.5);
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            font-weight: 800;
+            color: var(--accent-orange);
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
             text-transform: uppercase;
-            text-decoration: none;
         }
 
-        .btn:hover {
-            background: var(--sunset-orange-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(230, 103, 51, 0.8);
+        .polaroid-title {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
         }
 
-        .btn-discord {
-            background: var(--discord-blue);
-            border-color: var(--discord-blue);
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        .polaroid-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
         }
 
-        .btn-discord:hover {
-            background: var(--discord-blue-hover);
-            border-color: var(--pure-white);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.8);
-        }
-
+        /* REGOLAMENTO TAB */
         .rules-layout {
             display: grid;
-            grid-template-columns: 290px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 2rem;
             align-items: start;
         }
 
         .rules-sidebar {
-            background: rgba(15, 38, 41, 0.85);
-            border: 2px solid var(--warm-yellow);
-            border-radius: 12px;
-            padding: 1.2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
         }
 
-        .rules-category-title {
-            font-family: var(--font-title);
-            font-size: 0.85rem;
-            color: var(--warm-yellow);
-            letter-spacing: 1.5px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+        .sidebar-title {
+            font-size: 0.9rem;
             font-weight: 800;
-            border-bottom: 1px solid rgba(241, 174, 89, 0.3);
-            padding-bottom: 6px;
+            color: var(--text-dark);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        .rules-nav-list {
+        .sidebar-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .rules-menu {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
-        .rules-nav-item button {
+        .rules-menu button {
             width: 100%;
             text-align: left;
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            padding: 0.7rem 0.9rem;
-            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            border-radius: 10px;
+            color: var(--text-light);
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .rules-nav-item button:hover, 
-        .rules-nav-item button.active {
-            background: rgba(230, 103, 51, 0.25);
-            color: var(--cream-white);
-            border-left: 4px solid var(--sunset-orange);
-            padding-left: calc(0.9rem - 4px);
+        .rules-menu button::before {
+            content: "○";
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        .rules-content-pane {
-            background: rgba(15, 38, 41, 0.65);
-            border: 2px solid rgba(241, 174, 89, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            min-height: 520px;
+        .rules-menu button.active, .rules-menu button:hover {
+            background: #ffffff;
+            color: var(--accent-orange);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .rule-section {
+        .rules-menu button.active::before {
+            content: "●";
+            color: var(--accent-orange);
+        }
+
+        .rules-content-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+            min-height: 450px;
+        }
+
+        .rule-pane {
             display: none;
+        }
+
+        .rule-pane.active {
+            display: block;
             animation: fadeIn 0.3s ease;
         }
 
-        .rule-section.active {
-            display: block;
-        }
-
-        .rule-section h3 {
-            color: var(--warm-yellow);
-            margin-bottom: 1.2rem;
-            font-size: 1.35rem;
-            border-bottom: 2px solid rgba(230, 103, 51, 0.5);
+        .rule-pane h3 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px dashed var(--border-soft);
             padding-bottom: 0.5rem;
         }
 
-        .rules-list {
+        .rule-pane ul {
             list-style: none;
         }
 
-        .rules-list li {
+        .rule-pane li {
             position: relative;
-            padding-left: 25px;
-            margin-bottom: 1.1rem;
-            color: #e2e8f0;
-            font-size: 0.95rem;
+            padding-left: 20px;
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.98rem;
         }
 
-        .rules-list li::before {
+        .rule-pane li::before {
             content: "▪";
             position: absolute;
             left: 0;
-            color: var(--sunset-orange);
-            font-size: 1.4rem;
-            line-height: 1;
-            top: -1px;
+            color: var(--accent-orange);
+            font-size: 1.2rem;
         }
 
-        .status-message {
+        /* WHITELIST TAB */
+        .wl-banner {
+            background: #f1e4ce;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .wl-banner-text h4 {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .wl-banner-text p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .archetype-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .archetype-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .archetypes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .archetype-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .archetype-card:hover, .archetype-card.selected {
+            border-color: var(--accent-orange);
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(217, 104, 56, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .archetype-card.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-orange);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .archetype-card h5 {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .archetype-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* FORM WHITELIST MODULO */
+        .wl-form-container {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-group-full {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px rgba(217, 104, 56, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit-wl {
+            width: 100%;
             padding: 1rem;
-            border-radius: 8px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-submit-wl:hover {
+            background: var(--accent-orange-hover);
+        }
+
+        .status-box {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             display: none;
-            font-weight: 600;
-            text-align: center;
         }
+        .status-box.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-box.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
-        .status-success {
-            background: rgba(241, 174, 89, 0.2);
-            border: 1px solid var(--warm-yellow);
-            color: #2ecc71;
-        }
-
-        .status-error {
-            background: rgba(190, 74, 39, 0.2);
-            border: 1px solid var(--rust-red);
-            color: #ff6b6b;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            background: rgba(15, 38, 41, 0.98);
-            border-top: 3px solid var(--sunset-orange);
-            border-bottom: 3px solid var(--warm-yellow);
-            margin-top: auto;
-        }
-
-        @media (max-width: 900px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-                gap: 0.8rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            .rules-layout {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 850px) {
+            .navbar { padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; }
+            .rules-layout { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group-full { grid-column: span 1; }
+            .wl-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="nav-brand">
-            <img src="logo.png" alt="Logo Country Road 90'" class="nav-logo">
-            <span>Country Road 90'</span>
+        <div class="nav-socials">
+            <a href="https://discord.gg/YPjRPzDbB7" target="_blank" title="Discord">💬</a>
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="YouTube">▶</a>
         </div>
         <ul class="nav-links">
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
-            <li><a href="#" onclick="showTab('whitelist')" id="nav-whitelist">Whitelist</a></li>
-            <li><a href="#" onclick="showTab('bando')" id="nav-bando">Bandi Fazioni</a></li>
-            <li><a href="#" onclick="showTab('donazioni')" id="nav-donazioni">Donazioni</a></li>
+            <li><a href="#" onclick="showTab('ambientazione')" id="nav-ambientazione">Ambientazione</a></li>
             <li><a href="#" onclick="showTab('regolamento')" id="nav-regolamento">Regolamento</a></li>
-            <li>
-                <a href="https://discord.gg/WmUJy5Qj89" target="_blank" class="nav-discord-btn" id="discordLinkNav">
-                    <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                    </svg>
-                    Discord
-                </a>
-            </li>
+            <li><a href="#" onclick="showTab('whitelist')" id="nav-whitelist">Whitelist</a></li>
         </ul>
+        <div class="nav-user">
+            <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="User" class="user-avatar-small" id="userAvatarNav">
+            <span class="user-name-small" id="userNameNav">Ospite</span>
+            <button class="btn-logout" onclick="loginDiscord()">Login</button>
+        </div>
     </nav>
 
     <div class="container">
 
-        <div id="home" class="tab-content home-container-center active">
-            <div class="card" style="text-align: center; margin-bottom: 0;">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
-                    <h1>Country Road 90' Roleplay</h1>
-                    <p>Atmosfera Anni '90 • West Coast Style • FiveM RP</p>
+        <!-- TAB HOME -->
+        <div id="home" class="tab-content active">
+            <div class="home-hero">
+                <img src="aura.png" alt="Logo Country Road 90'" class="home-logo">
+                <div class="home-subtitle">BENVENUTO A</div>
+                <h1 class="home-title">Country Road 90'</h1>
+                <a href="#" onclick="showTab('ambientazione')" class="btn-main">Scopri l'Ambientazione</a>
+            </div>
+        </div>
+
+        <!-- TAB AMBIENTAZIONE -->
+        <div id="ambientazione" class="tab-content">
+            <div class="page-header">
+                <h2 class="page-title">Ambientazione</h2>
+            </div>
+            <p class="ambientazione-text">
+                Country Road 90' vi aspetta. Un'unica grande terra, mille storie da raccontare. Da chi vive le calde giornate tra le spiagge e i locali della costa, a chi lotta ogni giorno per il controllo delle strade o della propria comunità nei quartieri dell'entroterra.
+            </p>
+
+            <div class="polaroid-grid">
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
+                    <div class="polaroid-number">01 — LA COSTA & LE SPIAGGE</div>
+                    <h3 class="polaroid-title">Movida e Libertà</h3>
+                    <p class="polaroid-desc">I viali costieri brulicano di vita, musica anni '90 e turismo. Il luogo perfetto per chi cerca divertimento o nuovi affari legali.</p>
                 </div>
-                <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
-                    Benvenuto nel portale ufficiale di <strong>Country Road 90'</strong>. Entra in città richiedendo la <strong>Whitelist</strong> oppure invia la tua candidatura per una delle <strong>Fazioni</strong> ufficiali.
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
-                    <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('bando')">Bandi Fazioni</button>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
+                    <div class="polaroid-number">02 — IL PERIFERICO</div>
+                    <h3 class="polaroid-title">Strade & Motori</h3>
+                    <p class="polaroid-desc">I grandi snodi stradali e le zone industriali sono il regno dei garage, dei raduni d'auto d'epoca e delle officine di quartiere.</p>
+                </div>
+                <div class="polaroid-card">
+                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
+                    <div class="polaroid-number">03 — AI MARGINI</div>
+                    <h3 class="polaroid-title">L'Entroterra Duro</h3>
+                    <p class="polaroid-desc">Lontano dai riflettori della città, la legge viene applicata dagli sceriffi locali e la sopravvivenza si guadagna giorno dopo giorno.</p>
                 </div>
             </div>
         </div>
 
-        <div id="whitelist" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
-                    <h1>Test Whitelist Cittadino</h1>
-                    <p>Country Road 90' - Accesso Server FiveM</p>
-                </div>
-
-                <div id="wlStatusMessage" class="status-message"></div>
-
-                <div class="discordAuthSection" id="wlDiscordSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #bdc5cd;">
-                        Per sottoporre il test di ammissione alla whitelist, autenticati con il tuo account Discord.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('whitelist')">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
-                        Accedi con Discord per Whitelist
-                    </button>
-                </div>
-
-                <form id="whitelistForm" class="auth-form" style="display: none;" onsubmit="sendWhitelist(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlNomeIC">Nome e Cognome del Personaggio (IC):</label>
-                        <input type="text" id="wlNomeIC" required placeholder="Es. Tommy Vercetti">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlAnniIC">Età del Personaggio:</label>
-                        <input type="number" id="wlAnniIC" min="18" max="99" required placeholder="Es. 25">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlBackground">Background del Personaggio (Minimo 150 caratteri):</label>
-                        <textarea id="wlBackground" required minlength="150" placeholder="Racconta la storia, il passato, le ambizioni e il carattere del tuo personaggio..." oninput="updateCharCount(this)"></textarea>
-                        <div class="char-counter" id="charCounter">Caratteri inseriti: 0 / 150 min</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlFiveMTime">Da quanto tempo giochi a FiveM?</label>
-                        <input type="text" id="wlFiveMTime" required placeholder="Es. 2 anni / Da 6 mesi">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="wlServers">In quali server sei stato in precedenza?</label>
-                        <input type="text" id="wlServers" required placeholder="Es. Nome Server 1, Nome Server 2...">
-                    </div>
-
-                    <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
-                </form>
-
-                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(230, 103, 51, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
-                    <h3 style="color: var(--cream-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare il modulo di whitelist una sola volta ogni 48 ore. Potrai reinviarlo tra:</p>
-                    <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--cream-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="bando" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
-                    <h1>Bandi di Reclutamento Fazioni</h1>
-                    <p>Country Road 90' - Selezioni Istituzionali & Lavori</p>
-                </div>
-
-                <div id="statusMessage" class="status-message"></div>
-
-                <!-- GRIGLIA FAZIONI EDITABILE -->
-                <div class="factions-grid">
-                    <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia (LSPD)</button>
-                    <button class="faction-btn" onclick="selectFaction('sceriffi', this)">Sceriffi (LCSO)</button>
-                    <button class="faction-btn" onclick="selectFaction('medici', this)">Pronto Soccorso (EMS)</button>
-                    <button class="faction-btn" onclick="selectFaction('meccanici', this)">Officina / Meccanici</button>
-                </div>
-
-                <div class="discordAuthSection" id="bandoDiscordSection">
-                    <p style="text-align: center; margin-bottom: 1.5rem; color: #bdc5cd;">
-                        Effettua il login con Discord per accedere al modulo di candidatura specifico della fazione selezionata.
-                    </p>
-                    <button class="btn btn-discord" onclick="loginWithDiscord('bando')">
-                        <svg class="discord-icon" viewBox="0 0 127.14 96.36">
-                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.91-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.81,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91.08,65.69,84.69,65.69Z"/>
-                        </svg>
-                        Accedi con Discord per Candidarti
-                    </button>
-                </div>
-
-                <form id="applicationForm" class="auth-form" style="display: none;" onsubmit="sendApplication(event)">
-                    <div class="user-info">
-                        <img src="" alt="Avatar" class="userAvatar user-avatar">
-                        <div>
-                            <div class="userName" style="font-weight: 700; color: #fff;"></div>
-                            <div class="userId" style="font-size: 0.8rem; color: var(--text-muted);"></div>
-                        </div>
-                    </div>
-
-                    <input type="hidden" id="selectedFactionInput" value="Polizia (LSPD)">
-
-                    <div class="form-group">
-                        <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
-                        <input type="text" id="nomeIC" required placeholder="Es. Jack Miller">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="etaOOC">Età Reale (OOC):</label>
-                        <input type="number" id="etaOOC" min="14" max="99" required placeholder="Es. 20">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="oreCitta">Ore di Gioco / Esperienza in Città:</label>
-                        <input type="text" id="oreCitta" required placeholder="Es. 300 ore">
-                    </div>
-
-                    <div id="dynamicJobQuestions"></div>
-
-                    <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
-                </form>
-
-                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(230, 103, 51, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
-                    <h3 style="color: var(--cream-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare un solo bando a settimana per fazione. Potrai ricandidarti tra:</p>
-                    <div id="cooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--cream-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="donazioni" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
-                    <h1>🎁 Donazioni</h1>
-                    <p>Country Road 90' - Supporta il Server</p>
-                </div>
-
-                <div class="rules-layout">
-                    <div class="rules-sidebar">
-                        <div class="rules-category-title">Pacchetti Disponibili</div>
-                        <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showDonationSection('supporter', this)" class="active">🌟 pack-supporter</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('boost', this)">💜 pack-boost</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('vip', this)">💎 pack-vip</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('unban', this)">🔓 pack-unban</button></li>
-                            <li class="rules-nav-item"><button onclick="showDonationSection('regolamento', this)">📜 Regolamento Donazioni</button></li>
-                        </ul>
-                    </div>
-
-                    <div class="rules-content-pane" id="donationContentPane"></div>
-                </div>
-            </div>
-        </div>
-
+        <!-- TAB REGOLAMENTO -->
         <div id="regolamento" class="tab-content">
-            <div class="card">
-                <div class="header-container">
-                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
-                    <h1>Regolamento Ufficiale Country Road 90' RP</h1>
-                    <p>Country Road 90' - Codice di Comportamento Generale & Normative</p>
+            <div class="page-header">
+                <h2 class="page-title">Regolamento</h2>
+            </div>
+
+            <div class="rules-layout">
+                <div class="rules-sidebar">
+                    <div class="sidebar-title">INDICE</div>
+                    <div class="sidebar-subtitle">Normative Generali</div>
+                    <ul class="rules-menu">
+                        <li><button onclick="showRulePane('r1', this)" class="active">Regole Generali</button></li>
+                        <li><button onclick="showRulePane('r2', this)">Principi Roleplay</button></li>
+                        <li><button onclick="showRulePane('r3', this)">Assistenze e Ticket</button></li>
+                        <li><button onclick="showRulePane('r4', this)">Sanzioni Disciplinari</button></li>
+                        <li><button onclick="showRulePane('r5', this)">Azioni Criminali</button></li>
+                        <li><button onclick="showRulePane('r6', this)">Safe Zone & Zone A rischio</button></li>
+                        <li><button onclick="showRulePane('r7', this)">Regolamento Discord</button></li>
+                    </ul>
                 </div>
 
-                <div class="rules-layout">
-                    <div class="rules-sidebar">
-                        <div class="rules-category-title">Indice Generale</div>
-                        <ul class="rules-nav-list">
-                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('regolamentogenerale', this)">2. Regolamento Generale</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('assistenze', this)">3. Assistenze</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('sanzioni', this)">4. Sanzioni</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('azioni', this)">5. Azioni</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('freeroam', this)">6. Azioni Freeroam</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('illegali', this)">7. Fazioni Illegali</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('assalti', this)">8. Assalti alla Centrale</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('legali', this)">9. Fazioni Legali</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">10. Safe Zone & Non Safe</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('lootfdo', this)">11. Loot alle FDO</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('rapine', this)">12. Rapine & Attività</button></li>
-                            <li class="rules-nav-item"><button onclick="showRuleSection('discord', this)">13. Regolamento Discord</button></li>
+                <div class="rules-content-card">
+                    <div id="r1" class="rule-pane active">
+                        <h3>1. Regole Generali</h3>
+                        <ul>
+                            <li><strong>Rispetto Interpersonale:</strong> È tassativamente vietato qualsiasi tipo di insulto o discriminazione OOC per razza, orientamento, genere o religione.</li>
+                            <li><strong>Netta Separazione IC/OOC:</strong> Ciò che accade all'interno del gioco non deve influenzare i rapporti personali esterni, e viceversa.</li>
+                            <li><strong>Common Sense:</strong> Vige sempre la regola del buon senso e del rispetto per la community.</li>
                         </ul>
                     </div>
 
-                    <div class="rules-content-pane">
-                        <div id="rule-generale" class="rule-section active">
-                            <h3>1. Regole Base & Condotta</h3>
-                            <ul class="rules-list">
-                                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Country Road 90' è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
-                                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
-                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni durante le azioni di gioco è considerato grave cheating e comporta sanzioni immediate.</li>
-                                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
-                            </ul>
-                        </div>
+                    <div id="r2" class="rule-pane">
+                        <h3>2. Principi Roleplay</h3>
+                        <ul>
+                            <li><strong>Fear RP (Valore della Vita):</strong> Devi sempre interpretare la paura della morte o del pericolo grave per il tuo personaggio.</li>
+                            <li><strong>New Life Rule (NLR):</strong> In caso di morte/respawn, si perde memoria degli eventi recenti che hanno portato al decesso.</li>
+                            <li><strong>Metagaming & Powergaming:</strong> Vietato usare informazioni OOC in gioco o compiere azioni sovrumane/impossibili.</li>
+                        </ul>
+                    </div>
 
-                        <div id="rule-regolamentogenerale" class="rule-section">
-                            <h3>2. Regolamento Generale</h3>
-                            <ul class="rules-list">
-                                <li><strong>Divieto di Bug Abuse e Exploiting:</strong> Sfruttare bug, glitch di caricamento, animazioni scorrette o duping di oggetti comporta il ban permanente immediato.</li>
-                                <li><strong>New Life Rule (NLR):</strong> Se il tuo personaggio viene ucciso e rianimato o respawna, perde totalmente la memoria degli eventi critici che hanno causato il decesso e dell'identità dei soggetti coinvolti. È vietato tornare sul luogo della morte prima di 15 minuti.</li>
-                                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve temere la morte. Se ti trovi in inferiorità numerica o sotto la minaccia diretta di armi da fuoco, devi sottostare agli ordini dei rapitori/aggressori senza fare eroismi.</li>
-                                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno fisico subito (incidenti, cadute, colpi) deve essere interpretato realisticamente tramite chat testuali (/me) e voce.</li>
-                            </ul>
-                        </div>
+                    <div id="r3" class="rule-pane">
+                        <h3>3. Assistenze e Ticket</h3>
+                        <ul>
+                            <li><strong>Apertura Ticket:</strong> Per ogni problema o segnalazione utilizzare i canali Discord dedicati fornendo clip video intere.</li>
+                            <li><strong>Comportamento:</strong> Mantenere toni civili nei ticket. Vietato bloccare il Roleplay in gioco per chiamare lo staff.</li>
+                        </ul>
+                    </div>
 
-                        <div id="rule-assistenze" class="rule-section">
-                            <h3>3. Assistenze</h3>
-                            <ul class="rules-list">
-                                <li><strong>Richiesta di Aiuto (Ticket):</strong> Per qualsiasi problema tecnico, bug riscontrato in città o segnalazione verso altri giocatori, è obbligatorio aprire un ticket sul server Discord ufficiale.</li>
-                                <li><strong>Comportamento nei Ticket:</strong> È vietato spammare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
-                                <li><strong>Gestione dei Report in Game:</strong> Durante un'azione di gioco in corso, è vietato fermarsi per chiamare lo staff o aprire report. L'azione va portata a termine; eventuali irregolarità si discutono a fine azione aprendo un ticket con clip.</li>
-                            </ul>
-                        </div>
+                    <div id="r4" class="rule-pane">
+                        <h3>4. Sanzioni Disciplinari</h3>
+                        <ul>
+                            <li><strong>Graduatoria Sanzioni:</strong> Warn verbali, Kick, Ban temporanei o Ban Permanenti nei casi più gravi di trolling o cheating.</li>
+                        </ul>
+                    </div>
 
-                        <div id="rule-sanzioni" class="rule-section">
-                            <h3>4. Sanzioni</h3>
-                            <ul class="rules-list">
-                                <li><strong>Scala Disciplinare:</strong> Le sanzioni dello staff prevedono avvertimenti verbali (Warn), kick, periodi di ban temporaneo (da 1 a 30 giorni) o ban permanente nei casi più gravi.</li>
-                                <li><strong>Last Chance:</strong> Nei casi di recidiva o comportamenti tossici gravi, lo staff può applicare lo status di "Ultima Chance", azzerando i progressi del personaggio o escludendo definitivamente l'utente dalla community.</li>
-                                <li><strong>Divieto di Evadere le Sanzioni:</strong> Creare account secondari (multiaccount) per aggirare un ban attivo comporta l'estensione del ban a tutti gli account collegati.</li>
-                            </ul>
-                        </div>
+                    <div id="r5" class="rule-pane">
+                        <h3>5. Azioni Criminali</h3>
+                        <ul>
+                            <li><strong>Motivazione Narrativa:</strong> Ogni aggressione o rapina deve avere una motivazione IC valida e sensata.</li>
+                            <li><strong>Rapine alle Attività:</strong> Ammesse se il valore totale preteso non supera i 20.000$.</li>
+                        </ul>
+                    </div>
 
-                        <div id="rule-azioni" class="rule-section">
-                            <h3>5. Azioni</h3>
-                            <ul class="rules-list">
-                                <li><strong>Deathmatch (RDM/VDM):</strong> È severamente vietato uccidere o ferire altri giocatori (o investirli deliberatamente con veicoli) senza un valido motivo di roleplay precedente e un'interazione verbale o narrativa chiara.</li>
-                                <li><strong>Iniziative Ostili:</strong> Qualsiasi azione criminale (rapine, sequestri, agguati) deve avere una motivazione IC sensata e rispettare i limiti numerici stabiliti per i partecipanti.</li>
-                                <li><strong>Prosecuzione delle Azioni (Combat Log):</strong> È vietato disconnettersi durante un'azione di gioco attiva o in corso di rapina/arresto.</li>
-                            </ul>
-                        </div>
+                    <div id="r6" class="rule-pane">
+                        <h3>6. Safe Zone & Zone A Rischio</h3>
+                        <ul>
+                            <li><strong>Safe Zone:</strong> Ospedale, Stazioni di Polizia/Sceriffi, Municipio e Concessionario principale. Vietato avviare azioni ostili.</li>
+                            <li><strong>Divieto di Fuga:</strong> Vietato rifugiarsi in una Safezone per sfuggire a un'azione già iniziata all'esterno.</li>
+                        </ul>
+                    </div>
 
-                        <div id="rule-freeroam" class="rule-section">
-                            <h3>6. Azioni Freeroam</h3>
-                            <ul class="rules-list">
-                                <li><strong>Definizione e Limiti:</strong> Le azioni freeroam o gli scontri estemporanei fuori dalle dinamiche di rapina/controllo devono comunque sottostare alle regole base dell'RP, evitando sparatorie casuali senza costrutto narrativo.</li>
-                                <li><strong>Rispetto del Contesto Urbano:</strong> Anche nelle zone aperte o periferiche, è vietato trasformare la città in un deathmatch continuo privo di interazione civile o criminale sensata.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-illegali" class="rule-section">
-                            <h3>7. Fazioni Illegali</h3>
-                            <ul class="rules-list">
-                                <li><strong>Coerenza Criminale:</strong> I gruppi malavitosi devono agire con logica criminale coerente, evitando faide continue o immotivate che rovinano l'esperienza di gioco degli altri utenti.</li>
-                                <li><strong>Gestione del Territorio:</strong> Le attività illecite, lo spaccio e il controllo delle zone devono essere concordati e gestiti secondo le direttive specifiche per le organizzazioni criminali.</li>
-                                <li><strong>Rispetto delle Regole di Ingaggio:</strong> Nelle guerre tra fazioni illegali vanno rispettati i limiti di orario, le tregue e le modalità di scontro stabilite dallo staff.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-assalti" class="rule-section">
-                            <h3>8. Assalti alla Centrale</h3>
-                            <ul class="rules-list">
-                                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff.</li>
-                                <li><strong>Orari e Requisiti:</strong> L'assalto deve rispettare i numeri minimi di partecipanti sia per i criminali che per le forze dell'ordine collegate in servizio.</li>
-                                <li><strong>Sanzioni:</strong> Effettuare un assalto alla centrale senza previa autorizzazione tramite ticket dello staff comporterà sanzioni severissime per tutti i partecipanti.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-legali" class="rule-section">
-                            <h3>9. Fazioni Legali</h3>
-                            <ul class="rules-list">
-                                <li><strong>Professionalità e Deontologia:</strong> Gli operatori delle istituzioni devono mantenere un contegno impeccabile, rispettare la gerarchia e attenersi ai manuali operativi interni.</li>
-                                <li><strong>Uso della Forza:</strong> L'uso della forza o delle armi deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere.</li>
-                                <li><strong>Corruzione:</strong> Eventuali dinamiche di corruzione interna alle forze dell'ordine devono essere preventivamente autorizzate dallo staff tramite richiesta dedicata.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-zone" class="rule-section">
-                            <h3>10. Safe Zone & Non Safe</h3>
-                            <ul class="rules-list">
-                                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Municipio, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina o aggressione.</li>
-                                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno.</li>
-                                <li><strong>Zone Non Safe:</strong> Il resto della mappa cittadina dove le azioni criminali sono permesse nel rispetto delle normative generali.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-lootfdo" class="rule-section">
-                            <h3>11. Loot alle FDO</h3>
-                            <ul class="rules-list">
-                                <li><strong>Limitazioni sul Bottino:</strong> È possibile effettuare il loot (depredare gli oggetti) ai membri delle Forze dell'Ordine solo ed esclusivamente durante azioni mirate e autorizzate dal regolamento.</li>
-                                <li><strong>Limite Colpi:</strong> È consentito lootare un **massimo di 50 colpi ad agente**.</li>
-                                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza uniche o materiali non consentiti dal regolamento specifico.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-rapine" class="rule-section">
-                            <h3>12. Rapine & Attività</h3>
-                            <ul class="rules-list">
-                                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città.</li>
-                                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/transazione sia **inferiore a 20.000$**.</li>
-                                <li><strong>Nessun Ostaggio:</strong> Le rapine alle piccole attività **non devono avere alcun ostaggio**.</li>
-                            </ul>
-                        </div>
-
-                        <div id="rule-discord" class="rule-section">
-                            <h3>13. Regolamento Discord</h3>
-                            <ul class="rules-list">
-                                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW nel Discord di Country Road 90'.</li>
-                                <li><strong>Nickname e Profilo:</strong> Il nome utente e l'immagine del profilo su Discord devono essere consoni e privi di riferimenti offensivi o volgari.</li>
-                                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale emergenza.</li>
-                            </ul>
-                        </div>
+                    <div id="r7" class="rule-pane">
+                        <h3>7. Regolamento Discord</h3>
+                        <ul>
+                            <li><strong>Canali e Contenuti:</strong> Vietato inviare spam, materiale NSFW o pubblicità di altri server nei canali ufficiali.</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- TAB WHITELIST -->
+        <div id="whitelist" class="tab-content">
+            <div class="page-header">
+                <h2 class="page-title">Whitelist</h2>
+            </div>
+
+            <div class="wl-banner">
+                <div class="wl-banner-text">
+                    <h4>Leggi le linee guida del background</h4>
+                    <p>Prenditi un momento per definire la storia del tuo personaggio prima di scegliere il suo cammino in città.</p>
+                </div>
+                <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="showTab('regolamento')">Leggi il Regolamento</button>
+            </div>
+
+            <h3 class="archetype-title">Scegli il tuo archetipo</h3>
+            <p class="archetype-subtitle">Definisce la strada iniziale e la professione/ruolo del tuo personaggio a Country Road 90'.</p>
+
+            <div class="archetypes-grid">
+                <div class="archetype-card" onclick="selectArchetype('Informatico', this)">
+                    <h5>Informatico</h5>
+                    <p>Esperto di tecnologia, reti, codici e sistemi di sicurezza della città.</p>
+                </div>
+                <div class="archetype-card" onclick="selectArchetype('Cittadino', this)">
+                    <h5>Cittadino</h5>
+                    <p>Una vita tra lavoro onesto, ambizioni personali, commercio e relazioni quotidiane.</p>
+                </div>
+                <div class="archetype-card" onclick="selectArchetype('Sceriffo', this)">
+                    <h5>Sceriffo</h5>
+                    <p>Dedicato al rispetto della legge, alla tutela della comunità e al pattugliamento.</p>
+                </div>
+                <div class="archetype-card" onclick="selectArchetype('Medico', this)">
+                    <h5>Medico</h5>
+                    <p>In prima linea nel soccorso stradale, pronto intervento ospedaliero e salvataggio vite.</p>
+                </div>
+                <div class="archetype-card" onclick="selectArchetype('Criminale', this)">
+                    <h5>Criminale</h5>
+                    <p>Vita al limite, bande, traffici illegali e controllo del territorio nelle zone d'ombra.</p>
+                </div>
+                <div class="archetype-card" onclick="selectArchetype('Meccanico', this)">
+                    <h5>Meccanico</h5>
+                    <p>Passione per i motori, modifiche d'epoca, soccorso stradale e gestione officina.</p>
+                </div>
+                <div class="archetype-card" style="border-style: dashed; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;" onclick="openTicketOption()">
+                    <h5 style="color: var(--accent-orange);">Altro</h5>
+                    <p>Vuoi proporre un ruolo speciale? Apri un Ticket su Discord!</p>
+                </div>
+            </div>
+
+            <!-- FORM COMPILAZIONE WHITELIST -->
+            <div id="wlFormContainer" class="wl-form-container">
+                <div id="statusBox" class="status-box"></div>
+                <h3 class="archetype-title" style="margin-bottom: 1.5rem;" id="selectedArchetypeTitle">Modulo Candidatura: Cittadino</h3>
+
+                <form id="wlForm" onsubmit="submitWhitelist(event)">
+                    <input type="hidden" id="inputArchetipo" value="Cittadino">
+
+                    <div class="form-grid">
+                        <div>
+                            <label class="form-label">NOME PERSONAGGIO (IC) *</label>
+                            <input type="text" id="wlNome" class="form-control" required placeholder="Es. Jack">
+                        </div>
+                        <div>
+                            <label class="form-label">COGNOME PERSONAGGIO (IC) *</label>
+                            <input type="text" id="wlCognome" class="form-control" required placeholder="Es. Miller">
+                        </div>
+                        <div>
+                            <label class="form-label">CITTADINANZA *</label>
+                            <input type="text" id="wlCittadinanza" class="form-control" required placeholder="Es. Statunitense">
+                        </div>
+                        <div>
+                            <label class="form-label">ORIGINE / PROVENIENZA *</label>
+                            <select id="wlOrigine" class="form-control" required>
+                                <option value="">— Selezione —</option>
+                                <option value="Locale">Locale (Nato in città)</option>
+                                <option value="Stati Uniti">Stati Uniti</option>
+                                <option value="Europa">Europa</option>
+                                <option value="Altro">Altro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">ETÀ PERSONAGGIO *</label>
+                            <input type="number" id="wlEta" class="form-control" min="18" max="90" required placeholder="Es. 25">
+                        </div>
+                        <div>
+                            <label class="form-label">SESSO DEL PERSONAGGIO *</label>
+                            <select id="wlSesso" class="form-control" required>
+                                <option value="">— Selezione —</option>
+                                <option value="Maschio">Maschio</option>
+                                <option value="Femmina">Femmina</option>
+                            </select>
+                        </div>
+                        <div class="form-group-full">
+                            <label class="form-label">FEDINA PENALE PREVISTA *</label>
+                            <input type="text" id="wlFedina" class="form-control" required placeholder="Es. Pulita / Piccoli precedenti per rissa">
+                        </div>
+                        <div class="form-group-full">
+                            <label class="form-label">STORIA E BACKGROUND DEL PERSONAGGIO *</label>
+                            <textarea id="wlStoria" class="form-control" required placeholder="Racconta il passato del tuo personaggio, il motivo del suo arrivo a Country Road 90' e i suoi obiettivi..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btnSubmitWl" class="btn-submit-wl">Invia Candidatura Whitelist</button>
+                </form>
             </div>
         </div>
 
     </div>
 
-    <footer>
-        <p>&copy; Country Road 90' RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: var(--cream-white); font-weight: 600;">Developed by Ercirus | Co-Dev: Guzman</p>
-    </footer>
-
     <script>
-        const CLIENT_ID = '1536336646507601920'; 
-        const REDIRECT_URI = window.location.origin + window.location.pathname;
-        const DISCORD_SERVER_INVITE = 'https://discord.gg/WmUJy5Qj89';
-
-        /* MAPPATURA WEBHOOK DELLE FAZIONI - Inserisci qui i link Webhook Discord */
-        const WEBHOOK_URLS = {
-            'whitelist': 'https://discord.com/api/webhooks/1539259197693239469/OjhYlk02whjrmhwoevcihIHPM3BKGQM0ve2UsFvY401s_YltMVCOUkIOCk2f4stskQei',
-            'Polizia (LSPD)': 'https://discord.com/api/webhooks/1539258291098484867/glno8i5cIpNK55BdKzSvJdDZOQZAXcrBNWCpa79_LYQ92lPOnAbJn_Gbo4n47KdnavwZ',
-            'Sceriffi (LCSO)': 'https://discord.com/api/webhooks/1539258498070745099/K9m4U49TmsqXSpcvAKjcQp4uL0ub8LYXn2n6efEKo9kXyV6qMI6m1dq1kbbiG2fYczVZ',
-            'Pronto Soccorso (EMS)': 'https://discord.com/api/webhooks/1539258992834908160/kckbmqMI332ermyx7sQ_K8Ou8E8P48yhvUPink5jOJrDhYYwfkZoT1ZjWYdT_v9la89T',
-            'Officina / Meccanici': 'https://discord.com/api/webhooks/1539258736298692729/iHal61baObF0HaMgNhGAQ3XsJTAGshdxQhPYaZrPSZLHuWVIJ08iQV8yXpLRyauu25Dm'
-        };
-
-        let userData = null;
-        let currentSelectedFaction = 'Polizia (LSPD)';
-        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; 
-        const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; 
-        
-        let bandoCooldownIntervalId = null;
-        let wlCooldownIntervalId = null;
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const navLink = document.getElementById('discordLinkNav');
-            if (navLink) navLink.href = DISCORD_SERVER_INVITE;
-
-            renderJobQuestions('Polizia (LSPD)');
-            showDonationSection('supporter', document.querySelector('.rules-sidebar button'));
-        });
+        const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1537962063899394130/J3ruV7rhz6N914Q79lYs9Jr8R13nqf5kwvs3tET_Pt0bRbMHyjEwwlaS2Rqn-1FTQZI4';
+        const DISCORD_INVITE_LINK = 'https://discord.gg/YPjRPzDbB7';
+        let selectedArchetype = '';
 
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            
+
             const targetTab = document.getElementById(tabId);
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-            
+            if (targetTab) targetTab.classList.add('active');
+
             const navLink = document.getElementById('nav-' + tabId);
-            if (navLink) {
-                navLink.classList.add('active');
-            }
+            if (navLink) navLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function updateCharCount(textarea) {
-            const counter = document.getElementById('charCounter');
-            const len = textarea.value.length;
-            counter.innerText = `Caratteri inseriti: ${len} / 150 min`;
-            if (len >= 150) {
-                counter.style.color = '#2ecc71';
-            } else {
-                counter.style.color = 'var(--text-muted)';
-            }
-        }
+        function showRulePane(paneId, btnElement) {
+            document.querySelectorAll('.rule-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.rules-menu button').forEach(b => b.classList.remove('active'));
 
-        function selectFaction(factionKey, btnElement) {
-            document.querySelectorAll('.faction-btn').forEach(btn => btn.classList.remove('active-faction'));
-            btnElement.classList.add('active-faction');
-
-            const factionNames = {
-                'polizia': 'Polizia (LSPD)',
-                'sceriffi': 'Sceriffi (LCSO)',
-                'medici': 'Pronto Soccorso (EMS)',
-                'meccanici': 'Officina / Meccanici'
-            };
-
-            currentSelectedFaction = factionNames[factionKey] || 'Polizia (LSPD)';
-            const inputField = document.getElementById('selectedFactionInput');
-            if (inputField) inputField.value = currentSelectedFaction;
-
-            renderJobQuestions(currentSelectedFaction);
-            
-            if (userData) {
-                checkIfBandoAlreadySent();
-            }
-        }
-
-        function getBandoStorageKey(faction) {
-            return `bando_inviato_${userData.id}_${faction}`;
-        }
-
-        function getBandoRemainingMs(faction) {
-            const storageKey = getBandoStorageKey(faction);
-            const lastSentRaw = localStorage.getItem(storageKey);
-            if (!lastSentRaw) return 0;
-
-            const lastSent = parseInt(lastSentRaw, 10);
-            if (isNaN(lastSent)) return 0;
-
-            const remaining = BANDO_COOLDOWN_MS - (Date.now() - lastSent);
-            return remaining > 0 ? remaining : 0;
-        }
-
-        function getWlStorageKey() {
-            return `wl_inviata_${userData.id}`;
-        }
-
-        function getWlRemainingMs() {
-            const storageKey = getWlStorageKey();
-            const lastSentRaw = localStorage.getItem(storageKey);
-            if (!lastSentRaw) return 0;
-
-            const lastSent = parseInt(lastSentRaw, 10);
-            if (isNaN(lastSent)) return 0;
-
-            const remaining = WL_COOLDOWN_MS - (Date.now() - lastSent);
-            return remaining > 0 ? remaining : 0;
-        }
-
-        function formatCooldown(ms) {
-            const totalSeconds = Math.max(0, Math.floor(ms / 1000));
-            const days = Math.floor(totalSeconds / 86400);
-            const hours = Math.floor((totalSeconds % 86400) / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
-            const pad = (n) => String(n).padStart(2, '0');
-            return `${days}g ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
-        }
-
-        function checkIfWlAlreadySent() {
-            if (!userData) return;
-
-            const form = document.getElementById('whitelistForm');
-            const alreadySentMsg = document.getElementById('wlAlreadySentMessage');
-            const timerEl = document.getElementById('wlCooldownTimer');
-
-            if (wlCooldownIntervalId) {
-                clearInterval(wlCooldownIntervalId);
-                wlCooldownIntervalId = null;
-            }
-
-            const remaining = getWlRemainingMs();
-
-            if (remaining > 0) {
-                form.style.display = 'none';
-                alreadySentMsg.style.display = 'block';
-                timerEl.innerText = formatCooldown(remaining);
-
-                wlCooldownIntervalId = setInterval(() => {
-                    const stillRemaining = getWlRemainingMs();
-                    if (stillRemaining <= 0) {
-                        clearInterval(wlCooldownIntervalId);
-                        wlCooldownIntervalId = null;
-                        checkIfWlAlreadySent();
-                        return;
-                    }
-                    timerEl.innerText = formatCooldown(stillRemaining);
-                }, 1000);
-            } else {
-                form.style.display = 'block';
-                alreadySentMsg.style.display = 'none';
-            }
-        }
-
-        function checkIfBandoAlreadySent() {
-            if (!userData) return;
-
-            const form = document.getElementById('applicationForm');
-            const alreadySentMsg = document.getElementById('alreadySentMessage');
-            const timerEl = document.getElementById('cooldownTimer');
-            const faction = currentSelectedFaction;
-
-            if (bandoCooldownIntervalId) {
-                clearInterval(bandoCooldownIntervalId);
-                bandoCooldownIntervalId = null;
-            }
-
-            const remaining = getBandoRemainingMs(faction);
-
-            if (remaining > 0) {
-                form.style.display = 'none';
-                alreadySentMsg.style.display = 'block';
-                timerEl.innerText = formatCooldown(remaining);
-
-                bandoCooldownIntervalId = setInterval(() => {
-                    if (faction !== currentSelectedFaction) {
-                        clearInterval(bandoCooldownIntervalId);
-                        bandoCooldownIntervalId = null;
-                        return;
-                    }
-
-                    const stillRemaining = getBandoRemainingMs(faction);
-                    if (stillRemaining <= 0) {
-                        clearInterval(bandoCooldownIntervalId);
-                        bandoCooldownIntervalId = null;
-                        checkIfBandoAlreadySent();
-                        return;
-                    }
-                    timerEl.innerText = formatCooldown(stillRemaining);
-                }, 1000);
-            } else {
-                form.style.display = 'block';
-                alreadySentMsg.style.display = 'none';
-            }
-        }
-
-        function renderJobQuestions(faction) {
-            const container = document.getElementById('dynamicJobQuestions');
-            if (!container) return;
-
-            let html = '';
-            if (faction === 'Polizia (LSPD)' || faction === 'Sceriffi (LCSO)') {
-                html = `
-                    <div class="form-group">
-                        <label>1. Come gestisci una situazione di ostaggi in banca con i criminali armati?</label>
-                        <textarea id="qJob1" required placeholder="Spiega i protocolli di negoziazione, posizionamento e intervento..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Qual è il tuo comportamento di fronte a un ordine diretto di un superiore durante un'operazione?</label>
-                        <textarea id="qJob2" required placeholder="Descrivi il rispetto della catena di comando e della gerarchia..."></textarea>
-                    </div>
-                `;
-            } else if (faction === 'Pronto Soccorso (EMS)') {
-                html = `
-                    <div class="form-group">
-                        <label>1. Protocollo di triage in caso di maxi-emergenza con più feriti gravi:</label>
-                        <textarea id="qJob1" required placeholder="Spiega le priorità di soccorso, stabilizzazione e trasporto..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Come gestisci un paziente che rifiuta le cure o in stato di forte shock?</label>
-                        <textarea id="qJob2" required placeholder="Approccio psicologico e procedure di sicurezza medica..."></textarea>
-                    </div>
-                `;
-            } else if (faction === 'Officina / Meccanici') {
-                html = `
-                    <div class="form-group">
-                        <label>1. Come gestisci il servizio di carroattrezzi e il soccorso stradale in zona pericolosa?</label>
-                        <textarea id="qJob1" required placeholder="Spiega le tempistiche di intervento e la sicurezza del veicolo..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>2. Qual è il tuo approccio al cliente e alla gestione del listino riparazioni/tuning?</label>
-                        <textarea id="qJob2" required placeholder="Trasparenza nei prezzi e condotta roleplay con il cliente..."></textarea>
-                    </div>
-                `;
-            }
-            container.innerHTML = html;
-        }
-
-        function showRuleSection(sectionId, btnElement) {
-            document.querySelectorAll('#regolamento .rule-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('#regolamento .rules-nav-item button').forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById('rule-' + sectionId).classList.add('active');
+            document.getElementById(paneId).classList.add('active');
             btnElement.classList.add('active');
         }
 
-        function showDonationSection(packType, btnElement) {
-            const pane = document.getElementById('donationContentPane');
-            if (!pane) return;
+        function selectArchetype(name, cardElement) {
+            document.querySelectorAll('.archetype-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
 
-            document.querySelectorAll('#donazioni .rules-nav-item button').forEach(btn => btn.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
+            selectedArchetype = name;
+            document.getElementById('inputArchetipo').value = name;
+            document.getElementById('selectedArchetypeTitle').innerText = 'Modulo Candidatura: ' + name;
 
-            let contentHTML = '';
-
-            if (packType === 'supporter') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>🌟 Pack Supporter</h3>
-                        <ul class="rules-list">
-                            <li><strong>Supporter Base:</strong> Donazione di <strong>75€</strong> al server.</li>
-                            <li><strong>Supporter Plus:</strong> Donazione superiore a <strong>150€</strong>.</li>
-                            <li><strong>Mega Supporter:</strong> Donazione maggiore a <strong>500€</strong>.</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'boost') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>💜 Pack Boost</h3>
-                        <ul class="rules-list">
-                            <li><strong>1 Boost:</strong> Ricevi <strong>20k in game</strong>.</li>
-                            <li><strong>2 Boost:</strong> Ricevi <strong>50k in game</strong>.</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'vip') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>💎 Pack VIP — Prezzo: 15€</h3>
-                        <ul class="rules-list">
-                            <li><strong>Assistenza prioritaria:</strong> Supporto rapido dedicato.</li>
-                            <li><strong>Veicolo VIP:</strong> Un veicolo VIP a tua scelta.</li>
-                            <li><strong>Ruolo e Canali:</strong> Ruolo VIP "Country Road 90'" e canali vocali VIP annessi su Discord.</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'unban') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>🔓 Pack Unban</h3>
-                        <ul class="rules-list">
-                            <li><strong>Ban normale:</strong> <strong>20€</strong>.</li>
-                            <li><strong>Ban per troll + Last Chance:</strong> <strong>35€</strong> (Nota: L'attenzionamento è incluso; questo pack può essere acquistato una sola volta).</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (packType === 'regolamento') {
-                contentHTML = `
-                    <div class="rule-section active">
-                        <h3>Regolamento Donazioni – Country Road 90'</h3>
-                        
-                        <h4 style="color: var(--warm-yellow); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
-                        <ul class="rules-list">
-                            <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Country Road 90' sono effettuate a titolo di donazione libera e spontanea.</li>
-                            <li><strong>Finalità:</strong> I fondi raccolti vengono impiegati esclusivamente per il sostentamento del progetto, inclusi i costi per l'hosting dei server, manutenzione tecnica, licenze, plugin e lo sviluppo di nuove funzionalità.</li>
-                            <li><strong>Nessun Beneficio Economico:</strong> La donazione non costituisce un investimento finanziario né un acquisto di beni/servizi commerciali.</li>
-                        </ul>
-
-                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
-                        <ul class="rules-list">
-                            <li><strong>Trattamento Simbolico:</strong> Eventuali ruoli, badge, veicoli o vantaggi in-game/nel server riconosciuti ai donatori sono semplici ringraziamenti simbolici per il supporto fornito.</li>
-                            <li><strong>Fair Play:</strong> I vantaggi concessi non garantiscono né giustificano in alcun modo l'immunità dal regolamento generale del server/community. Tutti i donatori sono tenuti a rispettare le regole alla pari di ogni altro utente.</li>
-                        </ul>
-
-                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
-                        <ul class="rules-list">
-                            <li><strong>Irrevocabilità:</strong> Una volta effettuata, la donazione non è in alcun modo rimborsabile.</li>
-                            <li><strong>Provvedimenti Disciplinari:</strong> In caso di ban, kick o sanzioni disciplinari per violazione del regolamento generale, l'utente non avrà diritto al rimborso delle donazioni effettuate né al recupero dei benefici attribuiti.</li>
-                            <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Country Road 90'.</li>
-                        </ul>
-
-                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
-                        <ul class="rules-list">
-                            <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Country Road 90' (es. PayPal, Tebex, Ko-fi).</li>
-                            <li>Nessun membro dello staff è autorizzato a richiedere pagamenti o donazioni dirette su account personali al di fuori dei canali stabiliti.</li>
-                        </ul>
-
-                        <h4 style="color: var(--warm-yellow); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
-                        <ul class="rules-list">
-                            <li>L'invio di una donazione implica l'accettazione automatica e integrale di tutti i punti del presente regolamento.</li>
-                        </ul>
-                    </div>
-                `;
-            }
-
-            pane.innerHTML = contentHTML;
+            const formContainer = document.getElementById('wlFormContainer');
+            formContainer.style.display = 'block';
+            formContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function loginWithDiscord(targetTab) {
-            const scope = 'identify';
-            const state = targetTab || 'home';
-            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=${scope}&state=${state}`;
-            window.location.href = authUrl;
+        function openTicketOption() {
+            alert("Per ruoli speciali o diverse candidature, apri un Ticket nella sezione supporto del nostro server Discord ufficiale!");
+            window.open(DISCORD_INVITE_LINK, '_blank');
         }
 
-        window.onload = function() {
-            const fragment = new URLSearchParams(window.location.hash.slice(1));
-            const accessToken = fragment.get('access_token');
-            const targetTab = fragment.get('state') || 'home';
+        function loginDiscord() {
+            alert("Integrazione Discord OAuth2 attiva. Accedi con il tuo account Discord per sincronizzare il profilo.");
+        }
 
-            if (accessToken) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showTab(targetTab);
-
-                fetch('https://discord.com/api/users/@me', {
-                    headers: { authorization: `Bearer ${accessToken}` }
-                })
-                .then(res => res.json())
-                .then(user => {
-                    if (user.id) {
-                        userData = user;
-                        
-                        document.querySelectorAll('.discordAuthSection').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.auth-form').forEach(el => el.style.display = 'block');
-                        
-                        const avatarUrl = user.avatar 
-                            ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-                            : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-                        document.querySelectorAll('.userName').forEach(el => el.innerText = `${user.username}`);
-                        document.querySelectorAll('.userId').forEach(el => el.innerText = `ID Discord: ${user.id}`);
-                        document.querySelectorAll('.userAvatar').forEach(el => el.src = avatarUrl);
-
-                        checkIfWlAlreadySent();
-                        checkIfBandoAlreadySent();
-                    }
-                })
-                .catch(() => {
-                    showStatus('wlStatusMessage', 'Errore nel recupero dati da Discord.', 'error');
-                });
-            }
-        };
-
-        function sendWhitelist(event) {
+        function submitWhitelist(event) {
             event.preventDefault();
-            if (!userData) {
-                showStatus('wlStatusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
 
-            if (getWlRemainingMs() > 0) {
-                showStatus('wlStatusMessage', 'Hai già inviato una richiesta di whitelist nelle ultime 48 ore.', 'error');
-                checkIfWlAlreadySent();
-                return;
-            }
+            const submitBtn = document.getElementById('btnSubmitWl');
+            const statusBox = document.getElementById('statusBox');
 
-            const backgroundText = document.getElementById('wlBackground').value;
-            if (backgroundText.length < 150) {
-                showStatus('wlStatusMessage', 'Errore: Il background deve contenere almeno 150 caratteri.', 'error');
-                return;
-            }
-
-            const submitBtn = document.getElementById('wlSubmitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = 'Invio in corso...';
 
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
             const payload = {
-                username: "Whitelist - Country Road 90'",
+                username: "Sistema Whitelist - Country Road 90'",
                 embeds: [{
-                    title: "🟢 NUOVA RICHIESTA WHITELIST CITTA'",
-                    color: 15099705,
-                    thumbnail: { url: userAvatarUrl },
+                    title: "📄 NUOVA CANDIDATURA WHITELIST",
+                    color: 14248000,
                     fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "📝 Nome Personaggio (IC)", value: document.getElementById('wlNomeIC').value, inline: false },
-                        { name: "🎂 Età Personaggio", value: document.getElementById('wlAnniIC').value, inline: true },
-                        { name: "📖 Background Personaggio", value: backgroundText, inline: false },
-                        { name: "⏳ Tempo su FiveM", value: document.getElementById('wlFiveMTime').value, inline: true },
-                        { name: "🌐 Server Precedenti", value: document.getElementById('wlServers').value, inline: true }
+                        { name: "🎭 Archetipo Scelto", value: document.getElementById('inputArchetipo').value, inline: true },
+                        { name: "👤 Nome & Cognome IC", value: document.getElementById('wlNome').value + " " + document.getElementById('wlCognome').value, inline: true },
+                        { name: "🎂 Età & Sesso", value: document.getElementById('wlEta').value + " anni | " + document.getElementById('wlSesso').value, inline: true },
+                        { name: "🌐 Cittadinanza / Origine", value: document.getElementById('wlCittadinanza').value + " (" + document.getElementById('wlOrigine').value + ")", inline: false },
+                        { name: "📜 Fedina Penale", value: document.getElementById('wlFedina').value, inline: false },
+                        { name: "📖 Storia Personaggio", value: document.getElementById('wlStoria').value, inline: false }
                     ],
-                    footer: { text: "Country Road 90' RP • Whitelist System" },
+                    footer: { text: "Country Road 90' RP • Whitelist Application" },
                     timestamp: new Date().toISOString()
                 }]
             };
 
-            fetch(WEBHOOK_URLS['whitelist'], {
+            fetch(DISCORD_WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(response => {
-                if (response.ok) {
-                    localStorage.setItem(getWlStorageKey(), Date.now().toString());
-                    showStatus('wlStatusMessage', 'Test Whitelist inviato con successo! Attendi la valutazione dello Staff.', 'success');
-                    document.getElementById('whitelistForm').reset();
-                    document.getElementById('charCounter').innerText = 'Caratteri inseriti: 0 / 150 min';
-                    checkIfWlAlreadySent();
+            .then(res => {
+                if (res.ok) {
+                    statusBox.className = 'status-box success';
+                    statusBox.innerText = 'Candidatura Whitelist inviata con successo! Attendi la valutazione dello staff su Discord.';
+                    statusBox.style.display = 'block';
+                    document.getElementById('wlForm').reset();
                 } else {
-                    showStatus('wlStatusMessage', 'Errore durante l\'invio della whitelist.', 'error');
+                    throw new Error('Errore nella risposta del server.');
                 }
             })
             .catch(() => {
-                showStatus('wlStatusMessage', 'Errore di connessione al webhook.', 'error');
+                statusBox.className = 'status-box error';
+                statusBox.innerText = 'Errore durante l\'invio della candidatura. Riprova più tardi o apri un ticket.';
+                statusBox.style.display = 'block';
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Test Whitelist';
+                submitBtn.innerText = 'Invia Candidatura Whitelist';
             });
-        }
-
-        function sendApplication(event) {
-            event.preventDefault();
-            if (!userData) {
-                showStatus('statusMessage', 'Errore: Devi prima effettuare il login con Discord.', 'error');
-                return;
-            }
-
-            const storageKey = getBandoStorageKey(currentSelectedFaction);
-            if (getBandoRemainingMs(currentSelectedFaction) > 0) {
-                showStatus('statusMessage', 'Hai già inviato un bando per questa fazione questa settimana. Attendi il termine del cooldown.', 'error');
-                checkIfBandoAlreadySent();
-                return;
-            }
-
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Invio in corso...';
-
-            const userAvatarUrl = userData.avatar 
-                ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-                : 'https://cdn.discordapp.com/embed/avatars/0.png';
-
-            const payload = {
-                username: `Reclutamento ${currentSelectedFaction} - Country Road 90'`,
-                embeds: [{
-                    title: `📄 CANDIDATURA FAZIONE: ${currentSelectedFaction.toUpperCase()}`,
-                    color: 15099705,
-                    thumbnail: { url: userAvatarUrl },
-                    fields: [
-                        { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
-                        { name: "🪪 ID Discord", value: userData.id, inline: true },
-                        { name: "🏛️ Fazione", value: currentSelectedFaction, inline: true },
-                        { name: "📝 Nome & Cognome IC", value: document.getElementById('nomeIC').value, inline: false },
-                        { name: "🎂 Età OOC", value: document.getElementById('etaOOC').value, inline: true },
-                        { name: "⏳ Esperienza / Ore", value: document.getElementById('oreCitta').value, inline: true },
-                        { name: "📋 Risposta Specifica 1", value: document.getElementById('qJob1').value, inline: false },
-                        { name: "📋 Risposta Specifica 2", value: document.getElementById('qJob2').value, inline: false }
-                    ],
-                    footer: { text: "Country Road 90' RP • Fazioni Istituzionali" },
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            const targetWebhook = WEBHOOK_URLS[currentSelectedFaction] || WEBHOOK_URLS['Polizia (LSPD)'];
-
-            fetch(targetWebhook, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (response.ok) {
-                    localStorage.setItem(storageKey, Date.now().toString());
-                    showStatus('statusMessage', 'Candidatura fazione inoltrata con successo! Potrai reinviarla tra 7 giorni.', 'success');
-                    document.getElementById('applicationForm').reset();
-                    checkIfBandoAlreadySent();
-                } else {
-                    showStatus('statusMessage', 'Errore durante l\'invio.', 'error');
-                }
-            })
-            .catch(() => {
-                showStatus('statusMessage', 'Errore di connessione.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Invia Candidatura Fazione';
-            });
-        }
-
-        function showStatus(elementId, text, type) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.innerText = text;
-            el.className = 'status-message ' + (type === 'success' ? 'status-success' : 'status-error');
-            el.style.display = 'block';
-            setTimeout(() => { el.style.display = 'none'; }, 6000);
         }
     </script>
 </body>
