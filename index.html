@@ -350,7 +350,7 @@
 
         .polaroid-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
@@ -370,7 +370,7 @@
 
         .polaroid-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 1.2rem;
@@ -860,6 +860,7 @@
         }
 
         @media (max-width: 900px) {
+            .polaroid-grid { grid-template-columns: 1fr; }
             .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
             .bg-palms-left, .bg-palms-right { display: none; }
         }
@@ -919,27 +920,33 @@
                 <h2 class="page-title">Ambientazione</h2>
             </div>
             <p class="ambientazione-text">
-                Country Road 90' vi aspetta. Un'unica grande terra, mille storie da raccontare. Da chi vive le calde giornate tra le spiagge e i locali della costa, a chi lotta ogni giorno per il controllo delle strade o della propria comunità nei quartieri dell'entroterra.
+                Country Road 90' vi aspetta. Un'unica grande terra, mille storie da raccontare. Da chi vive le calde giornate tra i locali e i ritrovi della città, a chi garantisce la sicurezza lungo le highways, passando per i sotterranei della tecnologia e la passione per i motori.
             </p>
 
             <div class="polaroid-grid">
                 <div class="polaroid-card">
-                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
-                    <div class="polaroid-number">01 — LA COSTA & LE SPIAGGE</div>
-                    <h3 class="polaroid-title">Movida e Libertà</h3>
-                    <p class="polaroid-desc">I viali costieri brulicano di vita, musica anni '90 e turismo. Il luogo perfetto per chi cerca divertimento o nuovi affari legali.</p>
+                    <img src="bg1.jpg" alt="Los Santos Diner" class="polaroid-img">
+                    <div class="polaroid-number">01 — VITA SOCIALE & RETRO'</div>
+                    <h3 class="polaroid-title">I Diner & La Comunità</h3>
+                    <p class="polaroid-desc">Insegne al neon, caffè bollente e milkshake al banco. I tradizionali diner anni '90 sono il cuore pulsante degli incontri quotidiani, delle chiacchiere tra cittadini e delle prime trattative per nuovi affari in città.</p>
                 </div>
                 <div class="polaroid-card">
-                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
-                    <div class="polaroid-number">02 — IL PERIFERICO</div>
-                    <h3 class="polaroid-title">Strade & Motori</h3>
-                    <p class="polaroid-desc">I grandi snodi stradali e le zone industriali sono il regno dei garage, dei raduni d'auto d'epoca e delle officine di quartiere.</p>
+                    <img src="bg2.jpg" alt="Ufficio dello Sceriffo" class="polaroid-img">
+                    <div class="polaroid-number">02 — LEGGE E ORDINE</div>
+                    <h3 class="polaroid-title">Il Dipartimento dello Sceriffo</h3>
+                    <p class="polaroid-desc">Pattugliamenti lungo le strade statali, risposte d'emergenza alle chiamate e tutela dei cittadini. La contea è vigilata costantemente da agenti pronti a far rispettare il regolamento e a contrastare il crimine.</p>
                 </div>
                 <div class="polaroid-card">
-                    <div class="polaroid-img" style="background-image: url('roma.jpg'); background-size: cover;"></div>
-                    <div class="polaroid-number">03 — AI MARGINI</div>
-                    <h3 class="polaroid-title">L'Entroterra Duro</h3>
-                    <p class="polaroid-desc">Lontano dai riflettori della città, la legge viene applicata dagli sceriffi locali e la sopravvivenza si guadagna giorno dopo giorno.</p>
+                    <img src="bg3.jpg" alt="Postazione Informatica" class="polaroid-img">
+                    <div class="polaroid-number">03 — RETI E TECNOLOGIA</div>
+                    <h3 class="polaroid-title">L'Era dell'Informatica</h3>
+                    <p class="polaroid-desc">All'ombra delle luci della città nasce la nuova frontiera tecnologica degli anni '90. Tra monitor a tubo catodico, codici e connessioni a banda stretta, gli informatici gestiscono i dati critici della contea.</p>
+                </div>
+                <div class="polaroid-card">
+                    <img src="bg4.jpg" alt="Officina Meccanica" class="polaroid-img">
+                    <div class="polaroid-number">04 — MOTORI E GARAGE</div>
+                    <h3 class="polaroid-title">Officine e Personalizzazioni</h3>
+                    <p class="polaroid-desc">Ponte di sollevamento, cassetti delle chiavi inglesi e profumo di benzina. Le officine della zona sono il riferimento per le riparazioni veloci, i tagliandi e le modifiche d'epoca alle autovetture della città.</p>
                 </div>
             </div>
         </div>
