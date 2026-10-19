@@ -447,8 +447,8 @@
 
         /* WHITELIST TAB */
         .wl-banner {
-            background: #f1e4ce;
-            border-radius: 16px;
+            background: linear-gradient(135deg, #f3e5cd 0%, #f7ebda 100%);
+            border-radius: 18px;
             padding: 1.8rem 2rem;
             margin-bottom: 2.5rem;
             border: 1px solid var(--border-soft);
@@ -456,6 +456,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .wl-banner-text h4 {
@@ -480,61 +481,102 @@
         .archetype-subtitle {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
+        /* GRIGLIA ARCHETIPI CON NUOVO DESIGN */
         .archetypes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
         .archetype-card {
-            background: var(--bg-card);
+            background: linear-gradient(180deg, #faf5eb 0%, #f6eedf 100%);
             border: 2px solid var(--border-soft);
-            border-radius: 16px;
-            padding: 1.5rem;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-shadow: 0 4px 12px rgba(116, 70, 36, 0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .archetype-badge {
+            align-self: flex-start;
+            background: rgba(217, 104, 56, 0.12);
+            color: var(--accent-orange);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
         .archetype-card:hover, .archetype-card.selected {
             border-color: var(--accent-orange);
             background: #ffffff;
-            box-shadow: 0 8px 20px rgba(217, 104, 56, 0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(217, 104, 56, 0.18);
+            transform: translateY(-4px);
         }
 
         .archetype-card.selected::after {
             content: "✓";
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 18px;
+            right: 18px;
             background: var(--accent-orange);
             color: white;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 800;
         }
 
         .archetype-card h5 {
             font-family: var(--font-title);
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
 
         .archetype-card p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-light);
             line-height: 1.5;
+        }
+
+        /* CARD ALTRO CENTRATA */
+        .archetype-card-altro {
+            grid-column: 1 / -1;
+            max-width: 500px;
+            margin: 0.5rem auto 0;
+            width: 100%;
+            border-style: dashed;
+            border-width: 2px;
+            border-color: var(--accent-orange);
+            background: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            align-items: center;
+            padding: 1.8rem;
+        }
+
+        .archetype-card-altro .archetype-badge {
+            align-self: center;
+            background: rgba(217, 104, 56, 0.15);
+        }
+
+        .archetype-card-altro h5 {
+            color: var(--accent-orange);
         }
 
         /* FORM WHITELIST MODULO */
@@ -544,7 +586,7 @@
             padding: 2.5rem;
             border: 1px solid var(--border-soft);
             box-shadow: var(--shadow-soft);
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             display: none;
         }
 
@@ -621,12 +663,20 @@
         .status-box.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-box.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
+        @media (max-width: 900px) {
+            .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 850px) {
             .navbar { padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; }
             .rules-layout { grid-template-columns: 1fr; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group-full { grid-column: span 1; }
             .wl-banner { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .archetypes-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -794,31 +844,40 @@
 
             <div class="archetypes-grid">
                 <div class="archetype-card" onclick="selectArchetype('Informatico', this)">
+                    <div class="archetype-badge">💻 Tech & Data</div>
                     <h5>Informatico</h5>
                     <p>Esperto di tecnologia, reti, codici e sistemi di sicurezza della città.</p>
                 </div>
                 <div class="archetype-card" onclick="selectArchetype('Cittadino', this)">
+                    <div class="archetype-badge">💼 Vita Civile</div>
                     <h5>Cittadino</h5>
                     <p>Una vita tra lavoro onesto, ambizioni personali, commercio e relazioni quotidiane.</p>
                 </div>
                 <div class="archetype-card" onclick="selectArchetype('Sceriffo', this)">
+                    <div class="archetype-badge">🛡️ Ordine Pubblico</div>
                     <h5>Sceriffo</h5>
                     <p>Dedicato al rispetto della legge, alla tutela della comunità e al pattugliamento.</p>
                 </div>
                 <div class="archetype-card" onclick="selectArchetype('Medico', this)">
+                    <div class="archetype-badge">🚑 Primo Soccorso</div>
                     <h5>Medico</h5>
                     <p>In prima linea nel soccorso stradale, pronto intervento ospedaliero e salvataggio vite.</p>
                 </div>
                 <div class="archetype-card" onclick="selectArchetype('Criminale', this)">
+                    <div class="archetype-badge">💀 Malavita</div>
                     <h5>Criminale</h5>
                     <p>Vita al limite, bande, traffici illegali e controllo del territorio nelle zone d'ombra.</p>
                 </div>
                 <div class="archetype-card" onclick="selectArchetype('Meccanico', this)">
+                    <div class="archetype-badge">🔧 Motori</div>
                     <h5>Meccanico</h5>
                     <p>Passione per i motori, modifiche d'epoca, soccorso stradale e gestione officina.</p>
                 </div>
-                <div class="archetype-card" style="border-style: dashed; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;" onclick="openTicketOption()">
-                    <h5 style="color: var(--accent-orange);">Altro</h5>
+
+                <!-- CARD ALTRO BEN CENTRATA -->
+                <div class="archetype-card archetype-card-altro" onclick="openTicketOption()">
+                    <div class="archetype-badge">🎟️ Supporto Ticket</div>
+                    <h5>Altro</h5>
                     <p>Vuoi proporre un ruolo speciale? Apri un Ticket su Discord!</p>
                 </div>
             </div>
