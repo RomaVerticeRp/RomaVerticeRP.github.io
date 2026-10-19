@@ -11,20 +11,20 @@
     
     <style>
         :root {
-            --bg-page: #f4eae1;
-            --bg-card: #fcf8f3;
-            --bg-card-alt: #f1e2d1;
-            --accent-orange: #e06031;
-            --accent-orange-dark: #c44c20;
-            --accent-amber: #f0a248;
+            --bg-page: #f6eedf;
+            --bg-card: #fefcf7;
+            --bg-card-alt: #f3e5cd;
+            --accent-orange: #d96838;
+            --accent-orange-dark: #b84e24;
+            --accent-amber: #e89838;
             --text-dark: #3a2219;
             --text-muted: #7d6557;
             --text-light: #523b2e;
-            --border-soft: #e2d1bf;
+            --border-soft: #ebdcc5;
             --font-title: 'Montserrat', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --shadow-card: 0 12px 32px rgba(92, 53, 27, 0.08);
-            --shadow-hover: 0 18px 40px rgba(224, 96, 49, 0.18);
+            --shadow-hover: 0 18px 40px rgba(217, 104, 56, 0.18);
             --discord-blue: #5865F2;
             --discord-blue-hover: #4752C4;
         }
@@ -36,8 +36,13 @@
             font-family: var(--font-body);
         }
 
+        /* SFONDO RICCO E ATMOSFERICO "WEST COAST SUNSET" */
         body {
-            background: radial-gradient(circle at 50% 0%, #faede1 0%, #f1e2d3 100%);
+            background-color: var(--bg-page);
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(232, 152, 56, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(217, 104, 56, 0.15) 0%, transparent 45%),
+                linear-gradient(135deg, #fcf5ec 0%, #f4eae1 50%, #edd9c7 100%);
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -46,14 +51,15 @@
             position: relative;
         }
 
+        /* TEXTURE FINTE STRADE / LINEE GEOMETRICHE DI SFONDO */
         body::before {
             content: "";
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            height: 350px;
-            background: radial-gradient(ellipse at 50% -20%, rgba(224, 96, 49, 0.15) 0%, transparent 70%);
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(45deg, rgba(217, 104, 56, 0.02) 0, rgba(217, 104, 56, 0.02) 1px, transparent 0, transparent 50px);
             pointer-events: none;
             z-index: 0;
         }
@@ -129,7 +135,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             padding: 0.35rem 0.9rem 0.35rem 0.5rem;
             border-radius: 30px;
             border: 1px solid var(--border-soft);
@@ -215,7 +221,7 @@
         }
 
         .home-badge {
-            background: rgba(224, 96, 49, 0.1);
+            background: rgba(217, 104, 56, 0.12);
             color: var(--accent-orange);
             font-weight: 800;
             font-size: 0.85rem;
@@ -224,7 +230,7 @@
             border-radius: 30px;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            border: 1px solid rgba(224, 96, 49, 0.2);
+            border: 1px solid rgba(217, 104, 56, 0.25);
         }
 
         .home-title {
@@ -251,7 +257,7 @@
             font-size: 1.1rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(224, 96, 49, 0.35);
+            box-shadow: 0 10px 25px rgba(217, 104, 56, 0.35);
             transition: all 0.25s ease;
             text-decoration: none;
             display: inline-block;
@@ -260,7 +266,7 @@
 
         .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(224, 96, 49, 0.45);
+            box-shadow: 0 14px 30px rgba(217, 104, 56, 0.45);
         }
 
         /* HEADER DELLE PAGINE */
@@ -299,10 +305,11 @@
             font-size: 1.12rem;
             line-height: 1.8;
             color: var(--text-light);
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.7);
             padding: 1.8rem 2.2rem;
             border-radius: 20px;
             border: 1px solid var(--border-soft);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
         }
 
         .polaroid-grid {
@@ -580,7 +587,7 @@
 
         .archetype-badge {
             align-self: flex-start;
-            background: rgba(224, 96, 49, 0.12);
+            background: rgba(217, 104, 56, 0.12);
             color: var(--accent-orange);
             font-size: 0.75rem;
             font-weight: 800;
@@ -638,7 +645,7 @@
             border-style: dashed;
             border-width: 2px;
             border-color: var(--accent-orange);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             text-align: center;
             align-items: center;
             padding: 1.8rem;
@@ -646,7 +653,7 @@
 
         .archetype-card-altro .archetype-badge {
             align-self: center;
-            background: rgba(224, 96, 49, 0.15);
+            background: rgba(217, 104, 56, 0.15);
         }
 
         .archetype-card-altro h5 {
@@ -734,7 +741,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--accent-orange);
-            box-shadow: 0 0 0 4px rgba(224, 96, 49, 0.12);
+            box-shadow: 0 0 0 4px rgba(217, 104, 56, 0.12);
         }
 
         textarea.form-control {
@@ -762,12 +769,12 @@
             cursor: pointer;
             margin-top: 1.8rem;
             transition: all 0.25s ease;
-            box-shadow: 0 8px 20px rgba(224, 96, 49, 0.3);
+            box-shadow: 0 8px 20px rgba(217, 104, 56, 0.3);
         }
 
         .btn-submit-wl:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(224, 96, 49, 0.4);
+            box-shadow: 0 12px 25px rgba(217, 104, 56, 0.4);
         }
 
         .status-box {
@@ -1020,7 +1027,7 @@
                         <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi le Linee Guida BG</button>
                     </div>
 
-                    <h3 class="archetype-title">Scegli cosa vorrai fare</h3>
+                    <h3 class="archetype-title">Scegli il tuo archetipo</h3>
                     <p class="archetype-subtitle">Definisce la strada iniziale e la professione/ruolo del tuo personaggio a Country Road 90'.</p>
 
                     <div class="archetypes-grid">
@@ -1063,7 +1070,7 @@
                         </div>
                     </div>
 
-                    <!-- BOX INFORMATIVO ALTRO (APRE SOLO SCRITTA) -->
+                    <!-- BOX INFORMATIVO ALTRO -->
                     <div id="infoBoxAltro" class="info-box-altro">
                         <h4>Gestione Ruoli Speciali & Candidature Extra</h4>
                         <p>Se desideri interpretare un ruolo che non rientra nei classici archetipi standard, la nostra community gestisce le richieste personalizzate tramite il sistema di supporto dedicato.<br><br>Puoi entrare nel nostro server Discord ufficiale e aprire un <strong>Ticket di Supporto</strong> per discutere la tua proposta con lo staff:<br><a href="https://discord.gg/YPjRPzDbB7" target="_blank" class="discord-link-text">🔗 Unisciti a Discord e apri un Ticket</a></p>
@@ -1302,7 +1309,6 @@
             document.querySelectorAll('.archetype-card').forEach(c => c.classList.remove('selected'));
             cardElement.classList.add('selected');
 
-            // Nascondi box info "altro" se aperto
             document.getElementById('infoBoxAltro').style.display = 'none';
 
             selectedArchetype = name;
@@ -1315,7 +1321,6 @@
         }
 
         function openTicketInfo() {
-            // Rimuovi selezione archetipi e nascondi form se era aperto
             document.querySelectorAll('.archetype-card').forEach(c => c.classList.remove('selected'));
             document.getElementById('wlFormContainer').style.display = 'none';
 
@@ -1356,7 +1361,7 @@
                 username: "Sistema Whitelist - Country Road 90'",
                 embeds: [{
                     title: "📄 NUOVA CANDIDATURA WHITELIST",
-                    color: 14704689,
+                    color: 14248000,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
