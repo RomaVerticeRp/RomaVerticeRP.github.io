@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROMA VERTICE - Portale Ufficiale</title>
+    <title>COUNTRY ROAD 90' - Portale Ufficiale</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +11,12 @@
     
     <style>
         :root {
-            --bg-dark: #070d0a;
-            --bg-card: rgba(12, 22, 16, 0.95);
-            --bg-card-border: rgba(0, 146, 70, 0.5);
-            --italia-green: #009246;
-            --italia-green-hover: #00b359;
-            --italia-red: #ce2b37;
+            --bg-dark: #120907;
+            --bg-card: rgba(26, 14, 11, 0.95);
+            --bg-card-border: rgba(226, 135, 67, 0.5);
+            --sunset-orange: #e28743;
+            --sunset-orange-hover: #f09a55;
+            --sunset-red: #d9534f;
             --pure-white: #ffffff;
             --text-light: #f8f9fa;
             --text-muted: #adb5bd;
@@ -35,7 +35,7 @@
         }
 
         body {
-            background: linear-gradient(180deg, rgba(7, 13, 10, 0.88) 0%, rgba(7, 13, 10, 0.98) 100%), 
+            background: linear-gradient(180deg, rgba(18, 9, 7, 0.88) 0%, rgba(18, 9, 7, 0.98) 100%), 
                         url('roma.jpg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-light);
@@ -46,9 +46,9 @@
         }
 
         .navbar {
-            background: rgba(7, 13, 10, 0.98);
-            border-bottom: 3px solid var(--italia-red);
-            border-top: 3px solid var(--italia-green);
+            background: rgba(18, 9, 7, 0.98);
+            border-bottom: 3px solid var(--sunset-red);
+            border-top: 3px solid var(--sunset-orange);
             padding: 1rem 2.5rem;
             display: flex;
             justify-content: space-between;
@@ -74,7 +74,7 @@
         .nav-logo {
             height: 45px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(0, 146, 70, 0.7));
+            filter: drop-shadow(0 0 8px rgba(226, 135, 67, 0.7));
         }
 
         .nav-links {
@@ -97,8 +97,8 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--pure-white);
-            background: var(--italia-green);
-            box-shadow: 0 0 15px rgba(0, 146, 70, 0.6);
+            background: var(--sunset-orange);
+            box-shadow: 0 0 15px rgba(226, 135, 67, 0.6);
         }
 
         .nav-discord-btn {
@@ -181,7 +181,7 @@
         .header-logo {
             max-height: 105px;
             margin-bottom: 1rem;
-            filter: drop-shadow(0 0 12px rgba(0, 146, 70, 0.6));
+            filter: drop-shadow(0 0 12px rgba(226, 135, 67, 0.6));
         }
 
         h1, h2, h3 {
@@ -198,7 +198,7 @@
         }
 
         .header-container p {
-            color: var(--italia-green);
+            color: var(--sunset-orange);
             font-weight: 700;
             letter-spacing: 2px;
             font-size: 0.95rem;
@@ -213,7 +213,7 @@
         }
 
         .faction-btn {
-            background: rgba(7, 13, 10, 0.85);
+            background: rgba(18, 9, 7, 0.85);
             border: 1px solid var(--bg-card-border);
             border-radius: 10px;
             padding: 1.2rem;
@@ -228,9 +228,9 @@
         }
 
         .faction-btn:hover, .faction-btn.active-faction {
-            background: var(--italia-green);
+            background: var(--sunset-orange);
             border-color: var(--pure-white);
-            box-shadow: 0 0 15px rgba(0, 146, 70, 0.7);
+            box-shadow: 0 0 15px rgba(226, 135, 67, 0.7);
             transform: translateY(-2px);
         }
 
@@ -249,7 +249,7 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid var(--italia-green);
+            border: 2px solid var(--sunset-orange);
         }
 
         .form-group {
@@ -270,7 +270,7 @@
         textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            background: rgba(7, 13, 10, 0.9);
+            background: rgba(18, 9, 7, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             color: var(--pure-white);
@@ -280,9 +280,9 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--italia-green);
-            box-shadow: 0 0 10px rgba(0, 146, 70, 0.5);
-            background: rgba(7, 13, 10, 1);
+            border-color: var(--sunset-orange);
+            box-shadow: 0 0 10px rgba(226, 135, 67, 0.5);
+            background: rgba(18, 9, 7, 1);
         }
 
         textarea {
@@ -300,7 +300,7 @@
         .btn {
             width: 100%;
             padding: 1rem;
-            background: var(--italia-green);
+            background: var(--sunset-orange);
             color: var(--pure-white);
             border: 2px solid var(--pure-white);
             border-radius: 8px;
@@ -310,7 +310,7 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 146, 70, 0.6);
+            box-shadow: 0 4px 15px rgba(226, 135, 67, 0.6);
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -320,9 +320,9 @@
         }
 
         .btn:hover {
-            background: var(--italia-green-hover);
+            background: var(--sunset-orange-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 146, 70, 0.9);
+            box-shadow: 0 6px 20px rgba(226, 135, 67, 0.9);
         }
 
         .btn-discord {
@@ -345,7 +345,7 @@
         }
 
         .rules-sidebar {
-            background: rgba(7, 13, 10, 0.85);
+            background: rgba(18, 9, 7, 0.85);
             border: 2px solid var(--bg-card-border);
             border-radius: 12px;
             padding: 1.2rem;
@@ -354,7 +354,7 @@
         .rules-category-title {
             font-family: var(--font-title);
             font-size: 0.85rem;
-            color: var(--italia-green);
+            color: var(--sunset-orange);
             letter-spacing: 1.5px;
             margin-bottom: 1rem;
             text-transform: uppercase;
@@ -386,14 +386,14 @@
 
         .rules-nav-item button:hover, 
         .rules-nav-item button.active {
-            background: rgba(0, 146, 70, 0.25);
+            background: rgba(226, 135, 67, 0.25);
             color: var(--pure-white);
-            border-left: 4px solid var(--italia-green);
+            border-left: 4px solid var(--sunset-orange);
             padding-left: calc(0.9rem - 4px);
         }
 
         .rules-content-pane {
-            background: rgba(7, 13, 10, 0.65);
+            background: rgba(18, 9, 7, 0.65);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 2rem;
@@ -410,10 +410,10 @@
         }
 
         .rule-section h3 {
-            color: var(--italia-green);
+            color: var(--sunset-orange);
             margin-bottom: 1.2rem;
             font-size: 1.35rem;
-            border-bottom: 2px solid rgba(0, 146, 70, 0.5);
+            border-bottom: 2px solid rgba(226, 135, 67, 0.5);
             padding-bottom: 0.5rem;
         }
 
@@ -433,7 +433,7 @@
             content: "▪";
             position: absolute;
             left: 0;
-            color: var(--italia-green);
+            color: var(--sunset-orange);
             font-size: 1.4rem;
             line-height: 1;
             top: -1px;
@@ -449,14 +449,14 @@
         }
 
         .status-success {
-            background: rgba(0, 146, 70, 0.2);
-            border: 1px solid var(--italia-green);
+            background: rgba(226, 135, 67, 0.2);
+            border: 1px solid var(--sunset-orange);
             color: #2ecc71;
         }
 
         .status-error {
-            background: rgba(206, 43, 55, 0.2);
-            border: 1px solid var(--italia-red);
+            background: rgba(217, 83, 79, 0.2);
+            border: 1px solid var(--sunset-red);
             color: #ff6b6b;
         }
 
@@ -465,9 +465,9 @@
             padding: 1.5rem;
             color: var(--text-muted);
             font-size: 0.85rem;
-            background: rgba(7, 13, 10, 0.98);
-            border-top: 3px solid var(--italia-green);
-            border-bottom: 3px solid var(--italia-red);
+            background: rgba(18, 9, 7, 0.98);
+            border-top: 3px solid var(--sunset-orange);
+            border-bottom: 3px solid var(--sunset-red);
             margin-top: auto;
         }
 
@@ -495,8 +495,8 @@
 
     <nav class="navbar">
         <div class="nav-brand">
-            <img src="logo.png" alt="Logo Roma Vertice" class="nav-logo">
-            <span>Roma Vertice</span>
+            <img src="logo.png" alt="Logo Country Road 90'" class="nav-logo">
+            <span>Country Road 90'</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" onclick="showTab('home')" id="nav-home" class="active">Home</a></li>
@@ -520,12 +520,12 @@
         <div id="home" class="tab-content home-container-center active">
             <div class="card" style="text-align: center; margin-bottom: 0;">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                    <h1>Roma Vertice Roleplay</h1>
-                    <p>Il Server FiveM d'Elite - Onore, Giustizia e Servizio</p>
+                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
+                    <h1>Country Road 90' Roleplay</h1>
+                    <p>Il Server FiveM d'Elite - Amore, Crimine e Atmosfera Anni '90</p>
                 </div>
                 <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 2rem;">
-                    Benvenuto nel portale ufficiale di <strong>Roma Vertice</strong>. Per accedere alla città, compila la richiesta di <strong>Whitelist</strong> o candidati alle fazioni istituzionali autorizzate.
+                    Benvenuto nel portale ufficiale di <strong>Country Road 90'</strong>. Per accedere alla città, compila la richiesta di <strong>Whitelist</strong> o candidati alle fazioni istituzionali autorizzate.
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn" style="width: auto; padding: 0.9rem 2.2rem;" onclick="showTab('whitelist')">Richiedi Whitelist</button>
@@ -537,9 +537,9 @@
         <div id="whitelist" class="tab-content">
             <div class="card">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
+                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
                     <h1>Test Whitelist Cittadino</h1>
-                    <p>Roma Vertice - Accesso Server FiveM</p>
+                    <p>Country Road 90' - Accesso Server FiveM</p>
                 </div>
 
                 <div id="wlStatusMessage" class="status-message"></div>
@@ -567,7 +567,7 @@
 
                     <div class="form-group">
                         <label for="wlNomeIC">Nome e Cognome del Personaggio (IC):</label>
-                        <input type="text" id="wlNomeIC" required placeholder="Es. Alessandro Rossi">
+                        <input type="text" id="wlNomeIC" required placeholder="Es. Tony Vercetti">
                     </div>
 
                     <div class="form-group">
@@ -594,7 +594,7 @@
                     <button type="submit" id="wlSubmitBtn" class="btn">Invia Test Whitelist</button>
                 </form>
 
-                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
+                <div id="wlAlreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(226, 135, 67, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
                     <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Richiesta Whitelist già inviata</h3>
                     <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare il modulo di whitelist una sola volta ogni 48 ore. Potrai reinviarlo tra:</p>
                     <div id="wlCooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
@@ -605,18 +605,18 @@
         <div id="bando" class="tab-content">
             <div class="card">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
+                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
                     <h1>Bandi di Reclutamento Fazioni</h1>
-                    <p>Roma Vertice - Selezioni Istituzionali</p>
+                    <p>Country Road 90' - Selezioni Istituzionali</p>
                 </div>
 
                 <div id="statusMessage" class="status-message"></div>
 
                 <div class="factions-grid">
-                    <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia di Stato</button>
-                    <button class="faction-btn" onclick="selectFaction('carabinieri', this)">Carabinieri</button>
-                    <button class="faction-btn" onclick="selectFaction('finanza', this)">Guardia di Finanza</button>
-                    <button class="faction-btn" onclick="selectFaction('croce_rossa', this)">Croce Rossa</button>
+                    <button class="faction-btn active-faction" onclick="selectFaction('polizia', this)">Polizia</button>
+                    <button class="faction-btn" onclick="selectFaction('carabinieri', this)">Sceriffi / Forze dell'Ordine</button>
+                    <button class="faction-btn" onclick="selectFaction('finanza', this)">Investigatori / Federali</button>
+                    <button class="faction-btn" onclick="selectFaction('croce_rossa', this)">Pronto Soccorso / Medici</button>
                 </div>
 
                 <div class="discordAuthSection" id="bandoDiscordSection">
@@ -640,11 +640,11 @@
                         </div>
                     </div>
 
-                    <input type="hidden" id="selectedFactionInput" value="Polizia di Stato">
+                    <input type="hidden" id="selectedFactionInput" value="Polizia">
 
                     <div class="form-group">
                         <label for="nomeIC">Nome e Cognome (In Game / RP):</label>
-                        <input type="text" id="nomeIC" required placeholder="Es. Marco Neri">
+                        <input type="text" id="nomeIC" required placeholder="Es. Jack Miller">
                     </div>
 
                     <div class="form-group">
@@ -662,7 +662,7 @@
                     <button type="submit" id="submitBtn" class="btn">Invia Candidatura Fazione</button>
                 </form>
 
-                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(0, 146, 70, 0.1); border: 2px solid var(--italia-green); border-radius: 12px; margin-top: 1rem;">
+                <div id="alreadySentMessage" style="display: none; text-align: center; padding: 2rem; background: rgba(226, 135, 67, 0.1); border: 2px solid var(--sunset-orange); border-radius: 12px; margin-top: 1rem;">
                     <h3 style="color: var(--pure-white); margin-bottom: 0.5rem;">Candidatura già inviata</h3>
                     <p style="color: var(--text-muted); margin-bottom: 1rem;">È possibile inviare un solo bando a settimana per fazione. Potrai ricandidarti tra:</p>
                     <div id="cooldownTimer" style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; color: var(--pure-white); text-shadow: 0 2px 6px rgba(0,0,0,0.9);">--:--:--:--</div>
@@ -673,9 +673,9 @@
         <div id="donazioni" class="tab-content">
             <div class="card">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
+                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
                     <h1>🎁 Donazioni</h1>
-                    <p>Roma Vertice - Supporta il Server</p>
+                    <p>Country Road 90' - Supporta il Server</p>
                 </div>
 
                 <div class="rules-layout">
@@ -698,148 +698,148 @@
         <div id="regolamento" class="tab-content">
             <div class="card">
                 <div class="header-container">
-                    <img src="logo.png" alt="Logo Roma Vertice" class="header-logo">
-                   <h1>Regolamento Ufficiale Roma Vertice RP</h1>
-    <p>Roma Vertice - Codice di Comportamento Generale & Normative</p>
-</div>
+                    <img src="logo.png" alt="Logo Country Road 90'" class="header-logo">
+                    <h1>Regolamento Ufficiale Country Road 90' RP</h1>
+                    <p>Country Road 90' - Codice di Comportamento Generale & Normative</p>
+                </div>
 
-<div class="rules-layout">
-    <div class="rules-sidebar">
-        <div class="rules-category-title">Indice Generale</div>
-        <ul class="rules-nav-list">
-            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('regolamentogenerale', this)">2. Regolamento Generale</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('assistenze', this)">3. Assistenze</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('sanzioni', this)">4. Sanzioni</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('azioni', this)">5. Azioni</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('freeroam', this)">6. Azioni Freeroam</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('illegali', this)">7. Fazioni Illegali</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('assalti', this)">8. Assalti alla Centrale</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('legali', this)">9. Fazioni Legali</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">10. Safe Zone & Non Safe</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('lootfdo', this)">11. Loot alle FDO</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('rapine', this)">12. Rapine & Attività</button></li>
-            <li class="rules-nav-item"><button onclick="showRuleSection('discord', this)">13. Regolamento Discord</button></li>
-        </ul>
-    </div>
+                <div class="rules-layout">
+                    <div class="rules-sidebar">
+                        <div class="rules-category-title">Indice Generale</div>
+                        <ul class="rules-nav-list">
+                            <li class="rules-nav-item"><button onclick="showRuleSection('generale', this)" class="active">1. Regole Base & Condotta</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('regolamentogenerale', this)">2. Regolamento Generale</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('assistenze', this)">3. Assistenze</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('sanzioni', this)">4. Sanzioni</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('azioni', this)">5. Azioni</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('freeroam', this)">6. Azioni Freeroam</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('illegali', this)">7. Fazioni Illegali</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('assalti', this)">8. Assalti alla Centrale</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('legali', this)">9. Fazioni Legali</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('zone', this)">10. Safe Zone & Non Safe</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('lootfdo', this)">11. Loot alle FDO</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('rapine', this)">12. Rapine & Attività</button></li>
+                            <li class="rules-nav-item"><button onclick="showRuleSection('discord', this)">13. Regolamento Discord</button></li>
+                        </ul>
+                    </div>
 
-    <div class="rules-content-pane">
-        <div id="rule-generale" class="rule-section active">
-            <h3>1. Regole Base & Condotta</h3>
-            <ul class="rules-list">
-                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Roma Vertice è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
-                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
-                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
-                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
-            </ul>
-        </div>
+                    <div class="rules-content-pane">
+                        <div id="rule-generale" class="rule-section active">
+                            <h3>1. Regole Base & Condotta</h3>
+                            <ul class="rules-list">
+                                <li><strong>Rispetto Interpersonale e Maturità:</strong> All'interno di Country Road 90' è richiesto un comportamento civile, maturo e rispettoso. È tassativamente vietato offendere, insultare o discriminare altri utenti per razza, sesso, religione, orientamento sessuale o disabilità, sia in game (IC) che su Discord (OOC).</li>
+                                <li><strong>Netta Separazione IC / OOC:</strong> Le vicende, le discussioni e i rancori maturati fuori dal gioco (OOC) non devono in alcun modo influenzare le dinamiche e le decisioni del personaggio all'interno della città (IC).</li>
+                                <li><strong>Uso Obbligatorio della Chat Vocale Proximity:</strong> È obbligatorio l'uso della chat vocale integrata di FiveM basata sulla prossimità. L'utilizzo di software esterni (come chiamate Discord private durante azioni di gioco) è considerato grave cheating e comporta sanzioni immediate.</li>
+                                <li><strong>Common Sense (Buon Senso):</strong> Il regolamento non può coprire ogni singola situazione ipotetica; vige sempre la regola del buon senso e della correttezza verso la community.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-regolamentogenerale" class="rule-section">
-            <h3>2. Regolamento Generale</h3>
-            <ul class="rules-list">
-                <li><strong>Divieto di Bug Abuse e Exploiting:</strong> Sfruttare bug, glitch di caricamento, animazioni scorrette o duping di oggetti comporta il ban permanente immediato.</li>
-                <li><strong>New Life Rule (NLR):</strong> Se il tuo personaggio viene ucciso e rianimato o respawna, perde totalmente la memoria degli eventi critici che hanno causato il decesso e dell'identità dei soggetti coinvolti. È vietato tornare sul luogo della morte prima di 15 minuti.</li>
-                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve temere la morte. Se ti trovi in inferiorità numerica o sotto la minaccia diretta di armi da fuoco, devi sottostare agli ordini dei rapitori/aggressori senza fare eroismi.</li>
-                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno fisico subito (incidenti, cadute, colpi) deve essere interpretato realisticamente tramite chat testuali (/me) e voce.</li>
-            </ul>
-        </div>
+                        <div id="rule-regolamentogenerale" class="rule-section">
+                            <h3>2. Regolamento Generale</h3>
+                            <ul class="rules-list">
+                                <li><strong>Divieto di Bug Abuse e Exploiting:</strong> Sfruttare bug, glitch di caricamento, animazioni scorrette o duping di oggetti comporta il ban permanente immediato.</li>
+                                <li><strong>New Life Rule (NLR):</strong> Se il tuo personaggio viene ucciso e rianimato o respawna, perde totalmente la memoria degli eventi critici che hanno causato il decesso e dell'identità dei soggetti coinvolti. È vietato tornare sul luogo della morte prima di 15 minuti.</li>
+                                <li><strong>Fear RP (Valore della Vita):</strong> Il tuo personaggio deve temere la morte. Se ti trovi in inferiorità numerica o sotto la minaccia diretta di armi da fuoco, devi sottostare agli ordini dei rapitori/aggressori senza fare eroismi.</li>
+                                <li><strong>Pain RP (Interpretazione del Dolore):</strong> Ogni danno fisico subito (incidenti, cadute, colpi) deve essere interpretato realisticamente tramite chat testuali (/me) e voce.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-assistenze" class="rule-section">
-            <h3>3. Assistenze</h3>
-            <ul class="rules-list">
-                <li><strong>Richiesta di Aiuto (Ticket):</strong> Per qualsiasi problema tecnico, bug riscontrato in città o segnalazione verso altri giocatori, è obbligatorio aprire un ticket sul server Discord ufficiale.</li>
-                <li><strong>Comportamento nei Ticket:</strong> È vietato spamnare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
-                <li><strong>Gestione dei Report in Game:</strong> Durante un'azione di gioco in corso, è vietato fermarsi per chiamare lo staff o aprire report. L'azione va portata a termine; eventuali irregolarità si discutono a fine azione aprendo un ticket con clip.</li>
-            </ul>
-        </div>
+                        <div id="rule-assistenze" class="rule-section">
+                            <h3>3. Assistenze</h3>
+                            <ul class="rules-list">
+                                <li><strong>Richiesta di Aiuto (Ticket):</strong> Per qualsiasi problema tecnico, bug riscontrato in città o segnalazione verso altri giocatori, è obbligatorio aprire un ticket sul server Discord ufficiale.</li>
+                                <li><strong>Comportamento nei Ticket:</strong> È vietato spamnare o mancare di rispetto allo staff nei ticket. Le clip video o le prove fornite devono essere integre e non tagliate in modo fazioso.</li>
+                                <li><strong>Gestione dei Report in Game:</strong> Durante un'azione di gioco in corso, è vietato fermarsi per chiamare lo staff o aprire report. L'azione va portata a termine; eventuali irregolarità si discutono a fine azione aprendo un ticket con clip.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-sanzioni" class="rule-section">
-            <h3>4. Sanzioni</h3>
-            <ul class="rules-list">
-                <li><strong>Scala Disciplinare:</strong> Le sanzioni dello staff prevedono avvertimenti verbali (Warn), kick, periodi di ban temporaneo (da 1 a 30 giorni) o ban permanente nei casi più gravi.</li>
-                <li><strong>Last Chance:</strong> Nei casi di recidiva o comportamenti tossici gravi, lo staff può applicare lo status di "Ultima Chance", azzerando i progressi del personaggio o escludendo definitivamente l'utente dalla community.</li>
-                <li><strong>Divieto di Evadere le Sanzioni:</strong> Creare account secondari (multiaccount) per aggirare un ban attivo comporta l'estensione del ban a tutti gli account collegati.</li>
-            </ul>
-        </div>
+                        <div id="rule-sanzioni" class="rule-section">
+                            <h3>4. Sanzioni</h3>
+                            <ul class="rules-list">
+                                <li><strong>Scala Disciplinare:</strong> Le sanzioni dello staff prevedono avvertimenti verbali (Warn), kick, periodi di ban temporaneo (da 1 a 30 giorni) o ban permanente nei casi più gravi.</li>
+                                <li><strong>Last Chance:</strong> Nei casi di recidiva o comportamenti tossici gravi, lo staff può applicare lo status di "Ultima Chance", azzerando i progressi del personaggio o escludendo definitivamente l'utente dalla community.</li>
+                                <li><strong>Divieto di Evadere le Sanzioni:</strong> Creare account secondari (multiaccount) per aggirare un ban attivo comporta l'estensione del ban a tutti gli account collegati.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-azioni" class="rule-section">
-            <h3>5. Azioni</h3>
-            <ul class="rules-list">
-                <li><strong>Deathmatch (RDM/VDM):</strong> È severamente vietato uccidere o ferire altri giocatori (o investirli deliberatamente con veicoli) senza un valido motivo di roleplay precedente e un'interazione verbale o narrativa chiara.</li>
-                <li><strong>Iniziative Ostili:</strong> Qualsiasi azione criminale (rapine, sequestri, agguati) deve avere una motivazione IC sensata e rispettare i limiti numerici stabiliti per i partecipanti.</li>
-                <li><strong>Prosecuzione delle Azioni (Combat Log):</strong> È vietato disconnettersi durante un'azione di gioco attiva o in corso di rapina/arresto.</li>
-            </ul>
-        </div>
+                        <div id="rule-azioni" class="rule-section">
+                            <h3>5. Azioni</h3>
+                            <ul class="rules-list">
+                                <li><strong>Deathmatch (RDM/VDM):</strong> È severamente vietato uccidere o ferire altri giocatori (o investirli deliberatamente con veicoli) senza un valido motivo di roleplay precedente e un'interazione verbale o narrativa chiara.</li>
+                                <li><strong>Iniziative Ostili:</strong> Qualsiasi azione criminale (rapine, sequestri, agguati) deve avere una motivazione IC sensata e rispettare i limiti numerici stabiliti per i partecipanti.</li>
+                                <li><strong>Prosecuzione delle Azioni (Combat Log):</strong> È vietato disconnettersi durante un'azione di gioco attiva o in corso di rapina/arresto.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-freeroam" class="rule-section">
-            <h3>6. Azioni Freeroam</h3>
-            <ul class="rules-list">
-                <li><strong>Definizione e Limiti:</strong> Le azioni freeroam o gli scontri estemporanei fuori dalle dinamiche di rapina/controllo devono comunque sottostare alle regole base dell'RP, evitando sparatorie casuali senza costrutto narrativo.</li>
-                <li><strong>Rispetto del Contesto Urbano:</strong> Anche nelle zone aperte o periferiche, è vietato trasformare la città in un deathmatch continuo privo di interazione civile o criminale sensata.</li>
-            </ul>
-        </div>
+                        <div id="rule-freeroam" class="rule-section">
+                            <h3>6. Azioni Freeroam</h3>
+                            <ul class="rules-list">
+                                <li><strong>Definizione e Limiti:</strong> Le azioni freeroam o gli scontri estemporanei fuori dalle dinamiche di rapina/controllo devono comunque sottostare alle regole base dell'RP, evitando sparatorie casuali senza costrutto narrativo.</li>
+                                <li><strong>Rispetto del Contesto Urbano:</strong> Anche nelle zone aperte o periferiche, è vietato trasformare la città in un deathmatch continuo privo di interazione civile o criminale sensata.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-illegali" class="rule-section">
-            <h3>7. Fazioni Illegali</h3>
-            <ul class="rules-list">
-                <li><strong>Coerenza Criminale:</strong> I gruppi malavitosi devono agire con logica criminale coerente, evitando faide continue o immotivate che rovinano l'esperienza di gioco degli altri utenti.</li>
-                <li><strong>Gestione del Territorio:</strong> Le attività illecite, lo spaccio e il controllo delle zone devono essere concordati e gestiti secondo le direttive specifiche per le organizzazioni criminali.</li>
-                <li><strong>Rispetto delle Regole di Ingaggio:</strong> Nelle guerre tra fazioni illegali vanno rispettati i limiti di orario, le tregue e le modalità di scontro stabilite dallo staff.</li>
-            </ul>
-        </div>
+                        <div id="rule-illegali" class="rule-section">
+                            <h3>7. Fazioni Illegali</h3>
+                            <ul class="rules-list">
+                                <li><strong>Coerenza Criminale:</strong> I gruppi malavitosi devono agire con logica criminale coerente, evitando faide continue o immotivate che rovinano l'esperienza di gioco degli altri utenti.</li>
+                                <li><strong>Gestione del Territorio:</strong> Le attività illecite, lo spaccio e il controllo delle zone devono essere concordati e gestiti secondo le direttive specifiche per le organizzazioni criminali.</li>
+                                <li><strong>Rispetto delle Regole di Ingaggio:</strong> Nelle guerre tra fazioni illegali vanno rispettati i limiti di orario, le tregue e le modalità di scontro stabilite dallo staff.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-assalti" class="rule-section">
-            <h3>8. Assalti alla Centrale</h3>
-            <ul class="rules-list">
-                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff e la verifica della disponibilità delle FDO.</li>
-                <li><strong>Orari e Requisiti:</strong> L'assalto deve rispettare i numeri minimi di partecipanti sia per i criminali che per le forze dell'ordine collegate in servizio.</li>
-                <li><strong>Sanzioni:</strong> Effettuare un assalto alla centrale senza previa autorizzazione tramite ticket dello staff comporterà sanzioni severissime per tutti i partecipanti.</li>
-            </ul>
-        </div>
+                        <div id="rule-assalti" class="rule-section">
+                            <h3>8. Assalti alla Centrale</h3>
+                            <ul class="rules-list">
+                                <li><strong>Ticket Obbligatorio:</strong> Qualsiasi assalto organizzato alle centrali o alle strutture chiave delle Forze dell'Ordine richiede obbligatoriamente l'apertura preventiva di un ticket su Discord per l'approvazione dello staff e la verifica della disponibilità delle FDO.</li>
+                                <li><strong>Orari e Requisiti:</strong> L'assalto deve rispettare i numeri minimi di partecipanti sia per i criminali che per le forze dell'ordine collegate in servizio.</li>
+                                <li><strong>Sanzioni:</strong> Effettuare un assalto alla centrale senza previa autorizzazione tramite ticket dello staff comporterà sanzioni severissime per tutti i partecipanti.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-legali" class="rule-section">
-            <h3>9. Fazioni Legali</h3>
-            <ul class="rules-list">
-                <li><strong>Professionalità e Deontologia:</strong> Gli operatori delle istituzioni (Polizia, Carabinieri, Guardia di Finanza, Croce Rossa) devono mantenere un contegno impeccabile, rispettare la gerarchia e attenersi ai manuali operativi interni.</li>
-                <li><strong>Uso della Forza:</strong> L'uso delle armi o della coercizione da parte delle FDO deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere (Powergaming istituzionale).</li>
-                <li><strong>Corruzione:</strong> Eventuali dinamiche di corruzione interna alle forze dell'ordine devono essere preventivamente autorizzate dallo staff tramite richiesta dedicata.</li>
-            </ul>
-        </div>
+                        <div id="rule-legali" class="rule-section">
+                            <h3>9. Fazioni Legali</h3>
+                            <ul class="rules-list">
+                                <li><strong>Professionalità e Deontologia:</strong> Gli operatori delle istituzioni devono mantenere un contegno impeccabile, rispettare la gerarchia e attenersi ai manuali operativi interni.</li>
+                                <li><strong>Uso della Forza:</strong> L'uso delle armi o della coercizione da parte delle autorità deve essere proporzionato alla minaccia ricevuta, evitando abusi di potere.</li>
+                                <li><strong>Corruzione:</strong> Eventuali dinamiche di corruzione interna alle forze dell'ordine devono essere preventivamente autorizzate dallo staff tramite richiesta dedicata.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-zone" class="rule-section">
-            <h3>10. Safe Zone & Non Safe</h3>
-            <ul class="rules-list">
-                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Comune, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina, aggressione o estrazione di armi.</li>
-                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno (Safezone Camping / Fleeing).</li>
-                <li><strong>Zone Non Safe:</strong> Il resto della mappa cittadina dove le azioni criminali sono permesse nel rispetto delle normative generali.</li>
-            </ul>
-        </div>
+                        <div id="rule-zone" class="rule-section">
+                            <h3>10. Safe Zone & Non Safe</h3>
+                            <ul class="rules-list">
+                                <li><strong>Safe Zone (Zone Sicure):</strong> Aree ad alta affluenza (es. Ospedale, Commissariato, Comune, Concessionario principale) dove è tassativamente vietato compiere qualsiasi crimine, rapina, aggressione o estrazione di armi.</li>
+                                <li><strong>Divieto di Fuga in Safe Zone:</strong> È severamente vietato rifugiarsi in una Safezone per sfuggire a un inseguimento o a un'azione criminale già iniziata all'esterno (Safezone Camping / Fleeing).</li>
+                                <li><strong>Zone Non Safe:</strong> Il resto della mappa cittadina dove le azioni criminali sono permesse nel rispetto delle normative generali.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-lootfdo" class="rule-section">
-            <h3>11. Loot alle FDO</h3>
-            <ul class="rules-list">
-                <li><strong>Limitazioni sul Bottino:</strong> È possibile effettuare il loot (depredare gli oggetti) ai membri delle Forze dell'Ordine solo ed esclusivamente durante azioni mirate e autorizzate dal regolamento.</li>
-                <li><strong>Limite Colpi:</strong> È consentito lootare un **massimo di 50 colpi ad agente**.</li>
-                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza istituzionali uniche o materiali non consentiti dal regolamento specifico delle fazioni.</li>
-            </ul>
-        </div>
+                        <div id="rule-lootfdo" class="rule-section">
+                            <h3>11. Loot alle FDO</h3>
+                            <ul class="rules-list">
+                                <li><strong>Limitazioni sul Bottino:</strong> È possibile effettuare il loot (depredare gli oggetti) ai membri delle Forze dell'Ordine solo ed esclusivamente durante azioni mirate e autorizzate dal regolamento.</li>
+                                <li><strong>Limite Colpi:</strong> È consentito lootare un **massimo di 50 colpi ad agente**.</li>
+                                <li><strong>Oggetti Vietati:</strong> È severamente vietato sottrarre armi di ordinanza istituzionali uniche o materiali non consentiti dal regolamento specifico delle fazioni.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-rapine" class="rule-section">
-            <h3>12. Rapine & Attività</h3>
-            <ul class="rules-list">
-                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città (negozi, locali, ristoranti).</li>
-                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina alle attività è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/dalla transazione sia **inferiore a 20.000 euro**.</li>
-                <li><strong>Nessun Ostaggio:</strong> Le rapine alle attività **non devono avere alcun ostaggio**.</li>
-            </ul>
-        </div>
+                        <div id="rule-rapine" class="rule-section">
+                            <h3>12. Rapine & Attività</h3>
+                            <ul class="rules-list">
+                                <li><strong>Rapine alle Attività:</strong> È consentito effettuare rapine e colpi anche ai danni delle attività commerciali presenti in città (negozi, locali, ristoranti).</li>
+                                <li><strong>Condizione Economica:</strong> Questa tipologia di rapina alle attività è permessa a patto che l'ammontare totale rubato o preteso dalla cassa/dalla transazione sia **inferiore a 20.000 euro**.</li>
+                                <li><strong>Nessun Ostaggio:</strong> Le rapine alle attività **non devono avere alcun ostaggio**.</li>
+                            </ul>
+                        </div>
 
-        <div id="rule-discord" class="rule-section">
-            <h3>13. Regolamento Discord</h3>
-            <ul class="rules-list">
-                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW in qualsiasi canale del Discord di Roma Vertice.</li>
-                <li><strong>Nickname e Profilo:</strong> Il nome utente e l'immagine del profilo su Discord devono essere consoni e privi di riferimenti offensivi o volgari.</li>
-                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare (pingare) i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale e motivata emergenza.</li>
-            </ul>
+                        <div id="rule-discord" class="rule-section">
+                            <h3>13. Regolamento Discord</h3>
+                            <ul class="rules-list">
+                                <li><strong>Canali Testuali e Vocali:</strong> È vietato inviare spam, link di dubbia provenienza, materiale pubblicitario di altri server o contenuti NSFW in qualsiasi canale del Discord di Country Road 90'.</li>
+                                <li><strong>Nickname e Profilo:</strong> Il nome utente e l'immagine del profilo su Discord devono essere consoni e privi di riferimenti offensivi o volgari.</li>
+                                <li><strong>Ping dello Staff:</strong> È severamente vietato taggare (pingare) i membri dello staff o i fondatori nei messaggi privati o nei canali pubblici senza una reale e motivata emergenza.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -849,8 +849,8 @@
     </div>
 
     <footer>
-        <p>&copy; Roma Vertice RP - Portale Ufficiale. Tutti i diritti riservati.</p>
-        <p style="margin-top: 5px; color: var(--white); font-weight: 600;">Developed by Ercirus | Co-Dev: Guzman</p>
+        <p>&copy; Country Road 90' RP - Portale Ufficiale. Tutti i diritti riservati.</p>
+        <p style="margin-top: 5px; color: var(--pure-white); font-weight: 600;">Developed by Ercirus | Co-Dev: Guzman</p>
     </footer>
 
     <script>
@@ -860,16 +860,16 @@
 
         const WEBHOOK_URLS = {
             'whitelist': 'https://discord.com/api/webhooks/1539259197693239469/OjhYlk02whjrmhwoevcihIHPM3BKGQM0ve2UsFvY401s_YltMVCOUkIOCk2f4stskQei',
-            'Polizia di Stato': 'https://discord.com/api/webhooks/1539258291098484867/glno8i5cIpNK55BdKzSvJdDZOQZAXcrBNWCpa79_LYQ92lPOnAbJn_Gbo4n47KdnavwZ',
-            'Carabinieri': 'https://discord.com/api/webhooks/1539258498070745099/K9m4U49TmsqXSpcvAKjcQp4uL0ub8LYXn2n6efEKo9kXyV6qMI6m1dq1kbbiG2fYczVZ',
-            'Guardia di Finanza': 'https://discord.com/api/webhooks/1539258736298692729/iHal61baObF0HaMgNhGAQ3XsJTAGshdxQhPYaZrPSZLHuWVIJ08iQV8yXpLRyauu25Dm',
-            'Croce Rossa': 'https://discord.com/api/webhooks/1539258992834908160/kckbmqMI332ermyx7sQ_K8Ou8E8P48yhvUPink5jOJrDhYYwfkZoT1ZjWYdT_v9la89T'
+            'Polizia': 'https://discord.com/api/webhooks/1539258291098484867/glno8i5cIpNK55BdKzSvJdDZOQZAXcrBNWCpa79_LYQ92lPOnAbJn_Gbo4n47KdnavwZ',
+            'Sceriffi / Forze dell\'Ordine': 'https://discord.com/api/webhooks/1539258498070745099/K9m4U49TmsqXSpcvAKjcQp4uL0ub8LYXn2n6efEKo9kXyV6qMI6m1dq1kbbiG2fYczVZ',
+            'Investigatori / Federali': 'https://discord.com/api/webhooks/1539258736298692729/iHal61baObF0HaMgNhGAQ3XsJTAGshdxQhPYaZrPSZLHuWVIJ08iQV8yXpLRyauu25Dm',
+            'Pronto Soccorso / Medici': 'https://discord.com/api/webhooks/1539258992834908160/kckbmqMI332ermyx7sQ_K8Ou8E8P48yhvUPink5jOJrDhYYwfkZoT1ZjWYdT_v9la89T'
         };
 
         let userData = null;
-        let currentSelectedFaction = 'Polizia di Stato';
-        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 1 settimana per le fazioni
-        const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; // 48 ore per la whitelist
+        let currentSelectedFaction = 'Polizia';
+        const BANDO_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; 
+        const WL_COOLDOWN_MS = 48 * 60 * 60 * 1000; 
         
         let bandoCooldownIntervalId = null;
         let wlCooldownIntervalId = null;
@@ -878,7 +878,7 @@
             const navLink = document.getElementById('discordLinkNav');
             if (navLink) navLink.href = DISCORD_SERVER_INVITE;
 
-            renderJobQuestions('Polizia di Stato');
+            renderJobQuestions('Polizia');
             showDonationSection('supporter', document.querySelector('.rules-sidebar button'));
         });
 
@@ -913,13 +913,13 @@
             btnElement.classList.add('active-faction');
 
             const factionNames = {
-                'polizia': 'Polizia di Stato',
-                'carabinieri': 'Carabinieri',
-                'finanza': 'Guardia di Finanza',
-                'croce_rossa': 'Croce Rossa'
+                'polizia': 'Polizia',
+                'carabinieri': 'Sceriffi / Forze dell\'Ordine',
+                'finanza': 'Investigatori / Federali',
+                'croce_rossa': 'Pronto Soccorso / Medici'
             };
 
-            currentSelectedFaction = factionNames[factionKey] || 'Polizia di Stato';
+            currentSelectedFaction = factionNames[factionKey] || 'Polizia';
             const inputField = document.getElementById('selectedFactionInput');
             if (inputField) inputField.value = currentSelectedFaction;
 
@@ -1054,7 +1054,7 @@
             if (!container) return;
 
             let html = '';
-            if (faction === 'Polizia di Stato') {
+            if (faction === 'Polizia') {
                 html = `
                     <div class="form-group">
                         <label>1. Come gestisci una situazione di ostaggi in banca con i criminali armati?</label>
@@ -1065,29 +1065,29 @@
                         <textarea id="qJob2" required placeholder="Descrivi il rispetto della catena di comando..."></textarea>
                     </div>
                 `;
-            } else if (faction === 'Carabinieri') {
+            } else if (faction === 'Sceriffi / Forze dell\'Ordine') {
                 html = `
                     <div class="form-group">
                         <label>1. Come imposti un posto di blocco coordinato su una strada principale della città?</label>
                         <textarea id="qJob1" required placeholder="Posizionamento mezzi, sicurezza operatori e controllo veicoli..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>2. Gestione di una giurisdizione militare/territoriale mista: come ti comporti?</label>
+                        <label>2. Gestione di una giurisdizione territoriale mista: come ti comporti?</label>
                         <textarea id="qJob2" required placeholder="Spiega le tue competenze operative..."></textarea>
                     </div>
                 `;
-            } else if (faction === 'Guardia di Finanza') {
+            } else if (faction === 'Investigatori / Federali') {
                 html = `
                     <div class="form-group">
                         <label>1. Quali controlli fiscali ed economici effettui su un'attività commerciale sospetta?</label>
                         <textarea id="qJob1" required placeholder="Verifica registri, licenze e flussi di denaro..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label>2. Come agisci in caso di contrabbando o merci illecite scoperte al porto/dogana?</label>
+                        <label>2. Come agisci in caso di contrabbando o merci illecite scoperte?</label>
                         <textarea id="qJob2" required placeholder="Procedure di sequestro e verbalizzazione..."></textarea>
                     </div>
                 `;
-            } else if (faction === 'Croce Rossa') {
+            } else if (faction === 'Pronto Soccorso / Medici') {
                 html = `
                     <div class="form-group">
                         <label>1. Protocollo di triage in caso di maxi-emergenza con più feriti gravi:</label>
@@ -1147,7 +1147,7 @@
                         <ul class="rules-list">
                             <li><strong>Assistenza prioritaria:</strong> Supporto rapido dedicato.</li>
                             <li><strong>Veicolo VIP:</strong> Un veicolo VIP a tua scelta.</li>
-                            <li><strong>Ruolo e Canali:</strong> Ruolo VIP "Roma Vertice" e canali vocali VIP annessi su Discord.</li>
+                            <li><strong>Ruolo e Canali:</strong> Ruolo VIP "Country Road 90'" e canali vocali VIP annessi su Discord.</li>
                         </ul>
                     </div>
                 `;
@@ -1164,35 +1164,35 @@
             } else if (packType === 'regolamento') {
                 contentHTML = `
                     <div class="rule-section active">
-                        <h3>Regolamento Donazioni – Roma Vertice</h3>
+                        <h3>Regolamento Donazioni – Country Road 90'</h3>
                         
-                        <h4 style="color: var(--italia-green); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
+                        <h4 style="color: var(--sunset-orange); margin-top: 1rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">1. Principi Generali</h4>
                         <ul class="rules-list">
-                            <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Roma Vertice sono effettuate a titolo di donazione libera e spontanea.</li>
+                            <li><strong>Volontarietà:</strong> Tutte le erogazioni verso Country Road 90' sono effettuate a titolo di donazione libera e spontanea.</li>
                             <li><strong>Finalità:</strong> I fondi raccolti vengono impiegati esclusivamente per il sostentamento del progetto, inclusi i costi per l'hosting dei server, manutenzione tecnica, licenze, plugin e lo sviluppo di nuove funzionalità.</li>
                             <li><strong>Nessun Beneficio Economico:</strong> La donazione non costituisce un investimento finanziario né un acquisto di beni/servizi commerciali.</li>
                         </ul>
 
-                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
+                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">2. Natura dei Vantaggi (VIP / Perk)</h4>
                         <ul class="rules-list">
                             <li><strong>Trattamento Simbolico:</strong> Eventuali ruoli, badge, veicoli o vantaggi in-game/nel server riconosciuti ai donatori sono semplici ringraziamenti simbolici per il supporto fornito.</li>
                             <li><strong>Fair Play:</strong> I vantaggi concessi non garantiscono né giustificano in alcun modo l'immunità dal regolamento generale del server/community. Tutti i donatori sono tenuti a rispettare le regole alla pari di ogni altro utente.</li>
                         </ul>
 
-                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
+                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">3. Politica di Rimborso (No Refund)</h4>
                         <ul class="rules-list">
                             <li><strong>Irrevocabilità:</strong> Una volta effettuata, la donazione non è in alcun modo rimborsabile.</li>
                             <li><strong>Provvedimenti Disciplinari:</strong> In caso di ban, kick o sanzioni disciplinari per violazione del regolamento generale, l'utente non avrà diritto al rimborso delle donazioni effettuate né al recupero dei benefici attribuiti.</li>
-                            <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Roma Vertice.</li>
+                            <li><strong>Controversie / Chargeback:</strong> Aprire una controversia o richiedere un chargeback non autorizzato tramite i sistemi di pagamento comporterà il ban permanente e immediato da tutti i servizi di Country Road 90'.</li>
                         </ul>
 
-                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
+                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">4. Modalità di Pagamento e Tracciabilità</h4>
                         <ul class="rules-list">
-                            <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Roma Vertice (es. PayPal, Tebex, Ko-fi).</li>
+                            <li>Le donazioni devono essere canalizzate esclusivamente tramite i link e le piattaforme ufficiali indicate dallo staff di Country Road 90' (es. PayPal, Tebex, Ko-fi).</li>
                             <li>Nessun membro dello staff è autorizzato a richiedere pagamenti o donazioni dirette su account personali al di fuori dei canali stabiliti.</li>
                         </ul>
 
-                        <h4 style="color: var(--italia-green); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
+                        <h4 style="color: var(--sunset-orange); margin-top: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-title); font-size: 1.1rem;">5. Accettazione del Regolamento</h4>
                         <ul class="rules-list">
                             <li>L'invio di una donazione implica l'accettazione automatica e integrale di tutti i punti del presente regolamento.</li>
                         </ul>
@@ -1276,10 +1276,10 @@
                 : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
             const payload = {
-                username: "Whitelist - Roma Vertice",
+                username: "Whitelist - Country Road 90'",
                 embeds: [{
                     title: "🟢 NUOVA RICHIESTA WHITELIST CITTA'",
-                    color: 36768,
+                    color: 14845507,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1290,7 +1290,7 @@
                         { name: "⏳ Tempo su FiveM", value: document.getElementById('wlFiveMTime').value, inline: true },
                         { name: "🌐 Server Precedenti", value: document.getElementById('wlServers').value, inline: true }
                     ],
-                    footer: { text: "Roma Vertice RP • Whitelist System" },
+                    footer: { text: "Country Road 90' RP • Whitelist System" },
                     timestamp: new Date().toISOString()
                 }]
             };
@@ -1343,10 +1343,10 @@
                 : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
             const payload = {
-                username: `Reclutamento ${currentSelectedFaction} - Roma Vertice`,
+                username: `Reclutamento ${currentSelectedFaction} - Country Road 90'`,
                 embeds: [{
                     title: `📄 CANDIDATURA FAZIONE: ${currentSelectedFaction.toUpperCase()}`,
-                    color: 36768,
+                    color: 14845507,
                     thumbnail: { url: userAvatarUrl },
                     fields: [
                         { name: "👤 Utente Discord", value: `<@${userData.id}> (${userData.username})`, inline: true },
@@ -1358,12 +1358,12 @@
                         { name: "📋 Risposta Specifica 1", value: document.getElementById('qJob1').value, inline: false },
                         { name: "📋 Risposta Specifica 2", value: document.getElementById('qJob2').value, inline: false }
                     ],
-                    footer: { text: "Roma Vertice RP • Fazioni Istituzionali" },
+                    footer: { text: "Country Road 90' RP • Fazioni Istituzionali" },
                     timestamp: new Date().toISOString()
                 }]
             };
 
-            const targetWebhook = WEBHOOK_URLS[currentSelectedFaction] || WEBHOOK_URLS['Polizia di Stato'];
+            const targetWebhook = WEBHOOK_URLS[currentSelectedFaction] || WEBHOOK_URLS['Polizia'];
 
             fetch(targetWebhook, {
                 method: 'POST',
