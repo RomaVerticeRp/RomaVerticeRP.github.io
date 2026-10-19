@@ -48,31 +48,29 @@
             position: relative;
         }
 
-        /* PALME AI LATI CORRETTE E PULITE */
-        .bg-palms-left, .bg-palms-right {
+        /* IMMAGINE PERSONALIZZATA AI LATI (aaa.png) */
+        .bg-side-left, .bg-side-right {
             position: fixed;
             top: 0;
             bottom: 0;
-            width: 300px;
+            width: 280px;
             height: 100vh;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.12;
+            opacity: 0.15;
+            background-image: url("aaa.png");
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
         }
 
-        .bg-palms-left {
+        .bg-side-left {
             left: 0;
-            background-position: left center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 800'%3E%3Cg fill='%233a2219'%3E%3Cpath d='M-40,850 C10,550 50,350 120,180 C130,155 145,130 160,100 L135,105 C115,135 100,165 85,195 C25,360 -20,550 -70,850 Z'/%3E%3Cpath d='M160,100 C210,70 270,60 320,70 C270,90 220,110 170,120 Z'/%3E%3Cpath d='M160,100 C190,40 240,10 300,-10 C260,20 220,50 180,90 Z'/%3E%3Cpath d='M160,100 C130,50 90,10 30,-20 C60,20 100,60 140,90 Z'/%3E%3Cpath d='M160,100 C110,80 50,70 0,80 C50,100 100,110 150,115 Z'/%3E%3Cpath d='M160,100 C180,130 220,170 270,200 C220,170 190,140 165,115 Z'/%3E%3Cpath d='M-20,850 C20,600 80,420 180,260 C190,240 205,220 220,190 L195,195 C175,225 160,245 145,270 C55,420 0,600 -40,850 Z'/%3E%3Cpath d='M220,190 C270,160 330,150 380,160 C330,180 280,200 230,210 Z'/%3E%3Cpath d='M220,190 C250,130 300,100 360,80 C320,110 280,140 240,180 Z'/%3E%3Cpath d='M220,190 C190,140 150,100 90,70 C120,110 160,150 200,180 Z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .bg-palms-right {
+        .bg-side-right {
             right: 0;
             transform: scaleX(-1);
-            background-position: left center;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 800'%3E%3Cg fill='%233a2219'%3E%3Cpath d='M-40,850 C10,550 50,350 120,180 C130,155 145,130 160,100 L135,105 C115,135 100,165 85,195 C25,360 -20,550 -70,850 Z'/%3E%3Cpath d='M160,100 C210,70 270,60 320,70 C270,90 220,110 170,120 Z'/%3E%3Cpath d='M160,100 C190,40 240,10 300,-10 C260,20 220,50 180,90 Z'/%3E%3Cpath d='M160,100 C130,50 90,10 30,-20 C60,20 100,60 140,90 Z'/%3E%3Cpath d='M160,100 C110,80 50,70 0,80 C50,100 100,110 150,115 Z'/%3E%3Cpath d='M160,100 C180,130 220,170 270,200 C220,170 190,140 165,115 Z'/%3E%3Cpath d='M-20,850 C20,600 80,420 180,260 C190,240 205,220 220,190 L195,195 C175,225 160,245 145,270 C55,420 0,600 -40,850 Z'/%3E%3Cpath d='M220,190 C270,160 330,150 380,160 C330,180 280,200 230,210 Z'/%3E%3Cpath d='M220,190 C250,130 300,100 360,80 C320,110 280,140 240,180 Z'/%3E%3Cpath d='M220,190 C190,140 150,100 90,70 C120,110 160,150 200,180 Z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* VIGNETTATURA AI BORDI PER EFFETTO FOTO ANNI '90 */
@@ -858,13 +856,13 @@
         }
 
         @media (max-width: 1200px) {
-            .bg-palms-left, .bg-palms-right { width: 200px; opacity: 0.08; }
+            .bg-side-left, .bg-side-right { width: 180px; opacity: 0.1; }
         }
 
         @media (max-width: 900px) {
             .polaroid-grid { grid-template-columns: 1fr; }
             .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
-            .bg-palms-left, .bg-palms-right { display: none; }
+            .bg-side-left, .bg-side-right { display: none; }
         }
 
         @media (max-width: 850px) {
@@ -882,9 +880,9 @@
 </head>
 <body>
 
-    <!-- ELEMENTI SFONDO PALME -->
-    <div class="bg-palms-left"></div>
-    <div class="bg-palms-right"></div>
+    <!-- ELEMENTI SFONDO LATERALE CON aaa.png -->
+    <div class="bg-side-left"></div>
+    <div class="bg-side-right"></div>
 
     <nav class="navbar">
         <div class="nav-brand">
@@ -964,7 +962,7 @@
                     <div class="sidebar-title">INDICE</div>
                     <div class="sidebar-subtitle">Normative & Guida</div>
                     <ul class="rules-menu">
-                        <li><button onclick="showRulePane('rbg', this)" class="active" id="btnRuleBg">Linee Guida BG </button></li>
+                        <li><button onclick="showRulePane('rbg', this)" class="active" id="btnRuleBg">Linee Guida BG 📜</button></li>
                         <li><button onclick="showRulePane('r1', this)">Regole Generali</button></li>
                         <li><button onclick="showRulePane('r2', this)">Principi Roleplay</button></li>
                         <li><button onclick="showRulePane('r3', this)">Assistenze e Ticket</button></li>
