@@ -36,41 +36,19 @@
             font-family: var(--font-body);
         }
 
-        /* SFONDO CON GRADIENTE TRAMONTO WEST COAST */
+        /* SFONDO INTERO CON L'IMMAGINE aaa.png */
         body {
             background-color: var(--bg-page);
-            background: radial-gradient(circle at 50% 25%, #fdf6ee 0%, #f4e4d2 45%, #e2caa8 85%, #d1b18c 100%);
+            background-image: linear-gradient(rgba(242, 227, 208, 0.85), rgba(226, 202, 168, 0.9)), url("aaa.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             position: relative;
-        }
-
-        /* IMMAGINE PERSONALIZZATA AI LATI (aaa.png) */
-        .bg-side-left, .bg-side-right {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 280px;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.15;
-            background-image: url("aaa.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .bg-side-left {
-            left: 0;
-        }
-
-        .bg-side-right {
-            right: 0;
-            transform: scaleX(-1);
         }
 
         /* VIGNETTATURA AI BORDI PER EFFETTO FOTO ANNI '90 */
@@ -341,7 +319,7 @@
             font-size: 1.12rem;
             line-height: 1.8;
             color: var(--text-light);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             padding: 1.8rem 2.2rem;
             border-radius: 20px;
             border: 1px solid var(--border-soft);
@@ -855,14 +833,9 @@
             font-family: var(--font-title);
         }
 
-        @media (max-width: 1200px) {
-            .bg-side-left, .bg-side-right { width: 180px; opacity: 0.1; }
-        }
-
         @media (max-width: 900px) {
             .polaroid-grid { grid-template-columns: 1fr; }
             .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
-            .bg-side-left, .bg-side-right { display: none; }
         }
 
         @media (max-width: 850px) {
@@ -879,10 +852,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ELEMENTI SFONDO LATERALE CON aaa.png -->
-    <div class="bg-side-left"></div>
-    <div class="bg-side-right"></div>
 
     <nav class="navbar">
         <div class="nav-brand">
