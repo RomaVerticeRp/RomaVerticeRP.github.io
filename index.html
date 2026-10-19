@@ -629,7 +629,7 @@
             line-height: 1.5;
         }
 
-        /* CARD ALTRO PERFETTAMENTE CENTRATA */
+        /* CARD ALTRO CENTRATA SENZA LINK DIRETTO */
         .archetype-card-altro {
             grid-column: 1 / -1;
             max-width: 520px;
@@ -651,6 +651,42 @@
 
         .archetype-card-altro h5 {
             color: var(--accent-orange);
+        }
+
+        /* BOX INFORMATIVO CLIC "ALTRO" */
+        .info-box-altro {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-card);
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .info-box-altro h4 {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box-altro p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .discord-link-text {
+            color: var(--discord-blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .discord-link-text:hover {
+            text-decoration: underline;
         }
 
         /* FORM COMPILAZIONE */
@@ -964,7 +1000,7 @@
                 </button>
             </div>
 
-            <!-- CONTENUTO PRINCIPALE WHITELIST (BLOCCATO FINCHE NON LOGGATO) -->
+            <!-- CONTENUTO PRINCIPALE WHITELIST -->
             <div id="whitelistMainContent" style="display: none;">
                 
                 <!-- BOX COOLDOWN 24H -->
@@ -984,7 +1020,7 @@
                         <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi le Linee Guida BG</button>
                     </div>
 
-                    <h3 class="archetype-title">Scegli il tuo archetipo</h3>
+                    <h3 class="archetype-title">Scegli cosa vorrai fare</h3>
                     <p class="archetype-subtitle">Definisce la strada iniziale e la professione/ruolo del tuo personaggio a Country Road 90'.</p>
 
                     <div class="archetypes-grid">
@@ -1019,12 +1055,18 @@
                             <p>Passione per i motori, modifiche d'epoca, soccorso stradale e gestione officina.</p>
                         </div>
 
-                        <!-- CARD ALTRO CENTRATA -->
-                        <div class="archetype-card archetype-card-altro" onclick="openTicketOption()">
+                        <!-- CARD ALTRO CENTRATA CON SOLO SCRITTA INFORMATIVA -->
+                        <div class="archetype-card archetype-card-altro" onclick="openTicketInfo()">
                             <div class="archetype-badge">🎟️ Supporto Ticket</div>
                             <h5>Altro</h5>
-                            <p>Vuoi proporre un ruolo speciale? Apri un Ticket su Discord!</p>
+                            <p>Vuoi proporre un ruolo speciale o hai esigenze particolari? Clicca qui per scoprire come fare.</p>
                         </div>
+                    </div>
+
+                    <!-- BOX INFORMATIVO ALTRO (APRE SOLO SCRITTA) -->
+                    <div id="infoBoxAltro" class="info-box-altro">
+                        <h4>Gestione Ruoli Speciali & Candidature Extra</h4>
+                        <p>Se desideri interpretare un ruolo che non rientra nei classici archetipi standard, la nostra community gestisce le richieste personalizzate tramite il sistema di supporto dedicato.<br><br>Puoi entrare nel nostro server Discord ufficiale e aprire un <strong>Ticket di Supporto</strong> per discutere la tua proposta con lo staff:<br><a href="https://discord.gg/YPjRPzDbB7" target="_blank" class="discord-link-text">🔗 Unisciti a Discord e apri un Ticket</a></p>
                     </div>
 
                     <!-- FORM COMPILAZIONE WHITELIST -->
@@ -1092,18 +1134,16 @@
     </div>
 
     <script>
-        const CLIENT_ID = '1536336646507601920'; // ID client Discord configurabile
+        const CLIENT_ID = '1536336646507601920';
         const REDIRECT_URI = window.location.origin + window.location.pathname;
         const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1537962063899394130/J3ruV7rhz6N914Q79lYs9Jr8R13nqf5kwvs3tET_Pt0bRbMHyjEwwlaS2Rqn-1FTQZI4';
-        const DISCORD_INVITE_LINK = 'https://discord.gg/YPjRPzDbB7';
         
         let userData = null;
         let selectedArchetype = '';
         let cooldownInterval = null;
-        const COOLDOWN_DURATION = 24 * 60 * 60 * 1000; // 24 Ore in millisecondi
+        const COOLDOWN_DURATION = 24 * 60 * 60 * 1000; // 24 Ore
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Controllo token OAuth2 Discord nell'URL
             const fragment = new URLSearchParams(window.location.hash.slice(1));
             const accessToken = fragment.get('access_token');
 
@@ -1154,7 +1194,6 @@
             document.getElementById('btnLoginNav').innerText = 'Esci';
             document.getElementById('btnLoginNav').onclick = logoutDiscord;
 
-            // Mostra sezione whitelist e nascondi blocco login
             document.getElementById('discordAuthRequired').style.display = 'none';
             document.getElementById('whitelistMainContent').style.display = 'block';
 
@@ -1263,6 +1302,9 @@
             document.querySelectorAll('.archetype-card').forEach(c => c.classList.remove('selected'));
             cardElement.classList.add('selected');
 
+            // Nascondi box info "altro" se aperto
+            document.getElementById('infoBoxAltro').style.display = 'none';
+
             selectedArchetype = name;
             document.getElementById('inputArchetipo').value = name;
             document.getElementById('selectedArchetypeTitle').innerText = 'Modulo Candidatura: ' + name;
@@ -1272,9 +1314,18 @@
             formContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function openTicketOption() {
-            alert("Per ruoli speciali o diverse candidature, apri un Ticket nella sezione supporto del nostro server Discord ufficiale!");
-            window.open(DISCORD_INVITE_LINK, '_blank');
+        function openTicketInfo() {
+            // Rimuovi selezione archetipi e nascondi form se era aperto
+            document.querySelectorAll('.archetype-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('wlFormContainer').style.display = 'none';
+
+            const infoBox = document.getElementById('infoBoxAltro');
+            if (infoBox.style.display === 'block') {
+                infoBox.style.display = 'none';
+            } else {
+                infoBox.style.display = 'block';
+                infoBox.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         function submitWhitelist(event) {
