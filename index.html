@@ -379,7 +379,7 @@
             line-height: 1.6;
         }
 
-        /* REGOLAMENTO - STILE ACCORDION ESATTO DELLO SCREENSHOT */
+        /* REGOLAMENTO - STILE ACCORDION CON FRECCE APERTO/CHIUSO */
         .rules-layout {
             display: grid;
             grid-template-columns: 260px 1fr;
@@ -451,7 +451,6 @@
             gap: 1.2rem;
         }
 
-        /* ACCORDION CARD STILE IMMAGINE */
         .accordion-item {
             background: var(--bg-card);
             border-radius: 20px;
@@ -512,6 +511,7 @@
             display: block;
         }
 
+        /* BOTTONE CON FRECCIA (▼ CHIUSO / ▲ APERTO) */
         .accordion-btn {
             width: 36px;
             height: 36px;
@@ -521,7 +521,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 0.9rem;
             font-weight: 800;
             transition: all 0.3s ease;
             flex-shrink: 0;
@@ -530,7 +530,6 @@
         .accordion-item.active .accordion-btn {
             background: var(--accent-orange);
             color: white;
-            transform: rotate(45deg);
         }
 
         .accordion-content {
@@ -542,7 +541,7 @@
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 2000px; /* Altezza sufficiente per aprirsi */
+            max-height: 3000px;
             border-top-color: var(--border-soft);
             transition: max-height 0.5s ease-in-out;
         }
@@ -558,22 +557,34 @@
             background: var(--bg-card-alt);
             border: 1px solid var(--border-soft);
             border-radius: 14px;
-            padding: 1.2rem 1.4rem;
+            padding: 1.3rem 1.5rem;
         }
 
         .sub-rule-box h5 {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 800;
             color: var(--accent-orange);
             letter-spacing: 0.8px;
             text-transform: uppercase;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .sub-rule-box p {
             font-size: 0.92rem;
             color: var(--text-light);
             line-height: 1.6;
+        }
+
+        .sub-rule-box ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .sub-rule-box li {
+            margin-bottom: 0.4rem;
         }
 
         /* WHITELIST TAB & BANNER BG */
@@ -1004,7 +1015,7 @@
             </div>
         </div>
 
-        <!-- TAB REGOLAMENTO ACCORDION INTERATTIVO (ESATTO DALL'IMMAGINE) -->
+        <!-- TAB REGOLAMENTO ACCORDION CON FRECCE E REGOLE ESPANSE -->
         <div id="regolamento" class="tab-content">
             <div class="page-header">
                 <h2 class="page-title">Regolamento</h2>
@@ -1028,69 +1039,81 @@
                 <!-- LISTA ACCORDION -->
                 <div class="rules-accordion-container">
 
-                    <!-- 01 REGOLE GENERALI & BASI ROLEPLAY -->
+                    <!-- 01 REGOLE GENERALI -->
                     <div class="accordion-item active" id="acc-item-1">
                         <div class="accordion-header" onclick="toggleAccordion(1)">
                             <div class="accordion-header-left">
                                 <span class="accordion-num">01</span>
                                 <div class="accordion-title-box">
                                     <h3>Regole Generali</h3>
-                                    <span>BASI DEL ROLEPLAY E DIVIETI FONDAMENTALI</span>
+                                    <span>NORME DI COMPORTAMENTO E CONVIVENZA</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-1">▲</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
-                                    <h5>Che cos'è il Roleplay (RP) & Separazione IC / OOC</h5>
-                                    <p>Il Roleplay è l'interpretazione di un personaggio all'interno di un mondo virtuale. <strong>IC (In Character)</strong> indica tutto ciò che riguarda la vita del tuo personaggio. <strong>OOC (Out Of Character)</strong> indica la tua vita reale. È tassativamente vietato mescolare le due cose o portare rancori OOC nelle dinamiche di gioco.</p>
+                                    <h5>Rispetto Interpersonale e Condotta OOC</h5>
+                                    <p>Ogni utente della community è tenuto a mantenere un comportamento civile ed educato. È severamente proibita qualsiasi forma di insulto, discriminazione, molestia o linguaggio d'odio basato su razza, genere, orientamento sessuale, opinioni religiose o politiche. Il rispetto reciproco OOC è la base del nostro server.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Metagaming</h5>
-                                    <p>È vietato utilizzare informazioni ottenute fuori dal gioco (es. da Discord, stream di Twitch o chat private) per far agire il proprio personaggio in città.</p>
+                                    <h5>Trolling, Cheating e Modding Non Autorizzato</h5>
+                                    <p>È vietato fare trolling, rovinare l'esperienza di gioco altrui con comportamenti molesti o utilizzare software terzi (mod menu, macro, crosshair esterni, exploit) che concedano vantaggi sleali in gioco. Chiunque venga sorpreso a barare verrà sanzionato con il ban permanente e immediato.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Powergaming</h5>
-                                    <p>È vietato compiere azioni sovrumane, fisicamente impossibili nella realtà, o forzare scene su altri giocatori senza lasciare loro la possibilità di reagire.</p>
-                                </div>
-                                <div class="sub-rule-box">
-                                    <h5>Fail RP</h5>
-                                    <p>Comportamenti irrazionali o azioni che spezzano la coerenza dell'interpretazione (es. guidare auto sportive a 200 km/h in montagna senza conseguenze dopo un incidente).</p>
-                                </div>
-                                <div class="sub-rule-box">
-                                    <h5>Rispetto e Divieti Assoluti</h5>
-                                    <p>È vietato qualsiasi tipo di insulto OOC, bestemmia, molestia o frase discriminatoria per razza, genere, orientamento o religione. La violazione comporta il ban immediato.</p>
+                                    <h5>Common Sense (Buonsenso)</h5>
+                                    <p>Nessun regolamento scritto può coprire ogni singola situazione. Vige sempre la regola del buonsenso: agisci ponendoti come obiettivo il divertimento e la qualità del Roleplay per tutti i partecipanti, evitando azioni guidate solo dal desiderio di "vincere" una scena.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 02 PRINCIPI FONDAMENTALI ROLEPLAY -->
+                    <!-- 02 PRINCIPI FONDAMENTALI ROLEPLAY (TUTTE LE REGOLE BASE) -->
                     <div class="accordion-item" id="acc-item-2">
                         <div class="accordion-header" onclick="toggleAccordion(2)">
                             <div class="accordion-header-left">
                                 <span class="accordion-num">02</span>
                                 <div class="accordion-title-box">
                                     <h3>Principi Fondamentali Roleplay</h3>
-                                    <span>VALORE DELLA VITA E SVENIMENTO</span>
+                                    <span>TUTTE LE REGOLE E MECCANICHE DI GIOCO BASE</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-2">▼</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
+                                    <h5>In Character (IC) vs Out Of Character (OOC)</h5>
+                                    <p><strong>IC:</strong> Tutto ciò che accade all'interno della storia del tuo personaggio in gioco.<br><strong>OOC:</strong> La vita reale dei giocatori. È vietato mescolare i due livelli: antipatie o eventi tra personaggi non devono mai ripercuotersi sui rapporti reali tra utenti, e viceversa (Mixing IC/OOC).</p>
+                                </div>
+                                <div class="sub-rule-box">
                                     <h5>Fear RP (Valore della Vita)</h5>
-                                    <p>La vita del tuo personaggio è unica e preziosa. In situazioni di pericolo imminente, come quando sei sotto il tiro di un'arma o in inferiorità numerica schiacciante, devi sempre interpretare la paura e collaborare.</p>
+                                    <p>La vita del tuo personaggio è il bene più prezioso che possiede. Devi interpretare in modo realistico la paura in tutte le situazioni di pericolo imminente, come ad esempio quando sei sotto il tiro di un'arma da fuoco, minacciato da più persone o in evidente inferiorità numerica. In queste situazioni devi collaborare ed evitare reazioni irrazionali.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>New Life Rule (NLR)</h5>
-                                    <p>In caso di svenimento con conseguente respawn in ospedale, il personaggio perde completamente la memoria di tutti gli eventi e delle persone che hanno condotto al decesso.</p>
+                                    <h5>New Life Rule (NLR) & Svenimento</h5>
+                                    <p>Quando il tuo personaggio viene ferito a morte e va in stato di svenimento con conseguente respawn medico in ospedale, scatta la NLR: si perde completamente la memoria di tutte le persone, gli eventi e le dinamiche che hanno condotto al decesso. Non è possibile tornare sul luogo della propria morte per almeno 30 minuti.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>No Combat Log</h5>
-                                    <p>È vietato disconnettersi dal gioco o forzare il crash durante un'azione roleplay, una sparatoria o un arresto in corso.</p>
+                                    <h5>Metagaming</h5>
+                                    <p>È vietato utilizzare informazioni apprese al di fuori del gioco (tramite Discord, livestream, chat vocali private o social) per far agire il proprio personaggio in città. Il personaggio conosce solo ciò che apprende direttamente durante il Roleplay IC.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Powergaming</h5>
+                                    <p>Comprende il compiere azioni fisicamente impossibili nella realtà (es. saltare da un ponte e continuare a correre), costringere un altro giocatore a subire un'azione senza dargli la possibilità logica di reagire o abusare delle meccaniche del gioco/script per ottenere un vantaggio improprio.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Fail RP</h5>
+                                    <p>Comportamenti irrazionali che spezzano completamente la coerenza della simulazione di vita anni '90, come ad esempio guidare veicoli a folle velocità sui marciapiedi senza motivi, non simulare dolore dopo un impatto grave o ignorare il contesto sociale della contea.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Combat Log & Quit Durante le Scene</h5>
+                                    <p>È severamente vietato disconnettersi dal server, provocare un crash volontario o uscire dal gioco mentre si è coinvolti in un'azione Roleplay, in un inseguimento, in uno scontro a fuoco o durante un fermo di polizia.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Character Killer (CK) & PK</h5>
+                                    <p><strong>PK (Player Kill):</strong> Morte temporanea con perdita di memoria dell'azione (NLR).<br><strong>CK (Character Kill):</strong> Morte definitiva ed irreversibile del personaggio con eliminazione della sua storia e dei beni. Il CK richiede un'approvazione formale tramite Ticket allo Staff o una pattuizione tra i leader fazione.</p>
                                 </div>
                             </div>
                         </div>
@@ -1103,20 +1126,24 @@
                                 <span class="accordion-num">03</span>
                                 <div class="accordion-title-box">
                                     <h3>Sistema del Rispetto e della Fama</h3>
-                                    <span>GERARCHIA SOCIALE E REPUTAZIONE NARRATIVA</span>
+                                    <span>PESO SOCIALE, GERARCHIA E REPUTAZIONE NARRATIVA</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-3">▼</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
-                                    <h5>Gerarchia del Rispetto</h5>
-                                    <p>La società di Country Road 90' si basa sulla reputazione costruita nel tempo. Chiunque deve portare rispetto alle figure istituzionali e ai leader di rilievo riconosciuti sul territorio.</p>
+                                    <h5>Struttura della Fama in Città</h5>
+                                    <p>Il rispetto e il peso sociale di un personaggio non si ottengono accumulando ore di gioco o denaro, ma tramite la qualità e la continuità del suo percorso narrativo. Un cittadino sconosciuto non può pretendere di trattare da pari con un leader fazione o con alte cariche istituzionali senza timore reverenziale.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Status Dinamico & Continuo</h5>
-                                    <p>La notorietà non si ottiene accumulando denaro o ore di gioco, ma dimostrando continuità narrativa, qualità di gioco e interazioni credibili con la community.</p>
+                                    <h5>Rispetto per le Autorità</h5>
+                                    <p>La Giustizia e le Forze dell'Ordine rappresentano il vertice della gerarchia della contea. Ogni personaggio deve temere il peso delle leggi, gli arresti e i procedimenti penali a proprio carico.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Status Dinamico</h5>
+                                    <p>La reputazione può crescere o diminuire nel tempo. L'inattività prolungata o comportamenti incoerenti possono portare alla perdita del peso narrativo acquisito in precedenza.</p>
                                 </div>
                             </div>
                         </div>
@@ -1132,77 +1159,82 @@
                                     <span>AZIONI OSTILI, SCONTRINI E LEGGE</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-4">▼</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
-                                    <h5>Motivazione IC Obbligatoria</h5>
-                                    <p>Ogni atto criminale, sequestro o scontro a fuoco richiede una solida motivazione accumulata durante il Roleplay. Sono vietati i DM (Deathmatch) privi di senso.</p>
+                                    <h5>Motivazione IC Obbligatoria per le Azioni Criminali</h5>
+                                    <p>È vietato compiere aggressioni, sparatorie o rapine a caso (Deathmatch). Qualsiasi scontro o azione illegale deve fondarsi su un motivo In Character valido e dimostrabile (es. faide di territorio, debiti d'affari, regolamenti di conti).</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Rapine e Limiti Economici</h5>
-                                    <p>Nelle rapine ai cittadini o alle attività è obbligatorio fissare richieste eque (max 20.000$). È vietato svuotare completamente gli inventari o rapinare beni primari in modo abusivo.</p>
+                                    <h5>Regolamento Rapine e Tetti Economici</h5>
+                                    <p>Nelle rapine ai danni di cittadini o negozi commerciali, è fissato un limite massimo di denaro o merce prelevabile (max 20.000$). È proibito rapinare oggetti personali primari non trasferibili o prosciugare interi inventari a scopo di bullismo OOC.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Interazione con lo Sceriffo</h5>
-                                    <p>Le Forze dell'Ordine rappresentano la legge e l'autorità. Gli ingaggi contro la polizia devono essere ponderati e non volti unicamente all'eliminazione fisica degli agenti.</p>
+                                    <h5>Ingaggi contro lo Sceriffo e Forze dell'Ordine</h5>
+                                    <p>Gli scontri a fuoco contro le forze dell'ordine devono essere l'ultima risorsa per fuggire da una condanna grave. È vietato organizzare imboscate al solo scopo di fare sparatorie contro gli agenti (Cop Baiting).</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 05 SAFE ZONE E ZONE A RISCHIO -->
-                    <div class="accordion-item" id="acc-item-5">
+                    <div id="acc-item-5" class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(5)">
                             <div class="accordion-header-left">
                                 <span class="accordion-num">05</span>
                                 <div class="accordion-title-box">
                                     <h3>Safe Zone & Zone a Rischio</h3>
-                                    <span>AREE PROTETTE E LIMITI DI AZIONE</span>
+                                    <span>AREE PROTETTE E LIMITI DI INTERAZIONE</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-5">▼</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
-                                    <h5>Definizione Safe Zone</h5>
-                                    <p>Ospedale Principale, Sede dello Sceriffo, Municipio e Concessionario principale sono Zone Sicure. In queste aree è vietato avviare rapine, sparatorie o aggressioni.</p>
+                                    <h5>Elenco e Definizione delle Safe Zone</h5>
+                                    <p>Sono considerate Zone Sicure (Safe Zone) le seguenti strutture: Ospedale Principale, Sede del Dipartimento dello Sceriffo, Municipio e Concessionario principale. All'interno di queste aree è vietato avviare risse, rapine, sequestri o sparatorie.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Divieto di Fuga in Safe Zone</h5>
-                                    <p>È severamente vietato rifugiarsi all'interno di una Safe Zone durante un inseguimento o un'azione ostile iniziata all'esterno.</p>
+                                    <h5>Divieto di Fuga e Abuso delle Safe Zone</h5>
+                                    <p>È severamente proibito rifugiarsi all'interno di una Safe Zone per sfuggire a un inseguimento o a un'azione criminale iniziata all'esterno. In tal caso, l'azione continuerà regolarmente e il fuggitivo verrà sanzionato per Fail RP.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 06 ASSISTENZE, DISCORD E REGOLE GENERICHE -->
-                    <div class="accordion-item" id="acc-item-6">
+                    <div id="acc-item-6" class="accordion-item">
                         <div class="accordion-header" onclick="toggleAccordion(6)">
                             <div class="accordion-header-left">
                                 <span class="accordion-num">06</span>
                                 <div class="accordion-title-box">
                                     <h3>Assistenza, Discord e Regole Generiche</h3>
-                                    <span>NORME COMMUNITY DISCORD E TICKET</span>
+                                    <span>TICKET, MODULO INFRAZIONI E CANALI COMMUNITY</span>
                                 </div>
                             </div>
-                            <div class="accordion-btn">+</div>
+                            <div class="accordion-btn" id="acc-icon-6">▼</div>
                         </div>
                         <div class="accordion-content">
                             <div class="accordion-body">
                                 <div class="sub-rule-box">
-                                    <h5>Regolamento Server Discord</h5>
-                                    <p>Mantenere un comportamento corretto in tutti i canali testuali e vocali. È vietato lo spam, l'invio di contenuti NSFW, la pubblicità ad altri server e il contatto privato insistente con i membri dello Staff.</p>
+                                    <h5>Procedura Obbligatoria in Caso di Infrazione del Regolamento</h5>
+                                    <p>Se durante una scena Roleplay ritieni che un altro giocatore abbia infranto il regolamento:</p>
+                                    <ul>
+                                        <li><strong>1. Porta a termine la scena:</strong> È vietato interrompere il Roleplay in corso, disconnettersi o iniziare a discutere OOC in chat di gioco.</li>
+                                        <li><strong>2. Compila il modulo di segnalazione:</strong> Accedi al nostro server Discord e compila il modulo ufficiale di richiesta assistenza/infrazione.</li>
+                                        <li><strong>3. Recati in Assistenza con la Clip Video:</strong> Entra nelle stanze di attesa supporto o apri il Ticket fornendo obbligatoriamente una clip video completa dell'azione dall'inizio alla fine. Le segnalazioni senza prova video non verranno prese in considerazione.</li>
+                                    </ul>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Apertura Ticket & Video Proof</h5>
-                                    <p>Ogni segnalazione per infrazione del regolamento deve essere effettuata aprendo un Ticket di Supporto ed allegando obbligatoriamente una clip video completa dell'azione.</p>
+                                    <h5>Regolamento del Server Discord Ufficiale</h5>
+                                    <p>Nei canali del nostro server Discord è vietato lo spam, l'invio di materiale NSFW, la pubblicità non autorizzata di altri server o progetti, la discriminazione e l'uso di tag di massa inutili. Mantenere sempre toni civili ed educati anche nelle stanze vocali pubbliche.</p>
                                 </div>
                                 <div class="sub-rule-box">
-                                    <h5>Non Interrompere le Scene</h5>
-                                    <p>Anche di fronte a un'infrazione subito subìta in gioco, la scena deve essere conclusa regolarmente. Apri il ticket su Discord solo al termine del Roleplay.</p>
+                                    <h5>Rispetto per lo Staff e Decisioni Finali</h5>
+                                    <p>I membri dello Staff operano per garantire il corretto svolgimento del server. Le decisioni prese nei ticket dagli Admin sono definitive. È vietato contattare privatamente i moderatori per discutere sanzioni o fare contestazioni non autorizzate.</p>
                                 </div>
                             </div>
                         </div>
@@ -1513,30 +1545,48 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* FUNZIONI ACCORDION INTERATTIVO */
+        /* FUNZIONI ACCORDION INTERATTIVO CON FRECCE */
         function toggleAccordion(num) {
             const item = document.getElementById('acc-item-' + num);
             const isActive = item.classList.contains('active');
 
-            // Chiudi gli altri
-            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-            document.querySelectorAll('.rules-menu button').forEach(b => b.classList.remove('active'));
+            // Chiudi tutti gli altri e imposta la freccia a giù (▼)
+            for (let i = 1; i <= 6; i++) {
+                const accItem = document.getElementById('acc-item-' + i);
+                const accIcon = document.getElementById('acc-icon-' + i);
+                const sideBtn = document.getElementById('side-btn-' + i);
 
-            // Apri o chiudi quello cliccato
+                if (accItem) accItem.classList.remove('active');
+                if (accIcon) accIcon.innerText = '▼';
+                if (sideBtn) sideBtn.classList.remove('active');
+            }
+
+            // Se quello cliccato era chiuso, lo apriamo e mettiamo la freccia in su (▲)
             if (!isActive) {
                 item.classList.add('active');
+                document.getElementById('acc-icon-' + num).innerText = '▲';
                 const sideBtn = document.getElementById('side-btn-' + num);
                 if (sideBtn) sideBtn.classList.add('active');
             }
         }
 
         function openAccordion(num) {
-            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-            document.querySelectorAll('.rules-menu button').forEach(b => b.classList.remove('active'));
+            // Chiudi tutti
+            for (let i = 1; i <= 6; i++) {
+                const accItem = document.getElementById('acc-item-' + i);
+                const accIcon = document.getElementById('acc-icon-' + i);
+                const sideBtn = document.getElementById('side-btn-' + i);
 
+                if (accItem) accItem.classList.remove('active');
+                if (accIcon) accIcon.innerText = '▼';
+                if (sideBtn) sideBtn.classList.remove('active');
+            }
+
+            // Apri quello richiesto
             const item = document.getElementById('acc-item-' + num);
             if (item) {
                 item.classList.add('active');
+                document.getElementById('acc-icon-' + num).innerText = '▲';
                 item.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
 
@@ -1546,7 +1596,7 @@
 
         function goToBgGuidelines() {
             showTab('regolamento');
-            openAccordion(1);
+            openAccordion(2);
         }
 
         function selectArchetype(name, cardElement) {
