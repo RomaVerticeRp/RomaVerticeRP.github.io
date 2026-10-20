@@ -52,7 +52,7 @@
             position: relative;
         }
 
-        /* VIGNETTATURA AI BORDI PER EFFETTO FOTO ANNI '90 */
+        /* VIGNETTATURA AI BORDI */
         body::after {
             content: "";
             position: fixed;
@@ -65,7 +65,7 @@
             z-index: 998;
         }
 
-        /* TEXTURE PELLICOLA CINEMATOGRAFICA */
+        /* TEXTURE PELLICOLA */
         body::before {
             content: "";
             position: fixed;
@@ -79,7 +79,7 @@
             background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* NAVBAR PULITA */
+        /* NAVBAR */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -379,16 +379,16 @@
             line-height: 1.6;
         }
 
-        /* STILI PER IL TAB REGOLAMENTO STILE SCHEDE AVANZATE */
+        /* REGOLAMENTO - STILE ACCORDION ESATTO DELLO SCREENSHOT */
         .rules-layout {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 260px 1fr;
             gap: 2rem;
             align-items: start;
         }
 
         .rules-sidebar {
-            background: var(--bg-card);
+            background: rgba(254, 252, 247, 0.9);
             border-radius: 20px;
             padding: 1.8rem 1.4rem;
             border: 1px solid var(--border-soft);
@@ -426,7 +426,7 @@
             text-align: left;
             background: transparent;
             border: none;
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 0.9rem;
             border-radius: 12px;
             color: var(--text-light);
             font-weight: 700;
@@ -435,7 +435,7 @@
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 8px;
         }
 
         .rules-menu button.active, .rules-menu button:hover {
@@ -445,70 +445,120 @@
             transform: translateX(3px);
         }
 
-        .rules-content-container {
+        .rules-accordion-container {
             display: flex;
             flex-direction: column;
-            gap: 1.8rem;
+            gap: 1.2rem;
         }
 
-        /* CARD BIANCHE REGOLAMENTO STILE IMMAGINE */
-        .rule-card-block {
+        /* ACCORDION CARD STILE IMMAGINE */
+        .accordion-item {
             background: var(--bg-card);
-            border-radius: 24px;
-            padding: 2.2rem;
+            border-radius: 20px;
             border: 1px solid var(--border-strong);
-            box-shadow: var(--shadow-card);
-            position: relative;
+            box-shadow: 0 6px 20px rgba(92, 53, 27, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .rule-card-header {
+        .accordion-header {
+            padding: 1.6rem 2rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 0.4rem;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(254, 252, 247, 0.95);
+            transition: background 0.2s ease;
         }
 
-        .rule-card-num {
+        .accordion-header:hover {
+            background: #ffffff;
+        }
+
+        .accordion-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .accordion-num {
             font-family: var(--font-title);
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 900;
+            color: var(--border-strong);
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-num {
             color: var(--accent-orange);
         }
 
-        .rule-card-title {
+        .accordion-title-box h3 {
             font-family: var(--font-title);
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: var(--text-dark);
+            margin-bottom: 0.2rem;
         }
 
-        .rule-card-subtitle {
-            font-size: 0.78rem;
+        .accordion-title-box span {
+            font-size: 0.75rem;
             font-weight: 800;
             color: var(--text-muted);
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
             display: block;
         }
 
-        .info-box-highlight {
+        .accordion-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             background: var(--bg-card-alt);
-            border: 1px solid var(--border-soft);
-            border-radius: 14px;
-            padding: 1.2rem;
-            font-size: 0.92rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .accordion-item.active .accordion-btn {
+            background: var(--accent-orange);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            background: #ffffff;
+            border-top: 1px solid transparent;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px; /* Altezza sufficiente per aprirsi */
+            border-top-color: var(--border-soft);
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .accordion-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .sub-rule-box {
-            background: #ffffff;
+            background: var(--bg-card-alt);
             border: 1px solid var(--border-soft);
             border-radius: 14px;
             padding: 1.2rem 1.4rem;
-            margin-bottom: 0.9rem;
         }
 
         .sub-rule-box h5 {
@@ -954,7 +1004,7 @@
             </div>
         </div>
 
-        <!-- TAB REGOLAMENTO CON CARD BIANCHE PERFETTE -->
+        <!-- TAB REGOLAMENTO ACCORDION INTERATTIVO (ESATTO DALL'IMMAGINE) -->
         <div id="regolamento" class="tab-content">
             <div class="page-header">
                 <h2 class="page-title">Regolamento</h2>
@@ -966,154 +1016,195 @@
                     <div class="sidebar-title">INDICE</div>
                     <div class="sidebar-subtitle">6 Sezioni Normative</div>
                     <ul class="rules-menu">
-                        <li><button onclick="scrollToRule('sec-bg')" class="active">📜 Linee Guida BG</button></li>
-                        <li><button onclick="scrollToRule('sec-r1')">01 Regole Generali</button></li>
-                        <li><button onclick="scrollToRule('sec-r2')">02 Principi Roleplay</button></li>
-                        <li><button onclick="scrollToRule('sec-r3')">03 Assistenze & Ticket</button></li>
-                        <li><button onclick="scrollToRule('sec-r4')">04 Sanzioni Disciplinari</button></li>
-                        <li><button onclick="scrollToRule('sec-r5')">05 Azioni Criminali</button></li>
-                        <li><button onclick="scrollToRule('sec-r6')">06 Safe Zone & Rischio</button></li>
+                        <li><button onclick="openAccordion(1)" id="side-btn-1" class="active">01 Regole Generali</button></li>
+                        <li><button onclick="openAccordion(2)" id="side-btn-2">02 Principi Roleplay</button></li>
+                        <li><button onclick="openAccordion(3)" id="side-btn-3">03 Rispetto e Fama</button></li>
+                        <li><button onclick="openAccordion(4)" id="side-btn-4">04 Criminalità & Polizia</button></li>
+                        <li><button onclick="openAccordion(5)" id="side-btn-5">05 Safe Zone & Rischio</button></li>
+                        <li><button onclick="openAccordion(6)" id="side-btn-6">06 Assistenza & Discord</button></li>
                     </ul>
                 </div>
 
-                <!-- CONTENUTO CARD REGOLAMENTO -->
-                <div class="rules-content-container">
+                <!-- LISTA ACCORDION -->
+                <div class="rules-accordion-container">
 
-                    <!-- LINEE GUIDA BG -->
-                    <div id="sec-bg" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">📜</span>
-                            <h3 class="rule-card-title">Linee Guida per il Background (BG)</h3>
+                    <!-- 01 REGOLE GENERALI & BASI ROLEPLAY -->
+                    <div class="accordion-item active" id="acc-item-1">
+                        <div class="accordion-header" onclick="toggleAccordion(1)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">01</span>
+                                <div class="accordion-title-box">
+                                    <h3>Regole Generali</h3>
+                                    <span>BASI DEL ROLEPLAY E DIVIETI FONDAMENTALI</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <span class="rule-card-subtitle">REQUISITI E COERENZA DEL PERSONAGGIO</span>
-
-                        <div class="info-box-highlight">
-                            Il passato del tuo personaggio deve spiegare logicamente come è arrivato a Country Road 90' e perché ha scelto il suo archetipo iniziale.
-                        </div>
-
-                        <div class="sub-rule-box">
-                            <h5>Coerenza Narrativa</h5>
-                            <p>La storia deve essere dettagliata, coerente con l'ambientazione anni '90 e priva di forzature logiche.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Divieto di "Supereroi"</h5>
-                            <p>Evita trascorsi da agente segreto invincibile, miliardario o criminale spietato senza motivazioni credibili. Cerchiamo personaggi con pregi e difetti reali.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Lunghezza Minima</h5>
-                            <p>È richiesto un background dettagliato di almeno 500 caratteri per ottenere l'idoneità alla whitelist.</p>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Che cos'è il Roleplay (RP) & Separazione IC / OOC</h5>
+                                    <p>Il Roleplay è l'interpretazione di un personaggio all'interno di un mondo virtuale. <strong>IC (In Character)</strong> indica tutto ciò che riguarda la vita del tuo personaggio. <strong>OOC (Out Of Character)</strong> indica la tua vita reale. È tassativamente vietato mescolare le due cose o portare rancori OOC nelle dinamiche di gioco.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Metagaming</h5>
+                                    <p>È vietato utilizzare informazioni ottenute fuori dal gioco (es. da Discord, stream di Twitch o chat private) per far agire il proprio personaggio in città.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Powergaming</h5>
+                                    <p>È vietato compiere azioni sovrumane, fisicamente impossibili nella realtà, o forzare scene su altri giocatori senza lasciare loro la possibilità di reagire.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Fail RP</h5>
+                                    <p>Comportamenti irrazionali o azioni che spezzano la coerenza dell'interpretazione (es. guidare auto sportive a 200 km/h in montagna senza conseguenze dopo un incidente).</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Rispetto e Divieti Assoluti</h5>
+                                    <p>È vietato qualsiasi tipo di insulto OOC, bestemmia, molestia o frase discriminatoria per razza, genere, orientamento o religione. La violazione comporta il ban immediato.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- SEZIONE 01: REGOLE GENERALI -->
-                    <div id="sec-r1" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">01</span>
-                            <h3 class="rule-card-title">Regole Generali</h3>
+                    <!-- 02 PRINCIPI FONDAMENTALI ROLEPLAY -->
+                    <div class="accordion-item" id="acc-item-2">
+                        <div class="accordion-header" onclick="toggleAccordion(2)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">02</span>
+                                <div class="accordion-title-box">
+                                    <h3>Principi Fondamentali Roleplay</h3>
+                                    <span>VALORE DELLA VITA E SVENIMENTO</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <span class="rule-card-subtitle">NORME DI CONVIVENZA E RISPETTO</span>
-
-                        <div class="sub-rule-box">
-                            <h5>Rispetto Interpersonale (OOC)</h5>
-                            <p>È tassativamente vietato qualsiasi tipo di insulto, discriminazione o molestia OOC basata su razza, genere, orientamento o religione.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Separazione IC / OOC</h5>
-                            <p>Ciò che accade all'interno del gioco non deve in alcun modo influenzare i rapporti personali esterni, e viceversa.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Common Sense</h5>
-                            <p>Vige sempre la regola del buon senso e del rispetto reciproco per garantire un'esperienza piacevole a tutta la community.</p>
-                        </div>
-                    </div>
-
-                    <!-- SEZIONE 02: PRINCIPI ROLEPLAY -->
-                    <div id="sec-r2" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">02</span>
-                            <h3 class="rule-card-title">Principi Roleplay</h3>
-                        </div>
-                        <span class="rule-card-subtitle">MECCANICHE E VALORE DELL'INTERPRETAZIONE</span>
-
-                        <div class="sub-rule-box">
-                            <h5>Fear RP (Valore della Vita)</h5>
-                            <p>Devi sempre interpretare in modo realistico la paura della morte o del pericolo grave per il tuo personaggio quando minacciato.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>New Life Rule (NLR)</h5>
-                            <p>In caso di morte e respawn medico, il personaggio perde completamente la memoria degli eventi recenti che hanno causato il decesso.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Metagaming & Powergaming</h5>
-                            <p>È severamente vietato utilizzare informazioni OOC in gioco (Metagaming) o compiere azioni sovrumane e impossibili che negano la reazione altrui (Powergaming).</p>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Fear RP (Valore della Vita)</h5>
+                                    <p>La vita del tuo personaggio è unica e preziosa. In situazioni di pericolo imminente, come quando sei sotto il tiro di un'arma o in inferiorità numerica schiacciante, devi sempre interpretare la paura e collaborare.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>New Life Rule (NLR)</h5>
+                                    <p>In caso di svenimento con conseguente respawn in ospedale, il personaggio perde completamente la memoria di tutti gli eventi e delle persone che hanno condotto al decesso.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>No Combat Log</h5>
+                                    <p>È vietato disconnettersi dal gioco o forzare il crash durante un'azione roleplay, una sparatoria o un arresto in corso.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- SEZIONE 03: ASSISTENZE E TICKET -->
-                    <div id="sec-r3" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">03</span>
-                            <h3 class="rule-card-title">Assistenze e Ticket</h3>
+                    <!-- 03 SISTEMA DEL RISPETTO E DELLA FAMA -->
+                    <div class="accordion-item" id="acc-item-3">
+                        <div class="accordion-header" onclick="toggleAccordion(3)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">03</span>
+                                <div class="accordion-title-box">
+                                    <h3>Sistema del Rispetto e della Fama</h3>
+                                    <span>GERARCHIA SOCIALE E REPUTAZIONE NARRATIVA</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <span class="rule-card-subtitle">GESTIONE SEGNALAZIONI E SUPPORTO</span>
-
-                        <div class="sub-rule-box">
-                            <h5>Apertura Ticket</h5>
-                            <p>Per ogni problema, bug o segnalazione, utilizza i canali Discord dedicati allegando clip video complete dell'accaduto.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Comportamento Civile</h5>
-                            <p>Mantenere toni educati nei ticket. È vietato bloccare o interrompere il Roleplay in corso per chiamare lo staff in gioco.</p>
-                        </div>
-                    </div>
-
-                    <!-- SEZIONE 04: SANZIONI DISCIPLINARI -->
-                    <div id="sec-r4" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">04</span>
-                            <h3 class="rule-card-title">Sanzioni Disciplinari</h3>
-                        </div>
-                        <span class="rule-card-subtitle">GRADUATORIA DEI PROVVEDIMENTI</span>
-
-                        <div class="sub-rule-box">
-                            <h5>Provvedimenti dello Staff</h5>
-                            <p>Le violazioni del regolamento comportano sanzioni proporzionali alla gravità: avvisi verbali (warn), kick, ban temporanei o ban permanenti nei casi di trolling o cheating.</p>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Gerarchia del Rispetto</h5>
+                                    <p>La società di Country Road 90' si basa sulla reputazione costruita nel tempo. Chiunque deve portare rispetto alle figure istituzionali e ai leader di rilievo riconosciuti sul territorio.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Status Dinamico & Continuo</h5>
+                                    <p>La notorietà non si ottiene accumulando denaro o ore di gioco, ma dimostrando continuità narrativa, qualità di gioco e interazioni credibili con la community.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- SEZIONE 05: AZIONI CRIMINALI -->
-                    <div id="sec-r5" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">05</span>
-                            <h3 class="rule-card-title">Azioni Criminali</h3>
+                    <!-- 04 CRIMINALITÀ E POLIZIA -->
+                    <div class="accordion-item" id="acc-item-4">
+                        <div class="accordion-header" onclick="toggleAccordion(4)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">04</span>
+                                <div class="accordion-title-box">
+                                    <h3>Criminalità e Polizia</h3>
+                                    <span>AZIONI OSTILI, SCONTRINI E LEGGE</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <span class="rule-card-subtitle">NORME PER RAPINE E ATTIVITÀ ILLECITE</span>
-
-                        <div class="sub-rule-box">
-                            <h5>Motivazione Narrativa</h5>
-                            <p>Ogni aggressione, rapina o azione ostile deve disporre di una motivazione IC valida e sensata.</p>
-                        </div>
-                        <div class="sub-rule-box">
-                            <h5>Limiti Economici</h5>
-                            <p>Le rapine alle attività commerciali sono ammesse a patto che il valore totale preteso non superi il tetto massimo di 20.000$.</p>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Motivazione IC Obbligatoria</h5>
+                                    <p>Ogni atto criminale, sequestro o scontro a fuoco richiede una solida motivazione accumulata durante il Roleplay. Sono vietati i DM (Deathmatch) privi di senso.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Rapine e Limiti Economici</h5>
+                                    <p>Nelle rapine ai cittadini o alle attività è obbligatorio fissare richieste eque (max 20.000$). È vietato svuotare completamente gli inventari o rapinare beni primari in modo abusivo.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Interazione con lo Sceriffo</h5>
+                                    <p>Le Forze dell'Ordine rappresentano la legge e l'autorità. Gli ingaggi contro la polizia devono essere ponderati e non volti unicamente all'eliminazione fisica degli agenti.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- SEZIONE 06: SAFE ZONE & ZONE A RISCHIO -->
-                    <div id="sec-r6" class="rule-card-block">
-                        <div class="rule-card-header">
-                            <span class="rule-card-num">06</span>
-                            <h3 class="rule-card-title">Safe Zone & Zone a Rischio</h3>
+                    <!-- 05 SAFE ZONE E ZONE A RISCHIO -->
+                    <div class="accordion-item" id="acc-item-5">
+                        <div class="accordion-header" onclick="toggleAccordion(5)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">05</span>
+                                <div class="accordion-title-box">
+                                    <h3>Safe Zone & Zone a Rischio</h3>
+                                    <span>AREE PROTETTE E LIMITI DI AZIONE</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <span class="rule-card-subtitle">AREE PROTETTE E LIMITI DI INTERACTION</span>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Definizione Safe Zone</h5>
+                                    <p>Ospedale Principale, Sede dello Sceriffo, Municipio e Concessionario principale sono Zone Sicure. In queste aree è vietato avviare rapine, sparatorie o aggressioni.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Divieto di Fuga in Safe Zone</h5>
+                                    <p>È severamente vietato rifugiarsi all'interno di una Safe Zone durante un inseguimento o un'azione ostile iniziata all'esterno.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="sub-rule-box">
-                            <h5>Aree Protette</h5>
-                            <p>Ospedale, Stazioni di Polizia/Sceriffi, Municipio e Concessionario principale sono Safe Zone. È vietato avviare qualsiasi azione ostile al loro interno.</p>
+                    <!-- 06 ASSISTENZE, DISCORD E REGOLE GENERICHE -->
+                    <div class="accordion-item" id="acc-item-6">
+                        <div class="accordion-header" onclick="toggleAccordion(6)">
+                            <div class="accordion-header-left">
+                                <span class="accordion-num">06</span>
+                                <div class="accordion-title-box">
+                                    <h3>Assistenza, Discord e Regole Generiche</h3>
+                                    <span>NORME COMMUNITY DISCORD E TICKET</span>
+                                </div>
+                            </div>
+                            <div class="accordion-btn">+</div>
                         </div>
-                        <div class="sub-rule-box">
-                            <h5>Divieto di Abuso</h5>
-                            <p>È severamente vietato rifugiarsi in una Safe Zone per sfuggire a un'azione o a un inseguimento iniziato in precedenza all'esterno.</p>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <div class="sub-rule-box">
+                                    <h5>Regolamento Server Discord</h5>
+                                    <p>Mantenere un comportamento corretto in tutti i canali testuali e vocali. È vietato lo spam, l'invio di contenuti NSFW, la pubblicità ad altri server e il contatto privato insistente con i membri dello Staff.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Apertura Ticket & Video Proof</h5>
+                                    <p>Ogni segnalazione per infrazione del regolamento deve essere effettuata aprendo un Ticket di Supporto ed allegando obbligatoriamente una clip video completa dell'azione.</p>
+                                </div>
+                                <div class="sub-rule-box">
+                                    <h5>Non Interrompere le Scene</h5>
+                                    <p>Anche di fronte a un'infrazione subito subìta in gioco, la scena deve essere conclusa regolarmente. Apri il ticket su Discord solo al termine del Roleplay.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1154,7 +1245,7 @@
                             <h4>Leggi le linee guida del background</h4>
                             <p>È richiesto un background dettagliato di almeno 500 caratteri per accedere alla città.</p>
                         </div>
-                        <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi le Linee Guida BG</button>
+                        <button class="btn-main" style="padding: 0.7rem 1.5rem; font-size: 0.95rem;" onclick="goToBgGuidelines()">Leggi il Regolamento</button>
                     </div>
 
                     <h3 class="archetype-title">Scegli il tuo archetipo</h3>
@@ -1422,16 +1513,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function scrollToRule(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /* FUNZIONI ACCORDION INTERATTIVO */
+        function toggleAccordion(num) {
+            const item = document.getElementById('acc-item-' + num);
+            const isActive = item.classList.contains('active');
+
+            // Chiudi gli altri
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.rules-menu button').forEach(b => b.classList.remove('active'));
+
+            // Apri o chiudi quello cliccato
+            if (!isActive) {
+                item.classList.add('active');
+                const sideBtn = document.getElementById('side-btn-' + num);
+                if (sideBtn) sideBtn.classList.add('active');
             }
+        }
+
+        function openAccordion(num) {
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.rules-menu button').forEach(b => b.classList.remove('active'));
+
+            const item = document.getElementById('acc-item-' + num);
+            if (item) {
+                item.classList.add('active');
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            const sideBtn = document.getElementById('side-btn-' + num);
+            if (sideBtn) sideBtn.classList.add('active');
         }
 
         function goToBgGuidelines() {
             showTab('regolamento');
-            scrollToRule('sec-bg');
+            openAccordion(1);
         }
 
         function selectArchetype(name, cardElement) {
