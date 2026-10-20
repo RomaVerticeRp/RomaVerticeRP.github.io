@@ -921,96 +921,171 @@
         </div>
 
         <!-- TAB REGOLAMENTO -->
-        <div id="regolamento" class="tab-content">
-            <div class="page-header">
-                <h2 class="page-title">Regolamento</h2>
-            </div>
+<div id="regolamento" class="tab-content active">
+    <div class="page-header">
+        <h2 class="page-title">Regolamento</h2>
+    </div>
 
-            <div class="rules-layout">
-                <div class="rules-sidebar">
-                    <div class="sidebar-title">INDICE</div>
-                    <div class="sidebar-subtitle">Normative & Guida</div>
-                    <ul class="rules-menu">
-                        <li><button onclick="showRulePane('rbg', this)" class="active" id="btnRuleBg">Linee Guida BG 📜</button></li>
-                        <li><button onclick="showRulePane('r1', this)">Regole Generali</button></li>
-                        <li><button onclick="showRulePane('r2', this)">Principi Roleplay</button></li>
-                        <li><button onclick="showRulePane('r3', this)">Assistenze e Ticket</button></li>
-                        <li><button onclick="showRulePane('r4', this)">Sanzioni Disciplinari</button></li>
-                        <li><button onclick="showRulePane('r5', this)">Azioni Criminali</button></li>
-                        <li><button onclick="showRulePane('r6', this)">Safe Zone & Zone A rischio</button></li>
-                        <li><button onclick="showRulePane('r7', this)">Regolamento Discord</button></li>
-                    </ul>
-                </div>
-
-                <div class="rules-content-card">
-                    <div id="rbg" class="rule-pane active">
-                        <h3>📜 Linee Guida per il Background (BG)</h3>
-                        <ul>
-                            <li><strong>Coerenza Narrativa:</strong> Il passato del tuo personaggio deve spiegare logicamente come è arrivato a Country Road 90' e perché ha scelto il suo archetipo iniziale.</li>
-                            <li><strong>Nessun "Supereroe":</strong> Evita storie con trascorsi da agente segreto invincibile, miliardario o boss spietato senza motivazioni credibili. Cerchiamo personaggi con pregi, difetti e reali ambizioni.</li>
-                            <li><strong>Punti di Forza e Debolezze:</strong> Definisci il carattere del personaggio, compresi i suoi limiti caratteriali o paure, per rendere le interazioni più ricche e coinvolgenti.</li>
-                            <li><strong>Minimo 500 Caratteri:</strong> La storia deve essere dettagliata e curata nei minimi particolari per ottenere l'idoneità.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r1" class="rule-pane">
-                        <h3>1. Regole Generali</h3>
-                        <ul>
-                            <li><strong>Rispetto Interpersonale:</strong> È tassativamente vietato qualsiasi tipo di insulto o discriminazione OOC per razza, orientamento, genere o religione.</li>
-                            <li><strong>Netta Separazione IC/OOC:</strong> Ciò che accade all'interno del gioco non deve influenzare i rapporti personali esterni, e viceversa.</li>
-                            <li><strong>Common Sense:</strong> Vige sempre la regola del buon senso e del rispetto per la community.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r2" class="rule-pane">
-                        <h3>2. Principi Roleplay</h3>
-                        <ul>
-                            <li><strong>Fear RP (Valore della Vita):</strong> Devi sempre interpretare la paura della morte o del pericolo grave per il tuo personaggio.</li>
-                            <li><strong>New Life Rule (NLR):</strong> In caso di morte/respawn, si perde memoria degli eventi recenti che hanno portato al decesso.</li>
-                            <li><strong>Metagaming & Powergaming:</strong> Vietato usare informazioni OOC in gioco o compiere azioni sovrumane/impossibili.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r3" class="rule-pane">
-                        <h3>3. Assistenze e Ticket</h3>
-                        <ul>
-                            <li><strong>Apertura Ticket:</strong> Per ogni problema o segnalazione utilizzare i canali Discord dedicati fornendo clip video intere.</li>
-                            <li><strong>Comportamento:</strong> Mantenere toni civili nei ticket. Vietato bloccare il Roleplay in gioco per chiamare lo staff.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r4" class="rule-pane">
-                        <h3>4. Sanzioni Disciplinari</h3>
-                        <ul>
-                            <li><strong>Graduatoria Sanzioni:</strong> Warn verbali, Kick, Ban temporanei o Ban Permanenti nei casi più gravi di trolling o cheating.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r5" class="rule-pane">
-                        <h3>5. Azioni Criminali</h3>
-                        <ul>
-                            <li><strong>Motivazione Narrativa:</strong> Ogni aggressione o rapina deve avere una motivazione IC valida e sensata.</li>
-                            <li><strong>Rapine alle Attività:</strong> Ammesse se il valore totale preteso non supera i 20.000$.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r6" class="rule-pane">
-                        <h3>6. Safe Zone & Zone A Rischio</h3>
-                        <ul>
-                            <li><strong>Safe Zone:</strong> Ospedale, Stazioni di Polizia/Sceriffi, Municipio e Concessionario principale. Vietato avviare azioni ostili.</li>
-                            <li><strong>Divieto di Fuga:</strong> Vietato rifugiarsi in una Safezone per sfuggire a un'azione già iniziata all'esterno.</li>
-                        </ul>
-                    </div>
-
-                    <div id="r7" class="rule-pane">
-                        <h3>7. Regolamento Discord</h3>
-                        <ul>
-                            <li><strong>Canali e Contenuti:</strong> Vietato inviare spam, materiale NSFW o pubblicità di altri server nei canali ufficiali.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="rules-layout">
+        <!-- INDICE LATERALE -->
+        <div class="rules-sidebar">
+            <div class="sidebar-title">INDICE</div>
+            <div class="sidebar-subtitle">7 Sezioni Normative</div>
+            <ul class="rules-menu">
+                <li><button onclick="scrollToRule('sec-bg')" class="active">📜 Linee Guida BG</button></li>
+                <li><button onclick="scrollToRule('sec-r1')">01 Regole Generali</button></li>
+                <li><button onclick="scrollToRule('sec-r2')">02 Principi Roleplay</button></li>
+                <li><button onclick="scrollToRule('sec-r3')">03 Assistenze & Ticket</button></li>
+                <li><button onclick="scrollToRule('sec-r4')">04 Sanzioni Disciplinari</button></li>
+                <li><button onclick="scrollToRule('sec-r5')">05 Azioni Criminali</button></li>
+                <li><button onclick="scrollToRule('sec-r6')">06 Safe Zone & Rischio</button></li>
+            </ul>
         </div>
+
+        <!-- CONTENUTO DEL REGOLAMENTO -->
+        <div class="rules-content-container">
+
+            <!-- LINEE GUIDA BG -->
+            <div id="sec-bg" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">📜</span>
+                    <h3 class="rule-card-title">Linee Guida per il Background (BG)</h3>
+                </div>
+                <span class="rule-card-subtitle">REQUISITI E COERENZA DEL PERSONAGGIO</span>
+
+                <div class="info-box-highlight">
+                    Il passato del tuo personaggio deve spiegare logicamente come è arrivato a Country Road 90' e perché ha scelto il suo archetipo iniziale.
+                </div>
+
+                <div class="sub-rule-box">
+                    <h5>Coerenza Narrativa</h5>
+                    <p>La storia deve essere dettagliata, coerente con l'ambientazione anni '90 e priva di forzature logiche.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Divieto di "Supereroi"</h5>
+                    <p>Evita trascorsi da agente segreto invincibile, miliardario o criminale spietato senza motivazioni credibili. Cerchiamo personaggi con pregi e difetti reali.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Lunghezza Minima</h5>
+                    <p>È richiesto un background dettagliato di almeno 500 caratteri per ottenere l'idoneità alla whitelist.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 01: REGOLE GENERALI -->
+            <div id="sec-r1" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">01</span>
+                    <h3 class="rule-card-title">Regole Generali</h3>
+                </div>
+                <span class="rule-card-subtitle">NORME DI CONVIVENZA E RISPETTO</span>
+
+                <div class="sub-rule-box">
+                    <h5>Rispetto Interpersonale (OOC)</h5>
+                    <p>È tassativamente vietato qualsiasi tipo di insulto, discriminazione o molestia OOC basata su razza, genere, orientamento o religione.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Separazione IC / OOC</h5>
+                    <p>Ciò che accade all'interno del gioco non deve in alcun modo influenzare i rapporti personali esterni, e viceversa.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Common Sense</h5>
+                    <p>Vige sempre la regola del buon senso e del rispetto reciproco per garantire un'esperienza piacevole a tutta la community.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 02: PRINCIPI ROLEPLAY -->
+            <div id="sec-r2" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">02</span>
+                    <h3 class="rule-card-title">Principi Roleplay</h3>
+                </div>
+                <span class="rule-card-subtitle">MECCANICHE E VALORE DELL'INTERPRETAZIONE</span>
+
+                <div class="sub-rule-box">
+                    <h5>Fear RP (Valore della Vita)</h5>
+                    <p>Devi sempre interpretare in modo realistico la paura della morte o del pericolo grave per il tuo personaggio quando minacciato.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>New Life Rule (NLR)</h5>
+                    <p>In caso di morte e respawn medico, il personaggio perde completamente la memoria degli eventi recenti che hanno causato il decesso.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Metagaming & Powergaming</h5>
+                    <p>È severamente vietato utilizzare informazioni OOC in gioco (Metagaming) o compiere azioni sovrumane e impossibili che negano la reazione altrui (Powergaming).</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 03: ASSISTENZE E TICKET -->
+            <div id="sec-r3" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">03</span>
+                    <h3 class="rule-card-title">Assistenze e Ticket</h3>
+                </div>
+                <span class="rule-card-subtitle">GESTIONE SEGNALAZIONI E SUPPORTO</span>
+
+                <div class="sub-rule-box">
+                    <h5>Apertura Ticket</h5>
+                    <p>Per ogni problema, bug o segnalazione, utilizza i canali Discord dedicati allegando clip video complete dell'accaduto.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Comportamento Civile</h5>
+                    <p>Mantenere toni educati nei ticket. È vietato bloccare o interrompere il Roleplay in corso per chiamare lo staff in gioco.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 04: SANZIONI DISCIPLINARI -->
+            <div id="sec-r4" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">04</span>
+                    <h3 class="rule-card-title">Sanzioni Disciplinari</h3>
+                </div>
+                <span class="rule-card-subtitle">GRADUATORIA DEI PROVVEDIMENTI</span>
+
+                <div class="sub-rule-box">
+                    <h5>Provvedimenti dello Staff</h5>
+                    <p>Le violazioni del regolamento comportano sanzioni proporzionali alla gravità: avvisi verbali (warn), kick, ban temporanei o ban permanenti nei casi di trolling o cheating.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 05: AZIONI CRIMINALI -->
+            <div id="sec-r5" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">05</span>
+                    <h3 class="rule-card-title">Azioni Criminali</h3>
+                </div>
+                <span class="rule-card-subtitle">NORME PER RAPINE E ATTIVITÀ ILLECITE</span>
+
+                <div class="sub-rule-box">
+                    <h5>Motivazione Narrativa</h5>
+                    <p>Ogni aggressione, rapina o azione ostile deve disporre di una motivazione IC valida e sensata.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Limiti Economici</h5>
+                    <p>Le rapine alle attività commerciali sono ammesse a patto che il valore totale preteso non superi il tetto massimo di 20.000$.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 06: SAFE ZONE & ZONE A RISCHIO -->
+            <div id="sec-r6" class="rule-card-block">
+                <div class="rule-card-header">
+                    <span class="rule-card-num">06</span>
+                    <h3 class="rule-card-title">Safe Zone & Zone a Rischio</h3>
+                </div>
+                <span class="rule-card-subtitle">AREE PROTETTE E LIMITI DI INTERAZIONE</span>
+
+                <div class="sub-rule-box">
+                    <h5>Aree Protette</h5>
+                    <p>Ospedale, Stazioni di Polizia/Sceriffi, Municipio e Concessionario principale sono Safe Zone. È vietato avviare qualsiasi azione ostile al loro interno.</p>
+                </div>
+                <div class="sub-rule-box">
+                    <h5>Divieto di Abuso</h5>
+                    <p>È severamente vietato rifugiarsi in una Safe Zone per sfuggire a un'azione o a un inseguimento iniziato in precedenza all'esterno.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
         <!-- TAB WHITELIST -->
         <div id="whitelist" class="tab-content">
